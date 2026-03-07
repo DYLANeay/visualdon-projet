@@ -27,15 +27,75 @@ Ces données ont été collectées dans des contextes différents : les deux pre
 
 ## Description
 
-Les données sont structurées au format **CSV** (comma-separated values).
+Ce projet s'appuie sur deux types de données distincts : des résultats électoraux quantitatifs (structurés au format **CSV**) et des événements socio-politiques qualitatifs (extraits de sources web). L'objectif est de combiner ces informations pour offrir une visualisation à la fois analytique et critique.
 
-### Croisement des données
+### 1. Données électorales (Fichiers CSV)
 
-Le but est de croiser nos différentes sources de données pour avoir un résultat aussi fidèle que possible à la réalité. Ce serait particulièrement fait sur les données provenant de **ParlGov** et **Manifesto Project**, qui traite des données en Europe.
+**A. ParlGov (`view_election.csv`)**
+* **Toutes les colonnes :** `country`, `date`, `type`, `party`, `id`, `created_at`, `updated_at`, `party_id_source`, `seats`, `vote_share`, `votes`, `data_source`, `description`, `comment`, `data_json`, `election_id`, `party_id`, `alliance_id`.
+* **Colonnes conservées :**
+  * `country` : Code du pays.
+  * `date` : Date de l'élection (pour extraction de l'année).
+  * `party` : Nom du parti.
+  * `vote_share` : Pourcentage des suffrages exprimés.
 
-### Type de données
+**B. Manifesto Project (`MPDataset_MPDS2025a.csv`)**
+* **Toutes les colonnes :** `country`, `countryname`, `oecdmember`, `eumember`, `edate`, `date`, `party`, `partyname`, `partyabbrev`, `parfam`, `candidatename`, `coderid`, `manual`, `coderyear`, `testresult`, `testeditsim`, `pervote`, `voteest`, `presvote`, `absseat`, `totseats`, `progtype`, `datasetorigin`, `corpusversion`, `total`, `peruncod`, thématiques du programme (`per101` à `per706_2`), index politiques (`rile`, `planeco`, `markeco`, `welfare`, `intpeace`), `datasetversion`, `id_perm`.
+* **Colonnes conservées :**
+  * `countryname` : Nom du pays.
+  * `date` / `edate` : Année de l'élection.
+  * `parfam` : Famille politique (**le code `70` cible spécifiquement l'extrême droite**).
+  * `pervote` : Pourcentage des votes obtenus.
 
----
+### 2. Données contextuelles (Événements historiques et politiques)
+
+Au-delà de la stricte évolution des courbes électorales, ce projet intègre une double dimension explicative. D'une part, nous superposons aux données quantitatives des **événements historiques majeurs** afin d'illustrer le contexte global dans lequel s'inscrivent ces élections (crises économiques, mouvements migratoires, etc.). D'autre part, nous recensons des **événements directement liés à l'extrême droite** (dérapages de personnalités politiques, controverses, actes documentés). L'objectif est de mettre en lumière à la fois le terreau historique qui favorise la montée de ce courant et les conséquences tangibles du climat socio-politique qu'il instaure.
+* **Sources utilisées :** Wikipedia et le registre citoyen *Wall of Shame* (nopasaran.ch/fr-CH).
+
+### 3. Croisement et traitement des données
+
+Le but est de croiser nos différentes sources de données pour avoir un résultat aussi fidèle que possible à la réalité. Ce sera particulièrement fait sur les données provenant de **ParlGov** et **Manifesto Project**, qui traitent des données en Europe.
+
+1. **Agrégation électorale** : Les données des deux fichiers CSV sont fusionnées. Le filtre `parfam == 70` permet d'isoler les partis d'extrême droite. Les scores de ces formations concourant lors d'un même scrutin sont ensuite additionnés pour obtenir le poids électoral national total par année.
+2. **Contextualisation critique** : Extraction et intégration d'événements factuels permettant de lier la progression électorale à des répercussions politiques et sociales concrètes dans les différents pays.
+
+### 4. Format de sortie (JSON unique)
+
+L'ensemble des données traitées est exporté dans **un seul fichier JSON** consolidé. Ce format structure d'une part l'évolution électorale, et d'autre part la chronologie des événements, permettant d'alimenter directement la visualisation interactive.
+
+**A. Format des données électorales :**
+* `pays` : `String`
+* `annee` : `Integer`
+* `pourcentage_extreme_droite` : `Float`
+
+**B. Format des événements contextuels :**
+* `pays` : `String`
+* `annee` : `Integer`
+* `titre` : `String`
+* `description` : `String`
+* `image` : `String` (Optionnel, URL ou chemin de l'illustration)
+
+**Exemple de la structure globale :**
+```json
+{
+  "elections": [
+    {
+      "pays": "Suisse",
+      "annee": 2019,
+      "pourcentage_extreme_droite": 25.60
+    }
+  ],
+  "evenements": [
+    {
+      "pays": "Suisse",
+      "annee": 2019,
+      "titre": "Campagne d'affichage controversée",
+      "description": "Déploiement d'une campagne jugée xénophobe, marquant une radicalisation du discours public et suscitant de vives réactions de la société civile.",
+      "image": "assets/img/affiche-2019.jpg"
+    }
+  ]
+}
+```
 
 ## But
 
