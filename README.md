@@ -120,6 +120,9 @@ L'objectif est de montrer comment le vote d'extrême droite a évolué en Suisse
 
 ### Projets et travaux similaires
 
-- à préciser
+- **[Kincade Fire Origin](https://projects.sfchronicle.com/2019/kincade-fire-origin/) (San Francisco Chronicle)** : Récit immersif qui retrace, étape par étape, le déclenchement et la progression d’un incendie à l’aide d’une carte dynamique et de textes courts.
+- **[Mapbox Storytelling](https://labs.mapbox.com/storytelling/)** : Gabarit de *scrollytelling* pensé pour lier le défilement de la page à l’évolution d’une carte (zoom, déplacement, changement de calques).
+- **[The Great Flood of 2019](https://www.nytimes.com/interactive/2019/09/11/us/midwest-flooding.html) (The New York Times)** : Mise en scène très visuelle qui montre l’ampleur géographique et la chronologie d’une inondation à l’échelle d’une région.
+- **[Detroit's Segregation Wall](https://www.nbcnews.com/specials/detroit-segregation-wall/) (NBC News)** : Enquête visuelle qui combine contexte historique, archives, témoignages et cartes pour éclairer un enjeu urbain et social.
 
 ---
