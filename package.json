@@ -1,0 +1,27 @@
+{
+  "name": "visualdon-projet",
+  "version": "1.0.0",
+  "description": "Projet de visualisation de données — VisualDon 2026 - Dylan Eray & Loic Peyramaure",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DYLANeay/visualdon-projet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DYLANeay/visualdon-projet/issues"
+  },
+  "homepage": "https://github.com/DYLANeay/visualdon-projet#readme",
+  "dependencies": {
+    "playwright": "^1.58.2"
+  },
+  "devDependencies": {
+    "vite": "^8.0.1"
+  }
+}
