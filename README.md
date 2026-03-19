@@ -108,6 +108,10 @@ Ce projet combine une approche **exploratoire** et **explicative** :
 
 L'objectif est de montrer comment le vote d'extrême droite a évolué en Suisse et dans les pays voisins (France, Allemagne, Autriche, Italie), et mettre en lumière les dangers de ce courant politique par des exemples concrets.
 
+## Wireframes 
+
+Les wireframes de ce projet sont disponibles à l'adresse suivante (lien public) : [Wireframes sur Figma](https://www.figma.com/design/Wv2yKdhqnf0hsw7LLN4ZoO/Wireframe?node-id=0-1&p=f).
+
 ---
 
 ## Références
