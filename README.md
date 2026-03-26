@@ -52,6 +52,37 @@ Ce projet s'appuie sur deux types de données distincts : des résultats électo
 Au-delà de la stricte évolution des courbes électorales, ce projet intègre une double dimension explicative. D'une part, nous superposons aux données quantitatives des **événements historiques majeurs** afin d'illustrer le contexte global dans lequel s'inscrivent ces élections (crises économiques, mouvements migratoires, etc.). D'autre part, nous recensons des **événements directement liés à l'extrême droite** (dérapages de personnalités politiques, controverses, actes documentés). L'objectif est de mettre en lumière à la fois le terreau historique qui favorise la montée de ce courant et les conséquences tangibles du climat socio-politique qu'il instaure.
 * **Sources utilisées :** Wikipedia et le registre citoyen *Wall of Shame* (nopasaran.ch/fr-CH).
 
+**Structure du fichier `data/nopasaran/data.json` :**
+```json
+{
+  "totalEvents": 482,
+  "scrapedAt": "2026-03-19T10:43:17.193Z",
+  "source": "https://www.nopasaran.ch/fr-CH",
+  "eventsByYear": {
+    "<année>": [
+      {
+        "title": "String — Titre de l'événement",
+        "date": "String — Date (YYYY-MM-DD)",
+        "year": "Integer — Année de l'événement",
+        "category": "String — Catégorie (ex: Antisémitisme, Racisme, ...)",
+        "description": "String — Description détaillée de l'événement",
+        "consequences": "String — Conséquences (peut être vide)",
+        "person": "String — Personne impliquée",
+        "role": "String — Rôle de la personne",
+        "party": "String — Parti politique (ex: UDC - ZH)",
+        "sources": [
+          {
+            "name": "String — Nom de la source",
+            "url": "String — URL de la source"
+          }
+        ],
+        "url": "String — URL de l'événement sur nopasaran.ch"
+      }
+    ]
+  }
+}
+```
+
 ### 3. Croisement et traitement des données
 
 Le but est de croiser nos différentes sources de données pour avoir un résultat aussi fidèle que possible à la réalité. Ce sera particulièrement fait sur les données provenant de **ParlGov** et **Manifesto Project**, qui traitent des données en Europe.
