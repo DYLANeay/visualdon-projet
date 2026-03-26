@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/DYLANeay/visualdon-projet#readme",
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "playwright": "^1.58.2"
   },
   "devDependencies": {
