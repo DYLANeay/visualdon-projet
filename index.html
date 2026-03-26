@@ -7,9 +7,210 @@
         <link rel="stylesheet" href="/src/style.css" />
     </head>
     <body>
-        <div id="app">
-            <h1>VisualDon Projet</h1>
-        </div>
+        <section>
+            <div>
+                <p class="text-red-500">Subtitle</p>
+                <h1>Title</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Integer tellus justo, auctor eu commodo sit amet, tincidunt
+                    ac leo. Phasellus mollis eleifend eros. Quisque in finibus
+                    lectus. Nunc et augue aliquam, ultrices felis et, gravida
+                    odio.
+                </p>
+            </div>
+            <div>
+                <nav>
+                    <a href="#">navbar el</a>
+                    <a href="#">navbar el</a>
+                    <a href="#">navbar el</a>
+                    <a href="#">navbar el</a>
+                </nav>
+                <img src="" alt="Hero image" />
+            </div>
+        </section>
+
+        <section>
+            <h2>1945</h2>
+            <aside>
+                <ul>
+                    <li>Event</li>
+                    <li>Event</li>
+                    <li>Event</li>
+                </ul>
+            </aside>
+            <div>
+                <!-- Europe map with highlighted countries -->
+            </div>
+            <div>
+                <p>Scale</p>
+            </div>
+            <!-- Vertical timeline -->
+            <nav>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- Country detail view, shown when clicking a country -->
+        <section>
+            <header>
+                <h2>Nom du pays</h2>
+                <span>1970</span>
+            </header>
+            <aside>
+                <ul>
+                    <li>Event</li>
+                    <li>Event</li>
+                </ul>
+            </aside>
+            <div>
+                <!-- Country map zoomed in -->
+            </div>
+            <figure>
+                <figcaption>Répartitions des partis</figcaption>
+                <ul>
+                    <li>
+                        <span>Nom du parti</span><meter></meter><span>%</span>
+                    </li>
+                    <li>
+                        <span>Nom du parti</span><meter></meter><span>%</span>
+                    </li>
+                    <li>
+                        <span>Nom du parti</span><meter></meter><span>%</span>
+                    </li>
+                    <li>
+                        <span>Nom du parti</span><meter></meter><span>%</span>
+                    </li>
+                </ul>
+            </figure>
+            <!-- Vertical timeline -->
+            <nav>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- Switzerland focus section -->
+        <section>
+            <h2>Et la Suisse ?</h2>
+            <aside>
+                <ul>
+                    <li>Event</li>
+                </ul>
+            </aside>
+            <div>
+                <!-- Switzerland map -->
+            </div>
+            <!-- so far displayed as 2026, but will display the year dynamically-->
+            <span>2026 </span>
+            <!-- Horizontal timeline -->
+            <nav>
+                <ul>
+                    <li>Année</li>
+                    <li>Année</li>
+                    <li>Année</li>
+                    <li>Année</li>
+                    <li>Année</li>
+                </ul>
+            </nav>
+            <div>
+                <p>UDC Scale</p>
+            </div>
+        </section>
+
+        <!-- Canton detail view, replaces Switzerland map when a canton is clicked (hidden by default) -->
+        <section>
+            <a href="#">← Retour à la carte</a>
+
+            <div>
+                <div>
+                    <h2>Berne</h2>
+                    <p>Information générales sur le canton (hab, ...)</p>
+                    <div>
+                        <img src="" alt="" />
+                        <img src="" alt="" />
+                        <img src="" alt="" />
+                        <img src="" alt="" />
+                    </div>
+                </div>
+                <div>
+                    <figure>
+                        <figcaption>Répartitions des partis</figcaption>
+                        <ul>
+                            <li>
+                                <span>Nom du parti</span><meter></meter
+                                ><span>%</span>
+                            </li>
+                            <li>
+                                <span>Nom du parti</span><meter></meter
+                                ><span>%</span>
+                            </li>
+                            <li>
+                                <span>Nom du parti</span><meter></meter
+                                ><span>%</span>
+                            </li>
+                            <li>
+                                <span>Nom du parti</span><meter></meter
+                                ><span>%</span>
+                            </li>
+                        </ul>
+                    </figure>
+                    <div>
+                        <h3>Dérapages marquants de l'UDC</h3>
+                        <ul>
+                            <li>
+                                <p>
+                                    Faits provenant du site
+                                    https://www.nopasaran.ch/fr=CH
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Faits provenant du site
+                                    https://www.nopasaran.ch/fr=CH
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Faits provenant du site
+                                    https://www.nopasaran.ch/fr=CH
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <figure>
+                <figcaption>Evolution de la part de l'UDC</figcaption>
+                <div>
+                    <!-- Line chart (percentage over years) -->
+                </div>
+            </figure>
+        </section>
+
+        <!-- Event detail modal, hidden by default cause its a modal -->
+        <dialog>
+            <h3>Title</h3>
+            <img src="" alt="Event image" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <a href="#">Voir sur wikipedia</a>
+        </dialog>
+
         <script type="module" src="/src/main.js"></script>
     </body>
 </html>
