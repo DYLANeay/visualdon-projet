@@ -78,13 +78,30 @@ L'ensemble des données traitées est exporté dans **un seul fichier JSON** con
 **Exemple de la structure globale :**
 ```json
 {
-  "elections": [
-    {
-      "pays": "Suisse",
-      "annee": 2019,
-      "pourcentage_extreme_droite": 25.60
+  "elections": {
+    "CH": {
+      "name": "Suisse",
+      "parties": {
+        "43710": {
+          "name": "Swiss People's Party",
+          "abbrev": "SVP",
+          "family_code": "70",
+          "family": "Nationaliste/Extrême droite",
+          "elections": [
+            {
+              "year": 2019,
+              "date": "20/10/2019",
+              "vote_pct": 25.6,
+              "seats_won": 53,
+              "total_seats": 200,
+              "seats_pct": 26.5,
+              "rile_score": 18.2
+            }
+          ]
+        }
+      }
     }
-  ],
+  },
   "evenements": [
     {
       "pays": "Suisse",
