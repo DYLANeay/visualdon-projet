@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{js,css,html}\" \"*.{html,json,md}\""
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "prettier": "^3.8.2",
     "vite": "^8.0.1"
   }
 }
