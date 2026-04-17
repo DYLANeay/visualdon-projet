@@ -57,9 +57,13 @@ let _geoData = null;
 let _elections = null;
 let _container = null;
 
+// Le CShapes GeoJSON s'arrête en 2023 ; au-delà, on clampe pour garder les dernières frontières.
+const GEO_MAX_YEAR = 2023;
+
 function getFeaturesForYear(year) {
+  const y = Math.min(year, GEO_MAX_YEAR);
   return _geoData.geoEurope.features.filter(
-    (f) => f.properties.From <= year && f.properties.To >= year,
+    (f) => f.properties.From <= y && f.properties.To >= y,
   );
 }
 
