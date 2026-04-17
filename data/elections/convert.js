@@ -1,8 +1,17 @@
 /**
- * Pipeline CSV → JSON (Manifesto Project → Carte Europe)
+ * Pipeline CSV → JSON (Manifesto Project + ParlGov → Carte Europe)
  *
- * INPUT  : MPDataset_MPDS2025a.csv
+ * INPUTS :
+ *   - MPDataset_MPDS2025a.csv  (Manifesto Project, post-1945, has parfam)
+ *   - view_election.csv        (ParlGov, covers pre-1945 gaps, no parfam)
+ *
  * OUTPUT : elections.json
+ *
+ * Stratégie :
+ *   1. Manifesto = source primaire (famille politique fiable via parfam)
+ *   2. ParlGov remplit les trous pré-1945 + périodes non couvertes
+ *   3. Familles politiques : parfam si Manifesto, sinon whitelist pays→parti
+ *   4. Régimes dictatoriaux (Mussolini, Franco, Salazar) : entrées synthétiques
  *
  * Usage : node convert.js
  */
@@ -13,42 +22,48 @@ const path = require("path");
 // ──────────────────────────────────────────────
 // CONFIG
 // ──────────────────────────────────────────────
-const INPUT_FILE = path.join(__dirname, "MPDataset_MPDS2025a.csv");
+const MP_INPUT = path.join(__dirname, "MPDataset_MPDS2025a.csv");
+const PG_INPUT = path.join(__dirname, "view_election.csv");
 const OUTPUT_FILE = path.join(__dirname, "elections.json");
 
-// Colonnes à conserver
-const KEEP_COLS = [
-  "country", "countryname", "edate", "date", "party", "partyname",
-  "partyabbrev", "parfam", "pervote", "absseat", "totseats", "rile"
-];
-
-// Mapping country_code Manifesto → ISO2 (pays européens uniquement)
-const COUNTRY_MAP = {
+// Manifesto country_code → ISO2 (schéma MPDS2025a)
+const MP_COUNTRY_MAP = {
   11: "SE", 12: "NO", 13: "DK", 14: "FI", 15: "IS",
-  21: "BE", 22: "NL", 23: "LU", 24: "FR", 25: "IT",
-  26: "ES", 27: "GR", 28: "PT",
-  31: "DE", 32: "AT", 33: "CH", 34: "CY", 35: "MT",
-  41: "GB", 42: "IE", 43: "GB", // Northern Ireland fusionné avec GB
-  61: "PL", 62: "CZ", 63: "SK", 64: "HU", 65: "RO",
-  66: "BG", 67: "EE", 68: "LV", 69: "LT",
-  72: "HR", 73: "SI", 74: "RS", 76: "UA", 77: "AL",
-  78: "MK", 79: "BA", 80: "ME", 83: "MD"
+  21: "BE", 22: "NL", 23: "LU",
+  31: "FR", 32: "IT", 33: "ES", 34: "GR", 35: "PT",
+  41: "DE", 42: "AT", 43: "CH",
+  51: "GB", 52: "GB",
+  53: "IE", 54: "MT", 55: "CY",
+  75: "AL", 79: "BA", 80: "BG", 81: "HR", 82: "CZ",
+  83: "EE", 86: "HU", 87: "LV", 88: "LT", 89: "MK",
+  90: "MD", 91: "ME", 92: "PL", 93: "RO", 95: "RS",
+  96: "SK", 97: "SI", 98: "UA",
 };
 
-// Mapping country_code → nom du pays
 const COUNTRY_NAMES = {
-  11: "Sweden", 12: "Norway", 13: "Denmark", 14: "Finland", 15: "Iceland",
-  21: "Belgium", 22: "Netherlands", 23: "Luxembourg", 24: "France", 25: "Italy",
-  26: "Spain", 27: "Greece", 28: "Portugal",
-  31: "Germany", 32: "Austria", 33: "Switzerland", 34: "Cyprus", 35: "Malta",
-  41: "United Kingdom", 42: "Ireland", 43: "United Kingdom",
-  61: "Poland", 62: "Czech Republic", 63: "Slovakia", 64: "Hungary", 65: "Romania",
-  66: "Bulgaria", 67: "Estonia", 68: "Latvia", 69: "Lithuania",
-  72: "Croatia", 73: "Slovenia", 74: "Serbia", 76: "Ukraine", 77: "Albania",
-  78: "North Macedonia", 79: "Bosnia", 80: "Montenegro", 83: "Moldova"
+  SE: "Sweden", NO: "Norway", DK: "Denmark", FI: "Finland", IS: "Iceland",
+  BE: "Belgium", NL: "Netherlands", LU: "Luxembourg",
+  FR: "France", IT: "Italy", ES: "Spain", GR: "Greece", PT: "Portugal",
+  DE: "Germany", AT: "Austria", CH: "Switzerland",
+  GB: "United Kingdom", IE: "Ireland", MT: "Malta", CY: "Cyprus",
+  AL: "Albania", BA: "Bosnia", BG: "Bulgaria", HR: "Croatia", CZ: "Czech Republic",
+  EE: "Estonia", HU: "Hungary", LV: "Latvia", LT: "Lithuania", MK: "North Macedonia",
+  MD: "Moldova", ME: "Montenegro", PL: "Poland", RO: "Romania", RS: "Serbia",
+  SK: "Slovakia", SI: "Slovenia", UA: "Ukraine",
 };
 
-// Mapping parfam → label
+// ParlGov ISO3 → ISO2 (filtré Europe)
+const PG_COUNTRY_MAP = {
+  DEU: "DE", FRA: "FR", ITA: "IT", ESP: "ES", PRT: "PT", GRC: "GR",
+  GBR: "GB", IRL: "IE", NLD: "NL", BEL: "BE", LUX: "LU",
+  AUT: "AT", CHE: "CH", SWE: "SE", NOR: "NO", DNK: "DK", FIN: "FI", ISL: "IS",
+  POL: "PL", CZE: "CZ", SVK: "SK", HUN: "HU", ROU: "RO", BGR: "BG",
+  EST: "EE", LVA: "LV", LTU: "LT", HRV: "HR", SVN: "SI", SRB: "RS",
+  UKR: "UA", ALB: "AL", MKD: "MK", BIH: "BA", MNE: "ME", MDA: "MD",
+  CYP: "CY", MLT: "MT",
+};
+
+// parfam → label
 const FAMILY_MAP = {
   "10": "Ecologiste",
   "20": "Communiste/Extrême gauche",
@@ -61,81 +76,122 @@ const FAMILY_MAP = {
   "90": "Régionaliste/Ethnique",
   "95": "Islamiste",
   "98": "Divers/Non classifié",
-  "999": "Inconnu"
+  "999": "Inconnu",
 };
 
-// ──────────────────────────────────────────────
-// ÉTAPE 1 — PARSING CSV
-// ──────────────────────────────────────────────
+// Partis d'extrême droite (family_code = "70") par pays ISO2
+// Utilisé pour les entrées ParlGov (pas de parfam natif)
+const FAR_RIGHT_BY_COUNTRY = {
+  AT: ["FPO", "FPÖ", "BZO", "BZÖ", "VdU"],
+  BE: ["VB", "FN", "VlB", "FNb"],
+  BG: ["Ataka", "VMRO", "Vazrazhdane", "NFSB"],
+  CZ: ["SPD", "Usvit"],
+  DE: ["NSDAP", "DNVP", "NPD", "DVU", "REP", "AfD"],
+  DK: ["DF", "NB", "FrP"],
+  ES: ["VOX", "FE-JONS", "FE"],
+  FI: [], // PS est ambigu, on s'appuie sur Manifesto
+  FR: ["FN", "RN", "MNR", "Reconquete", "Reconquête"],
+  GB: ["BNP", "UKIP", "Reform"],
+  GR: ["LAOS", "XA", "EL"],
+  HU: ["Jobbik", "MH", "MiHazank"],
+  IT: ["MSI", "AN", "LN", "FdI", "FDI", "FT", "L"],
+  LV: ["NA", "TB/LNNK"],
+  NL: ["PVV", "FvD", "CD", "CP", "LPF"],
+  NO: ["FrP"],
+  PL: ["RN", "Konfederacja", "KORWiN"],
+  PT: ["CHEGA", "CH", "PNR"],
+  RO: ["AUR", "PRM", "SOS"],
+  SE: ["SD"],
+  SK: ["SNS", "LSNS", "KotlebaLSNS"],
+  SI: ["SNS"],
+  CH: ["SVP", "UDC", "SD", "DS", "EDU", "UDF"],
+};
 
-/**
- * Parse un CSV avec guillemets et virgules.
- * Gère les valeurs entre guillemets contenant des virgules.
- */
+// Régimes dictatoriaux (partis uniques / absence d'élections libres)
+// Ces entrées synthétiques colorent le pays via la logique "nearest previous year"
+const REGIME_OVERRIDES = [
+  { iso2: "IT", party_id: "SYN_PNF", abbrev: "PNF", name: "Partito Nazionale Fascista",
+    elections: [
+      { year: 1924, date: "1924-04-06", vote_pct: 64.9 },
+      { year: 1929, date: "1929-03-24", vote_pct: 98.4 },
+      { year: 1934, date: "1934-03-25", vote_pct: 99.8 },
+      { year: 1946, date: "1946-06-02", vote_pct: null }, // fin régime (proclamation République)
+    ],
+  },
+  { iso2: "ES", party_id: "SYN_FET", abbrev: "FET-JONS", name: "Falange Española / Movimiento Nacional",
+    elections: [
+      { year: 1939, date: "1939-04-01", vote_pct: 99.0 },
+      { year: 1966, date: "1966-12-14", vote_pct: 95.9 },
+      { year: 1976, date: "1976-12-15", vote_pct: null }, // fin régime (référendum transition)
+    ],
+  },
+  { iso2: "PT", party_id: "SYN_UN", abbrev: "UN", name: "União Nacional (Estado Novo)",
+    elections: [
+      { year: 1934, date: "1934-12-16", vote_pct: 99.5 },
+      { year: 1949, date: "1949-11-13", vote_pct: 99.0 },
+      { year: 1969, date: "1969-10-26", vote_pct: 88.0 },
+      { year: 1975, date: "1975-04-25", vote_pct: null }, // fin régime (Révolution des Œillets)
+    ],
+  },
+  { iso2: "GR", party_id: "SYN_JUNTA", abbrev: "Junte", name: "Régime des colonels",
+    elections: [
+      { year: 1968, date: "1968-09-29", vote_pct: 92.0 },
+      { year: 1974, date: "1974-11-17", vote_pct: null }, // fin régime (Metapolitefsi)
+    ],
+  },
+  { iso2: "DE", party_id: "SYN_NSDAP", abbrev: "NSDAP", name: "NSDAP (Troisième Reich)",
+    elections: [
+      { year: 1933, date: "1933-11-12", vote_pct: 92.1 },
+      { year: 1936, date: "1936-03-29", vote_pct: 98.8 },
+      { year: 1938, date: "1938-04-10", vote_pct: 99.0 },
+      { year: 1946, date: "1946-05-08", vote_pct: null }, // fin régime (capitulation / dénazification)
+    ],
+  },
+];
+
+// ──────────────────────────────────────────────
+// CSV PARSER (robuste : guillemets + sauts de ligne embarqués)
+// ──────────────────────────────────────────────
 function parseCSV(text) {
-  const lines = text.split("\n");
-  const headers = parseCSVLine(lines[0]);
   const rows = [];
-
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i].trim();
-    if (!line) continue;
-    const values = parseCSVLine(line);
-    const row = {};
-    for (let j = 0; j < headers.length; j++) {
-      row[headers[j]] = values[j] ?? "";
+  let row = [], cur = "", inQ = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQ) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { cur += '"'; i++; }
+        else inQ = false;
+      } else cur += c;
+    } else {
+      if (c === '"') inQ = true;
+      else if (c === ",") { row.push(cur); cur = ""; }
+      else if (c === "\n") { row.push(cur); rows.push(row); row = []; cur = ""; }
+      else if (c === "\r") { /* skip */ }
+      else cur += c;
     }
-    rows.push(row);
   }
-
-  return { headers, rows };
+  if (cur.length || row.length) { row.push(cur); rows.push(row); }
+  return rows;
 }
 
-function parseCSVLine(line) {
-  const result = [];
-  let current = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (inQuotes) {
-      if (ch === '"') {
-        if (i + 1 < line.length && line[i + 1] === '"') {
-          current += '"';
-          i++;
-        } else {
-          inQuotes = false;
-        }
-      } else {
-        current += ch;
-      }
-    } else {
-      if (ch === '"') {
-        inQuotes = true;
-      } else if (ch === ",") {
-        result.push(current);
-        current = "";
-      } else {
-        current += ch;
-      }
-    }
-  }
-  result.push(current);
-  return result;
+function rowsToObjects(rows) {
+  const headers = rows[0];
+  return rows.slice(1).filter((r) => r.length >= headers.length).map((r) => {
+    const o = {};
+    for (let j = 0; j < headers.length; j++) o[headers[j]] = r[j] ?? "";
+    return o;
+  });
 }
 
 // ──────────────────────────────────────────────
 // HELPERS
 // ──────────────────────────────────────────────
-
-/** Convertit "NA" ou vide en null, sinon retourne la string. */
 function cleanVal(v) {
   if (v === undefined || v === null) return null;
   const s = String(v).trim();
   return s === "NA" || s === "" ? null : s;
 }
 
-/** Parse en nombre, retourne null si non parsable. */
 function toNumber(v) {
   const s = cleanVal(v);
   if (s === null) return null;
@@ -143,156 +199,191 @@ function toNumber(v) {
   return isNaN(n) ? null : n;
 }
 
-/** Arrondi à 2 décimales. */
-function round2(n) {
-  return Math.round(n * 100) / 100;
+function round2(n) { return Math.round(n * 100) / 100; }
+
+// Normalise un abbrev (retire accents/tirets) pour le matching extrême droite
+function normAbbrev(a) {
+  if (!a) return "";
+  return a.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s\-\/]/g, "").toUpperCase();
+}
+
+function isFarRightParlGov(iso2, abbrev) {
+  const list = FAR_RIGHT_BY_COUNTRY[iso2] || [];
+  const n = normAbbrev(abbrev);
+  return list.some((a) => normAbbrev(a) === n);
 }
 
 // ──────────────────────────────────────────────
-// MAIN
+// ÉTAPE 1 — Manifesto Project
 // ──────────────────────────────────────────────
-
-console.log("📂 Lecture du CSV...");
-const raw = fs.readFileSync(INPUT_FILE, "utf-8");
-
-console.log("🔍 Parsing...");
-const { rows } = parseCSV(raw);
-console.log(`   ${rows.length} lignes lues.`);
-
-// Filtrer colonnes (garder uniquement KEEP_COLS)
-const filtered = rows.map(row => {
-  const obj = {};
-  for (const col of KEEP_COLS) {
-    obj[col] = row[col];
-  }
-  return obj;
-});
-
-// ──────────────────────────────────────────────
-// ÉTAPE 2 — FILTRAGE PAYS EUROPÉENS
-// ──────────────────────────────────────────────
-console.log("🌍 Filtrage pays européens...");
-const european = filtered.filter(row => {
-  const code = parseInt(row.country, 10);
-  return COUNTRY_MAP.hasOwnProperty(code);
-});
-console.log(`   ${european.length} lignes retenues (Europe).`);
-
-// ──────────────────────────────────────────────
-// ÉTAPES 3-5 — NETTOYAGE + CONSTRUCTION JSON
-// ──────────────────────────────────────────────
-console.log("🔧 Nettoyage & construction JSON...");
+console.log("📂 Lecture Manifesto…");
+const mpRaw = fs.readFileSync(MP_INPUT, "utf-8");
+const mpRows = rowsToObjects(parseCSV(mpRaw));
+console.log(`   ${mpRows.length} lignes.`);
 
 const result = {};
 
-for (const row of european) {
-  const countryCode = parseInt(row.country, 10);
-  const iso2 = COUNTRY_MAP[countryCode];
-  const countryName = COUNTRY_NAMES[countryCode];
+// Index des (iso2, date) déjà couverts par Manifesto — pour éviter les doublons ParlGov
+const mpDatesByCountry = {}; // iso2 → Set<"YYYY-MM-DD">
 
-  // Parse numériques
+console.log("🌍 Traitement Manifesto…");
+let mpKept = 0;
+for (const row of mpRows) {
+  const code = parseInt(row.country, 10);
+  const iso2 = MP_COUNTRY_MAP[code];
+  if (!iso2) continue;
+  mpKept++;
+
   const pervote = toNumber(row.pervote);
   const absseat = toNumber(row.absseat);
   const totseats = toNumber(row.totseats);
   const rile = toNumber(row.rile);
 
-  // seats_pct
   let seatsPct = null;
   if (absseat !== null && totseats !== null && totseats > 0) {
-    seatsPct = round2(absseat / totseats * 100);
+    seatsPct = round2((absseat / totseats) * 100);
   }
 
-  // year depuis date (format : 194409 → 1944)
   const dateRaw = cleanVal(row.date);
   const year = dateRaw ? parseInt(String(dateRaw).substring(0, 4), 10) : null;
+  // edate Manifesto : "DD/MM/YYYY" → on normalise en "YYYY-MM-DD"
+  const edateRaw = cleanVal(row.edate);
+  let electionDate = null;
+  if (edateRaw) {
+    const m = edateRaw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (m) electionDate = `${m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`;
+    else electionDate = edateRaw;
+  }
 
-  // election_date depuis edate
-  const electionDate = cleanVal(row.edate);
-
-  // party
   const partyId = cleanVal(row.party);
   const partyName = cleanVal(row.partyname);
   const partyAbbrev = cleanVal(row.partyabbrev);
-
-  // famille politique
   const parfamRaw = cleanVal(row.parfam);
   const familyCode = parfamRaw;
   const familyLabel = FAMILY_MAP[parfamRaw] || "Inconnu";
 
-  // Initialiser le pays s'il n'existe pas
-  if (!result[iso2]) {
-    result[iso2] = {
-      name: countryName,
-      parties: {}
+  if (!result[iso2]) result[iso2] = { name: COUNTRY_NAMES[iso2] || iso2, parties: {} };
+
+  const pid = `mp_${partyId}`;
+  if (!result[iso2].parties[pid]) {
+    result[iso2].parties[pid] = {
+      name: partyName, abbrev: partyAbbrev,
+      family_code: familyCode, family: familyLabel,
+      source: "manifesto",
+      elections: [],
     };
   }
-
-  // Initialiser le parti s'il n'existe pas
-  if (!result[iso2].parties[partyId]) {
-    result[iso2].parties[partyId] = {
-      name: partyName,
-      abbrev: partyAbbrev,
-      family_code: familyCode,
-      family: familyLabel,
-      elections: []
-    };
-  }
-
-  // Mettre à jour les métadonnées du parti (dernière valeur rencontrée)
-  const party = result[iso2].parties[partyId];
+  const party = result[iso2].parties[pid];
   if (partyName) party.name = partyName;
   if (partyAbbrev) party.abbrev = partyAbbrev;
-  if (familyCode) {
-    party.family_code = familyCode;
-    party.family = familyLabel;
-  }
+  if (familyCode) { party.family_code = familyCode; party.family = familyLabel; }
 
-  // Ajouter l'élection
   party.elections.push({
-    year: year,
-    date: electionDate,
-    vote_pct: pervote,
+    year, date: electionDate, vote_pct: pervote,
     seats_won: absseat !== null ? Math.round(absseat) : null,
     total_seats: totseats !== null ? Math.round(totseats) : null,
-    seats_pct: seatsPct,
-    rile_score: rile
+    seats_pct: seatsPct, rile_score: rile,
   });
+
+  if (electionDate) {
+    (mpDatesByCountry[iso2] = mpDatesByCountry[iso2] || new Set()).add(electionDate);
+  }
+}
+console.log(`   ${mpKept} lignes Manifesto retenues.`);
+
+// ──────────────────────────────────────────────
+// ÉTAPE 2 — ParlGov (remplit les trous)
+// ──────────────────────────────────────────────
+console.log("📂 Lecture ParlGov…");
+const pgRaw = fs.readFileSync(PG_INPUT, "utf-8");
+const pgRows = rowsToObjects(parseCSV(pgRaw));
+console.log(`   ${pgRows.length} lignes.`);
+
+let pgKept = 0, pgSkipped = 0;
+for (const row of pgRows) {
+  if (row.type !== "parliament") continue;
+  const iso2 = PG_COUNTRY_MAP[row.country];
+  if (!iso2) continue;
+
+  const date = cleanVal(row.date); // YYYY-MM-DD
+  if (!date) continue;
+
+  // Skip si Manifesto couvre déjà cette date exacte
+  if (mpDatesByCountry[iso2] && mpDatesByCountry[iso2].has(date)) { pgSkipped++; continue; }
+
+  const year = parseInt(date.substring(0, 4), 10);
+  const voteShare = toNumber(row.vote_share);
+  const seats = toNumber(row.seats);
+  const partyAbbrev = cleanVal(row.party);
+  const partyId = cleanVal(row.party_id) || cleanVal(row.id);
+  if (!partyId) continue;
+
+  const farRight = isFarRightParlGov(iso2, partyAbbrev);
+  const familyCode = farRight ? "70" : "98";
+
+  if (!result[iso2]) result[iso2] = { name: COUNTRY_NAMES[iso2] || iso2, parties: {} };
+
+  const pid = `pg_${partyId}`;
+  if (!result[iso2].parties[pid]) {
+    result[iso2].parties[pid] = {
+      name: partyAbbrev, abbrev: partyAbbrev,
+      family_code: familyCode, family: FAMILY_MAP[familyCode],
+      source: "parlgov",
+      elections: [],
+    };
+  }
+  result[iso2].parties[pid].elections.push({
+    year, date, vote_pct: voteShare,
+    seats_won: seats !== null ? Math.round(seats) : null,
+    total_seats: null, seats_pct: null, rile_score: null,
+  });
+  pgKept++;
+}
+console.log(`   ${pgKept} entrées ParlGov ajoutées (${pgSkipped} dédupliquées).`);
+
+// ──────────────────────────────────────────────
+// ÉTAPE 3 — Régimes dictatoriaux
+// ──────────────────────────────────────────────
+console.log("⚫ Ajout des régimes dictatoriaux…");
+for (const reg of REGIME_OVERRIDES) {
+  if (!result[reg.iso2]) result[reg.iso2] = { name: COUNTRY_NAMES[reg.iso2] || reg.iso2, parties: {} };
+  const pid = reg.party_id;
+  result[reg.iso2].parties[pid] = {
+    name: reg.name, abbrev: reg.abbrev,
+    family_code: "70", family: FAMILY_MAP["70"],
+    source: "regime",
+    elections: reg.elections.map((e) => ({
+      year: e.year, date: e.date, vote_pct: e.vote_pct,
+      seats_won: null, total_seats: null, seats_pct: null, rile_score: null,
+    })),
+  };
 }
 
-// Trier les élections par year ASC pour chaque parti
+// ──────────────────────────────────────────────
+// Tri final
+// ──────────────────────────────────────────────
 for (const iso2 of Object.keys(result)) {
-  for (const partyId of Object.keys(result[iso2].parties)) {
-    result[iso2].parties[partyId].elections.sort((a, b) => {
-      return (a.year || 0) - (b.year || 0);
-    });
+  for (const pid of Object.keys(result[iso2].parties)) {
+    result[iso2].parties[pid].elections.sort((a, b) => (a.year || 0) - (b.year || 0));
   }
 }
 
-// ──────────────────────────────────────────────
-// ÉTAPE 6 — EXPORT
-// ──────────────────────────────────────────────
-const output = {
-  elections: result,
-  evenements: []
-};
-
-console.log("💾 Écriture de elections.json...");
+const output = { elections: result, evenements: [] };
+console.log("💾 Écriture elections.json…");
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
 
 // Stats
 const nbCountries = Object.keys(result).length;
-let nbParties = 0;
-let nbElections = 0;
+let nbParties = 0, nbElections = 0, nbFarRight = 0;
 for (const iso2 of Object.keys(result)) {
-  const parties = Object.keys(result[iso2].parties);
+  const parties = Object.values(result[iso2].parties);
   nbParties += parties.length;
-  for (const pid of parties) {
-    nbElections += result[iso2].parties[pid].elections.length;
+  for (const p of parties) {
+    nbElections += p.elections.length;
+    if (p.family_code === "70") nbFarRight++;
   }
 }
-
 console.log(`\n✅ Terminé !`);
 console.log(`   📊 ${nbCountries} pays`);
-console.log(`   🏛️  ${nbParties} partis`);
+console.log(`   🏛️  ${nbParties} partis (${nbFarRight} extrême droite)`);
 console.log(`   🗳️  ${nbElections} entrées électorales`);
-console.log(`   📄 ${OUTPUT_FILE}`);

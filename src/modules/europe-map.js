@@ -10,6 +10,12 @@ const NAME_TO_ISO2 = {
   Belgium: 'BE',
   Netherlands: 'NL',
   Luxembourg: 'LU',
+  France: 'FR',
+  Italy: 'IT',
+  'Italy/Sardinia': 'IT',
+  Spain: 'ES',
+  Greece: 'GR',
+  Portugal: 'PT',
   Germany: 'DE',
   Austria: 'AT',
   Switzerland: 'CH',
@@ -21,13 +27,26 @@ const NAME_TO_ISO2 = {
   'Czech Republic': 'CZ',
   Slovakia: 'SK',
   Hungary: 'HU',
+  Romania: 'RO',
+  Bulgaria: 'BG',
+  Estonia: 'EE',
+  Latvia: 'LV',
+  Lithuania: 'LT',
   Croatia: 'HR',
   Slovenia: 'SI',
   Serbia: 'RS',
   Ukraine: 'UA',
   Albania: 'AL',
   Macedonia: 'MK',
+  'North Macedonia': 'MK',
+  'Macedonia (FYROM/North Macedonia)': 'MK',
+  Rumania: 'RO',
+  'German Federal Republic': 'DE',
+  'Germany (Prussia)': 'DE',
+  // German Democratic Republic (1945-1989) : non mappée — régime communiste,
+  // pas couvert par Manifesto/ParlGov, reste gris pendant la Guerre froide.
   'Bosnia-Herzegovina': 'BA',
+  Bosnia: 'BA',
   Montenegro: 'ME',
   Moldova: 'MD',
 };
@@ -63,11 +82,15 @@ function computeFarRightShare(iso2, year) {
 
   const nearestYear = allElectionYears[0];
   let total = 0;
+  let hasValid = false;
   for (const party of farRightParties) {
     const election = party.elections.find((e) => e.year === nearestYear);
-    if (election) total += election.vote_pct;
+    if (election && election.vote_pct !== null && election.vote_pct !== undefined) {
+      total += election.vote_pct;
+      hasValid = true;
+    }
   }
-  return total;
+  return hasValid ? total : null;
 }
 
 function getFillColor(feature) {
