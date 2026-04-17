@@ -7,26 +7,27 @@
         <link rel="stylesheet" href="/src/style.css" />
     </head>
     <body>
-        <section>
-            <div>
-                <p class="text-red-500">Subtitle</p>
-                <h1>Title</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer tellus justo, auctor eu commodo sit amet, tincidunt
-                    ac leo. Phasellus mollis eleifend eros. Quisque in finibus
-                    lectus. Nunc et augue aliquam, ultrices felis et, gravida
-                    odio.
+        <section id="hero" class="grid h-screen" style="grid-template-columns: 45% 55%;">
+            <div class="flex flex-col justify-center px-16 py-12">
+                <p class="text-red-600 text-sm uppercase tracking-widest font-medium mb-4">VisualDon 2026</p>
+                <h1 class="text-7xl font-bold leading-none mb-8">La montée de l'extrême droite</h1>
+                <p class="text-base text-gray-600 leading-relaxed max-w-md">
+                    Depuis la fin de la Seconde Guerre mondiale, les partis
+                    d'extrême droite connaissent un regain d'influence en Europe.
+                    Explorez l'évolution de leur progression, pays par pays, de
+                    1945 à aujourd'hui.
                 </p>
             </div>
-            <div>
-                <nav>
-                    <a href="#">navbar el</a>
-                    <a href="#">navbar el</a>
-                    <a href="#">navbar el</a>
-                    <a href="#">navbar el</a>
+            <div class="relative flex flex-col">
+                <nav class="absolute top-0 right-0 flex gap-8 px-10 py-8 z-10">
+                    <a href="#europe" class="text-white text-sm font-medium hover:underline">Europe</a>
+                    <a href="#switzerland" class="text-white text-sm font-medium hover:underline">Suisse</a>
+                    <a href="#timeline" class="text-white text-sm font-medium hover:underline">Chronologie</a>
+                    <a href="#about" class="text-white text-sm font-medium hover:underline">À propos</a>
                 </nav>
-                <img src="" alt="Hero image" />
+                <div class="w-full h-full bg-gray-400 flex items-center justify-center">
+                    <span class="text-white text-2xl font-light tracking-widest opacity-50">IMG</span>
+                </div>
             </div>
         </section>
 
