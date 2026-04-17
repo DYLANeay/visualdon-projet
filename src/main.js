@@ -1,8 +1,9 @@
-import { loadJSON } from './api.js'
+import 'normalize.css';
+import { loadAllData } from './modules/data-loader.js';
+import { initEuropeMap, updateEuropeMap } from './modules/europe-map.js';
+import { initEuropeScroll } from './modules/scroll-sections.js';
 
-const dataEuElections = await loadJSON('../data/elections/elections.js')
-const dataNoPasaran = await loadJSON('../data/nopasaran/data.json')
+const { geoEurope, geoEurope1900, elections } = await loadAllData();
 
-import "normalize.css";
-
-console.log("hello");
+initEuropeMap(document.querySelector('#europe-map'), { geoEurope, geoEurope1900 }, elections);
+initEuropeScroll(elections, updateEuropeMap);
