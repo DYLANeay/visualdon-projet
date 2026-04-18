@@ -179,12 +179,13 @@ function _addLegend(container) {
   const margin = { left: 16, bottom: 48 };
 
   const svg = d3
-    .select(container.closest('section') || container.parentElement)
+    .select(container)
     .append('svg')
     .attr('class', 'legend-svg')
     .style('position', 'absolute')
     .style('bottom', `${margin.bottom}px`)
     .style('left', `${margin.left}px`)
+    .style('pointer-events', 'none')
     .attr('width', legendWidth + 40)
     .attr('height', legendHeight + 36);
 
