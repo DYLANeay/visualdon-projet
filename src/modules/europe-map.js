@@ -106,13 +106,27 @@ function getFillColor(feature) {
 
 let _currentYear = 1900;
 
+function _clickableIso2(feature) {
+  const iso2 = NAME_TO_ISO2[feature.properties.Name];
+  return iso2 && _elections[iso2] ? iso2 : null;
+}
+
+function _handleClick(_event, feature) {
+  const iso2 = _clickableIso2(feature);
+  if (!iso2 || !_onCountryClick) return;
+  _onCountryClick(iso2, feature);
+}
+
 const MAP_WIDTH = 900;
 const MAP_HEIGHT = 560;
 
-export function initEuropeMap(container, geoData, elections) {
+let _onCountryClick = null;
+
+export function initEuropeMap(container, geoData, elections, onCountryClick) {
   _container = container;
   _geoData = geoData;
   _elections = elections;
+  _onCountryClick = onCountryClick;
 
   _svg = d3
     .select(container)
@@ -136,7 +150,9 @@ export function initEuropeMap(container, geoData, elections) {
     .attr('d', _path)
     .attr('fill', '#e8e8e8')
     .attr('stroke', '#999')
-    .attr('stroke-width', 0.5);
+    .attr('stroke-width', 0.5)
+    .style('cursor', (d) => (_clickableIso2(d) ? 'pointer' : 'default'))
+    .on('click', _handleClick);
 
   _addLegend(container);
 }
@@ -163,7 +179,9 @@ export function updateEuropeMap(year) {
           .attr('d', _path)
           .attr('fill', getFillColor)
           .attr('stroke', '#999')
-          .attr('stroke-width', 0.5),
+          .attr('stroke-width', 0.5)
+          .style('cursor', (d) => (_clickableIso2(d) ? 'pointer' : 'default'))
+          .on('click', _handleClick),
       (update) =>
         update
           .transition(t)
@@ -171,6 +189,64 @@ export function updateEuropeMap(year) {
           .attr('fill', getFillColor),
       (exit) => exit.remove(),
     );
+}
+
+export function zoomToFeature(feature, { duration = 900 } = {}) {
+  if (!_svg || !_path) return Promise.resolve();
+  const [[x0, y0], [x1, y1]] = _path.bounds(feature);
+  const dx = Math.max(1, x1 - x0);
+  const dy = Math.max(1, y1 - y0);
+  const cx = (x0 + x1) / 2;
+  const cy = (y0 + y1) / 2;
+  // Reserve ~40% of width for the side panel, so center country in the remaining area.
+  const PANEL_RATIO = 0.4;
+  const availW = MAP_WIDTH * (1 - PANEL_RATIO);
+  const availH = MAP_HEIGHT * 0.75;
+  const scale = Math.min(3.5, 0.85 / Math.max(dx / availW, dy / availH));
+  // Target center: shift right of the panel
+  const targetX = MAP_WIDTH * PANEL_RATIO + availW / 2;
+  const targetY = MAP_HEIGHT / 2;
+  const tx = targetX - scale * cx;
+  const ty = targetY - scale * cy;
+
+  const g = _svg.select('.map-group');
+  const targetId = `${feature.properties.Id}_${feature.properties.From}`;
+
+  g.selectAll('path')
+    .transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', (d) =>
+      `${d.properties.Id}_${d.properties.From}` === targetId ? 1 : 0.15,
+    );
+
+  return new Promise((resolve) => {
+    g.transition()
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attr('transform', `translate(${tx},${ty}) scale(${scale})`)
+      .on('end', () => resolve());
+  });
+}
+
+export function resetZoom({ duration = 900 } = {}) {
+  if (!_svg) return;
+  const g = _svg.select('.map-group');
+  g.selectAll('path')
+    .transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', 1);
+  g.transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attrTween('transform', function () {
+      const from = this.getAttribute('transform') || 'translate(0,0) scale(1)';
+      return d3.interpolateTransformSvg(from, 'translate(0,0) scale(1)');
+    })
+    .on('end', function () {
+      d3.select(this).attr('transform', null);
+    });
 }
 
 function _addLegend(container) {
