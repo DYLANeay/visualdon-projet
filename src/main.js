@@ -8,8 +8,8 @@ import { initEuropeScroll } from './modules/scroll-sections.js';
 const lenis = new Lenis({
   duration: 0.9,
   easing: (t) => 1 - Math.pow(1 - t, 3),
-  wheelMultiplier: 1.4,
-  touchMultiplier: 1.4,
+  wheelMultiplier: 2.8,
+  touchMultiplier: 2.8,
 });
 
 function raf(time) {
