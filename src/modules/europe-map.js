@@ -49,6 +49,21 @@ const NAME_TO_ISO2 = {
   Bosnia: 'BA',
   Montenegro: 'ME',
   Moldova: 'MD',
+  'Russia (Soviet Union)': 'RU',
+  Russia: 'RU',
+  'Belarus (Byelorussia)': 'BY',
+  Belarus: 'BY',
+  'Turkey (Ottoman Empire)': 'TR',
+  Turkey: 'TR',
+  Azerbaijan: 'AZ',
+  Georgia: 'GE',
+  Kazakhstan: 'KZ',
+  Andorra: 'AD',
+  Liechtenstein: 'LI',
+  Monaco: 'MC',
+  'San Marino': 'SM',
+  Tunisia: 'TN',
+  Yugoslavia: 'YU',
 };
 
 let _svg = null;
@@ -106,14 +121,9 @@ function getFillColor(feature) {
 
 let _currentYear = 1900;
 
-function _clickableIso2(feature) {
-  const iso2 = NAME_TO_ISO2[feature.properties.Name];
-  return iso2 && _elections[iso2] ? iso2 : null;
-}
-
 function _handleClick(_event, feature) {
-  const iso2 = _clickableIso2(feature);
-  if (!iso2 || !_onCountryClick) return;
+  if (!_onCountryClick) return;
+  const iso2 = NAME_TO_ISO2[feature.properties.Name] || null;
   _onCountryClick(iso2, feature);
 }
 
@@ -151,10 +161,35 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
     .attr('fill', '#e8e8e8')
     .attr('stroke', '#999')
     .attr('stroke-width', 0.5)
-    .style('cursor', (d) => (_clickableIso2(d) ? 'pointer' : 'default'))
+    .style('cursor', 'pointer')
     .on('click', _handleClick);
 
   _addLegend(container);
+
+  // Pre-warm every hot path the first zoom will hit. In dev mode, Vite
+  // compiles d3 submodules lazily on first use; without this, the first
+  // click pays a 300-500ms cold-start cost (transform tween, opacity tween,
+  // ease function, path.bounds). We run the same code paths now, with
+  // duration=1 + ease=linear so nothing is visually perceptible.
+  for (const f of features) _path.bounds(f);
+  g.attr('transform', 'translate(0,0) scale(1)');
+  g.transition()
+    .duration(1)
+    .ease(d3.easeCubicInOut)
+    .attrTween('transform', function () {
+      return d3.interpolateTransformSvg(
+        'translate(0,0) scale(1)',
+        'translate(0,0) scale(1)',
+      );
+    })
+    .on('end', function () {
+      d3.select(this).attr('transform', null);
+    });
+  g.selectAll('path')
+    .transition()
+    .duration(1)
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', 1);
 }
 
 export function updateEuropeMap(year) {
@@ -180,7 +215,7 @@ export function updateEuropeMap(year) {
           .attr('fill', getFillColor)
           .attr('stroke', '#999')
           .attr('stroke-width', 0.5)
-          .style('cursor', (d) => (_clickableIso2(d) ? 'pointer' : 'default'))
+          .style('cursor', 'pointer')
           .on('click', _handleClick),
       (update) =>
         update
@@ -191,7 +226,7 @@ export function updateEuropeMap(year) {
     );
 }
 
-export function zoomToFeature(feature, { duration = 900 } = {}) {
+export function zoomToFeature(feature, { duration = 650 } = {}) {
   if (!_svg || !_path) return Promise.resolve();
   const [[x0, y0], [x1, y1]] = _path.bounds(feature);
   const dx = Math.max(1, x1 - x0);
@@ -229,7 +264,7 @@ export function zoomToFeature(feature, { duration = 900 } = {}) {
   });
 }
 
-export function resetZoom({ duration = 900 } = {}) {
+export function resetZoom({ duration = 650 } = {}) {
   if (!_svg) return;
   const g = _svg.select('.map-group');
   g.selectAll('path')
