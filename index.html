@@ -37,6 +37,14 @@
                 <h2 id="europe-year" class="text-center text-8xl font-bold py-6 shrink-0">1900</h2>
                 <div class="flex flex-1 min-h-0 relative">
                     <div id="europe-map" class="flex-1 relative"></div>
+
+                    <!-- Event tiles overlay (floating over the map) -->
+                    <div id="event-tiles-overlay" class="pointer-events-none absolute inset-0 z-10">
+                        <svg id="event-tiles-lines" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
+                        <div id="event-tiles-left" class="event-tiles-column event-tiles-column-left"></div>
+                        <div id="event-tiles-right" class="event-tiles-column event-tiles-column-right"></div>
+                    </div>
+
                     <div
                         id="country-detail"
                         class="country-detail pointer-events-none absolute inset-0 z-20 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
@@ -180,14 +188,23 @@
         </section>
 
         <!-- Event detail modal, hidden by default cause its a modal -->
-        <dialog>
-            <h3>Title</h3>
-            <img src="" alt="Event image" />
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <a href="#">Voir sur wikipedia</a>
+        <dialog id="event-modal" class="event-modal">
+            <button class="event-modal-close" data-event-close aria-label="Fermer">×</button>
+            <div class="event-modal-inner">
+                <p class="event-modal-year" data-event-year>—</p>
+                <h3 class="event-modal-title" data-event-title>Title</h3>
+                <div class="event-modal-image" data-event-image>
+                    <span>Image</span>
+                </div>
+                <div class="event-modal-badges" data-event-badges></div>
+                <div class="event-modal-description" data-event-description>
+                    <p>Description…</p>
+                </div>
+                <a class="event-modal-link" data-event-link href="#" target="_blank" rel="noopener">
+                    <span>Voir sur Wikipédia</span>
+                    <span class="event-modal-link-arrow">↗</span>
+                </a>
+            </div>
         </dialog>
 
         <script type="module" src="/src/main.js"></script>
