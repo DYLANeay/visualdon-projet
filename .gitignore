@@ -1,0 +1,9 @@
+.claude
+.gitignore
+.mcp.json
+node_modules
+package-lock.json
+dist
+.playwright-mcp
+*.png
+!maquettes/*.png
