@@ -161,6 +161,7 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
     .attr('fill', '#e8e8e8')
     .attr('stroke', '#999')
     .attr('stroke-width', 0.5)
+    .attr('data-iso2', (d) => NAME_TO_ISO2[d.properties.Name] || '')
     .style('cursor', 'pointer')
     .on('click', _handleClick);
 
@@ -215,6 +216,7 @@ export function updateEuropeMap(year) {
           .attr('fill', getFillColor)
           .attr('stroke', '#999')
           .attr('stroke-width', 0.5)
+          .attr('data-iso2', (d) => NAME_TO_ISO2[d.properties.Name] || '')
           .style('cursor', 'pointer')
           .on('click', _handleClick),
       (update) =>

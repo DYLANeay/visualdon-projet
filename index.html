@@ -37,6 +37,14 @@
                 <h2 id="europe-year" class="text-center text-8xl font-bold py-6 shrink-0">1900</h2>
                 <div class="flex flex-1 min-h-0 relative">
                     <div id="europe-map" class="flex-1 relative"></div>
+
+                    <!-- Event tiles overlay (floating over the map) -->
+                    <div id="event-tiles-overlay" class="pointer-events-none absolute inset-0 z-10">
+                        <svg id="event-tiles-lines" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
+                        <div id="event-tiles-left" class="event-tiles-column event-tiles-column-left"></div>
+                        <div id="event-tiles-right" class="event-tiles-column event-tiles-column-right"></div>
+                    </div>
+
                     <div
                         id="country-detail"
                         class="country-detail pointer-events-none absolute inset-0 z-20 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
