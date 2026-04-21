@@ -181,6 +181,28 @@ body {
     right: 96px; /* clear the vertical timeline (w-16 + padding) */
 }
 
+/* Focus mode: one column, narrower, tucked between the country header
+   (top-left) and the party distribution card (bottom-left) of the country
+   detail panel. Scrolls when a country has many events. */
+#event-tiles-overlay.is-focus-mode .event-tiles-column-right {
+    display: none;
+}
+
+#event-tiles-overlay.is-focus-mode .event-tiles-column-left {
+    top: 140px;
+    bottom: 280px;
+    left: 40px;
+    width: 320px;
+    gap: 14px;
+    overflow-y: auto;
+    padding-right: 4px;
+    pointer-events: auto;
+}
+
+#event-tiles-overlay.is-focus-mode .event-tile {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
 .event-tile-wrapper {
     opacity: 0;
     transform: translateY(6px);

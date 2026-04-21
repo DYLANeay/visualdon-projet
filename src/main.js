@@ -13,7 +13,11 @@ import {
   showCountryDetail,
   updateCountryDetail,
 } from './modules/country-detail.js';
-import { initEventTiles, updateEventTiles } from './modules/event-tiles.js';
+import {
+  initEventTiles,
+  updateEventTiles,
+  setEventTilesFocus,
+} from './modules/event-tiles.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -38,13 +42,17 @@ const countryDetailEl = document.querySelector('#country-detail');
 
 initEuropeMap(europeMapEl, { geoEurope, geoEurope1900 }, elections, (iso2, feature) => {
   showCountryDetail(iso2, feature, currentYear);
+  setEventTilesFocus(iso2);
 });
 
 initCountryDetail({
   panel: countryDetailEl,
   elections,
   onShow: (feature) => zoomToFeature(feature),
-  onClose: () => resetZoom(),
+  onClose: () => {
+    resetZoom();
+    setEventTilesFocus(null);
+  },
 });
 
 initEventTiles({

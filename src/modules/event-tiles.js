@@ -3,6 +3,7 @@
 // the scroll reaches their year and fade out after LIFETIME_YEARS.
 
 const LIFETIME_YEARS = 4;
+const LIFETIME_YEARS_FOCUS = 7;
 
 // Types:
 // - 'far-right'        → red badge only
@@ -174,21 +175,40 @@ const FAKE_EVENTS = [
 let _overlayLeft = null;
 let _overlayRight = null;
 let _svgLines = null;
+let _overlayRoot = null;
 let _mapContainer = null;
 let _modal = null;
 let _activeTiles = new Map(); // id → DOM element
 let _currentYear = 1900;
+let _focusIso2 = null;
 
 export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines }) {
   _mapContainer = mapContainer;
   _overlayLeft = overlayLeft;
   _overlayRight = overlayRight;
   _svgLines = svgLines;
+  _overlayRoot = svgLines?.parentElement || null;
 
   // Redraw connector lines on resize (tile + country positions shift with the viewport).
   window.addEventListener('resize', () => _redrawLines());
 
   _setupModal();
+}
+
+// Focus mode: show only events for the given country, hide connector lines,
+// and restyle the column so it doesn't fight the country-detail panel layout.
+// Pass null to return to the scroll-driven overview.
+export function setEventTilesFocus(iso2) {
+  _focusIso2 = iso2 || null;
+  if (_overlayRoot) {
+    _overlayRoot.classList.toggle('is-focus-mode', Boolean(_focusIso2));
+  }
+
+  // Reset the tiles so the new filtered set enters cleanly.
+  for (const tile of _activeTiles.values()) tile.remove();
+  _activeTiles.clear();
+
+  updateEventTiles(_currentYear);
 }
 
 function _setupModal() {
@@ -266,9 +286,12 @@ export function updateEventTiles(year) {
   _currentYear = year;
   if (!_overlayLeft || !_overlayRight) return;
 
-  const activeEvents = FAKE_EVENTS.filter(
-    (ev) => ev.year <= year && ev.year + LIFETIME_YEARS >= year,
-  );
+  const lifetime = _focusIso2 ? LIFETIME_YEARS_FOCUS : LIFETIME_YEARS;
+  const activeEvents = FAKE_EVENTS.filter((ev) => {
+    if (ev.year > year || ev.year + lifetime < year) return false;
+    if (_focusIso2 && ev.country !== _focusIso2) return false;
+    return true;
+  });
   const activeIds = new Set(activeEvents.map((ev) => ev.id));
 
   // Remove tiles that expired
@@ -286,7 +309,10 @@ export function updateEventTiles(year) {
     if (_activeTiles.has(event.id)) continue;
     const tile = _createTile(event);
     tile.querySelector('.event-tile').addEventListener('click', () => _openModal(event));
-    const parent = event.side === 'right' ? _overlayRight : _overlayLeft;
+    // In focus mode, every tile is about the same country so the two-column
+    // layout stops carrying meaning — stack them in the left column instead.
+    const useRightColumn = !_focusIso2 && event.side === 'right';
+    const parent = useRightColumn ? _overlayRight : _overlayLeft;
     parent.appendChild(tile);
     _activeTiles.set(event.id, tile);
     // Defer the visible state so the enter transition plays.
@@ -300,6 +326,9 @@ export function updateEventTiles(year) {
 function _redrawLines() {
   if (!_svgLines) return;
   _svgLines.innerHTML = '';
+  // In focus mode the relation between tile and country is already obvious
+  // (the country is zoomed, the tiles are all about it).
+  if (_focusIso2) return;
 
   const hostRect = _svgLines.getBoundingClientRect();
 
