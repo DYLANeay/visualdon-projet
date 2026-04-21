@@ -11,22 +11,18 @@ const LIFETIME_YEARS = 4;
 // - 'swiss-far-right'  → red + blue badges (Swiss far-right event in Switzerland)
 const TYPE_META = {
   'far-right': {
-    label: 'Extrême droite',
     badges: [{ text: 'Extrême Droite', tone: 'red' }],
     lineColor: '#f97316',
   },
   general: {
-    label: 'Info général',
     badges: [{ text: 'Général', tone: 'yellow' }],
     lineColor: '#eab308',
   },
   'swiss-abroad': {
-    label: 'Comment la Suisse est impliquée',
     badges: [{ text: 'Suisse', tone: 'blue' }],
     lineColor: '#3b82f6',
   },
   'swiss-far-right': {
-    label: 'Suisse – Extrême droite',
     badges: [
       { text: 'Extrême Droite', tone: 'red' },
       { text: 'Suisse', tone: 'blue' },
@@ -48,11 +44,13 @@ const FAKE_EVENTS = [
     title: 'Marche sur Rome',
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+    url: 'https://fr.wikipedia.org/wiki/Marche_sur_Rome',
+    image: null,
   },
   {
     id: 'gen-1929-krach',
     year: 1929,
-    country: null,
+    country: 'DE',
     type: 'general',
     side: 'left',
     title: 'Krach de Wall Street',
@@ -68,6 +66,8 @@ const FAKE_EVENTS = [
     title: 'Hitler chancelier',
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+    url: 'https://fr.wikipedia.org/wiki/Adolf_Hitler',
+    image: null,
   },
   {
     id: 'sa-1933-financement',
@@ -82,7 +82,7 @@ const FAKE_EVENTS = [
   {
     id: 'gen-1939-wwii',
     year: 1939,
-    country: null,
+    country: 'PL',
     type: 'general',
     side: 'left',
     title: 'Seconde Guerre mondiale',
@@ -102,7 +102,7 @@ const FAKE_EVENTS = [
   {
     id: 'gen-1989-mur',
     year: 1989,
-    country: null,
+    country: 'DE',
     type: 'general',
     side: 'left',
     title: 'Chute du mur de Berlin',
@@ -175,6 +175,7 @@ let _overlayLeft = null;
 let _overlayRight = null;
 let _svgLines = null;
 let _mapContainer = null;
+let _modal = null;
 let _activeTiles = new Map(); // id → DOM element
 let _currentYear = 1900;
 
@@ -186,6 +187,56 @@ export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLin
 
   // Redraw connector lines on resize (tile + country positions shift with the viewport).
   window.addEventListener('resize', () => _redrawLines());
+
+  _setupModal();
+}
+
+function _setupModal() {
+  _modal = document.querySelector('#event-modal');
+  if (!_modal) return;
+
+  _modal
+    .querySelector('[data-event-close]')
+    ?.addEventListener('click', () => _modal.close());
+
+  // Click on the backdrop (outside the inner card) closes the modal.
+  _modal.addEventListener('click', (e) => {
+    if (e.target === _modal) _modal.close();
+  });
+}
+
+function _openModal(event) {
+  if (!_modal) return;
+  const meta = TYPE_META[event.type];
+
+  _modal.querySelector('[data-event-year]').textContent = event.year;
+  _modal.querySelector('[data-event-title]').textContent = event.title;
+
+  const img = _modal.querySelector('[data-event-image]');
+  img.innerHTML = event.image
+    ? `<img src="${event.image}" alt="${event.title}" />`
+    : '<span>Image</span>';
+  img.classList.toggle('has-image', Boolean(event.image));
+
+  const badgesEl = _modal.querySelector('[data-event-badges]');
+  badgesEl.innerHTML = meta.badges
+    .map((b) => `<span class="event-badge badge-${b.tone}">${b.text}</span>`)
+    .join('');
+
+  const descEl = _modal.querySelector('[data-event-description]');
+  const longDesc = event.longDescription || event.description;
+  descEl.innerHTML = `<p>${longDesc}</p>`;
+
+  const link = _modal.querySelector('[data-event-link]');
+  if (event.url) {
+    link.href = event.url;
+    link.classList.remove('is-disabled');
+  } else {
+    link.href = '#';
+    link.classList.add('is-disabled');
+  }
+
+  _modal.showModal();
 }
 
 function _createTile(event) {
@@ -194,7 +245,6 @@ function _createTile(event) {
   wrapper.className = 'event-tile-wrapper';
   wrapper.dataset.id = event.id;
   wrapper.innerHTML = `
-    <p class="event-tile-label">${meta.label}</p>
     <article class="event-tile">
       <header class="event-tile-header">
         <h4 class="event-tile-title">${event.title}</h4>
@@ -235,6 +285,7 @@ export function updateEventTiles(year) {
   for (const event of activeEvents) {
     if (_activeTiles.has(event.id)) continue;
     const tile = _createTile(event);
+    tile.querySelector('.event-tile').addEventListener('click', () => _openModal(event));
     const parent = event.side === 'right' ? _overlayRight : _overlayLeft;
     parent.appendChild(tile);
     _activeTiles.set(event.id, tile);
