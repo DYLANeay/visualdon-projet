@@ -17,6 +17,10 @@ body {
     height: 55vh;
 }
 
+.switzerland-step {
+    height: 55vh;
+}
+
 .timeline-dot.active {
     background-color: #dc2626;
 }
