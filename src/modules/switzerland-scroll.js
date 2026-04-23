@@ -1,4 +1,5 @@
 import scrollama from 'scrollama';
+import { animateYearChange } from './utils.js';
 
 export function initSwitzerlandScroll(onYearChange) {
   const section = document.querySelector('#switzerland');
@@ -30,7 +31,7 @@ export function initSwitzerlandScroll(onYearChange) {
   });
 
   function setYear(year) {
-    if (yearEl) yearEl.textContent = year;
+    animateYearChange(yearEl, year);
     dots.forEach((d) => d.classList.remove('active'));
     const active = section.querySelector(
       `.switzerland-timeline-dot[data-year="${year}"]`,
