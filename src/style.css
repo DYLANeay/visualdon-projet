@@ -493,6 +493,7 @@ body {
 #switzerland-year {
     color: #111827;
     letter-spacing: -0.04em;
+    font-size: clamp(10rem, 22vw, 18rem);
 }
 
 .switzerland-event-tiles-column {

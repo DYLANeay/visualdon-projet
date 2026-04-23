@@ -29,16 +29,17 @@ export function initSwitzerlandMap(container, geoCantons, onCantonClick) {
     .data(geoCantons.features, (d) => d.properties.kantonsnummer)
     .join('path')
     .attr('d', _path)
-    .attr('fill', '#d9d9d9')
-    .attr('stroke', '#6b7280')
-    .attr('stroke-width', 0.6)
+    .attr('fill', '#d1d5db')
+    .attr('fill-opacity', 0.55)
+    .attr('stroke', '#374151')
+    .attr('stroke-width', 0.7)
     .attr('data-canton', (d) => d.properties.name)
     .style('cursor', 'pointer')
     .on('mouseenter', function () {
-      d3.select(this).attr('fill', '#bfbfbf');
+      d3.select(this).attr('fill', '#9ca3af').attr('fill-opacity', 0.7);
     })
     .on('mouseleave', function () {
-      d3.select(this).attr('fill', '#d9d9d9');
+      d3.select(this).attr('fill', '#d1d5db').attr('fill-opacity', 0.55);
     })
     .on('click', _handleClick);
 }
