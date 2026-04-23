@@ -84,3 +84,19 @@ if (switzerlandMapEl && geoSwissCantons) {
     updateSwitzerlandMap(year);
   });
 }
+
+// Gentle fade-in the first time a major section enters view.
+const fadeSections = document.querySelectorAll('#europe, #switzerland');
+fadeSections.forEach((el) => el.classList.add('section-fade'));
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    }
+  },
+  { threshold: 0.08 },
+);
+fadeSections.forEach((el) => sectionObserver.observe(el));
