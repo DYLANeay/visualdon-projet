@@ -85,9 +85,15 @@ if (switzerlandMapEl && geoSwissCantons) {
   });
 }
 
-// Gentle fade-in the first time a major section enters view.
-const fadeSections = document.querySelectorAll('#europe, #switzerland');
-fadeSections.forEach((el) => el.classList.add('section-fade'));
+// Gentle fade-in the first time each sticky visual enters view.
+// We observe the inner sticky panel (one viewport tall) rather than the outer
+// section (many viewports tall), otherwise the intersection ratio never
+// crosses any reasonable threshold.
+const fadeTargets = [
+  document.querySelector('#europe > .sticky'),
+  document.querySelector('#switzerland > .sticky'),
+].filter(Boolean);
+fadeTargets.forEach((el) => el.classList.add('section-fade'));
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
@@ -97,6 +103,6 @@ const sectionObserver = new IntersectionObserver(
       }
     }
   },
-  { threshold: 0.08 },
+  { threshold: 0.12 },
 );
-fadeSections.forEach((el) => sectionObserver.observe(el));
+fadeTargets.forEach((el) => sectionObserver.observe(el));
