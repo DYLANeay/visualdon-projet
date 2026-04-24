@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp -r data dist/data",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,css,html}\" \"*.{html,json,md}\""
   },
