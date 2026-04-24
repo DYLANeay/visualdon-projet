@@ -1,15 +1,37 @@
-const _inFlight = new WeakMap();
+const _state = new WeakMap();
 
 // Animate a text swap on a year element: the old value slides up + fades out,
-// then the new value slides in from below + fades in. Guards against overlap
-// when scroll fires rapid consecutive year changes.
+// then the new value slides in from below + fades in.
+//
+// Coalescing: rapid successive calls (e.g. fast scroll through 50 years) do
+// not start 50 animations or cancel mid-flight (cancelling a fill:forwards
+// animation snaps the element back to its underlying state, which flickers).
+// Instead each call updates the latest target; the running animation always
+// commits to whatever target is current when it finishes, then runs another
+// cycle if the target moved again during the in-fade.
 export function animateYearChange(el, newValue, { duration = 380 } = {}) {
   if (!el) return;
   const nextText = String(newValue);
-  if (el.textContent.trim() === nextText) return;
 
-  const previous = _inFlight.get(el);
-  if (previous) previous.cancel();
+  let state = _state.get(el);
+  if (!state) {
+    state = { latest: el.textContent.trim(), running: false };
+    _state.set(el, state);
+  }
+
+  if (state.latest === nextText) return;
+  state.latest = nextText;
+
+  if (state.running) return;
+  _runCycle(el, state, duration);
+}
+
+function _runCycle(el, state, duration) {
+  if (el.textContent.trim() === state.latest) {
+    state.running = false;
+    return;
+  }
+  state.running = true;
 
   const out = el.animate(
     [
@@ -20,13 +42,15 @@ export function animateYearChange(el, newValue, { duration = 380 } = {}) {
         filter: 'blur(2px)',
       },
     ],
-    { duration: duration * 0.45, easing: 'cubic-bezier(0.4, 0, 1, 1)', fill: 'forwards' },
+    {
+      duration: duration * 0.45,
+      easing: 'cubic-bezier(0.4, 0, 1, 1)',
+      fill: 'forwards',
+    },
   );
 
-  _inFlight.set(el, out);
-
   out.onfinish = () => {
-    el.textContent = nextText;
+    el.textContent = state.latest;
     const inAnim = el.animate(
       [
         {
@@ -42,9 +66,12 @@ export function animateYearChange(el, newValue, { duration = 380 } = {}) {
         fill: 'forwards',
       },
     );
-    _inFlight.set(el, inAnim);
     inAnim.onfinish = () => {
-      _inFlight.delete(el);
+      if (el.textContent.trim() !== state.latest) {
+        _runCycle(el, state, duration);
+      } else {
+        state.running = false;
+      }
     };
   };
 }

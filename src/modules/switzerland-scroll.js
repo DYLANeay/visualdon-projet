@@ -10,37 +10,53 @@ export function initSwitzerlandScroll(onYearChange) {
   const dots = Array.from(section.querySelectorAll('.switzerland-timeline-dot'));
   const labels = Array.from(section.querySelectorAll('.switzerland-timeline-labels li'));
 
-  // Use the timeline dot years as scroll milestones, in order.
-  const years = dots
+  // Milestone years come from the timeline dots, in order.
+  const milestoneYears = dots
     .map((dot) => Number(dot.dataset.year))
-    .filter((y) => !Number.isNaN(y));
+    .filter((y) => !Number.isNaN(y))
+    .sort((a, b) => a - b);
+
+  if (milestoneYears.length < 2) return null;
 
   // Keep dot labels in sync with their data-year so they're readable.
   labels.forEach((li, i) => {
-    if (years[i] !== undefined) li.textContent = years[i];
+    if (milestoneYears[i] !== undefined) li.textContent = milestoneYears[i];
   });
 
-  // Generate scroll steps — one per timeline year — so the section has
-  // enough height to stick while the user scrolls.
+  // One scroll step per year between the first and last milestone, so the big
+  // watermark counts up year by year as the user scrolls instead of jumping
+  // from milestone to milestone.
+  const minYear = milestoneYears[0];
+  const maxYear = milestoneYears[milestoneYears.length - 1];
+  const allYears = [];
+  for (let y = minYear; y <= maxYear; y++) allYears.push(y);
+
   stepsContainer.innerHTML = '';
-  years.forEach((year) => {
+  allYears.forEach((year) => {
     const div = document.createElement('div');
     div.className = 'switzerland-step';
     div.dataset.year = year;
     stepsContainer.appendChild(div);
   });
 
+  function setActiveDot(year) {
+    // Light up the latest milestone dot at or before the current year.
+    let activeYear = milestoneYears[0];
+    for (const m of milestoneYears) {
+      if (m <= year) activeYear = m;
+      else break;
+    }
+    dots.forEach((d) => {
+      d.classList.toggle('active', Number(d.dataset.year) === activeYear);
+    });
+  }
+
   function setYear(year) {
     animateYearChange(yearEl, year);
-    dots.forEach((d) => d.classList.remove('active'));
-    const active = section.querySelector(
-      `.switzerland-timeline-dot[data-year="${year}"]`,
-    );
-    if (active) active.classList.add('active');
+    setActiveDot(year);
     onYearChange(year);
   }
 
-  // Click-to-jump on timeline dots.
   dots.forEach((dot) => {
     dot.addEventListener('click', () => {
       const year = Number(dot.dataset.year);
