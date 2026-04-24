@@ -1,4 +1,5 @@
 import scrollama from 'scrollama';
+import { animateYearChange } from './utils.js';
 
 export function initEuropeScroll(elections, onYearChange) {
   const section = document.querySelector('#europe');
@@ -30,8 +31,7 @@ export function initEuropeScroll(elections, onYearChange) {
     .onStepEnter(({ element }) => {
       const year = +element.dataset.year;
       onYearChange(year);
-      const yearEl = document.querySelector('#europe-year');
-      if (yearEl) yearEl.textContent = year;
+      animateYearChange(document.querySelector('#europe-year'), year);
 
       document.querySelectorAll('.timeline-dot').forEach((dot) => {
         dot.classList.remove('active');

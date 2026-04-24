@@ -18,6 +18,11 @@ import {
   updateEventTiles,
   setEventTilesFocus,
 } from './modules/event-tiles.js';
+import {
+  initSwitzerlandMap,
+  updateSwitzerlandMap,
+} from './modules/switzerland-map.js';
+import { initSwitzerlandScroll } from './modules/switzerland-scroll.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -33,7 +38,7 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-const { geoEurope, geoEurope1900, elections } = await loadAllData();
+const { geoEurope, geoEurope1900, geoSwissCantons, elections } = await loadAllData();
 
 let currentYear = 1900;
 
@@ -68,3 +73,36 @@ initEuropeScroll(elections, (year) => {
   updateCountryDetail(year);
   updateEventTiles(year);
 });
+
+const switzerlandMapEl = document.querySelector('#switzerland-map');
+if (switzerlandMapEl && geoSwissCantons) {
+  initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, (feature) => {
+    // Future: open canton detail view (maquette 4-cantonClicked)
+    console.log('canton clicked:', feature.properties.name);
+  });
+  initSwitzerlandScroll((year) => {
+    updateSwitzerlandMap(year);
+  });
+}
+
+// Gentle fade-in the first time each sticky visual enters view.
+// We observe the inner sticky panel (one viewport tall) rather than the outer
+// section (many viewports tall), otherwise the intersection ratio never
+// crosses any reasonable threshold.
+const fadeTargets = [
+  document.querySelector('#europe > .sticky'),
+  document.querySelector('#switzerland > .sticky'),
+].filter(Boolean);
+fadeTargets.forEach((el) => el.classList.add('section-fade'));
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    }
+  },
+  { threshold: 0.12 },
+);
+fadeTargets.forEach((el) => sectionObserver.observe(el));
