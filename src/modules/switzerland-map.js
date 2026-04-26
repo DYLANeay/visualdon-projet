@@ -42,6 +42,7 @@ export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCa
     .attr('stroke', '#374151')
     .attr('stroke-width', 0.7)
     .attr('data-canton', (d) => d.properties.name)
+    .attr('data-canton-id', (d) => d.properties.kantonsnummer)
     .style('cursor', 'pointer')
     .on('mouseenter', function (event, d) {
       const base = _getCantonFill(d, _currentYear);

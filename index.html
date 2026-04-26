@@ -106,6 +106,13 @@
                     <!-- Swiss cantons map -->
                     <div id="switzerland-map" class="absolute inset-0 z-10"></div>
 
+                    <!-- Event tiles overlay (floating over the map) -->
+                    <div id="event-tiles-switzerland-overlay" class="pointer-events-none absolute inset-0 z-20">
+                        <svg id="event-tiles-switzerland-lines" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
+                        <div id="event-tiles-switzerland-left" class="event-tiles-column event-tiles-column-left"></div>
+                        <div id="event-tiles-switzerland-right" class="event-tiles-column event-tiles-column-right"></div>
+                    </div>
+
                     <!-- Canton detail overlay, shown when a canton is clicked -->
                     <div
                         id="canton-detail"
@@ -183,11 +190,22 @@
                     <span>Image</span>
                 </div>
                 <div class="event-modal-badges" data-event-badges></div>
+                <div class="event-modal-person-role hidden" data-event-person-role>
+                    <p class="text-sm text-gray-700 italic border-l-2 border-red-500 pl-3 my-3"><strong data-event-person></strong>, <span data-event-role></span></p>
+                </div>
                 <div class="event-modal-description" data-event-description>
                     <p>Description…</p>
                 </div>
-                <a class="event-modal-link" data-event-link href="#" target="_blank" rel="noopener">
-                    <span>Voir sur Wikipédia</span>
+                <div class="event-modal-consequences hidden" data-event-consequences>
+                    <h4 class="font-bold mb-1 mt-4 text-sm uppercase tracking-wider text-gray-500">Conséquences</h4>
+                    <p class="text-sm pb-2" data-event-consequences-text>...</p>
+                </div>
+                <div class="event-modal-sources hidden mt-4 pt-4 border-t border-gray-100" data-event-sources>
+                    <h4 class="font-bold mb-2 text-sm uppercase tracking-wider text-gray-500">Sources</h4>
+                    <ul class="text-sm flex flex-col gap-1 list-disc pl-4 text-gray-600" data-event-sources-list></ul>
+                </div>
+                <a class="event-modal-link mt-6" data-event-link href="#" target="_blank" rel="noopener">
+                    <span data-event-link-text>Voir plus d'informations</span>
                     <span class="event-modal-link-arrow">↗</span>
                 </a>
             </div>

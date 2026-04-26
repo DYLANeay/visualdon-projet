@@ -32,6 +32,11 @@ import {
   updateCantonDetail,
   hideCantonDetail,
 } from './modules/canton-detail.js';
+import {
+  initSwissEventTiles,
+  updateSwissEventTiles,
+  setSwissEventTilesFocus,
+} from './modules/switzerland-events.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -47,7 +52,7 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-const { geoEurope, geoEurope1900, geoSwissCantons, elections, cantonsElections } = await loadAllData();
+const { geoEurope, geoEurope1900, geoSwissCantons, elections, nopasaran, cantonsElections } = await loadAllData();
 
 let currentYear = 1900;
 
@@ -83,7 +88,34 @@ initEuropeScroll(elections, (year) => {
   updateEventTiles(year);
 });
 
+europeMapEl.addEventListener('click', (e) => {
+  if (e.target.tagName.toLowerCase() === 'svg') {
+    import('./modules/europe-map.js').then((m) => m.resetCountryZoom());
+    hideCountryDetail();
+    setEventTilesFocus(null);
+  }
+});
+
 let currentSwissYear = 1999;
+let switzerlandAllDatesMs = [];
+if (nopasaran && nopasaran.eventsByYear) {
+  const allEvents = [];
+  for (const yearStr in nopasaran.eventsByYear) {
+    allEvents.push(...nopasaran.eventsByYear[yearStr]);
+  }
+  const eventDates = allEvents.map(e => new Date(e.date).getTime()).sort((a,b) => a - b);
+  if (eventDates.length > 0) {
+    // Start slightly before the first event to have some padding
+    const minTime = new Date(new Date(eventDates[0]).getFullYear(), 0, 1).getTime();
+    const maxTime = eventDates[eventDates.length - 1];
+    const allDatesSet = new Set(eventDates);
+    const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+    for (let t = minTime; t <= maxTime; t += WEEK_MS) {
+      allDatesSet.add(t);
+    }
+    switzerlandAllDatesMs = Array.from(allDatesSet).sort((a,b) => a - b);
+  }
+}
 
 const switzerlandMapEl = document.querySelector('#switzerland-map');
 const cantonDetailEl = document.querySelector('#canton-detail');
@@ -97,20 +129,41 @@ if (switzerlandMapEl && geoSwissCantons) {
     if (_stopSwissPlay) _stopSwissPlay();
     showCantonDetail(feature.properties.kantonsnummer, feature, currentSwissYear);
     zoomToCanton(feature);
+    setSwissEventTilesFocus(feature.properties.kantonsnummer);
   });
-  const swissScroll = initSwitzerlandScroll((year) => {
-    currentSwissYear = year;
-    updateSwitzerlandMap(year);
-    updateCantonDetail(year);
-  });
+  const swissScroll = initSwitzerlandScroll((time) => {
+    currentSwissYear = new Date(time).getFullYear();
+    updateSwitzerlandMap(currentSwissYear);
+    updateCantonDetail(currentSwissYear);
+    updateSwissEventTiles(time);
+  }, switzerlandAllDatesMs);
   if (swissScroll) _stopSwissPlay = swissScroll.stopPlaying;
+
+  switzerlandMapEl.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'svg') {
+      resetCantonZoom();
+      hideCantonDetail();
+      setSwissEventTilesFocus(null);
+    }
+  });
 }
+
+initSwissEventTiles({
+  mapContainer: switzerlandMapEl,
+  overlayLeft: document.querySelector('#event-tiles-switzerland-left'),
+  overlayRight: document.querySelector('#event-tiles-switzerland-right'),
+  svgLines: document.querySelector('#event-tiles-switzerland-lines'),
+  nopasaranData: nopasaran
+});
 
 if (cantonDetailEl && cantonsElections) {
   initCantonDetail({
     panel: cantonDetailEl,
     cantonsElections,
-    onClose: () => resetCantonZoom(),
+    onClose: () => {
+      resetCantonZoom();
+      setSwissEventTilesFocus(null);
+    },
   });
 }
 
@@ -151,6 +204,7 @@ const sectionResetObserver = new IntersectionObserver(
         setEventTilesFocus(null);
       } else if (section?.id === 'switzerland') {
         hideCantonDetail();
+        setSwissEventTilesFocus(null);
       }
     }
   },

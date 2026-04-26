@@ -236,6 +236,24 @@ body {
     pointer-events: auto;
 }
 
+/* Switzerland specific focus mode: events on the right */
+#event-tiles-switzerland-overlay.is-focus-mode .event-tiles-column-left {
+    display: none;
+}
+
+#event-tiles-switzerland-overlay.is-focus-mode .event-tiles-column-right {
+    top: 100px;
+    bottom: 60px;
+    right: 40px;
+    width: 330px;
+    gap: 14px;
+    overflow-y: auto;
+    padding-left: 6px;
+    padding-bottom: 20px; /* Allow scrolling fully past the last tile */
+    pointer-events: auto;
+    display: flex;
+}
+
 #event-tiles-overlay.is-focus-mode .event-tile {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
@@ -444,7 +462,7 @@ body {
     background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
     margin-bottom: 18px;
     overflow: hidden;
-    display: flex;
+    display: none; /* Hidden by default */
     align-items: center;
     justify-content: center;
     color: #9ca3af;
@@ -460,8 +478,8 @@ body {
     display: block;
 }
 
-.event-modal-image.has-image span {
-    display: none;
+.event-modal-image.has-image {
+    display: flex;
 }
 
 .event-modal-badges {

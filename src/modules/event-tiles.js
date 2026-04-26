@@ -248,10 +248,15 @@ function _openModal(event) {
   _modal.querySelector('[data-event-title]').textContent = event.title;
 
   const img = _modal.querySelector('[data-event-image]');
-  img.innerHTML = event.image
-    ? `<img src="${event.image}" alt="${event.title}" />`
-    : '<span>Image</span>';
-  img.classList.toggle('has-image', Boolean(event.image));
+  if (event.image) {
+    img.innerHTML = `<img src="${event.image}" alt="${event.title}" />`;
+    img.classList.remove('hidden');
+    img.classList.add('has-image');
+  } else {
+    img.innerHTML = '';
+    img.classList.add('hidden');
+    img.classList.remove('has-image');
+  }
 
   const badgesEl = _modal.querySelector('[data-event-badges]');
   badgesEl.innerHTML = meta.badges
@@ -261,6 +266,13 @@ function _openModal(event) {
   const descEl = _modal.querySelector('[data-event-description]');
   const longDesc = event.longDescription || event.description;
   descEl.innerHTML = `<p>${longDesc}</p>`;
+
+  // Hide Nopasaran specifics (in case the modal was previously used for Switzerland)
+  _modal.querySelector('[data-event-person-role]')?.classList.add('hidden');
+  _modal.querySelector('[data-event-consequences]')?.classList.add('hidden');
+  _modal.querySelector('[data-event-sources]')?.classList.add('hidden');
+  const linkText = _modal.querySelector('[data-event-link-text]');
+  if (linkText) linkText.textContent = "Voir sur Wikipédia";
 
   const link = _modal.querySelector('[data-event-link]');
   if (event.url) {
