@@ -231,7 +231,9 @@ export function updateEuropeMap(year) {
         update
           .transition(t)
           .attr('d', _path)
-          .attr('fill', getFillColor),
+          .attr('fill', getFillColor)
+          .attr('stroke', _getStrokeColor())
+          .attr('stroke-width', 0.5),
       (exit) => exit.remove(),
     );
 }

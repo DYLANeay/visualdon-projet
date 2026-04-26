@@ -59,6 +59,19 @@ initThemeToggle(themeToggleBtn);
 
 // Nav: add .is-scrolled class when past the hero
 const siteNav = document.querySelector('.site-nav');
+
+function syncSiteNavOffset() {
+  if (!siteNav) return;
+  const navHeight = Math.ceil(siteNav.getBoundingClientRect().height);
+  document.documentElement.style.setProperty('--site-nav-offset', `${navHeight + 12}px`);
+}
+
+syncSiteNavOffset();
+window.addEventListener('resize', syncSiteNavOffset);
+if (document.fonts?.ready) {
+  document.fonts.ready.then(syncSiteNavOffset).catch(() => {});
+}
+
 lenis.on('scroll', ({ scroll }) => {
   siteNav?.classList.toggle('is-scrolled', scroll > 80);
 });

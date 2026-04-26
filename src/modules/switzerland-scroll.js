@@ -1,6 +1,8 @@
 import scrollama from 'scrollama';
 
 const MONTHS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+const PLAY_ICON_PATH = 'M2 1.5l9 4.5-9 4.5V1.5z';
+const PAUSE_ICON_PATH = 'M2 1.5h3v9H2zM7 1.5h3v9H7z';
 
 function formatDate(ms) {
     const d = new Date(ms);
@@ -52,7 +54,7 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
     _currentTime = time;
     if (yearEl) {
         yearEl.textContent = formatDate(time);
-        yearEl.style.fontSize = "7.5rem"; // Reduce font size to fit the date
+        yearEl.classList.add('is-date');
     }
     setActiveDot(time);
     onTimeChange(time);
@@ -99,14 +101,21 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
   const playBtn = document.querySelector('#switzerland-play');
   let playInterval = null;
 
+  function setPlayButtonState(isPlaying) {
+    if (!playBtn) return;
+    const iconPath = playBtn.querySelector('svg path');
+    if (iconPath) {
+      iconPath.setAttribute('d', isPlaying ? PAUSE_ICON_PATH : PLAY_ICON_PATH);
+    }
+    playBtn.classList.toggle('is-playing', isPlaying);
+    playBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Lecture');
+  }
+
   function stopPlaying() {
     _isPlaying = false;
     if (playInterval) clearTimeout(playInterval);
     playInterval = null;
-    if (playBtn) {
-      playBtn.querySelector('[aria-hidden]').textContent = '▶';
-      playBtn.classList.remove('is-playing');
-    }
+    setPlayButtonState(false);
   }
 
   function startPlaying() {
@@ -147,16 +156,14 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
     }
     
     playInterval = setTimeout(playNextStep, 100);
-
-    if (playBtn) {
-      playBtn.querySelector('[aria-hidden]').textContent = '⏸';
-      playBtn.classList.add('is-playing');
-    }
+    setPlayButtonState(true);
   }
+
+  setPlayButtonState(false);
 
   if (playBtn) {
     playBtn.addEventListener('click', () => {
-      if (playInterval) stopPlaying();
+      if (_isPlaying) stopPlaying();
       else startPlaying();
     });
   }

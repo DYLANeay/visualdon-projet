@@ -118,6 +118,8 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
   const ty = targetY - scale * cy;
 
   const g = _svg.select('.cantons-group');
+  g.interrupt('t-zoom-group');
+  g.selectAll('path').interrupt('t-zoom');
 
   // Named transition 't-zoom' so fill updates don't cancel it.
   g.selectAll('path')
@@ -135,9 +137,11 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
 }
 
 export function resetCantonZoom({ duration = 650 } = {}) {
-  if (!_svg || !_isCantonZoomed) return;
+  if (!_svg) return;
   _isCantonZoomed = false;
   const g = _svg.select('.cantons-group');
+  g.interrupt('t-zoom-group');
+  g.selectAll('path').interrupt('t-zoom');
 
   g.selectAll('path')
     .transition('t-zoom')

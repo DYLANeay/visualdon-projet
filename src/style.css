@@ -6,6 +6,7 @@
   --bg-base: #F5F1EA;
   --bg-surface: #FFFFFF;
   --bg-elevated: #FAF7F1;
+  --site-nav-offset: 76px;
   --text-primary: #0A0A0A;
   --text-secondary: #4A4A4A;
   --text-muted: #8A8A8A;
@@ -75,6 +76,13 @@ body {
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
   border-bottom-color: var(--border-subtle);
+}
+
+#europe > .sticky,
+#switzerland > .sticky {
+  top: var(--site-nav-offset);
+  height: calc(100vh - var(--site-nav-offset));
+  z-index: 20;
 }
 
 .site-nav-brand {
@@ -320,15 +328,26 @@ html.dark .theme-icon-moon { display: none; }
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--text-primary);
-  opacity: 0.06;
+  opacity: 0.16;
   letter-spacing: -0.04em;
   font-size: clamp(10rem, 22vw, 18rem);
   transform-origin: 50% 50%;
   will-change: transform, opacity, filter;
+  z-index: 15;
+}
+
+#switzerland-year.is-date {
+  font-size: clamp(3.2rem, 8vw, 6.8rem);
+  letter-spacing: -0.02em;
+  opacity: 0.22;
 }
 
 html.dark #switzerland-year {
-  opacity: 0.08;
+  opacity: 0.2;
+}
+
+html.dark #switzerland-year.is-date {
+  opacity: 0.26;
 }
 
 /* ─── Vertical timeline dots (Europe) ─────────────────────────────────────── */
