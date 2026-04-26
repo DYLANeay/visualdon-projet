@@ -12,6 +12,7 @@ import {
   initCountryDetail,
   showCountryDetail,
   updateCountryDetail,
+  hideCountryDetail,
 } from './modules/country-detail.js';
 import {
   initEventTiles,
@@ -29,6 +30,7 @@ import {
   initCantonDetail,
   showCantonDetail,
   updateCantonDetail,
+  hideCantonDetail,
 } from './modules/canton-detail.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
@@ -86,16 +88,22 @@ let currentSwissYear = 1999;
 const switzerlandMapEl = document.querySelector('#switzerland-map');
 const cantonDetailEl = document.querySelector('#canton-detail');
 
+let _stopSwissPlay = null;
+
 if (switzerlandMapEl && geoSwissCantons) {
   initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, cantonsElections, (feature) => {
+    // Stop autoplay when user clicks a canton so the fill transition
+    // doesn't cancel the zoom transition.
+    if (_stopSwissPlay) _stopSwissPlay();
     showCantonDetail(feature.properties.kantonsnummer, feature, currentSwissYear);
     zoomToCanton(feature);
   });
-  initSwitzerlandScroll((year) => {
+  const swissScroll = initSwitzerlandScroll((year) => {
     currentSwissYear = year;
     updateSwitzerlandMap(year);
     updateCantonDetail(year);
   });
+  if (swissScroll) _stopSwissPlay = swissScroll.stopPlaying;
 }
 
 if (cantonDetailEl && cantonsElections) {
@@ -127,3 +135,26 @@ const sectionObserver = new IntersectionObserver(
   { threshold: 0.12 },
 );
 fadeTargets.forEach((el) => sectionObserver.observe(el));
+// Reset focus / detail panel when the user scrolls out of a section.
+// We observe the inner sticky panels (100vh tall) rather than the outer
+// sections (thousands of vh), because with threshold 0.05 the tall sections
+// are almost always considered "intersecting".
+const europeSticky = document.querySelector('#europe > .sticky');
+const swissSticky = document.querySelector('#switzerland > .sticky');
+const sectionResetObserver = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) continue; // only act when leaving
+      const section = entry.target.closest('section');
+      if (section?.id === 'europe') {
+        hideCountryDetail();
+        setEventTilesFocus(null);
+      } else if (section?.id === 'switzerland') {
+        hideCantonDetail();
+      }
+    }
+  },
+  { threshold: 0.1 },
+);
+if (europeSticky) sectionResetObserver.observe(europeSticky);
+if (swissSticky) sectionResetObserver.observe(swissSticky);
