@@ -112,11 +112,19 @@ function computeFarRightShare(iso2, year) {
   return hasValid ? total : null;
 }
 
+function _getNoDataColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--bg-elevated').trim() || '#e8e8e8';
+}
+
+function _getStrokeColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--border-subtle').trim() || '#ccc';
+}
+
 function getFillColor(feature) {
   const iso2 = NAME_TO_ISO2[feature.properties.Name];
-  if (!iso2) return '#e8e8e8';
+  if (!iso2) return _getNoDataColor();
   const share = computeFarRightShare(iso2, _currentYear);
-  return share !== null ? colorScale(share) : '#e8e8e8';
+  return share !== null ? colorScale(share) : _getNoDataColor();
 }
 
 let _currentYear = 1900;
@@ -158,8 +166,8 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
     .data(features, (d) => `${d.properties.Id}_${d.properties.From}`)
     .join('path')
     .attr('d', _path)
-    .attr('fill', '#e8e8e8')
-    .attr('stroke', '#999')
+    .attr('fill', _getNoDataColor())
+    .attr('stroke', _getStrokeColor())
     .attr('stroke-width', 0.5)
     .attr('data-iso2', (d) => NAME_TO_ISO2[d.properties.Name] || '')
     .style('cursor', 'pointer')
@@ -214,7 +222,7 @@ export function updateEuropeMap(year) {
           .append('path')
           .attr('d', _path)
           .attr('fill', getFillColor)
-          .attr('stroke', '#999')
+          .attr('stroke', _getStrokeColor())
           .attr('stroke-width', 0.5)
           .attr('data-iso2', (d) => NAME_TO_ISO2[d.properties.Name] || '')
           .style('cursor', 'pointer')
@@ -302,12 +310,14 @@ function _addLegend(container) {
     .attr('width', legendWidth + 40)
     .attr('height', legendHeight + 36);
 
+  const textColor = () => getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#4A4A4A';
+
   svg
     .append('text')
     .attr('x', 0)
     .attr('y', 12)
     .attr('font-size', '12px')
-    .attr('fill', '#333')
+    .attr('fill', textColor())
     .text('Échelle (%)');
 
   const thresholds = [0, 5, 10, 15, 20, 30];
@@ -332,7 +342,7 @@ function _addLegend(container) {
       .attr('y', 44)
       .attr('text-anchor', 'middle')
       .attr('font-size', '9px')
-      .attr('fill', '#666')
+      .attr('fill', textColor())
       .text(val);
   });
 }

@@ -39,7 +39,7 @@ export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCa
     .attr('d', _path)
     .attr('fill', (d) => _getCantonFill(d, _currentYear))
     .attr('fill-opacity', FILL_OPACITY)
-    .attr('stroke', '#374151')
+    .attr('stroke', _getStrokeColor())
     .attr('stroke-width', 0.7)
     .attr('data-canton', (d) => d.properties.name)
     .attr('data-canton-id', (d) => d.properties.kantonsnummer)
@@ -74,9 +74,17 @@ function _computeFarRightShare(kantonsnummer, year) {
   return nearest.far_right_pct;
 }
 
+function _getNoDataColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--bg-elevated').trim() || '#e8e8e8';
+}
+
+function _getStrokeColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--border-subtle').trim() || '#ccc';
+}
+
 function _getCantonFill(feature, year) {
   const share = _computeFarRightShare(feature.properties.kantonsnummer, year);
-  return share !== null ? colorScale(share) : '#e8e8e8';
+  return share !== null ? colorScale(share) : _getNoDataColor();
 }
 
 export function updateSwitzerlandMap(year) {
