@@ -87,3 +87,57 @@ export function updateSwitzerlandMap(year) {
     .attr('fill', (d) => _getCantonFill(d, year))
     .attr('fill-opacity', 1);
 }
+
+export function zoomToCanton(feature, { duration = 650 } = {}) {
+  if (!_svg || !_path) return;
+  const [[x0, y0], [x1, y1]] = _path.bounds(feature);
+  const dx = Math.max(1, x1 - x0);
+  const dy = Math.max(1, y1 - y0);
+  const cx = (x0 + x1) / 2;
+  const cy = (y0 + y1) / 2;
+  const PANEL_RATIO = 0.35;
+  const availW = MAP_WIDTH * (1 - PANEL_RATIO);
+  const availH = MAP_HEIGHT * 0.75;
+  const scale = Math.min(5, 0.85 / Math.max(dx / availW, dy / availH));
+  const targetX = MAP_WIDTH * PANEL_RATIO + availW / 2;
+  const targetY = MAP_HEIGHT / 2;
+  const tx = targetX - scale * cx;
+  const ty = targetY - scale * cy;
+
+  const g = _svg.select('.cantons-group');
+
+  g.selectAll('path')
+    .transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', (d) =>
+      d.properties.kantonsnummer === feature.properties.kantonsnummer ? 1 : 0.15,
+    );
+
+  g.transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attr('transform', `translate(${tx},${ty}) scale(${scale})`);
+}
+
+export function resetCantonZoom({ duration = 650 } = {}) {
+  if (!_svg) return;
+  const g = _svg.select('.cantons-group');
+
+  g.selectAll('path')
+    .transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', 1);
+
+  g.transition()
+    .duration(duration)
+    .ease(d3.easeCubicInOut)
+    .attrTween('transform', function () {
+      const from = this.getAttribute('transform') || 'translate(0,0) scale(1)';
+      return d3.interpolateTransformSvg(from, 'translate(0,0) scale(1)');
+    })
+    .on('end', function () {
+      this.removeAttribute('transform');
+    });
+}

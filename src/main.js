@@ -21,8 +21,15 @@ import {
 import {
   initSwitzerlandMap,
   updateSwitzerlandMap,
+  zoomToCanton,
+  resetCantonZoom,
 } from './modules/switzerland-map.js';
 import { initSwitzerlandScroll } from './modules/switzerland-scroll.js';
+import {
+  initCantonDetail,
+  showCantonDetail,
+  updateCantonDetail,
+} from './modules/canton-detail.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -74,13 +81,28 @@ initEuropeScroll(elections, (year) => {
   updateEventTiles(year);
 });
 
+let currentSwissYear = 1999;
+
 const switzerlandMapEl = document.querySelector('#switzerland-map');
+const cantonDetailEl = document.querySelector('#canton-detail');
+
 if (switzerlandMapEl && geoSwissCantons) {
   initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, cantonsElections, (feature) => {
-    console.log('canton clicked:', feature.properties.name);
+    showCantonDetail(feature.properties.kantonsnummer, feature, currentSwissYear);
+    zoomToCanton(feature);
   });
   initSwitzerlandScroll((year) => {
+    currentSwissYear = year;
     updateSwitzerlandMap(year);
+    updateCantonDetail(year);
+  });
+}
+
+if (cantonDetailEl && cantonsElections) {
+  initCantonDetail({
+    panel: cantonDetailEl,
+    cantonsElections,
+    onClose: () => resetCantonZoom(),
   });
 }
 
