@@ -389,9 +389,10 @@ function _redrawLines() {
     line.setAttribute('y1', y1 - hostRect.top);
     line.setAttribute('x2', x2 - hostRect.left);
     line.setAttribute('y2', y2 - hostRect.top);
-    line.setAttribute('stroke', TYPE_META[event.type].lineColor);
-    line.setAttribute('stroke-width', 2);
-    line.setAttribute('stroke-dasharray', '6 4');
+    const mutedColor = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#8A8A8A';
+    line.setAttribute('stroke', mutedColor);
+    line.setAttribute('stroke-width', 1);
+    line.setAttribute('stroke-dasharray', '2 3');
     line.setAttribute('stroke-linecap', 'round');
     _svgLines.appendChild(line);
 
@@ -402,7 +403,8 @@ function _redrawLines() {
     marker.setAttribute('y', y2 - hostRect.top - size / 2);
     marker.setAttribute('width', size);
     marker.setAttribute('height', size);
-    marker.setAttribute('fill', TYPE_META[event.type].lineColor);
+    const mutedColorM = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#8A8A8A';
+    marker.setAttribute('fill', mutedColorM);
     marker.setAttribute(
       'transform',
       `rotate(45 ${x2 - hostRect.left} ${y2 - hostRect.top})`,
