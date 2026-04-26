@@ -1,15 +1,19 @@
 import * as d3 from 'd3';
+import { colorScale } from './scales.js';
 
 let _svg = null;
 let _path = null;
 let _geo = null;
+let _cantonsElections = null;
 let _onCantonClick = null;
+let _currentYear = 1999;
 
 const MAP_WIDTH = 900;
 const MAP_HEIGHT = 560;
 
-export function initSwitzerlandMap(container, geoCantons, onCantonClick) {
+export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCantonClick) {
   _geo = geoCantons;
+  _cantonsElections = cantonsElections;
   _onCantonClick = onCantonClick;
 
   _svg = d3
@@ -29,17 +33,19 @@ export function initSwitzerlandMap(container, geoCantons, onCantonClick) {
     .data(geoCantons.features, (d) => d.properties.kantonsnummer)
     .join('path')
     .attr('d', _path)
-    .attr('fill', '#d1d5db')
-    .attr('fill-opacity', 0.55)
+    .attr('fill', (d) => _getCantonFill(d, _currentYear))
+    .attr('fill-opacity', 1)
     .attr('stroke', '#374151')
     .attr('stroke-width', 0.7)
     .attr('data-canton', (d) => d.properties.name)
     .style('cursor', 'pointer')
-    .on('mouseenter', function () {
-      d3.select(this).attr('fill', '#9ca3af').attr('fill-opacity', 0.7);
+    .on('mouseenter', function (event, d) {
+      const base = _getCantonFill(d, _currentYear);
+      d3.select(this).attr('data-fill', base).attr('fill', d3.color(base).darker(0.4));
     })
     .on('mouseleave', function () {
-      d3.select(this).attr('fill', '#d1d5db').attr('fill-opacity', 0.55);
+      const saved = d3.select(this).attr('data-fill');
+      if (saved) d3.select(this).attr('fill', saved);
     })
     .on('click', _handleClick);
 }
@@ -49,8 +55,35 @@ function _handleClick(_event, feature) {
   _onCantonClick(feature);
 }
 
-export function updateSwitzerlandMap(_year) {
-  // Placeholder: canton-level election data is not wired yet. Keep the
-  // signature in place so the main app can call this on year changes.
+// Returns the far-right seat share (%) for a canton at or before `year`.
+// Uses the most recent election <= year (same pattern as europe-map.js computeFarRightShare).
+function _computeFarRightShare(kantonsnummer, year) {
+  if (!_cantonsElections) return null;
+  const canton = _cantonsElections.cantons[String(kantonsnummer)];
+  if (!canton) return null;
+
+  const elections = canton.elections.filter((e) => e.year <= year);
+  if (elections.length === 0) return null;
+
+  const nearest = elections[elections.length - 1];
+  return nearest.far_right_pct;
+}
+
+function _getCantonFill(feature, year) {
+  const share = _computeFarRightShare(feature.properties.kantonsnummer, year);
+  return share !== null ? colorScale(share) : '#e8e8e8';
+}
+
+export function updateSwitzerlandMap(year) {
+  _currentYear = year;
   if (!_svg) return;
+
+  const t = d3.transition().duration(400);
+
+  _svg
+    .select('.cantons-group')
+    .selectAll('path')
+    .transition(t)
+    .attr('fill', (d) => _getCantonFill(d, year))
+    .attr('fill-opacity', 1);
 }

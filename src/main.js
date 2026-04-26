@@ -38,7 +38,7 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-const { geoEurope, geoEurope1900, geoSwissCantons, elections } = await loadAllData();
+const { geoEurope, geoEurope1900, geoSwissCantons, elections, cantonsElections } = await loadAllData();
 
 let currentYear = 1900;
 
@@ -76,8 +76,7 @@ initEuropeScroll(elections, (year) => {
 
 const switzerlandMapEl = document.querySelector('#switzerland-map');
 if (switzerlandMapEl && geoSwissCantons) {
-  initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, (feature) => {
-    // Future: open canton detail view (maquette 4-cantonClicked)
+  initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, cantonsElections, (feature) => {
     console.log('canton clicked:', feature.properties.name);
   });
   initSwitzerlandScroll((year) => {
