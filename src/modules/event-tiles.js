@@ -182,6 +182,17 @@ let _activeTiles = new Map(); // id → DOM element
 let _currentYear = 1900;
 let _focusIso2 = null;
 
+// Continuously redraw connector lines for `duration` ms.
+// Used both for tile enter transitions (Bug 1) and map un-zoom (Bug 2).
+function _scheduleLineRedraw(duration = 350) {
+  const start = performance.now();
+  function tick() {
+    _redrawLines();
+    if (performance.now() - start < duration) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
 export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines }) {
   _mapContainer = mapContainer;
   _overlayLeft = overlayLeft;
@@ -209,6 +220,10 @@ export function setEventTilesFocus(iso2) {
   _activeTiles.clear();
 
   updateEventTiles(_currentYear);
+
+  // When leaving focus mode the map un-zooms over ~650ms — keep redrawing
+  // connector lines so they track the moving country paths (Bug 2).
+  if (!_focusIso2) _scheduleLineRedraw(700);
 }
 
 function _setupModal() {
@@ -319,8 +334,9 @@ export function updateEventTiles(year) {
     requestAnimationFrame(() => tile.classList.add('is-visible'));
   }
 
-  // Lines depend on layout being settled. Wait a frame so new tiles have a size.
-  requestAnimationFrame(() => _redrawLines());
+  // Redraw lines continuously for the duration of the tile enter transition
+  // so connector lines track tile positions in real-time (Bug 1).
+  _scheduleLineRedraw(350);
 }
 
 function _redrawLines() {
