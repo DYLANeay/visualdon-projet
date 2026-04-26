@@ -39,6 +39,11 @@ export function initSwitzerlandScroll(onYearChange) {
     stepsContainer.appendChild(div);
   });
 
+  // Track the current year so the play button can resume from it.
+  let _currentScrollYear = minYear;
+  // Flag to suppress scrollama callbacks while auto-playing.
+  let _isPlaying = false;
+
   function setActiveDot(year) {
     // Light up the latest milestone dot at or before the current year.
     let activeYear = milestoneYears[0];
@@ -52,6 +57,7 @@ export function initSwitzerlandScroll(onYearChange) {
   }
 
   function setYear(year) {
+    _currentScrollYear = year;
     animateYearChange(yearEl, year);
     setActiveDot(year);
     onYearChange(year);
@@ -60,7 +66,10 @@ export function initSwitzerlandScroll(onYearChange) {
   dots.forEach((dot) => {
     dot.addEventListener('click', () => {
       const year = Number(dot.dataset.year);
-      if (!Number.isNaN(year)) setYear(year);
+      if (!Number.isNaN(year)) {
+        stopPlaying();
+        setYear(year);
+      }
     });
   });
 
@@ -71,10 +80,56 @@ export function initSwitzerlandScroll(onYearChange) {
       offset: 0.5,
     })
     .onStepEnter(({ element }) => {
+      // While auto-playing, ignore scroll-driven year changes to prevent
+      // oscillation between the interval's year and the scroll position.
+      if (_isPlaying) return;
       const year = Number(element.dataset.year);
       if (!Number.isNaN(year)) setYear(year);
     });
 
   window.addEventListener('resize', () => scroller.resize());
-  return scroller;
+
+  // ── Play button ───────────────────────────────────────────────────────
+  const playBtn = document.querySelector('#switzerland-play');
+  let playInterval = null;
+
+  function stopPlaying() {
+    _isPlaying = false;
+    if (playInterval) clearInterval(playInterval);
+    playInterval = null;
+    if (playBtn) {
+      playBtn.querySelector('[aria-hidden]').textContent = '▶';
+      playBtn.classList.remove('is-playing');
+    }
+  }
+
+  function startPlaying() {
+    _isPlaying = true;
+    let playYear = _currentScrollYear;
+    // If already at the end, restart from the beginning.
+    if (playYear >= maxYear) playYear = minYear;
+
+    playInterval = setInterval(() => {
+      if (playYear >= maxYear) {
+        stopPlaying();
+        return;
+      }
+      playYear++;
+      setYear(playYear);
+    }, 400); // 400ms per year
+
+    if (playBtn) {
+      playBtn.querySelector('[aria-hidden]').textContent = '⏸';
+      playBtn.classList.add('is-playing');
+    }
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      if (playInterval) stopPlaying();
+      else startPlaying();
+    });
+  }
+
+  return { scroller, stopPlaying };
 }

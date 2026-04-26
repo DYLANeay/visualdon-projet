@@ -7,9 +7,13 @@ let _geo = null;
 let _cantonsElections = null;
 let _onCantonClick = null;
 let _currentYear = 1999;
+let _isCantonZoomed = false;
 
 const MAP_WIDTH = 900;
 const MAP_HEIGHT = 560;
+
+// Semi-transparent so the big year watermark is visible through the cantons.
+const FILL_OPACITY = 0.82;
 
 export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCantonClick) {
   _geo = geoCantons;
@@ -34,7 +38,7 @@ export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCa
     .join('path')
     .attr('d', _path)
     .attr('fill', (d) => _getCantonFill(d, _currentYear))
-    .attr('fill-opacity', 1)
+    .attr('fill-opacity', FILL_OPACITY)
     .attr('stroke', '#374151')
     .attr('stroke-width', 0.7)
     .attr('data-canton', (d) => d.properties.name)
@@ -78,18 +82,18 @@ export function updateSwitzerlandMap(year) {
   _currentYear = year;
   if (!_svg) return;
 
-  const t = d3.transition().duration(400);
-
+  // Named transition 't-fill' so it never cancels the zoom transition 't-zoom'.
   _svg
     .select('.cantons-group')
     .selectAll('path')
-    .transition(t)
-    .attr('fill', (d) => _getCantonFill(d, year))
-    .attr('fill-opacity', 1);
+    .transition('t-fill')
+    .duration(80)
+    .attr('fill', (d) => _getCantonFill(d, year));
 }
 
 export function zoomToCanton(feature, { duration = 650 } = {}) {
   if (!_svg || !_path) return;
+  _isCantonZoomed = true;
   const [[x0, y0], [x1, y1]] = _path.bounds(feature);
   const dx = Math.max(1, x1 - x0);
   const dy = Math.max(1, y1 - y0);
@@ -106,31 +110,33 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
 
   const g = _svg.select('.cantons-group');
 
+  // Named transition 't-zoom' so fill updates don't cancel it.
   g.selectAll('path')
-    .transition()
+    .transition('t-zoom')
     .duration(duration)
     .ease(d3.easeCubicInOut)
     .attr('opacity', (d) =>
       d.properties.kantonsnummer === feature.properties.kantonsnummer ? 1 : 0.15,
     );
 
-  g.transition()
+  g.transition('t-zoom-group')
     .duration(duration)
     .ease(d3.easeCubicInOut)
     .attr('transform', `translate(${tx},${ty}) scale(${scale})`);
 }
 
 export function resetCantonZoom({ duration = 650 } = {}) {
-  if (!_svg) return;
+  if (!_svg || !_isCantonZoomed) return;
+  _isCantonZoomed = false;
   const g = _svg.select('.cantons-group');
 
   g.selectAll('path')
-    .transition()
+    .transition('t-zoom')
     .duration(duration)
     .ease(d3.easeCubicInOut)
     .attr('opacity', 1);
 
-  g.transition()
+  g.transition('t-zoom-group')
     .duration(duration)
     .ease(d3.easeCubicInOut)
     .attrTween('transform', function () {
@@ -141,3 +147,4 @@ export function resetCantonZoom({ duration = 650 } = {}) {
       this.removeAttribute('transform');
     });
 }
+

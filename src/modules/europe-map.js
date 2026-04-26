@@ -204,7 +204,7 @@ export function updateEuropeMap(year) {
   _path = d3.geoPath().projection(projection);
 
   const g = _svg.select('.map-group');
-  const t = d3.transition().duration(400);
+  const t = d3.transition().duration(80);
 
   g.selectAll('path')
     .data(features, (d) => `${d.properties.Id}_${d.properties.From}`)
