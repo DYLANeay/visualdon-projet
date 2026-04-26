@@ -71,6 +71,15 @@
                             <ul data-country-parties class="flex flex-col gap-2.5"></ul>
                         </div>
                     </div>
+                    <!-- Quick-jump to Switzerland -->
+                    <button
+                        data-goto="switzerland"
+                        class="pointer-events-auto absolute bottom-8 right-20 z-30 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                        <span>Suisse</span>
+                        <span class="text-base leading-none">→</span>
+                    </button>
+
                     <!-- Vertical timeline -->
                     <nav class="flex flex-col items-center justify-between py-12 px-6 w-16 shrink-0">
                         <div class="relative flex flex-col items-center justify-between h-full">
@@ -102,6 +111,15 @@
                     >
                         2026
                     </h3>
+
+                    <!-- Quick-jump to Europe -->
+                    <button
+                        data-goto="europe"
+                        class="absolute top-4 left-4 z-40 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                        <span class="text-base leading-none">←</span>
+                        <span>Europe</span>
+                    </button>
 
                     <!-- Swiss cantons map -->
                     <div id="switzerland-map" class="absolute inset-0 z-10"></div>
