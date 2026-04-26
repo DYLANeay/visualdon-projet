@@ -44,6 +44,10 @@ let _activeTiles = new Map();
 let _currentTime = new Date("1999-01-01").getTime();
 let _focusKanton = null;
 
+function _getConnectorColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--border-strong').trim() || '#1A1A1A';
+}
+
 function _scheduleLineRedraw(duration = 350) {
   const start = performance.now();
   function tick() {
@@ -246,6 +250,7 @@ function _redrawLines() {
   if (_focusKanton) return;
 
   const hostRect = _svgLines.getBoundingClientRect();
+  const connectorColor = _getConnectorColor();
 
   for (const [id, tile] of _activeTiles) {
     const event = _events.find((e) => e.id === id);
@@ -273,10 +278,10 @@ function _redrawLines() {
     line.setAttribute('y1', y1 - hostRect.top);
     line.setAttribute('x2', x2 - hostRect.left);
     line.setAttribute('y2', y2 - hostRect.top);
-    const mutedColor = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#8A8A8A';
-    line.setAttribute('stroke', mutedColor);
-    line.setAttribute('stroke-width', 1);
-    line.setAttribute('stroke-dasharray', '2 3');
+    line.setAttribute('stroke', connectorColor);
+    line.setAttribute('stroke-width', 1.35);
+    line.setAttribute('stroke-dasharray', '4 3');
+    line.setAttribute('stroke-opacity', 0.72);
     line.setAttribute('stroke-linecap', 'round');
     _svgLines.appendChild(line);
 
@@ -286,7 +291,8 @@ function _redrawLines() {
     marker.setAttribute('y', y2 - hostRect.top - size / 2);
     marker.setAttribute('width', size);
     marker.setAttribute('height', size);
-    marker.setAttribute('fill', mutedColor);
+    marker.setAttribute('fill', connectorColor);
+    marker.setAttribute('fill-opacity', 0.86);
     marker.setAttribute(
       'transform',
       `rotate(45 ${x2 - hostRect.left} ${y2 - hostRect.top})`,

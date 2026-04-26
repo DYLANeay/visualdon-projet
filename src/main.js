@@ -82,8 +82,6 @@ let currentYear = 1900;
 
 const europeMapEl = document.querySelector('#europe-map');
 const countryDetailEl = document.querySelector('#country-detail');
-const europeGotoBtn = document.querySelector('[data-goto="switzerland"]');
-const swissGotoBtn = document.querySelector('[data-goto="europe"]');
 
 initEuropeMap(europeMapEl, { geoEurope, geoEurope1900 }, elections, (iso2, feature) => {
   showCountryDetail(iso2, feature, currentYear);
@@ -95,12 +93,10 @@ initCountryDetail({
   elections,
   onShow: (feature) => {
     zoomToFeature(feature);
-    europeGotoBtn?.classList.add('hidden');
   },
   onClose: () => {
     resetZoom();
     setEventTilesFocus(null);
-    europeGotoBtn?.classList.remove('hidden');
   },
 });
 
@@ -123,7 +119,6 @@ europeMapEl.addEventListener('click', (e) => {
     import('./modules/europe-map.js').then((m) => m.resetCountryZoom());
     hideCountryDetail();
     setEventTilesFocus(null);
-    europeGotoBtn?.classList.remove('hidden');
   }
 });
 
@@ -161,7 +156,6 @@ if (switzerlandMapEl && geoSwissCantons) {
     showCantonDetail(feature.properties.kantonsnummer, feature, currentSwissYear);
     zoomToCanton(feature);
     setSwissEventTilesFocus(feature.properties.kantonsnummer);
-    swissGotoBtn?.classList.add('hidden');
   });
   const swissScroll = initSwitzerlandScroll((time) => {
     currentSwissYear = new Date(time).getFullYear();
@@ -176,7 +170,6 @@ if (switzerlandMapEl && geoSwissCantons) {
       resetCantonZoom();
       hideCantonDetail();
       setSwissEventTilesFocus(null);
-      swissGotoBtn?.classList.remove('hidden');
     }
   });
 }
@@ -196,7 +189,6 @@ if (cantonDetailEl && cantonsElections) {
     onClose: () => {
       resetCantonZoom();
       setSwissEventTilesFocus(null);
-      swissGotoBtn?.classList.remove('hidden');
     },
   });
 }
@@ -257,14 +249,6 @@ if (eventModal) {
   });
   obs.observe(eventModal, { attributes: true, attributeFilter: ['open'] });
 }
-
-// Quick-jump buttons between Europe and Switzerland maps.
-document.querySelectorAll('[data-goto]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const target = document.querySelector(`#${btn.dataset.goto}`);
-    if (target) lenis.scrollTo(target, { duration: 1.2 });
-  });
-});
 
 // Redraw maps on theme change so CSS-var colors are picked up.
 window.addEventListener('themechange', () => {
