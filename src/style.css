@@ -18,7 +18,7 @@ body {
 }
 
 .switzerland-step {
-    height: 22vh;
+    height: 45vh;
 }
 
 .timeline-dot {
@@ -573,13 +573,14 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding-left: 3px;
+    padding: 0;
     transition:
         background 180ms ease,
         color 180ms ease;
 }
 
-.switzerland-play:hover {
+.switzerland-play:hover,
+.switzerland-play.is-playing {
     background: #111827;
     color: #ffffff;
 }
