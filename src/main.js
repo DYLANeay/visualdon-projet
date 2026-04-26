@@ -223,6 +223,17 @@ const sectionResetObserver = new IntersectionObserver(
 if (europeSticky) sectionResetObserver.observe(europeSticky);
 if (swissSticky) sectionResetObserver.observe(swissSticky);
 
+// Stop Lenis when the event modal is open so the background map doesn't scroll
+// while the user scrolls inside the overlay.
+const eventModal = document.querySelector('#event-modal');
+if (eventModal) {
+  const obs = new MutationObserver(() => {
+    if (eventModal.open) lenis.stop();
+    else lenis.start();
+  });
+  obs.observe(eventModal, { attributes: true, attributeFilter: ['open'] });
+}
+
 // Quick-jump buttons between Europe and Switzerland maps.
 document.querySelectorAll('[data-goto]').forEach((btn) => {
   btn.addEventListener('click', () => {
