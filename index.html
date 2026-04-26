@@ -3,38 +3,73 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>VisualDon Projet</title>
+        <title>La montée de l'extrême droite · VisualDon 2026</title>
+        <!-- Prevent dark-mode flash: apply saved/preferred theme before CSS loads -->
+        <script>
+          (function() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'dark' || (!saved && prefersDark)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/src/style.css" />
     </head>
     <body>
-        <section id="hero" class="grid h-screen" style="grid-template-columns: 45% 55%;">
-            <div class="flex flex-col justify-center px-16 py-12">
-                <p class="text-red-600 text-sm uppercase tracking-widest font-medium mb-4">VisualDon 2026</p>
-                <h1 class="text-7xl font-bold leading-none mb-8">La montée de l'extrême droite</h1>
-                <p class="text-base text-gray-600 leading-relaxed max-w-md">
-                    Depuis la fin de la Seconde Guerre mondiale, les partis
-                    d'extrême droite connaissent un regain d'influence en Europe.
-                    Explorez l'évolution de leur progression, pays par pays, de
-                    1945 à aujourd'hui.
-                </p>
+        <!-- Floating site navigation -->
+        <header class="site-nav">
+            <a href="#hero" class="site-nav-brand">
+                <span class="site-nav-brand-mark">▮</span>
+                <span class="site-nav-brand-text">Extrême Droite · 1900–2026</span>
+            </a>
+            <nav class="site-nav-links">
+                <a href="#europe">Europe</a>
+                <a href="#switzerland">Suisse</a>
+                <a href="#about">À propos</a>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                </svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Hero: full-screen with PEGIDA image -->
+        <section id="hero" class="relative h-screen w-full overflow-hidden">
+            <img src="/hero.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 hero-overlay"></div>
+            <div class="relative h-full flex flex-col justify-end px-8 md:px-16 pb-20 md:pb-28 max-w-[1400px] mx-auto">
+                <p class="hero-eyebrow">VisualDon · 2026 · Étude longitudinale</p>
+                <h1 class="hero-title">La montée de<br/><em>l'extrême droite</em></h1>
+                <p class="hero-subtitle">Cartographie d'un basculement européen — 1900 à 2026.</p>
+                <p class="hero-lede">Depuis la fin de la Seconde Guerre mondiale, les partis d'extrême droite reconquièrent terrain et parlements. Ce projet retrace, élection après élection, leur progression à travers le continent — et ses échos en Suisse.</p>
             </div>
-            <div class="relative flex flex-col">
-                <nav class="absolute top-0 right-0 flex gap-8 px-10 py-8 z-10">
-                    <a href="#europe" class="text-white text-sm font-medium hover:underline">Europe</a>
-                    <a href="#switzerland" class="text-white text-sm font-medium hover:underline">Suisse</a>
-                    <a href="#timeline" class="text-white text-sm font-medium hover:underline">Chronologie</a>
-                    <a href="#about" class="text-white text-sm font-medium hover:underline">À propos</a>
-                </nav>
-                <div class="w-full h-full bg-gray-400 flex items-center justify-center">
-                    <span class="text-white text-2xl font-light tracking-widest opacity-50">IMG</span>
-                </div>
+            <div class="hero-scroll-cue">
+                <span>Défiler pour explorer</span>
+                <span class="hero-scroll-arrow">↓</span>
             </div>
+            <p class="hero-credit">Photo · PEGIDA, Dresde, 2015</p>
         </section>
 
         <section id="europe" class="relative">
+            <!-- Section intro (scrolls above the sticky panel) -->
+            <div class="section-intro">
+                <p class="section-eyebrow">Chapitre 1</p>
+                <h2 class="section-title">Le continent qui bascule</h2>
+                <p class="section-deck">De la marginalité de l'après-guerre aux portes du pouvoir : l'extrême droite européenne en cinq dates clés.</p>
+            </div>
+
             <!-- Sticky visual panel -->
             <div class="sticky top-0 h-screen flex flex-col overflow-hidden">
-                <h2 id="europe-year" class="text-center text-8xl font-bold py-6 shrink-0">1900</h2>
+                <h2 id="europe-year" class="text-center py-6 shrink-0">1900</h2>
                 <div class="flex flex-1 min-h-0 relative">
                     <div id="europe-map" class="flex-1 relative"></div>
 
@@ -51,22 +86,22 @@
                     >
                         <div class="flex items-start justify-between">
                             <div class="country-detail-header pointer-events-auto">
-                                <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Pays sélectionné</p>
-                                <h3 data-country-name class="text-5xl font-bold leading-none">Pays</h3>
+                                <p class="detail-eyebrow">Pays sélectionné</p>
+                                <h3 data-country-name class="leading-none">Pays</h3>
                             </div>
                             <button
                                 data-country-close
-                                class="pointer-events-auto group flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                                class="btn-back pointer-events-auto"
                                 aria-label="Fermer"
                             >
-                                <span class="text-base leading-none">←</span>
+                                <span>←</span>
                                 <span>Retour</span>
                             </button>
                         </div>
-                        <div class="country-detail-card pointer-events-auto w-80 rounded-2xl bg-white shadow-lg ring-1 ring-black/5 px-6 py-5">
+                        <div class="country-detail-card pointer-events-auto w-80">
                             <div class="flex items-baseline justify-between mb-3">
-                                <p class="text-sm font-semibold">Répartition des partis</p>
-                                <p data-country-snapshot class="text-[10px] uppercase tracking-widest text-gray-400">—</p>
+                                <p class="card-label">Répartition des partis</p>
+                                <p data-country-snapshot>—</p>
                             </div>
                             <ul data-country-parties class="flex flex-col gap-2.5"></ul>
                         </div>
@@ -74,21 +109,21 @@
                     <!-- Quick-jump to Switzerland -->
                     <button
                         data-goto="switzerland"
-                        class="pointer-events-auto absolute bottom-8 right-20 z-30 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                        class="pointer-events-auto absolute bottom-8 right-20 z-30"
                     >
                         <span>Suisse</span>
-                        <span class="text-base leading-none">→</span>
+                        <span>→</span>
                     </button>
 
                     <!-- Vertical timeline -->
                     <nav class="flex flex-col items-center justify-between py-12 px-6 w-16 shrink-0">
                         <div class="relative flex flex-col items-center justify-between h-full">
-                            <div class="absolute top-0 bottom-0 w-px bg-black left-1/2 -translate-x-1/2"></div>
-                            <button class="timeline-dot active w-4 h-4 rounded-full bg-red-600 relative z-10" data-year="1900"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full bg-gray-300 relative z-10" data-year="1960"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full bg-gray-300 relative z-10" data-year="1980"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full bg-gray-300 relative z-10" data-year="2000"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full bg-gray-300 relative z-10" data-year="2024"></button>
+                            <div class="absolute top-0 bottom-0 w-px left-1/2 -translate-x-1/2" style="background: var(--border-subtle);"></div>
+                            <button class="timeline-dot active w-4 h-4 rounded-full relative z-10" data-year="1900"></button>
+                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="1960"></button>
+                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="1980"></button>
+                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="2000"></button>
+                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="2024"></button>
                         </div>
                     </nav>
                 </div>
@@ -99,15 +134,20 @@
 
         <!-- Switzerland focus section -->
         <section id="switzerland" class="relative">
-            <!-- Sticky visual panel -->
-            <div class="sticky top-0 h-screen flex flex-col overflow-hidden bg-white">
-                <h2 class="text-center text-5xl font-bold pt-10 pb-4 shrink-0">Et la Suisse ?</h2>
+            <!-- Section intro (scrolls above the sticky panel) -->
+            <div class="section-intro">
+                <p class="section-eyebrow">Chapitre 2</p>
+                <h2 class="section-title">Et la Suisse, dans tout ça ?</h2>
+                <p class="section-deck">Depuis les années 1990, l'UDC domine le paysage politique helvétique. Incident par incident, canton par canton.</p>
+            </div>
 
+            <!-- Sticky visual panel -->
+            <div class="sticky top-0 h-screen flex flex-col overflow-hidden">
                 <div class="flex flex-1 min-h-0 relative">
                     <!-- Big year watermark sits behind the map -->
                     <h3
                         id="switzerland-year"
-                        class="absolute inset-0 flex items-center justify-center text-[14rem] font-bold leading-none pointer-events-none select-none z-0"
+                        class="absolute inset-0 flex items-center justify-center leading-none pointer-events-none select-none z-0"
                     >
                         2026
                     </h3>
@@ -115,9 +155,9 @@
                     <!-- Quick-jump to Europe -->
                     <button
                         data-goto="europe"
-                        class="absolute top-4 left-4 z-40 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                        class="absolute top-4 left-4 z-40"
                     >
-                        <span class="text-base leading-none">←</span>
+                        <span>←</span>
                         <span>Europe</span>
                     </button>
 
@@ -138,22 +178,22 @@
                     >
                         <div class="flex items-start justify-between">
                             <div class="country-detail-header pointer-events-auto">
-                                <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Canton sélectionné</p>
-                                <h3 data-canton-name class="text-5xl font-bold leading-none">Canton</h3>
+                                <p class="detail-eyebrow">Canton sélectionné</p>
+                                <h3 data-canton-name class="leading-none">Canton</h3>
                             </div>
                             <button
                                 data-canton-close
-                                class="pointer-events-auto group flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                                class="btn-back pointer-events-auto"
                                 aria-label="Fermer"
                             >
-                                <span class="text-base leading-none">←</span>
+                                <span>←</span>
                                 <span>Retour</span>
                             </button>
                         </div>
-                        <div class="country-detail-card pointer-events-auto w-80 rounded-2xl bg-white shadow-lg ring-1 ring-black/5 px-6 py-5">
+                        <div class="country-detail-card pointer-events-auto w-80">
                             <div class="flex items-baseline justify-between mb-3">
-                                <p class="text-sm font-semibold">Répartition des partis</p>
-                                <p data-canton-snapshot class="text-[10px] uppercase tracking-widest text-gray-400">—</p>
+                                <p class="card-label">Répartition des partis</p>
+                                <p data-canton-snapshot>—</p>
                             </div>
                             <ul data-canton-parties class="flex flex-col gap-2.5"></ul>
                         </div>
@@ -169,9 +209,11 @@
                             class="switzerland-play"
                             aria-label="Lecture"
                         >
-                            <span aria-hidden="true">▶</span>
+                            <svg viewBox="0 0 12 12" fill="currentColor">
+                                <path d="M2 1.5l9 4.5-9 4.5V1.5z"/>
+                            </svg>
                         </button>
-                        <p class="text-xs uppercase tracking-[0.2em] text-gray-700 font-medium">
+                        <p class="udc-scale-label">
                             UDC Scale
                         </p>
                     </div>
@@ -198,7 +240,43 @@
             <div class="switzerland-steps"></div>
         </section>
 
-        <!-- Event detail modal, hidden by default cause its a modal -->
+        <!-- About / colophon section -->
+        <section id="about" class="about-section">
+            <div class="about-grid">
+                <div>
+                    <p class="section-eyebrow">Colophon</p>
+                    <h2 class="section-title">À propos du projet</h2>
+                    <p class="about-text">
+                        Travail réalisé dans le cadre du cours <strong>VisualDon 2026</strong> à la HEIG-VD.
+                        Les données électorales proviennent du <em>ParlGov database</em>, complétées par les
+                        relevés du collectif <em>nopasaran.ch</em> pour les incidents documentés en Suisse.
+                    </p>
+                </div>
+                <div class="about-meta">
+                    <dl>
+                        <div>
+                            <dt>Auteurs</dt>
+                            <dd>Dylan Eray<br/>Loïc Peyramaure</dd>
+                        </div>
+                        <div>
+                            <dt>Encadrement</dt>
+                            <dd>HEIG-VD · 2026</dd>
+                        </div>
+                        <div>
+                            <dt>Code source</dt>
+                            <dd><a href="https://github.com/DYLANeay/visualdon-projet" target="_blank" rel="noopener">github.com/DYLANeay/visualdon-projet ↗</a></dd>
+                        </div>
+                        <div>
+                            <dt>Stack</dt>
+                            <dd>D3.js · Vite · Tailwind · Scrollama</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <p class="about-foot">© 2026 — VisualDon · HEIG-VD</p>
+        </section>
+
+        <!-- Event detail modal -->
         <dialog id="event-modal" class="event-modal">
             <button class="event-modal-close" data-event-close aria-label="Fermer">×</button>
             <div class="event-modal-inner">
@@ -209,20 +287,20 @@
                 </div>
                 <div class="event-modal-badges" data-event-badges></div>
                 <div class="event-modal-person-role hidden" data-event-person-role>
-                    <p class="text-sm text-gray-700 italic border-l-2 border-red-500 pl-3 my-3"><strong data-event-person></strong>, <span data-event-role></span></p>
+                    <p><strong data-event-person></strong>, <span data-event-role></span></p>
                 </div>
                 <div class="event-modal-description" data-event-description>
                     <p>Description…</p>
                 </div>
                 <div class="event-modal-consequences hidden" data-event-consequences>
-                    <h4 class="font-bold mb-1 mt-4 text-sm uppercase tracking-wider text-gray-500">Conséquences</h4>
-                    <p class="text-sm pb-2" data-event-consequences-text>...</p>
+                    <h4>Conséquences</h4>
+                    <p data-event-consequences-text>...</p>
                 </div>
-                <div class="event-modal-sources hidden mt-4 pt-4 border-t border-gray-100" data-event-sources>
-                    <h4 class="font-bold mb-2 text-sm uppercase tracking-wider text-gray-500">Sources</h4>
-                    <ul class="text-sm flex flex-col gap-1 list-disc pl-4 text-gray-600" data-event-sources-list></ul>
+                <div class="event-modal-sources hidden" data-event-sources>
+                    <h4>Sources</h4>
+                    <ul data-event-sources-list></ul>
                 </div>
-                <a class="event-modal-link mt-6" data-event-link href="#" target="_blank" rel="noopener">
+                <a class="event-modal-link" data-event-link href="#" target="_blank" rel="noopener">
                     <span data-event-link-text>Voir plus d'informations</span>
                     <span class="event-modal-link-arrow">↗</span>
                 </a>

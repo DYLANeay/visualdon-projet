@@ -1,6 +1,7 @@
 import 'normalize.css';
 import Lenis from 'lenis';
 import { loadAllData } from './modules/data-loader.js';
+import { initThemeToggle } from './modules/theme-toggle.js';
 import {
   initEuropeMap,
   updateEuropeMap,
@@ -51,6 +52,16 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
+
+// Theme toggle
+const themeToggleBtn = document.querySelector('#theme-toggle');
+initThemeToggle(themeToggleBtn);
+
+// Nav: add .is-scrolled class when past the hero
+const siteNav = document.querySelector('.site-nav');
+lenis.on('scroll', ({ scroll }) => {
+  siteNav?.classList.toggle('is-scrolled', scroll > 80);
+});
 
 const { geoEurope, geoEurope1900, geoSwissCantons, elections, nopasaran, cantonsElections } = await loadAllData();
 
@@ -240,4 +251,10 @@ document.querySelectorAll('[data-goto]').forEach((btn) => {
     const target = document.querySelector(`#${btn.dataset.goto}`);
     if (target) lenis.scrollTo(target, { duration: 1.2 });
   });
+});
+
+// Redraw maps on theme change so CSS-var colors are picked up.
+window.addEventListener('themechange', () => {
+  updateEuropeMap(currentYear);
+  updateSwitzerlandMap(currentSwissYear);
 });
