@@ -19,6 +19,7 @@ import {
   initEventTiles,
   updateEventTiles,
   setEventTilesFocus,
+  openEventModal,
 } from './modules/event-tiles.js';
 import {
   initSwitzerlandMap,
@@ -76,12 +77,84 @@ lenis.on('scroll', ({ scroll }) => {
   siteNav?.classList.toggle('is-scrolled', scroll > 80);
 });
 
-const { geoEurope, geoEurope1900, geoSwissCantons, elections, nopasaran, cantonsElections } = await loadAllData();
+const {
+  geoEurope,
+  geoEurope1900,
+  geoSwissCantons,
+  elections,
+  nopasaran,
+  cantonsElections,
+  wikipediaEvents,
+} = await loadAllData();
 
 let currentYear = 1900;
+const countryEventsByIso = wikipediaEvents?.country_events || {};
 
 const europeMapEl = document.querySelector('#europe-map');
 const countryDetailEl = document.querySelector('#country-detail');
+
+function _resolveEuropeYearForJump(targetYear) {
+  const year = Number(targetYear);
+  if (!Number.isFinite(year)) return null;
+
+  const years = Array.from(document.querySelectorAll('.europe-step'))
+    .map((el) => Number(el.dataset.year))
+    .filter((value) => Number.isFinite(value));
+  if (years.length === 0) return year;
+
+  let closest = years[0];
+  let minDelta = Math.abs(closest - year);
+  for (const value of years) {
+    const delta = Math.abs(value - year);
+    if (delta < minDelta) {
+      minDelta = delta;
+      closest = value;
+    }
+  }
+  return closest;
+}
+
+function _setActiveEuropeTimelineDot(year) {
+  const dots = Array.from(document.querySelectorAll('.timeline-dot'));
+  if (dots.length === 0) return;
+
+  let targetDot = null;
+  let targetYear = -Infinity;
+  for (const dot of dots) {
+    const dotYear = Number(dot.dataset.year);
+    if (!Number.isFinite(dotYear)) continue;
+    if (dotYear <= year && dotYear > targetYear) {
+      targetYear = dotYear;
+      targetDot = dot;
+    }
+  }
+
+  if (!targetDot) {
+    targetDot = dots[0];
+  }
+
+  dots.forEach((dot) => dot.classList.remove('active'));
+  targetDot?.classList.add('active');
+}
+
+function jumpEuropeToYear(targetYear) {
+  const year = _resolveEuropeYearForJump(targetYear);
+  if (!Number.isFinite(year)) return;
+
+  currentYear = year;
+  updateEuropeMap(year);
+  updateCountryDetail(year);
+  updateEventTiles(year);
+
+  const yearLabel = document.querySelector('#europe-year');
+  if (yearLabel) yearLabel.textContent = String(year);
+  _setActiveEuropeTimelineDot(year);
+
+  const step = document.querySelector(`.europe-step[data-year="${year}"]`);
+  if (step) {
+    lenis.scrollTo(step, { duration: 0.9 });
+  }
+}
 
 initEuropeMap(europeMapEl, { geoEurope, geoEurope1900 }, elections, (iso2, feature) => {
   showCountryDetail(iso2, feature, currentYear);
@@ -91,6 +164,9 @@ initEuropeMap(europeMapEl, { geoEurope, geoEurope1900 }, elections, (iso2, featu
 initCountryDetail({
   panel: countryDetailEl,
   elections,
+  countryEventsByIso,
+  onJumpToYear: jumpEuropeToYear,
+  onOpenModal: openEventModal,
   onShow: (feature) => {
     zoomToFeature(feature);
   },
@@ -105,6 +181,8 @@ initEventTiles({
   overlayLeft: document.querySelector('#event-tiles-left'),
   overlayRight: document.querySelector('#event-tiles-right'),
   svgLines: document.querySelector('#event-tiles-lines'),
+  wikipediaEvents,
+  countryEvents: wikipediaEvents?.country_events || {},
 });
 
 initEuropeScroll(elections, (year) => {
