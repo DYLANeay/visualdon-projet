@@ -125,19 +125,31 @@ function _getNoDataColor() {
   );
 }
 
+function _isDarkMode() {
+  return document.documentElement.classList.contains('dark');
+}
+
 function _getStrokeColor() {
+  // In dark mode, use a dark stroke for visibility; in light mode use a light stroke
+  if (_isDarkMode()) {
+    return '#2a2a2a'; // dark gray for dark backgrounds
+  }
   return (
     getComputedStyle(document.documentElement)
       .getPropertyValue('--border-strong')
-      .trim() || '#8f8f8f'
+      .trim() || '#1a1a1a'
   );
 }
 
 function _getFocusStrokeColor() {
+  // In dark mode, use a lighter stroke for focus; in light mode use darker stroke
+  if (_isDarkMode()) {
+    return '#ffffff'; // white focus stroke on dark mode
+  }
   return (
     getComputedStyle(document.documentElement)
-      .getPropertyValue('--text-primary')
-      .trim() || '#27303a'
+      .getPropertyValue('--text-secondary')
+      .trim() || '#4a4a4a'
   );
 }
 
