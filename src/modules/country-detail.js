@@ -130,25 +130,34 @@ function _ensureTrendCard() {
   _trendTileEl = trendCard.querySelector('[data-country-trend-tile]');
 }
 
-// Merge duplicate parties (same abbrev in data from multiple sources) and
-// pick the most recent election <= year.
+// Pick a coherent snapshot: find the single most recent national election year
+// (max election.year <= year across ALL parties), then include only parties
+// that have an entry for exactly that year. This ensures all bars represent
+// the same election cycle and percentages are comparable.
 function _pickSnapshot(country, year) {
+  // Step 1: find the most recent election year across the country
+  let lastElectionYear = null;
+  for (const party of Object.values(country.parties)) {
+    for (const e of party.elections) {
+      if (e.year <= year && e.vote_pct != null) {
+        if (lastElectionYear === null || e.year > lastElectionYear) {
+          lastElectionYear = e.year;
+        }
+      }
+    }
+  }
+  if (lastElectionYear === null) return new Map();
+
+  // Step 2: collect parties that have data at lastElectionYear, deduplicate by abbrev
   const byKey = new Map();
   for (const party of Object.values(country.parties)) {
-    const past = party.elections
-      .filter((e) => e.year <= year && e.vote_pct != null)
-      .sort((a, b) => b.year - a.year);
-    if (past.length === 0) continue;
-    const election = past[0];
+    const election = party.elections.find(
+      (e) => e.year === lastElectionYear && e.vote_pct != null,
+    );
+    if (!election) continue;
     const key = (party.abbrev || party.name).toUpperCase();
     const existing = byKey.get(key);
-    // Keep the newer election; tie-break on vote_pct.
-    if (
-      !existing ||
-      election.year > existing.election.year ||
-      (election.year === existing.election.year &&
-        election.vote_pct > existing.election.vote_pct)
-    ) {
+    if (!existing || election.vote_pct > existing.election.vote_pct) {
       byKey.set(key, { party, election });
     }
   }
@@ -449,8 +458,7 @@ function _renderParties() {
 
   const max = Math.max(...rows.map((r) => r.election.vote_pct));
   const scaleMax = Math.max(max * 1.15, 10);
-  const latest = Math.max(...rows.map((r) => r.election.year));
-  _snapshotEl.textContent = `scrutin ${latest}`;
+  _snapshotEl.textContent = `scrutin ${rows[0].election.year}`;
 
   _partiesEl.innerHTML = '';
   for (const { party, election } of rows) {

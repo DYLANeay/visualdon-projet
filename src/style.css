@@ -910,11 +910,13 @@ html.dark .tone-gray {
 .event-tiles-column {
   position: absolute;
   top: 48px;
+  bottom: 140px;
   width: 300px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .event-tiles-column-left {
@@ -967,16 +969,12 @@ html.dark .tone-gray {
 
 .event-tile-wrapper {
   opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 300ms var(--ease-out),
-    transform 300ms var(--ease-out);
+  transition: opacity 280ms var(--ease-out);
   pointer-events: auto;
 }
 
 .event-tile-wrapper.is-visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .event-tile {

@@ -1,4 +1,4 @@
-const LIFETIME_MS = 30 * 24 * 60 * 60 * 1000;
+const LIFETIME_MS = 21 * 24 * 60 * 60 * 1000;
 const LIFETIME_MS_FOCUS = 60 * 24 * 60 * 60 * 1000;
 
 const CANTON_MAP = {
@@ -111,6 +111,7 @@ export function initSwissEventTiles({
             ? 'left'
             : 'right'
           : 'left',
+        side: idCounter % 2 === 0 ? 'left' : 'right',
       });
     }
   }
@@ -257,7 +258,7 @@ export function updateSwissEventTiles(time) {
     return true;
   });
 
-  const maxEvents = _focusKanton ? 8 : 5;
+  const maxEvents = _focusKanton ? 8 : 4;
   if (activeEvents.length > maxEvents) {
     // If there is a huge density, naturally expire the oldest ones.
     activeEvents = activeEvents.slice(activeEvents.length - maxEvents);
