@@ -4,6 +4,7 @@
 
 const LIFETIME_YEARS = 4;
 const LIFETIME_YEARS_FOCUS = 7;
+const MAX_VISIBLE = 4; // Cap: max tiles shown at once in overview (2 per column)
 
 // Types:
 // - 'far-right'        → red badge only
@@ -32,10 +33,10 @@ const TYPE_META = {
   },
 };
 
-// Fake events spread over the century so the mechanic is visible while scrolling.
+// Fallback events used when wikipedia dataset is unavailable.
 // `country` is an ISO2 code matching the map; null = no connector line.
 // `side` is 'left' or 'right' → which overlay column the tile sits in.
-const FAKE_EVENTS = [
+const FALLBACK_EVENTS = [
   {
     id: 'fr-1922-march-rome',
     year: 1922,
@@ -181,6 +182,161 @@ let _modal = null;
 let _activeTiles = new Map(); // id → DOM element
 let _currentYear = 1900;
 let _focusIso2 = null;
+let _events = FALLBACK_EVENTS;
+let _europeEvents = FALLBACK_EVENTS;
+let _countryEvents = {};
+let _eventById = new Map(FALLBACK_EVENTS.map((event) => [event.id, event]));
+
+function _normalizeType(rawType) {
+  if (TYPE_META[rawType]) return rawType;
+  if (rawType === 'extreme_droite' || rawType === 'far_right') return 'far-right';
+  if (rawType === 'global') return 'general';
+  if (rawType === 'extreme_droite_suisse') return 'swiss-far-right';
+  return 'general';
+}
+
+function _normalizeSide(rawSide, event) {
+  if (rawSide === 'left' || rawSide === 'right') return rawSide;
+  if (event.type === 'swiss-abroad') return 'right';
+  const hash = Array.from(event.id).reduce((acc, ch) => acc + ch.charCodeAt(0), event.year || 0);
+  return hash % 2 === 0 ? 'left' : 'right';
+}
+
+// Bug 3 — Runtime whitelist filter: the fetcher's scoring is broken (90/144 events
+// tagged far-right with inflated scores), so we use a WHITELIST approach instead.
+// Only events whose title explicitly mentions far-right movements/parties/ideology
+// keep the 'far-right' type. Everything else demotes to 'general'.
+const FAR_RIGHT_WHITELIST_RE = new RegExp([
+  'extr[êe]me.?droite',
+  'fascis',
+  'n[ée]o.?nazi',
+  'nazi',
+  'n[ée]o.?fascis',
+  'national.?socialis',
+  'franquist',
+  'carlisme',
+  // Parties / movements
+  'front national',
+  'rassemblement national',
+  'aube dor[ée]e',
+  'casa.?pound',
+  'forza nuova',
+  'jobbik',
+  'afd|alternative f[uü]r',
+  'fp[öo]',
+  'freiheitliche',
+  'vlaams belang',
+  'vlaams blok',
+  'lega nord',
+  'fratelli d.italia',
+  'vox \\(',
+  'fidesz',
+  'ukip|ind[ée]pendance du royaume',
+  'd[ée]mocrates de su[eè]de',
+  'parti radical serbe',
+  'chez nous \\(belg',
+  'mouvement patriotique',
+  'bloc nationaliste',
+  'la droite \\(italie',
+  'mouvement national \\(pologne',
+  'parti populaire \\(belg',
+  'front populaire national',
+  'elam',
+  'elections? legislatives? chypriotes? de 20(16|21)',
+  // People
+  'mussolini|hitler|le pen|salvini|meloni|orbán|orban|haider|blocher|wilders',
+  // Strong signals
+  'milice|squadris|chemises noires|march.{1,5}sur rome',
+  'pleins pouvoirs.+1933',
+  'grand conseil du fascisme',
+  'licteur',
+  'anti.?migrant',
+  '[ée]meute.+royaume.?uni',
+  'contr.+extr[êe]me.?droite',
+  'manifesta.+anti.?ext',
+  'relations.+extr[êe]me.?droite',
+  'attentats? de hanau',
+  'attentat.+halle',
+].join('|'), 'i');
+
+function _isLikelyFarRight(raw, normalizedType) {
+  if (normalizedType !== 'far-right') return true; // keep as-is for other types
+  const title = raw.title || raw.titre || '';
+  // Only keep far-right if the title explicitly matches known far-right terms
+  return FAR_RIGHT_WHITELIST_RE.test(title);
+}
+
+function _buildEventFromRaw(raw, idx = 0) {
+  if (!raw) return null;
+
+  const year = Number(raw.year ?? raw.annee);
+  if (!Number.isFinite(year)) return null;
+
+  const title = raw.title || raw.titre;
+  const description = (raw.description || '').trim();
+  if (!title || description.length < 20) return null;
+
+  let type = _normalizeType(raw.type || raw.categorie || 'general');
+  // Bug 3: demote false-positive far-right events
+  if (!_isLikelyFarRight(raw, type)) type = 'general';
+
+  const country = raw.country || raw.iso2 || (Array.isArray(raw.countries) ? raw.countries[0] : null) || null;
+  const id = raw.id || `wiki-${year}-${idx}-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const event = {
+    id,
+    year,
+    country,
+    type,
+    side: 'left',
+    title,
+    description,
+    url: raw.url || null,
+    image: raw.image || null,
+  };
+
+  event.side = _normalizeSide(raw.side, event);
+  return event;
+}
+
+function _normalizeWikipediaEvents(dataset) {
+  if (!dataset) return [];
+
+  // New format produced by data/wikipedia/fetcher.js
+  if (Array.isArray(dataset.europe_events)) {
+    return dataset.europe_events
+      .map((raw, idx) => _buildEventFromRaw(raw, idx))
+      .filter(Boolean)
+      .sort((a, b) => a.year - b.year);
+  }
+
+  // Legacy format: { global, extreme_droite, extreme_droite_suisse }
+  const legacyEvents = [
+    ...(dataset.global || []),
+    ...(dataset.extreme_droite || []),
+    ...(dataset.extreme_droite_suisse || []),
+  ];
+
+  return legacyEvents
+    .map((raw, idx) => _buildEventFromRaw(raw, idx))
+    .filter(Boolean)
+    .sort((a, b) => a.year - b.year);
+}
+
+function _prepareEventsData(wikipediaEvents) {
+  const normalized = _normalizeWikipediaEvents(wikipediaEvents);
+  _europeEvents = normalized.length > 0 ? normalized : FALLBACK_EVENTS;
+  _events = _europeEvents;
+  _eventById = new Map(_events.map((event) => [event.id, event]));
+}
+
+function _normalizeCountryEventsArray(rawArray) {
+  if (!Array.isArray(rawArray) || rawArray.length === 0) return [];
+  return rawArray
+    .map((raw, idx) => _buildEventFromRaw(raw, idx))
+    .filter((event) => event && event.type !== 'general')
+    .filter(Boolean)
+    .sort((a, b) => a.year - b.year);
+}
 
 function _getConnectorColor() {
   return getComputedStyle(document.documentElement).getPropertyValue('--border-strong').trim() || '#1A1A1A';
@@ -197,12 +353,14 @@ function _scheduleLineRedraw(duration = 350) {
   requestAnimationFrame(tick);
 }
 
-export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines }) {
+export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines, wikipediaEvents, countryEvents }) {
   _mapContainer = mapContainer;
   _overlayLeft = overlayLeft;
   _overlayRight = overlayRight;
   _svgLines = svgLines;
   _overlayRoot = svgLines?.parentElement || null;
+  _countryEvents = countryEvents || {};
+  _prepareEventsData(wikipediaEvents);
 
   // Redraw connector lines on resize (tile + country positions shift with the viewport).
   window.addEventListener('resize', () => _redrawLines());
@@ -218,6 +376,23 @@ export function setEventTilesFocus(iso2) {
   if (_overlayRoot) {
     _overlayRoot.classList.toggle('is-focus-mode', Boolean(_focusIso2));
   }
+
+  // Switch event source: country-specific events when zoomed, europe-wide otherwise.
+  if (_focusIso2) {
+    const specific = _normalizeCountryEventsArray(_countryEvents[_focusIso2] || []);
+    _events =
+      specific.length > 0
+        ? specific
+        : _europeEvents.filter(
+            (e) =>
+              e.type !== 'general' &&
+              (e.country === _focusIso2 ||
+                (Array.isArray(e.countries) && e.countries.includes(_focusIso2)))
+          );
+  } else {
+    _events = _europeEvents;
+  }
+  _eventById = new Map(_events.map((e) => [e.id, e]));
 
   // Reset the tiles so the new filtered set enters cleanly.
   for (const tile of _activeTiles.values()) tile.remove();
@@ -318,14 +493,26 @@ export function updateEventTiles(year) {
   if (!_overlayLeft || !_overlayRight) return;
 
   const lifetime = _focusIso2 ? LIFETIME_YEARS_FOCUS : LIFETIME_YEARS;
-  const activeEvents = FAKE_EVENTS.filter((ev) => {
+  let activeEvents = _events.filter((ev) => {
     if (ev.year > year || ev.year + lifetime < year) return false;
-    if (_focusIso2 && ev.country !== _focusIso2) return false;
     return true;
   });
+
+  // Bug 1 — Cap to MAX_VISIBLE in overview mode to prevent column overflow.
+  // Keep the most relevant events (by score desc, then year desc).
+  if (!_focusIso2 && activeEvents.length > MAX_VISIBLE) {
+    activeEvents = activeEvents
+      .slice()
+      .sort((a, b) => {
+        const scoreDiff = (b.score ?? b.year) - (a.score ?? a.year);
+        return scoreDiff !== 0 ? scoreDiff : b.year - a.year;
+      })
+      .slice(0, MAX_VISIBLE);
+  }
+
   const activeIds = new Set(activeEvents.map((ev) => ev.id));
 
-  // Remove tiles that expired
+  // Remove tiles that expired OR dropped out of the top-N cap.
   for (const [id, tile] of _activeTiles) {
     if (!activeIds.has(id)) {
       tile.classList.remove('is-visible');
@@ -340,9 +527,9 @@ export function updateEventTiles(year) {
     if (_activeTiles.has(event.id)) continue;
     const tile = _createTile(event);
     tile.querySelector('.event-tile').addEventListener('click', () => _openModal(event));
-    // In focus mode, every tile is about the same country so the two-column
-    // layout stops carrying meaning — stack them in the left column instead.
-    const useRightColumn = !_focusIso2 && event.side === 'right';
+    // Bug 2 — In focus mode, force all tiles to the right column (mirrors Switzerland behaviour).
+    // In overview, honour the event's own side assignment.
+    const useRightColumn = _focusIso2 ? true : (event.side === 'right');
     const parent = useRightColumn ? _overlayRight : _overlayLeft;
     parent.appendChild(tile);
     _activeTiles.set(event.id, tile);
@@ -351,7 +538,7 @@ export function updateEventTiles(year) {
   }
 
   // Redraw lines continuously for the duration of the tile enter transition
-  // so connector lines track tile positions in real-time (Bug 1).
+  // so connector lines track tile positions in real-time.
   _scheduleLineRedraw(350);
 }
 
@@ -366,7 +553,7 @@ function _redrawLines() {
   const connectorColor = _getConnectorColor();
 
   for (const [id, tile] of _activeTiles) {
-    const event = FAKE_EVENTS.find((e) => e.id === id);
+    const event = _eventById.get(id);
     if (!event || !event.country) continue;
 
     const countryPath = _mapContainer.querySelector(
@@ -416,4 +603,8 @@ function _redrawLines() {
     );
     _svgLines.appendChild(marker);
   }
+}
+
+export function openEventModal(event) {
+  _openModal(event);
 }
