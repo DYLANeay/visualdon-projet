@@ -7,6 +7,7 @@ const COUNTRY_NAME_FR = {
   BA: 'Bosnie-Herzégovine',
   BE: 'Belgique',
   BG: 'Bulgarie',
+  BY: 'Biélorussie',
   CH: 'Suisse',
   CY: 'Chypre',
   CZ: 'Tchéquie',
@@ -36,10 +37,96 @@ const COUNTRY_NAME_FR = {
   PT: 'Portugal',
   RO: 'Roumanie',
   RS: 'Serbie',
+  RU: 'Russie',
   SE: 'Suède',
   SI: 'Slovénie',
   SK: 'Slovaquie',
+  TR: 'Turquie',
   UA: 'Ukraine',
+  YU: 'Yougoslavie',
+  // Micro-États & pays sans données électorales
+  AD: 'Andorre',
+  AZ: 'Azerbaïdjan',
+  GE: 'Géorgie',
+  KZ: 'Kazakhstan',
+  LI: 'Liechtenstein',
+  MC: 'Monaco',
+  SM: 'Saint-Marin',
+  TN: 'Tunisie',
+};
+
+// Historical GeoJSON names that have no ISO2 mapping in elections data.
+const GEO_NAME_FR = {
+  'Austria-Hungary': 'Autriche-Hongrie',
+  'Ottoman Empire': 'Empire ottoman',
+  Czechoslovakia: 'Tchécoslovaquie',
+  'German Democratic Republic': 'République démocratique allemande',
+  Kosovo: 'Kosovo',
+  'Bosnia-Herzegovina': 'Bosnie-Herzégovine',
+  'Macedonia (FYROM/North Macedonia)': 'Macédoine du Nord',
+  'Italy/Sardinia': 'Italie',
+  'Germany (Prussia)': 'Allemagne (Prusse)',
+  'German Federal Republic': 'République fédérale allemande',
+  'Turkey (Ottoman Empire)': 'Turquie (Empire ottoman)',
+  'Russia (Soviet Union)': 'Russie (Union soviétique)',
+  'Belarus (Byelorussia)': 'Biélorussie',
+  Rumania: 'Roumanie',
+  Macedonia: 'Macédoine',
+  'North Macedonia': 'Macédoine du Nord',
+  Bosnia: 'Bosnie',
+  Herzegovina: 'Herzégovine',
+  Montenegro: 'Monténégro',
+  Moldova: 'Moldavie',
+  Russia: 'Russie',
+  Belarus: 'Biélorussie',
+  Turkey: 'Turquie',
+  Yugoslavia: 'Yougoslavie',
+  // Tiny German states (unlikely to be clicked, but covered for completeness)
+  Anhalt: 'Anhalt',
+  'Anhalt-Bernberg': 'Anhalt-Bernberg',
+  'Anhalt-Dessau': 'Anhalt-Dessau',
+  Baden: 'Bade',
+  Bavaria: 'Bavière',
+  Bremen: 'Brême',
+  Cracow: 'Cracovie',
+  Danzig: 'Dantzig',
+  Frankfurt: 'Francfort',
+  Hanover: 'Hanovre',
+  'Hesse-Darmstadt (Ducal': 'Hesse-Darmstadt',
+  'Hesse-Homburg': 'Hesse-Hombourg',
+  'Hesse-Kassel (Electoral)': 'Hesse-Cassel',
+  Hohengeroldseck: 'Hohengeroldseck',
+  'Hohenzollern-Hechingen': 'Hohenzollern-Hechingen',
+  'Hohenzollern-Sigmaringen': 'Hohenzollern-Sigmaringen',
+  'Kingdom of Naples': 'Royaume de Naples',
+  'Lippe-Detmold': 'Lippe-Detmold',
+  Lucca: 'Lucques',
+  Massa: 'Massa',
+  'Mecklenburg-Schwerin': 'Mecklembourg-Schwerin',
+  'Mecklenburg-Strelitz': 'Mecklembourg-Strelitz',
+  Modena: 'Modène',
+  Nassau: 'Nassau',
+  Oldenburg: 'Oldenbourg',
+  'Papal States': 'États pontificaux',
+  Parma: 'Parme',
+  Piedmont: 'Piémont',
+  Reuss: 'Reuss',
+  'Saxe-Altenburg': 'Saxe-Altenbourg',
+  'Saxe-Coburg-Gotha': 'Saxe-Cobourg-Gotha',
+  'Saxe-Coburg-Saalfeld': 'Saxe-Cobourg-Saalfeld',
+  'Saxe-Gotha-Altenberg': 'Saxe-Gotha-Altenbourg',
+  'Saxe-Hildburgchausen': 'Saxe-Hildburghausen',
+  'Saxe-Meiningen': 'Saxe-Meiningen',
+  'Saxe-Weimar': 'Saxe-Weimar',
+  Saxony: 'Saxe',
+  'Schaumburg Lippe': 'Schaumbourg-Lippe',
+  Waldeck: 'Waldeck',
+  Wolfenbuttel: 'Wolfenbüttel',
+  Württemberg: 'Wurtemberg',
+  // Other historical entities
+  Chechens: 'Tchétchénie',
+  Circassia: 'Circassie',
+  Egypt: 'Égypte',
 };
 
 const TREND_WIDTH = 280;
@@ -111,13 +198,14 @@ export function initCountryDetail({
 }
 
 export function showCountryDetail(iso2, feature, year) {
-  _currentIso2 = iso2 && _elections[iso2] ? iso2 : null;
+  _currentIso2 = iso2 || null;
   _currentYear = year;
 
+  const geoName = feature?.properties?.Name;
   _titleEl.textContent =
     (_currentIso2 && COUNTRY_NAME_FR[_currentIso2]) ||
-    (_currentIso2 && _elections[_currentIso2]?.name) ||
-    feature?.properties?.Name ||
+    (geoName && GEO_NAME_FR[geoName]) ||
+    geoName ||
     'Pays inconnu';
   _renderParties();
 

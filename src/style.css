@@ -1,22 +1,25 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ─── Design tokens ──────────────────────────────────────────────────────── */
 
 :root {
-  --bg-base: #F5F1EA;
-  --bg-surface: #FFFFFF;
-  --bg-elevated: #FAF7F1;
+  --bg-base: #f5f1ea;
+  --bg-surface: #ffffff;
+  --bg-elevated: #faf7f1;
   --site-nav-offset: 76px;
-  --text-primary: #0A0A0A;
-  --text-secondary: #4A4A4A;
-  --text-muted: #8A8A8A;
-  --border-strong: #1A1A1A;
-  --border-subtle: #E5E0D5;
-  --accent: #C8102E;
-  --accent-hover: #9F0C24;
-  --shadow-sm: 0 1px 2px rgba(10,10,10,0.04), 0 1px 3px rgba(10,10,10,0.06);
-  --shadow-md: 0 4px 12px rgba(10,10,10,0.06), 0 2px 4px rgba(10,10,10,0.04);
-  --shadow-lg: 0 12px 32px rgba(10,10,10,0.10), 0 4px 8px rgba(10,10,10,0.06);
+  --text-primary: #0a0a0a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #8a8a8a;
+  --border-strong: #1a1a1a;
+  --border-subtle: #e5e0d5;
+  --accent: #c8102e;
+  --accent-hover: #9f0c24;
+  --shadow-sm:
+    0 1px 2px rgba(10, 10, 10, 0.04), 0 1px 3px rgba(10, 10, 10, 0.06);
+  --shadow-md:
+    0 4px 12px rgba(10, 10, 10, 0.06), 0 2px 4px rgba(10, 10, 10, 0.04);
+  --shadow-lg:
+    0 12px 32px rgba(10, 10, 10, 0.1), 0 4px 8px rgba(10, 10, 10, 0.06);
   --font-display: 'Fraunces', Georgia, serif;
   --font-ui: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
@@ -25,19 +28,19 @@
 }
 
 html.dark {
-  --bg-base: #0B0B0C;
-  --bg-surface: #16161A;
-  --bg-elevated: #1F1F24;
-  --text-primary: #F5F5F4;
-  --text-secondary: #B8B8B5;
-  --text-muted: #6E6E6A;
-  --border-strong: #F5F5F4;
-  --border-subtle: #2A2A2E;
-  --accent: #FF3B47;
-  --accent-hover: #FF5A64;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+  --bg-base: #0b0b0c;
+  --bg-surface: #16161a;
+  --bg-elevated: #1f1f24;
+  --text-primary: #f5f5f4;
+  --text-secondary: #b8b8b5;
+  --text-muted: #6e6e6a;
+  --border-strong: #f5f5f4;
+  --border-subtle: #2a2a2e;
+  --accent: #ff3b47;
+  --accent-hover: #ff5a64;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
 body {
@@ -48,7 +51,7 @@ body {
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "cv11", "ss01";
+  font-feature-settings: 'cv11', 'ss01';
 }
 
 /* ─── Floating site navigation ───────────────────────────────────────────── */
@@ -93,7 +96,7 @@ body {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -127,7 +130,7 @@ body {
 }
 
 .site-nav-links a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -167,10 +170,18 @@ body {
   height: 16px;
 }
 
-.theme-icon-sun  { display: none; }
-.theme-icon-moon { display: block; }
-html.dark .theme-icon-sun  { display: block; }
-html.dark .theme-icon-moon { display: none; }
+.theme-icon-sun {
+  display: none;
+}
+.theme-icon-moon {
+  display: block;
+}
+html.dark .theme-icon-sun {
+  display: block;
+}
+html.dark .theme-icon-moon {
+  display: none;
+}
 
 /* ─── Hero section ────────────────────────────────────────────────────────── */
 
@@ -250,8 +261,15 @@ html.dark .theme-icon-moon { display: none; }
 }
 
 @keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50%       { transform: translateY(6px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
 }
 
 .hero-credit {
@@ -416,6 +434,9 @@ html.dark #switzerland-year.is-date {
   transition:
     transform 350ms var(--ease-out),
     opacity 350ms ease;
+  /* Ensure the header sits above event tiles and stays readable */
+  position: relative;
+  z-index: 1;
 }
 
 .country-detail.is-visible .country-detail-header {
@@ -540,7 +561,10 @@ html.dark #switzerland-year.is-date {
   stroke: var(--text-secondary);
   stroke-width: 1.4;
   cursor: pointer;
-  transition: transform 140ms var(--ease-out), fill 140ms ease, stroke 140ms ease;
+  transition:
+    transform 140ms var(--ease-out),
+    fill 140ms ease,
+    stroke 140ms ease;
 }
 
 .country-trend-event-point:hover,
@@ -677,40 +701,125 @@ html.dark #switzerland-year.is-date {
 }
 
 /* Political leaning tones — applied to tag + bar fill. */
-.tone-green       { color: #166534; background: #dcfce7; }
-.party-bar-fill.tone-green       { background: #22c55e; }
-.tone-burgundy    { color: #7f1d1d; background: #fee2e2; }
-.party-bar-fill.tone-burgundy    { background: #991b1b; }
-.tone-rose        { color: #9f1239; background: #ffe4e6; }
-.party-bar-fill.tone-rose        { background: #f43f5e; }
-.tone-amber       { color: #92400e; background: #fef3c7; }
-.party-bar-fill.tone-amber       { background: #f59e0b; }
-.tone-orange      { color: #9a3412; background: #ffedd5; }
-.party-bar-fill.tone-orange      { background: #f97316; }
-.tone-blue        { color: #1e40af; background: #dbeafe; }
-.party-bar-fill.tone-blue        { background: #2563eb; }
-.tone-red         { color: #ffffff; background: #dc2626; }
-.party-bar-fill.tone-red         { background: linear-gradient(90deg, #dc2626, #7f1d1d); }
-.tone-lime        { color: #3f6212; background: #ecfccb; }
-.party-bar-fill.tone-lime        { background: #84cc16; }
-.tone-purple      { color: #6b21a8; background: #f3e8ff; }
-.party-bar-fill.tone-purple      { background: #a855f7; }
-.tone-teal        { color: #115e59; background: #ccfbf1; }
-.party-bar-fill.tone-teal        { background: #0d9488; }
-.tone-gray        { color: #374151; background: #f3f4f6; }
-.party-bar-fill.tone-gray        { background: #6b7280; }
+.tone-green {
+  color: #166534;
+  background: #dcfce7;
+}
+.party-bar-fill.tone-green {
+  background: #22c55e;
+}
+.tone-burgundy {
+  color: #7f1d1d;
+  background: #fee2e2;
+}
+.party-bar-fill.tone-burgundy {
+  background: #991b1b;
+}
+.tone-rose {
+  color: #9f1239;
+  background: #ffe4e6;
+}
+.party-bar-fill.tone-rose {
+  background: #f43f5e;
+}
+.tone-amber {
+  color: #92400e;
+  background: #fef3c7;
+}
+.party-bar-fill.tone-amber {
+  background: #f59e0b;
+}
+.tone-orange {
+  color: #9a3412;
+  background: #ffedd5;
+}
+.party-bar-fill.tone-orange {
+  background: #f97316;
+}
+.tone-blue {
+  color: #1e40af;
+  background: #dbeafe;
+}
+.party-bar-fill.tone-blue {
+  background: #2563eb;
+}
+.tone-red {
+  color: #ffffff;
+  background: #dc2626;
+}
+.party-bar-fill.tone-red {
+  background: linear-gradient(90deg, #dc2626, #7f1d1d);
+}
+.tone-lime {
+  color: #3f6212;
+  background: #ecfccb;
+}
+.party-bar-fill.tone-lime {
+  background: #84cc16;
+}
+.tone-purple {
+  color: #6b21a8;
+  background: #f3e8ff;
+}
+.party-bar-fill.tone-purple {
+  background: #a855f7;
+}
+.tone-teal {
+  color: #115e59;
+  background: #ccfbf1;
+}
+.party-bar-fill.tone-teal {
+  background: #0d9488;
+}
+.tone-gray {
+  color: #374151;
+  background: #f3f4f6;
+}
+.party-bar-fill.tone-gray {
+  background: #6b7280;
+}
 
 /* Dark mode tone adjustments for better legibility */
-html.dark .tone-green   { color: #86efac; background: rgba(22,101,52,0.3); }
-html.dark .tone-burgundy { color: #fca5a5; background: rgba(127,29,29,0.3); }
-html.dark .tone-rose    { color: #fda4af; background: rgba(159,18,57,0.3); }
-html.dark .tone-amber   { color: #fde68a; background: rgba(146,64,14,0.3); }
-html.dark .tone-orange  { color: #fed7aa; background: rgba(154,52,18,0.3); }
-html.dark .tone-blue    { color: #93c5fd; background: rgba(30,64,175,0.3); }
-html.dark .tone-lime    { color: #d9f99d; background: rgba(63,98,18,0.3); }
-html.dark .tone-purple  { color: #d8b4fe; background: rgba(107,33,168,0.3); }
-html.dark .tone-teal    { color: #99f6e4; background: rgba(17,94,89,0.3); }
-html.dark .tone-gray    { color: #d1d5db; background: rgba(55,65,81,0.3); }
+html.dark .tone-green {
+  color: #86efac;
+  background: rgba(22, 101, 52, 0.3);
+}
+html.dark .tone-burgundy {
+  color: #fca5a5;
+  background: rgba(127, 29, 29, 0.3);
+}
+html.dark .tone-rose {
+  color: #fda4af;
+  background: rgba(159, 18, 57, 0.3);
+}
+html.dark .tone-amber {
+  color: #fde68a;
+  background: rgba(146, 64, 14, 0.3);
+}
+html.dark .tone-orange {
+  color: #fed7aa;
+  background: rgba(154, 52, 18, 0.3);
+}
+html.dark .tone-blue {
+  color: #93c5fd;
+  background: rgba(30, 64, 175, 0.3);
+}
+html.dark .tone-lime {
+  color: #d9f99d;
+  background: rgba(63, 98, 18, 0.3);
+}
+html.dark .tone-purple {
+  color: #d8b4fe;
+  background: rgba(107, 33, 168, 0.3);
+}
+html.dark .tone-teal {
+  color: #99f6e4;
+  background: rgba(17, 94, 89, 0.3);
+}
+html.dark .tone-gray {
+  color: #d1d5db;
+  background: rgba(55, 65, 81, 0.3);
+}
 
 /* ─── Back/close button ──────────────────────────────────────────────────── */
 
@@ -822,6 +931,17 @@ html.dark .tone-gray    { color: #d1d5db; background: rgba(55,65,81,0.3); }
   box-shadow: var(--shadow-md);
 }
 
+/* Hide left event tiles when a country detail panel is open so they never
+   overlap the country name header (defensive complement to focus-mode). */
+#europe:has(.country-detail.is-visible)
+  #event-tiles-overlay
+  .event-tiles-column-left,
+#switzerland:has(.country-detail.is-visible)
+  #event-tiles-switzerland-overlay
+  .event-tiles-column-left {
+  display: none;
+}
+
 .event-tile-wrapper {
   opacity: 0;
   transform: translateY(6px);
@@ -901,24 +1021,24 @@ html.dark .tone-gray    { color: #d1d5db; background: rgba(55,65,81,0.3); }
 
 .badge-yellow {
   background: transparent;
-  color: #B45309;
-  border: 1px solid #B45309;
+  color: #b45309;
+  border: 1px solid #b45309;
 }
 
 .badge-blue {
   background: transparent;
-  color: #1D4ED8;
-  border: 1px solid #1D4ED8;
+  color: #1d4ed8;
+  border: 1px solid #1d4ed8;
 }
 
 html.dark .badge-yellow {
-  color: #FCD34D;
-  border-color: #FCD34D;
+  color: #fcd34d;
+  border-color: #fcd34d;
 }
 
 html.dark .badge-blue {
-  color: #93C5FD;
-  border-color: #93C5FD;
+  color: #93c5fd;
+  border-color: #93c5fd;
 }
 
 .event-tile-body {
@@ -972,8 +1092,12 @@ html.dark .badge-blue {
 }
 
 @keyframes event-modal-backdrop {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes event-modal-pop {
@@ -999,7 +1123,7 @@ html.dark .badge-blue {
 
 /* Accent band at top of modal */
 .event-modal-inner::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -1026,7 +1150,10 @@ html.dark .badge-blue {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
   z-index: 2;
 }
 
@@ -1166,7 +1293,9 @@ html.dark .badge-blue {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 180ms ease, transform 180ms ease;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
   margin-top: 24px;
 }
 
@@ -1283,7 +1412,7 @@ html.dark .badge-blue {
 }
 
 .switzerland-timeline-track::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 8px;
   right: 8px;
@@ -1424,7 +1553,9 @@ html.dark .badge-blue {
 }
 
 @media (min-width: 768px) {
-  .about-context { padding: 128px 64px; }
+  .about-context {
+    padding: 128px 64px;
+  }
 }
 
 .about-context-inner {
@@ -1483,7 +1614,9 @@ html.dark .badge-blue {
 }
 
 @media (min-width: 768px) {
-  .about-context-split { grid-template-columns: 1fr 1fr; }
+  .about-context-split {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .about-context-split h3 {
@@ -1523,7 +1656,9 @@ html.dark .badge-blue {
 }
 
 @media (min-width: 768px) {
-  .about-context-sources { grid-template-columns: repeat(3, 1fr); }
+  .about-context-sources {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .about-context-source-name {
@@ -1568,7 +1703,9 @@ html.dark .badge-blue {
   line-height: 1.7;
 }
 
-.about-context-limits strong { color: var(--text-primary); }
+.about-context-limits strong {
+  color: var(--text-primary);
+}
 
 .about-context-footer {
   display: flex;
