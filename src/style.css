@@ -1442,6 +1442,13 @@ html.dark .badge-blue {
   pointer-events: none;
   box-shadow: var(--shadow-sm);
   max-width: 220px;
+  transition: top 400ms var(--ease-out);
+}
+
+/* In focus mode (canton selected), push legend below the canton name header */
+#switzerland:has(#canton-detail.is-visible) .switzerland-legend {
+  top: 145px;
+  left: 40px;
 }
 
 .switzerland-legend-title {
