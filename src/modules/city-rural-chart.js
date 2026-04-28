@@ -38,9 +38,9 @@ export async function initCityRuralChart(container) {
 function render(container, rows) {
   container.innerHTML = '';
 
-  const margin = { top: 70, right: 55, bottom: 80, left: 65 };
+  const margin = { top: 60, right: 30, bottom: 70, left: 55 };
   const width = container.clientWidth - margin.left - margin.right;
-  const height = 840; // tall chart for impact
+  const height = 480; // compact height, wide layout
 
   const svg = d3
     .select(container)
