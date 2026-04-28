@@ -38,9 +38,9 @@ export async function initCityRuralChart(container) {
 function render(container, rows) {
   container.innerHTML = '';
 
-  const margin = { top: 60, right: 40, bottom: 70, left: 55 };
+  const margin = { top: 70, right: 55, bottom: 80, left: 65 };
   const width = container.clientWidth - margin.left - margin.right;
-  const height = 520; // taller chart
+  const height = 840; // tall chart for impact
 
   const svg = d3
     .select(container)
@@ -81,7 +81,7 @@ function render(container, rows) {
         .selectAll('.tick text')
         .attr('fill', 'var(--text-muted)')
         .style('font-family', 'var(--font-mono)')
-        .style('font-size', '11px'),
+        .style('font-size', '12px'),
     );
 
   // X axis (canton abbreviations).
@@ -96,7 +96,7 @@ function render(container, rows) {
         .selectAll('.tick text')
         .attr('fill', 'var(--text-secondary)')
         .style('font-family', 'var(--font-ui)')
-        .style('font-size', '12px')
+        .style('font-size', '14px')
         .style('font-weight', '600'),
     );
 
@@ -123,7 +123,7 @@ function render(container, rows) {
     .attr('class', 'city')
     .attr('cx', (d) => x(d.canton) + x.bandwidth() / 2)
     .attr('cy', (d) => y(d.city))
-    .attr('r', 5)
+    .attr('r', 7)
     .attr('fill', COLOR_CITY)
     .append('title')
     .text(
@@ -139,7 +139,7 @@ function render(container, rows) {
     .attr('class', 'rural')
     .attr('cx', (d) => x(d.canton) + x.bandwidth() / 2)
     .attr('cy', (d) => y(d.rural))
-    .attr('r', 6)
+    .attr('r', 9)
     .attr('fill', COLOR_RURAL)
     .append('title')
     .text((d) => `Canton de ${d.name} : ${d.rural.toFixed(1)}% extrême droite`);
@@ -151,7 +151,7 @@ function render(container, rows) {
     .data(rows)
     .join('text')
     .attr('class', 'ratio-label')
-    .attr('x', (d) => x(d.canton) + x.bandwidth() / 2 + 8)
+    .attr('x', (d) => x(d.canton) + x.bandwidth() / 2 + 12)
     .attr('y', (d) => y((d.city + d.rural) / 2))
     .attr('dy', '0.35em')
     .attr('fill', (d) => {
@@ -160,7 +160,7 @@ function render(container, rows) {
       return COLOR_NEUTRAL;
     })
     .style('font-family', 'var(--font-mono)')
-    .style('font-size', '10px')
+    .style('font-size', '13px')
     .style('font-weight', '600')
     .text((d) => {
       if (d.city === 0) return '';
@@ -176,33 +176,33 @@ function render(container, rows) {
 
   legend
     .append('circle')
-    .attr('cx', 6)
-    .attr('cy', 6)
-    .attr('r', 5)
+    .attr('cx', 7)
+    .attr('cy', 7)
+    .attr('r', 7)
     .attr('fill', COLOR_CITY);
   legend
     .append('text')
-    .attr('x', 18)
-    .attr('y', 6)
+    .attr('x', 22)
+    .attr('y', 7)
     .attr('dy', '0.35em')
     .attr('fill', 'var(--text-secondary)')
     .style('font-family', 'var(--font-ui)')
-    .style('font-size', '12px')
+    .style('font-size', '14px')
     .text('Chef-lieu (ville)');
 
   legend
     .append('circle')
-    .attr('cx', 160)
-    .attr('cy', 6)
-    .attr('r', 6)
+    .attr('cx', 175)
+    .attr('cy', 7)
+    .attr('r', 9)
     .attr('fill', COLOR_RURAL);
   legend
     .append('text')
-    .attr('x', 172)
-    .attr('y', 6)
+    .attr('x', 190)
+    .attr('y', 7)
     .attr('dy', '0.35em')
     .attr('fill', 'var(--text-secondary)')
     .style('font-family', 'var(--font-ui)')
-    .style('font-size', '12px')
+    .style('font-size', '14px')
     .text('Canton entier (incl. campagne)');
 }
