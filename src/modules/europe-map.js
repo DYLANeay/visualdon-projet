@@ -71,6 +71,7 @@ let _path = null;
 let _geoData = null;
 let _elections = null;
 let _container = null;
+let _focusedFeatureId = null;
 
 // Le CShapes GeoJSON s'arrête en 2023 ; au-delà, on clampe pour garder les dernières frontières.
 const GEO_MAX_YEAR = 2023;
@@ -127,9 +128,36 @@ function _getNoDataColor() {
 function _getStrokeColor() {
   return (
     getComputedStyle(document.documentElement)
-      .getPropertyValue('--border-subtle')
-      .trim() || '#ccc'
+      .getPropertyValue('--border-strong')
+      .trim() || '#8f8f8f'
   );
+}
+
+function _getFocusStrokeColor() {
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--text-primary')
+      .trim() || '#27303a'
+  );
+}
+
+function _stylePathForFocus(pathSelection) {
+  pathSelection
+    .attr('stroke', (d) => {
+      const id = `${d.properties.Id}_${d.properties.From}`;
+      return _focusedFeatureId && id === _focusedFeatureId
+        ? _getFocusStrokeColor()
+        : _getStrokeColor();
+    })
+    .attr('stroke-width', (d) => {
+      const id = `${d.properties.Id}_${d.properties.From}`;
+      return _focusedFeatureId && id === _focusedFeatureId ? 2 : 0.78;
+    })
+    .attr('opacity', (d) => {
+      const id = `${d.properties.Id}_${d.properties.From}`;
+      if (!_focusedFeatureId) return 1;
+      return id === _focusedFeatureId ? 1 : 0.15;
+    });
 }
 
 function getFillColor(feature) {
@@ -182,7 +210,7 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
     .attr('d', _path)
     .attr('fill', _getNoDataColor())
     .attr('stroke', _getStrokeColor())
-    .attr('stroke-width', 0.5)
+    .attr('stroke-width', 0.78)
     .attr('data-iso2', (d) => NAME_TO_ISO2[d.properties.Name] || '')
     .style('cursor', 'pointer')
     .on('click', _handleClick);
@@ -239,7 +267,7 @@ export function updateEuropeMap(year) {
           .attr('d', _path)
           .attr('fill', getFillColor)
           .attr('stroke', _getStrokeColor())
-          .attr('stroke-width', 0.5)
+          .attr('stroke-width', 0.78)
           .attr('data-iso2', (d) => NAME_TO_ISO2[d.properties.Name] || '')
           .style('cursor', 'pointer')
           .on('click', _handleClick),
@@ -249,9 +277,11 @@ export function updateEuropeMap(year) {
           .attr('d', _path)
           .attr('fill', getFillColor)
           .attr('stroke', _getStrokeColor())
-          .attr('stroke-width', 0.5),
+          .attr('stroke-width', 0.78),
       (exit) => exit.remove(),
     );
+
+  _stylePathForFocus(g.selectAll('path'));
 }
 
 export function zoomToFeature(feature, { duration = 650 } = {}) {
@@ -274,14 +304,13 @@ export function zoomToFeature(feature, { duration = 650 } = {}) {
 
   const g = _svg.select('.map-group');
   const targetId = `${feature.properties.Id}_${feature.properties.From}`;
+  _focusedFeatureId = targetId;
 
-  g.selectAll('path')
+  const paths = g.selectAll('path')
     .transition()
     .duration(duration)
-    .ease(d3.easeCubicInOut)
-    .attr('opacity', (d) =>
-      `${d.properties.Id}_${d.properties.From}` === targetId ? 1 : 0.15,
-    );
+    .ease(d3.easeCubicInOut);
+  _stylePathForFocus(paths);
 
   return new Promise((resolve) => {
     g.transition()
@@ -294,12 +323,13 @@ export function zoomToFeature(feature, { duration = 650 } = {}) {
 
 export function resetZoom({ duration = 650 } = {}) {
   if (!_svg) return;
+  _focusedFeatureId = null;
   const g = _svg.select('.map-group');
-  g.selectAll('path')
+  const paths = g.selectAll('path')
     .transition()
     .duration(duration)
-    .ease(d3.easeCubicInOut)
-    .attr('opacity', 1);
+    .ease(d3.easeCubicInOut);
+  _stylePathForFocus(paths);
   g.transition()
     .duration(duration)
     .ease(d3.easeCubicInOut)
@@ -312,10 +342,26 @@ export function resetZoom({ duration = 650 } = {}) {
     });
 }
 
+export function refreshEuropeMapTheme() {
+  if (!_svg) return;
+  const g = _svg.select('.map-group');
+  const paths = g.selectAll('path');
+  paths.attr('fill', getFillColor);
+  _stylePathForFocus(paths);
+
+  if (_container) {
+    const legend = _container.querySelector('.legend-svg');
+    if (legend) legend.remove();
+    _addLegend(_container);
+  }
+}
+
 function _addLegend(container) {
   const legendWidth = 160;
   const legendHeight = 12;
   const margin = { left: 16, bottom: 48 };
+  const innerLeft = 8;
+  const labelsY = 46;
 
   const svg = d3
     .select(container)
@@ -335,7 +381,7 @@ function _addLegend(container) {
 
   svg
     .append('text')
-    .attr('x', 0)
+    .attr('x', innerLeft)
     .attr('y', 12)
     .attr('font-size', '11px')
     .attr('fill', textColor())
@@ -357,7 +403,7 @@ function _addLegend(container) {
 
   svg
     .append('rect')
-    .attr('x', 0)
+    .attr('x', innerLeft)
     .attr('y', 18)
     .attr('width', legendWidth)
     .attr('height', legendHeight)
@@ -365,12 +411,15 @@ function _addLegend(container) {
     .attr('rx', 2);
 
   const labelPositions = [0, 20, 40, 60, 80, 100];
-  labelPositions.forEach((val) => {
+  labelPositions.forEach((val, i) => {
     svg
       .append('text')
-      .attr('x', (val / 100) * legendWidth)
-      .attr('y', 44)
-      .attr('text-anchor', 'middle')
+      .attr('x', innerLeft + (val / 100) * legendWidth)
+      .attr('y', labelsY)
+      .attr(
+        'text-anchor',
+        i === 0 ? 'start' : i === labelPositions.length - 1 ? 'end' : 'middle',
+      )
       .attr('font-size', '9px')
       .attr('fill', textColor())
       .text(val);

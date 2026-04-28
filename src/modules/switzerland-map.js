@@ -8,6 +8,7 @@ let _cantonsElections = null;
 let _onCantonClick = null;
 let _currentYear = 1999;
 let _isCantonZoomed = false;
+let _focusedKantonsnummer = null;
 let _barsG = null;
 let _cantonRows = [];
 
@@ -18,11 +19,13 @@ const FILL_OPACITY = 0.82;
 const BAR_WIDTH = 56;
 const BAR_HEIGHT = 12;
 const BAR_BORDER = 0.6;
+const BASE_STROKE_WIDTH = 0.95;
+const FOCUS_STROKE_WIDTH = 2.1;
 
 // Manual centroid offsets for cantons whose computed centroid overlaps badly.
-// kantonsnummer → { dx, dy } in SVG units
+// kantonsnummer -> { dx, dy } in SVG units
 const CENTROID_OVERRIDES = {
-  16: { dx: 6, dy: 6 }, // Appenzell Innerrhoden — shift away from AR
+  16: { dx: 6, dy: 6 }, // Appenzell Innerrhoden - shift away from AR
 };
 
 export function initSwitzerlandMap(
@@ -57,7 +60,7 @@ export function initSwitzerlandMap(
     .style('fill', 'var(--bg-elevated)')
     .style('fill-opacity', FILL_OPACITY)
     .attr('stroke', _getStrokeColor())
-    .attr('stroke-width', 0.7)
+    .attr('stroke-width', BASE_STROKE_WIDTH)
     .attr('data-canton', (d) => d.properties.name)
     .attr('data-canton-id', (d) => d.properties.kantonsnummer)
     .style('cursor', 'pointer')
@@ -120,9 +123,37 @@ function _handleClick(_event, feature) {
 function _getStrokeColor() {
   return (
     getComputedStyle(document.documentElement)
-      .getPropertyValue('--border-subtle')
-      .trim() || '#ccc'
+      .getPropertyValue('--border-strong')
+      .trim() || '#8f8f8f'
   );
+}
+
+function _getFocusStrokeColor() {
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--text-primary')
+      .trim() || '#27303a'
+  );
+}
+
+function _styleCantonPaths(pathSelection) {
+  pathSelection
+    .attr('stroke', (d) =>
+      _focusedKantonsnummer !== null &&
+      d.properties.kantonsnummer === _focusedKantonsnummer
+        ? _getFocusStrokeColor()
+        : _getStrokeColor(),
+    )
+    .attr('stroke-width', (d) =>
+      _focusedKantonsnummer !== null &&
+      d.properties.kantonsnummer === _focusedKantonsnummer
+        ? FOCUS_STROKE_WIDTH
+        : BASE_STROKE_WIDTH,
+    )
+    .attr('opacity', (d) => {
+      if (_focusedKantonsnummer === null) return 1;
+      return d.properties.kantonsnummer === _focusedKantonsnummer ? 1 : 0.15;
+    });
 }
 
 function _renderBars(year) {
@@ -162,11 +193,16 @@ export function updateSwitzerlandMap(year) {
   _currentYear = year;
   if (!_svg) return;
   _renderBars(year);
+
+  const g = _svg.select('.cantons-group');
+  _styleCantonPaths(g.selectAll('path'));
 }
 
 export function zoomToCanton(feature, { duration = 650 } = {}) {
   if (!_svg || !_path) return;
   _isCantonZoomed = true;
+  _focusedKantonsnummer = feature.properties.kantonsnummer;
+
   const [[x0, y0], [x1, y1]] = _path.bounds(feature);
   const dx = Math.max(1, x1 - x0);
   const dy = Math.max(1, y1 - y0);
@@ -185,15 +221,12 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
   g.interrupt('t-zoom-group');
   g.selectAll('path').interrupt('t-zoom');
 
-  g.selectAll('path')
+  const paths = g
+    .selectAll('path')
     .transition('t-zoom')
     .duration(duration)
-    .ease(d3.easeCubicInOut)
-    .attr('opacity', (d) =>
-      d.properties.kantonsnummer === feature.properties.kantonsnummer
-        ? 1
-        : 0.15,
-    );
+    .ease(d3.easeCubicInOut);
+  _styleCantonPaths(paths);
 
   if (_barsG) {
     _barsG.interrupt('t-zoom-bars-group');
@@ -223,15 +256,18 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
 export function resetCantonZoom({ duration = 650 } = {}) {
   if (!_svg) return;
   _isCantonZoomed = false;
+  _focusedKantonsnummer = null;
+
   const g = _svg.select('.cantons-group');
   g.interrupt('t-zoom-group');
   g.selectAll('path').interrupt('t-zoom');
 
-  g.selectAll('path')
+  const paths = g
+    .selectAll('path')
     .transition('t-zoom')
     .duration(duration)
-    .ease(d3.easeCubicInOut)
-    .attr('opacity', 1);
+    .ease(d3.easeCubicInOut);
+  _styleCantonPaths(paths);
 
   g.transition('t-zoom-group')
     .duration(duration)
@@ -268,4 +304,10 @@ export function resetCantonZoom({ duration = 650 } = {}) {
         this.removeAttribute('transform');
       });
   }
+}
+
+export function refreshSwitzerlandMapTheme() {
+  if (!_svg) return;
+  const g = _svg.select('.cantons-group');
+  _styleCantonPaths(g.selectAll('path'));
 }
