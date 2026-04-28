@@ -471,6 +471,9 @@ html.dark #switzerland-year.is-date {
   transition:
     transform 350ms var(--ease-out),
     opacity 350ms ease;
+  /* Ensure the header sits above event tiles and stays readable */
+  position: relative;
+  z-index: 1;
 }
 
 .country-detail.is-visible .country-detail-header {
@@ -965,6 +968,17 @@ html.dark .tone-gray {
 
 #event-tiles-overlay.is-focus-mode .event-tile {
   box-shadow: var(--shadow-md);
+}
+
+/* Hide left event tiles when a country detail panel is open so they never
+   overlap the country name header (defensive complement to focus-mode). */
+#europe:has(.country-detail.is-visible)
+  #event-tiles-overlay
+  .event-tiles-column-left,
+#switzerland:has(.country-detail.is-visible)
+  #event-tiles-switzerland-overlay
+  .event-tiles-column-left {
+  display: none;
 }
 
 .event-tile-wrapper {
