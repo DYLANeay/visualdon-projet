@@ -169,10 +169,10 @@ function render(container, rows) {
       return `${ratio.toFixed(1)}x`;
     });
 
-  // Inline legend (top right of plot area).
+  // Inline legend (top right of plot area, stacked vertically).
   const legend = svg
     .append('g')
-    .attr('transform', `translate(${width - 280}, ${-margin.top + 18})`);
+    .attr('transform', `translate(${width - 220}, ${-margin.top + 14})`);
 
   legend
     .append('circle')
@@ -187,22 +187,22 @@ function render(container, rows) {
     .attr('dy', '0.35em')
     .attr('fill', 'var(--text-secondary)')
     .style('font-family', 'var(--font-ui)')
-    .style('font-size', '14px')
+    .style('font-size', '13px')
     .text('Chef-lieu (ville)');
 
   legend
     .append('circle')
-    .attr('cx', 175)
-    .attr('cy', 7)
+    .attr('cx', 7)
+    .attr('cy', 26)
     .attr('r', 9)
     .attr('fill', COLOR_RURAL);
   legend
     .append('text')
-    .attr('x', 190)
-    .attr('y', 7)
+    .attr('x', 22)
+    .attr('y', 26)
     .attr('dy', '0.35em')
     .attr('fill', 'var(--text-secondary)')
     .style('font-family', 'var(--font-ui)')
-    .style('font-size', '14px')
+    .style('font-size', '13px')
     .text('Canton entier (incl. campagne)');
 }
