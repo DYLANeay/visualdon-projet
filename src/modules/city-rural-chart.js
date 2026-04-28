@@ -1,12 +1,14 @@
 import * as d3 from 'd3';
 
 // Far-right vote in cantonal capitals vs in their canton (rural average).
-// One row per canton, two dots connected by a line. The eye instantly sees
-// whether rural areas vote more far-right than the chef-lieu.
+// One column per canton on the X axis, Y axis = vote share %.
+// Two dots per canton (city = blue, rural/canton = red) connected by a vertical
+// line. The label in the middle shows the ratio (e.g. "1.5x").
 // Source: BFS Nationalratswahlen 2023 (asset 28845352).
 
 const COLOR_CITY = '#1c7ed6';
 const COLOR_RURAL = '#c8102e';
+const COLOR_NEUTRAL = '#4a4a4a';
 
 export async function initCityRuralChart(container) {
   if (!container) return;
@@ -21,7 +23,7 @@ export async function initCityRuralChart(container) {
     rural: c.canton_level.wings.ext_droite,
   }));
 
-  // Sort by rural far-right share (descending) — most far-right cantons on top.
+  // Sort by rural far-right share (descending) — most far-right cantons on the left.
   rows.sort((a, b) => b.rural - a.rural);
 
   render(container, rows);
@@ -36,10 +38,9 @@ export async function initCityRuralChart(container) {
 function render(container, rows) {
   container.innerHTML = '';
 
-  const margin = { top: 50, right: 110, bottom: 30, left: 130 };
-  const rowHeight = 22;
+  const margin = { top: 60, right: 40, bottom: 70, left: 55 };
   const width = container.clientWidth - margin.left - margin.right;
-  const height = rows.length * rowHeight;
+  const height = 520; // taller chart
 
   const svg = d3
     .select(container)
@@ -49,23 +50,25 @@ function render(container, rows) {
     .append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
-  const xMax = Math.ceil(d3.max(rows, (r) => Math.max(r.city, r.rural)) / 5) * 5;
-  const x = d3.scaleLinear().domain([0, xMax]).range([0, width]);
-  const y = d3
+  const yMax =
+    Math.ceil(d3.max(rows, (r) => Math.max(r.city, r.rural)) / 5) * 5 + 5;
+
+  const x = d3
     .scaleBand()
     .domain(rows.map((r) => r.canton))
-    .range([0, height])
-    .padding(0.35);
+    .range([0, width])
+    .padding(0.4);
+  const y = d3.scaleLinear().domain([0, yMax]).range([height, 0]);
 
-  // X grid + axis at top.
-  const xAxis = d3
-    .axisTop(x)
-    .ticks(6)
+  // Y grid + axis.
+  const yAxis = d3
+    .axisLeft(y)
+    .ticks(8)
     .tickFormat((d) => `${d}%`)
-    .tickSize(-height);
+    .tickSize(-width);
   svg
     .append('g')
-    .call(xAxis)
+    .call(yAxis)
     .call((g) => g.select('.domain').remove())
     .call((g) =>
       g
@@ -81,86 +84,95 @@ function render(container, rows) {
         .style('font-size', '11px'),
     );
 
-  // Canton labels (left).
+  // X axis (canton abbreviations).
+  const xAxis = d3.axisBottom(x).tickSize(0);
   svg
     .append('g')
-    .selectAll('text')
-    .data(rows)
-    .join('text')
-    .attr('x', -12)
-    .attr('y', (d) => y(d.canton) + y.bandwidth() / 2)
-    .attr('dy', '0.35em')
-    .attr('text-anchor', 'end')
-    .attr('fill', 'var(--text-secondary)')
-    .style('font-family', 'var(--font-ui)')
-    .style('font-size', '12px')
-    .text((d) => `${d.canton} · ${d.name}`);
+    .attr('transform', `translate(0,${height})`)
+    .call(xAxis)
+    .call((g) => g.select('.domain').remove())
+    .call((g) =>
+      g
+        .selectAll('.tick text')
+        .attr('fill', 'var(--text-secondary)')
+        .style('font-family', 'var(--font-ui)')
+        .style('font-size', '12px')
+        .style('font-weight', '600'),
+    );
 
-  // Dumbbell: connecting line.
+  // Connector line (vertical) between city and rural dots.
   svg
     .append('g')
     .selectAll('line')
     .data(rows)
     .join('line')
-    .attr('x1', (d) => x(Math.min(d.city, d.rural)))
-    .attr('x2', (d) => x(Math.max(d.city, d.rural)))
-    .attr('y1', (d) => y(d.canton) + y.bandwidth() / 2)
-    .attr('y2', (d) => y(d.canton) + y.bandwidth() / 2)
+    .attr('x1', (d) => x(d.canton) + x.bandwidth() / 2)
+    .attr('x2', (d) => x(d.canton) + x.bandwidth() / 2)
+    .attr('y1', (d) => y(d.city))
+    .attr('y2', (d) => y(d.rural))
     .attr('stroke', 'var(--border-strong)')
     .attr('stroke-width', 1.5)
-    .attr('opacity', 0.4);
+    .attr('opacity', 0.35);
 
-  // City dot (chef-lieu).
+  // City dot (chef-lieu) — smaller, on top.
   svg
     .append('g')
-    .selectAll('circle')
+    .selectAll('circle.city')
     .data(rows)
     .join('circle')
-    .attr('cx', (d) => x(d.city))
-    .attr('cy', (d) => y(d.canton) + y.bandwidth() / 2)
+    .attr('class', 'city')
+    .attr('cx', (d) => x(d.canton) + x.bandwidth() / 2)
+    .attr('cy', (d) => y(d.city))
     .attr('r', 5)
     .attr('fill', COLOR_CITY)
     .append('title')
     .text(
-      (d) =>
-        `${d.cheflieu} (chef-lieu) : ${d.city.toFixed(1)}% extrême droite`,
+      (d) => `${d.cheflieu} (chef-lieu) : ${d.city.toFixed(1)}% extrême droite`,
     );
 
-  // Rural / canton dot.
+  // Rural / canton dot — larger, on top.
   svg
     .append('g')
-    .selectAll('circle')
+    .selectAll('circle.rural')
     .data(rows)
     .join('circle')
-    .attr('cx', (d) => x(d.rural))
-    .attr('cy', (d) => y(d.canton) + y.bandwidth() / 2)
-    .attr('r', 5)
+    .attr('class', 'rural')
+    .attr('cx', (d) => x(d.canton) + x.bandwidth() / 2)
+    .attr('cy', (d) => y(d.rural))
+    .attr('r', 6)
     .attr('fill', COLOR_RURAL)
     .append('title')
     .text((d) => `Canton de ${d.name} : ${d.rural.toFixed(1)}% extrême droite`);
 
-  // Value labels at the right of each row.
+  // Ratio label in the middle of the connector line.
   svg
     .append('g')
-    .selectAll('text')
+    .selectAll('text.ratio-label')
     .data(rows)
     .join('text')
-    .attr('x', (d) => x(Math.max(d.city, d.rural)) + 10)
-    .attr('y', (d) => y(d.canton) + y.bandwidth() / 2)
+    .attr('class', 'ratio-label')
+    .attr('x', (d) => x(d.canton) + x.bandwidth() / 2 + 8)
+    .attr('y', (d) => y((d.city + d.rural) / 2))
     .attr('dy', '0.35em')
-    .attr('fill', 'var(--text-muted)')
+    .attr('fill', (d) => {
+      if (d.rural > d.city) return COLOR_RURAL;
+      if (d.city > d.rural) return COLOR_CITY;
+      return COLOR_NEUTRAL;
+    })
     .style('font-family', 'var(--font-mono)')
-    .style('font-size', '11px')
+    .style('font-size', '10px')
+    .style('font-weight', '600')
     .text((d) => {
-      const gap = d.rural - d.city;
-      const sign = gap > 0 ? '+' : '';
-      return `${sign}${gap.toFixed(1)} pt`;
+      if (d.city === 0) return '';
+      const ratio = d.rural / d.city;
+      if (Math.abs(ratio - 1) < 0.05) return '';
+      return `${ratio.toFixed(1)}x`;
     });
 
   // Inline legend (top right of plot area).
   const legend = svg
     .append('g')
-    .attr('transform', `translate(0, ${-margin.top + 10})`);
+    .attr('transform', `translate(${width - 280}, ${-margin.top + 18})`);
 
   legend
     .append('circle')
@@ -182,7 +194,7 @@ function render(container, rows) {
     .append('circle')
     .attr('cx', 160)
     .attr('cy', 6)
-    .attr('r', 5)
+    .attr('r', 6)
     .attr('fill', COLOR_RURAL);
   legend
     .append('text')
