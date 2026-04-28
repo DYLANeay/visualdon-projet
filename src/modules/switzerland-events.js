@@ -2,9 +2,32 @@ const LIFETIME_MS = 21 * 24 * 60 * 60 * 1000;
 const LIFETIME_MS_FOCUS = 60 * 24 * 60 * 60 * 1000;
 
 const CANTON_MAP = {
-  ZH: 1, BE: 2, LU: 3, UR: 4, SZ: 5, OW: 6, NW: 7, GL: 8, ZG: 9, FR: 10,
-  SO: 11, BS: 12, BL: 13, SH: 14, AR: 15, AI: 16, SG: 17, GR: 18, AG: 19, TG: 20,
-  TI: 21, VD: 22, VS: 23, NE: 24, GE: 25, JU: 26
+  ZH: 1,
+  BE: 2,
+  LU: 3,
+  UR: 4,
+  SZ: 5,
+  OW: 6,
+  NW: 7,
+  GL: 8,
+  ZG: 9,
+  FR: 10,
+  SO: 11,
+  BS: 12,
+  BL: 13,
+  SH: 14,
+  AR: 15,
+  AI: 16,
+  SG: 17,
+  GR: 18,
+  AG: 19,
+  TG: 20,
+  TI: 21,
+  VD: 22,
+  VS: 23,
+  NE: 24,
+  GE: 25,
+  JU: 26,
 };
 
 function extractKanton(party) {
@@ -18,18 +41,18 @@ function extractKanton(party) {
 
 function getCategoryMeta(category) {
   const toneMap = {
-    'Antisémitisme': 'red',
-    'Racisme': 'red',
-    'Négationnisme': 'red',
-    'Néonazisme': 'red',
+    Antisémitisme: 'red',
+    Racisme: 'red',
+    Négationnisme: 'red',
+    Néonazisme: 'red',
     'Violence / Menaces': 'red',
-    'Islamophobie': 'red',
-    'Sexisme': 'red'
+    Islamophobie: 'red',
+    Sexisme: 'red',
   };
   const tone = toneMap[category] || 'yellow';
   return {
     badges: [{ text: category || 'Événement', tone }],
-    lineColor: tone === 'red' ? '#ef4444' : '#eab308'
+    lineColor: tone === 'red' ? '#ef4444' : '#eab308',
   };
 }
 
@@ -41,11 +64,15 @@ let _overlayRoot = null;
 let _mapContainer = null;
 let _modal = null;
 let _activeTiles = new Map();
-let _currentTime = new Date("1999-01-01").getTime();
+let _currentTime = new Date('1999-01-01').getTime();
 let _focusKanton = null;
 
 function _getConnectorColor() {
-  return getComputedStyle(document.documentElement).getPropertyValue('--border-strong').trim() || '#1A1A1A';
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--border-strong')
+      .trim() || '#1A1A1A'
+  );
 }
 
 function _scheduleLineRedraw(duration = 350) {
@@ -57,7 +84,13 @@ function _scheduleLineRedraw(duration = 350) {
   requestAnimationFrame(tick);
 }
 
-export function initSwissEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines, nopasaranData }) {
+export function initSwissEventTiles({
+  mapContainer,
+  overlayLeft,
+  overlayRight,
+  svgLines,
+  nopasaranData,
+}) {
   _mapContainer = mapContainer;
   _overlayLeft = overlayLeft;
   _overlayRight = overlayRight;
@@ -71,8 +104,13 @@ export function initSwissEventTiles({ mapContainer, overlayLeft, overlayRight, s
       _events.push({
         ...ev,
         time: new Date(ev.date).getTime(),
-        id: 'np-' + (idCounter++),
+        id: 'np-' + idCounter++,
         kantonsnummer,
+        side: kantonsnummer
+          ? kantonsnummer % 2 === 0
+            ? 'left'
+            : 'right'
+          : 'left',
         side: idCounter % 2 === 0 ? 'left' : 'right',
       });
     }
@@ -129,7 +167,8 @@ function _openModal(event) {
   if (prDiv) {
     if (event.person || event.role) {
       prDiv.classList.remove('hidden');
-      prDiv.querySelector('[data-event-person]').textContent = event.person || '';
+      prDiv.querySelector('[data-event-person]').textContent =
+        event.person || '';
       prDiv.querySelector('[data-event-role]').textContent = event.role || '';
     } else {
       prDiv.classList.add('hidden');
@@ -144,7 +183,8 @@ function _openModal(event) {
   if (consDiv) {
     if (event.consequences) {
       consDiv.classList.remove('hidden');
-      consDiv.querySelector('[data-event-consequences-text]').textContent = event.consequences;
+      consDiv.querySelector('[data-event-consequences-text]').textContent =
+        event.consequences;
     } else {
       consDiv.classList.add('hidden');
     }
@@ -154,9 +194,13 @@ function _openModal(event) {
   if (srcDiv) {
     if (event.sources && event.sources.length > 0) {
       srcDiv.classList.remove('hidden');
-      srcDiv.querySelector('[data-event-sources-list]').innerHTML = event.sources.map(s => 
-        `<li><a href="${s.url}" target="_blank" rel="noopener" class="underline hover:text-red-600 transition-colors">${s.name}</a></li>`
-      ).join('');
+      srcDiv.querySelector('[data-event-sources-list]').innerHTML =
+        event.sources
+          .map(
+            (s) =>
+              `<li><a href="${s.url}" target="_blank" rel="noopener" class="underline hover:text-red-600 transition-colors">${s.name}</a></li>`,
+          )
+          .join('');
     } else {
       srcDiv.classList.add('hidden');
     }
@@ -168,7 +212,7 @@ function _openModal(event) {
     link.href = url;
     link.classList.remove('is-disabled');
     const linkText = link.querySelector('[data-event-link-text]');
-    if (linkText) linkText.textContent = "Lien de la source";
+    if (linkText) linkText.textContent = 'Lien de la source';
   } else {
     link.href = '#';
     link.classList.add('is-disabled');
@@ -188,7 +232,10 @@ function _createTile(event) {
         <h4 class="event-tile-title">${event.title}</h4>
         <div class="event-tile-badges">
           ${meta.badges
-            .map((b) => `<span class="event-badge badge-${b.tone}">${b.text}</span>`)
+            .map(
+              (b) =>
+                `<span class="event-badge badge-${b.tone}">${b.text}</span>`,
+            )
             .join('')}
         </div>
       </header>
@@ -231,9 +278,11 @@ export function updateSwissEventTiles(time) {
   for (const event of activeEvents) {
     if (_activeTiles.has(event.id)) continue;
     const tile = _createTile(event);
-    tile.querySelector('.event-tile').addEventListener('click', () => _openModal(event));
-    
-    const useRightColumn = _focusKanton ? true : (event.side === 'right');
+    tile
+      .querySelector('.event-tile')
+      .addEventListener('click', () => _openModal(event));
+
+    const useRightColumn = _focusKanton ? true : event.side === 'right';
     const parent = useRightColumn ? _overlayRight : _overlayLeft;
     parent.appendChild(tile);
     _activeTiles.set(event.id, tile);
@@ -285,7 +334,10 @@ function _redrawLines() {
     line.setAttribute('stroke-linecap', 'round');
     _svgLines.appendChild(line);
 
-    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    const marker = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'rect',
+    );
     const size = 6;
     marker.setAttribute('x', x2 - hostRect.left - size / 2);
     marker.setAttribute('y', y2 - hostRect.top - size / 2);

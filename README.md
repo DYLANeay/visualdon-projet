@@ -32,27 +32,31 @@ Ce projet s'appuie sur deux types de données distincts : des résultats électo
 ### 1. Données électorales (Fichiers CSV)
 
 **A. ParlGov (`view_election.csv`)**
-* **Toutes les colonnes :** `country`, `date`, `type`, `party`, `id`, `created_at`, `updated_at`, `party_id_source`, `seats`, `vote_share`, `votes`, `data_source`, `description`, `comment`, `data_json`, `election_id`, `party_id`, `alliance_id`.
-* **Colonnes conservées :**
-  * `country` : Code du pays.
-  * `date` : Date de l'élection (pour extraction de l'année).
-  * `party` : Nom du parti.
-  * `vote_share` : Pourcentage des suffrages exprimés.
+
+- **Toutes les colonnes :** `country`, `date`, `type`, `party`, `id`, `created_at`, `updated_at`, `party_id_source`, `seats`, `vote_share`, `votes`, `data_source`, `description`, `comment`, `data_json`, `election_id`, `party_id`, `alliance_id`.
+- **Colonnes conservées :**
+  - `country` : Code du pays.
+  - `date` : Date de l'élection (pour extraction de l'année).
+  - `party` : Nom du parti.
+  - `vote_share` : Pourcentage des suffrages exprimés.
 
 **B. Manifesto Project (`MPDataset_MPDS2025a.csv`)**
-* **Toutes les colonnes :** `country`, `countryname`, `oecdmember`, `eumember`, `edate`, `date`, `party`, `partyname`, `partyabbrev`, `parfam`, `candidatename`, `coderid`, `manual`, `coderyear`, `testresult`, `testeditsim`, `pervote`, `voteest`, `presvote`, `absseat`, `totseats`, `progtype`, `datasetorigin`, `corpusversion`, `total`, `peruncod`, thématiques du programme (`per101` à `per706_2`), index politiques (`rile`, `planeco`, `markeco`, `welfare`, `intpeace`), `datasetversion`, `id_perm`.
-* **Colonnes conservées :**
-  * `countryname` : Nom du pays.
-  * `date` / `edate` : Année de l'élection.
-  * `parfam` : Famille politique (**le code `70` cible spécifiquement l'extrême droite**).
-  * `pervote` : Pourcentage des votes obtenus.
+
+- **Toutes les colonnes :** `country`, `countryname`, `oecdmember`, `eumember`, `edate`, `date`, `party`, `partyname`, `partyabbrev`, `parfam`, `candidatename`, `coderid`, `manual`, `coderyear`, `testresult`, `testeditsim`, `pervote`, `voteest`, `presvote`, `absseat`, `totseats`, `progtype`, `datasetorigin`, `corpusversion`, `total`, `peruncod`, thématiques du programme (`per101` à `per706_2`), index politiques (`rile`, `planeco`, `markeco`, `welfare`, `intpeace`), `datasetversion`, `id_perm`.
+- **Colonnes conservées :**
+  - `countryname` : Nom du pays.
+  - `date` / `edate` : Année de l'élection.
+  - `parfam` : Famille politique (**le code `70` cible spécifiquement l'extrême droite**).
+  - `pervote` : Pourcentage des votes obtenus.
 
 ### 2. Données contextuelles (Événements historiques et politiques)
 
 Au-delà de la stricte évolution des courbes électorales, ce projet intègre une double dimension explicative. D'une part, nous superposons aux données quantitatives des **événements historiques majeurs** afin d'illustrer le contexte global dans lequel s'inscrivent ces élections (crises économiques, mouvements migratoires, etc.). D'autre part, nous recensons des **événements directement liés à l'extrême droite** (dérapages de personnalités politiques, controverses, actes documentés). L'objectif est de mettre en lumière à la fois le terreau historique qui favorise la montée de ce courant et les conséquences tangibles du climat socio-politique qu'il instaure.
-* **Sources utilisées :** Wikipedia et le registre citoyen *Wall of Shame* (nopasaran.ch/fr-CH).
+
+- **Sources utilisées :** Wikipedia et le registre citoyen _Wall of Shame_ (nopasaran.ch/fr-CH).
 
 **Structure du fichier `data/nopasaran/data.json` :**
+
 ```json
 {
   "totalEvents": 482,
@@ -95,18 +99,21 @@ Le but est de croiser nos différentes sources de données pour avoir un résult
 L'ensemble des données traitées est exporté dans **un seul fichier JSON** consolidé. Ce format structure d'une part l'évolution électorale, et d'autre part la chronologie des événements, permettant d'alimenter directement la visualisation interactive.
 
 **A. Format des données électorales :**
-* `pays` : `String`
-* `annee` : `Integer`
-* `pourcentage_extreme_droite` : `Float`
+
+- `pays` : `String`
+- `annee` : `Integer`
+- `pourcentage_extreme_droite` : `Float`
 
 **B. Format des événements contextuels :**
-* `pays` : `String`
-* `annee` : `Integer`
-* `titre` : `String`
-* `description` : `String`
-* `image` : `String` (Optionnel, URL ou chemin de l'illustration)
+
+- `pays` : `String`
+- `annee` : `Integer`
+- `titre` : `String`
+- `description` : `String`
+- `image` : `String` (Optionnel, URL ou chemin de l'illustration)
 
 **Exemple de la structure globale :**
+
 ```json
 {
   "elections": {
@@ -156,7 +163,7 @@ Ce projet combine une approche **exploratoire** et **explicative** :
 
 L'objectif est de montrer comment le vote d'extrême droite a évolué en Suisse et dans les pays voisins (France, Allemagne, Autriche, Italie), et mettre en lumière les dangers de ce courant politique par des exemples concrets.
 
-## Wireframes 
+## Wireframes
 
 Les wireframes de ce projet sont disponibles à l'adresse suivante (lien public) : [Wireframes sur Figma](https://www.figma.com/design/Wv2yKdhqnf0hsw7LLN4ZoO/Wireframe?node-id=0-1&p=f).
 
@@ -173,7 +180,7 @@ Les wireframes de ce projet sont disponibles à l'adresse suivante (lien public)
 ### Projets et travaux similaires
 
 - **[Kincade Fire Origin](https://projects.sfchronicle.com/2019/kincade-fire-origin/) (San Francisco Chronicle)** : Récit immersif qui retrace, étape par étape, le déclenchement et la progression d’un incendie à l’aide d’une carte dynamique et de textes courts.
-- **[Mapbox Storytelling](https://labs.mapbox.com/storytelling/)** : Gabarit de *scrollytelling* pensé pour lier le défilement de la page à l’évolution d’une carte (zoom, déplacement, changement de calques).
+- **[Mapbox Storytelling](https://labs.mapbox.com/storytelling/)** : Gabarit de _scrollytelling_ pensé pour lier le défilement de la page à l’évolution d’une carte (zoom, déplacement, changement de calques).
 - **[The Great Flood of 2019](https://www.nytimes.com/interactive/2019/09/11/us/midwest-flooding.html) (The New York Times)** : Mise en scène très visuelle qui montre l’ampleur géographique et la chronologie d’une inondation à l’échelle d’une région.
 - **[Detroit's Segregation Wall](https://www.nbcnews.com/specials/detroit-segregation-wall/) (NBC News)** : Enquête visuelle qui combine contexte historique, archives, témoignages et cartes pour éclairer un enjeu urbain et social.
 

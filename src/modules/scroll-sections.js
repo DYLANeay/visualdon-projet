@@ -36,7 +36,9 @@ export function initEuropeScroll(elections, onYearChange) {
       document.querySelectorAll('.timeline-dot').forEach((dot) => {
         dot.classList.remove('active');
       });
-      const activeDot = document.querySelector(`.timeline-dot[data-year="${year}"]`);
+      const activeDot = document.querySelector(
+        `.timeline-dot[data-year="${year}"]`,
+      );
       if (activeDot) activeDot.classList.add('active');
     });
 

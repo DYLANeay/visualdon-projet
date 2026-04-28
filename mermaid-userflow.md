@@ -1,9 +1,9 @@
 flowchart LR
-    %% Définition des couleurs basées sur l'image
-    classDef yellow fill:#FFF59D,stroke:#FBC02D,stroke-width:1px,color:#000
-    classDef green fill:#A5D6A7,stroke:#388E3C,stroke-width:1px,color:#000
-    classDef pink fill:#F48FB1,stroke:#C2185B,stroke-width:1px,color:#000
-    classDef orange fill:#FFCC80,stroke:#F57C00,stroke-width:1px,color:#000
+%% Définition des couleurs basées sur l'image
+classDef yellow fill:#FFF59D,stroke:#FBC02D,stroke-width:1px,color:#000
+classDef green fill:#A5D6A7,stroke:#388E3C,stroke-width:1px,color:#000
+classDef pink fill:#F48FB1,stroke:#C2185B,stroke-width:1px,color:#000
+classDef orange fill:#FFCC80,stroke:#F57C00,stroke-width:1px,color:#000
 
     %% --- DÉBUT DU FLUX (Gauche) ---
     N_Accueil["Page d'accueil"]:::yellow
@@ -48,7 +48,7 @@ flowchart LR
 
     N_Wiki1["Wikipedia"]:::orange
     N_Click2 --> N_Wiki1
-    
+
     %% Boucle de retour vers Europe (map)
     N_Click2 -->|Retour| N_Europe
 

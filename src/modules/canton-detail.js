@@ -58,7 +58,9 @@ export function initCantonDetail({ panel, cantonsElections, onClose }) {
   _snapshotEl = panel.querySelector('[data-canton-snapshot]');
   _partiesEl = panel.querySelector('[data-canton-parties]');
 
-  panel.querySelector('[data-canton-close]').addEventListener('click', hideCantonDetail);
+  panel
+    .querySelector('[data-canton-close]')
+    .addEventListener('click', hideCantonDetail);
 
   requestAnimationFrame(() => {
     panel.classList.add('is-visible', 'is-priming');
@@ -73,7 +75,8 @@ export function showCantonDetail(kantonsnummer, feature, year) {
   _currentYear = year;
 
   const canton = _cantonsElections?.cantons[String(kantonsnummer)];
-  _titleEl.textContent = canton?.name || feature?.properties?.name || 'Canton inconnu';
+  _titleEl.textContent =
+    canton?.name || feature?.properties?.name || 'Canton inconnu';
   _renderParties();
 
   _panel.classList.add('is-visible');
@@ -150,7 +153,10 @@ function _renderParties() {
 
   _partiesEl.innerHTML = '';
   for (const row of topN) {
-    const meta = FAMILY_META[row.familyCode] || { label: 'Divers', tone: 'gray' };
+    const meta = FAMILY_META[row.familyCode] || {
+      label: 'Divers',
+      tone: 'gray',
+    };
     const isFarRight = row.familyCode === FAR_RIGHT_CODE;
     const widthPct = Math.min(100, (row.pct / scaleMax) * 100);
 

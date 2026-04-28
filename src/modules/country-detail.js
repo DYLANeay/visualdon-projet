@@ -55,7 +55,9 @@ export function initCountryDetail({
 
   _ensureTrendCard();
 
-  panel.querySelector('[data-country-close]').addEventListener('click', hideCountryDetail);
+  panel
+    .querySelector('[data-country-close]')
+    .addEventListener('click', hideCountryDetail);
 
   // Pre-warm the panel so the first reveal doesn't pay the cost of initial
   // paint (backdrop/transition compile). Flashes in/out before any click.
@@ -219,7 +221,8 @@ function _getCountryEventsForTrend(iso2) {
 function _estimateShareAtYear(series, year) {
   if (!series || series.length === 0) return 0;
   if (year <= series[0].year) return series[0].value;
-  if (year >= series[series.length - 1].year) return series[series.length - 1].value;
+  if (year >= series[series.length - 1].year)
+    return series[series.length - 1].value;
 
   for (let i = 1; i < series.length; i += 1) {
     const left = series[i - 1];
@@ -305,9 +308,10 @@ function _renderTrendChart(country) {
 
   _trendCard.classList.remove('is-empty');
   _trendSnapshotEl.textContent = `curseur ${_currentYear}`;
-  _trendHintEl.textContent = events.length > 0
-    ? 'Cliquez sur un point pour aller à l\'année.'
-    : 'Pas d\'événement marqué pour ce pays.';
+  _trendHintEl.textContent =
+    events.length > 0
+      ? "Cliquez sur un point pour aller à l'année."
+      : "Pas d'événement marqué pour ce pays.";
 
   const yearsDomain = [
     ...series.map((point) => point.year),
@@ -359,7 +363,10 @@ function _renderTrendChart(country) {
   // Show a mini tile when the scroll cursor is within TREND_TILE_WINDOW years of an event point.
   const activeEvent =
     eventsWithY
-      .filter((e) => e.year <= _currentYear && e.year > _currentYear - TREND_TILE_WINDOW)
+      .filter(
+        (e) =>
+          e.year <= _currentYear && e.year > _currentYear - TREND_TILE_WINDOW,
+      )
       .sort((a, b) => b.year - a.year)[0] || null;
 
   if (activeEvent) {
@@ -372,8 +379,10 @@ function _renderTrendChart(country) {
     .selectAll('.country-trend-event-point')
     .data(eventsWithY, (event) => event.id)
     .join('circle')
-    .attr('class', (event) =>
-      `country-trend-event-point${event.year <= _currentYear ? ' is-past' : ''}`,
+    .attr(
+      'class',
+      (event) =>
+        `country-trend-event-point${event.year <= _currentYear ? ' is-past' : ''}`,
     )
     .attr('cx', (event) => x(event.year))
     .attr('cy', (event) => y(event.yValue))
@@ -430,7 +439,9 @@ function _renderParties() {
   // smaller parties or coalition entries bump it out of the top N.
   const hasFarRight = rows.some((r) => r.party.family_code === FAR_RIGHT_CODE);
   if (!hasFarRight) {
-    const topFarRight = sorted.find((r) => r.party.family_code === FAR_RIGHT_CODE);
+    const topFarRight = sorted.find(
+      (r) => r.party.family_code === FAR_RIGHT_CODE,
+    );
     if (topFarRight) {
       rows[rows.length - 1] = topFarRight;
       rows.sort((a, b) => b.election.vote_pct - a.election.vote_pct);
@@ -451,7 +462,10 @@ function _renderParties() {
 
   _partiesEl.innerHTML = '';
   for (const { party, election } of rows) {
-    const meta = FAMILY_META[party.family_code] || { label: 'Divers', tone: 'gray' };
+    const meta = FAMILY_META[party.family_code] || {
+      label: 'Divers',
+      tone: 'gray',
+    };
     const isFarRight = party.family_code === FAR_RIGHT_CODE;
     const pct = election.vote_pct;
     const widthPct = Math.min(100, (pct / scaleMax) * 100);

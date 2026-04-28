@@ -1,369 +1,616 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>La montée de l'extrême droite · VisualDon 2026</title>
-        <!-- Prevent dark-mode flash: apply saved/preferred theme before CSS loads -->
-        <script>
-          (function() {
-            const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (saved === 'dark' || (!saved && prefersDark)) {
-              document.documentElement.classList.add('dark');
-            }
-          })();
-        </script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/src/style.css" />
-    </head>
-    <body>
-        <!-- Floating site navigation -->
-        <header class="site-nav">
-            <a href="#hero" class="site-nav-brand">
-                <span class="site-nav-brand-mark">▮</span>
-                <span class="site-nav-brand-text">Extrême Droite · 1900–2026</span>
-            </a>
-            <nav class="site-nav-links">
-                <a href="#europe">Europe</a>
-                <a href="#switzerland">Suisse</a>
-                <a href="#about">À propos</a>
-            </nav>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème">
-                <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="4"/>
-                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-                </svg>
-                <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>La montée de l'extrême droite · VisualDon 2026</title>
+    <!-- Prevent dark-mode flash: apply saved/preferred theme before CSS loads -->
+    <script>
+      (function () {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)',
+        ).matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="/src/style.css"
+    />
+  </head>
+  <body>
+    <!-- Floating site navigation -->
+    <header class="site-nav">
+      <a
+        href="#hero"
+        class="site-nav-brand"
+      >
+        <span class="site-nav-brand-mark">▮</span>
+        <span class="site-nav-brand-text">Extrême Droite · 1900–2026</span>
+      </a>
+      <nav class="site-nav-links">
+        <a href="#europe">Europe</a>
+        <a href="#switzerland">Suisse</a>
+        <a href="#about">À propos</a>
+      </nav>
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Basculer le thème"
+      >
+        <svg
+          class="theme-icon-sun"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+          />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          />
+        </svg>
+        <svg
+          class="theme-icon-moon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Hero: full-screen with PEGIDA image -->
+    <section
+      id="hero"
+      class="relative h-screen w-full overflow-hidden"
+    >
+      <img
+        src="/hero.jpg"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 hero-overlay"></div>
+      <div
+        class="relative h-full flex flex-col justify-end px-8 md:px-16 pb-20 md:pb-28 max-w-[1400px] mx-auto"
+      >
+        <p class="hero-eyebrow">VisualDon · 2026 · Étude longitudinale</p>
+        <h1 class="hero-title">La montée de<br /><em>l'extrême droite</em></h1>
+        <p class="hero-subtitle">
+          Cartographie d'un basculement européen — 1900 à 2026.
+        </p>
+        <p class="hero-lede">
+          Depuis la fin de la Seconde Guerre mondiale, les partis d'extrême
+          droite reconquièrent terrain et parlements. Ce projet retrace,
+          élection après élection, leur progression à travers le continent — et
+          ses échos en Suisse.
+        </p>
+      </div>
+      <div class="hero-scroll-cue">
+        <span>Défiler pour explorer</span>
+        <span class="hero-scroll-arrow">↓</span>
+      </div>
+      <p class="hero-credit">Photo · PEGIDA, Dresde, 2015</p>
+    </section>
+
+    <section
+      id="europe"
+      class="relative"
+    >
+      <!-- Section intro (scrolls above the sticky panel) -->
+      <div class="section-intro">
+        <p class="section-eyebrow">Chapitre 1</p>
+        <h2 class="section-title">Le continent qui bascule</h2>
+        <p class="section-deck">
+          De la marginalité de l'après-guerre aux portes du pouvoir : l'extrême
+          droite européenne en cinq dates clés.
+        </p>
+      </div>
+
+      <!-- Sticky visual panel -->
+      <div class="sticky top-0 h-screen flex flex-col overflow-hidden">
+        <h2
+          id="europe-year"
+          class="text-center py-6 shrink-0"
+        >
+          1900
+        </h2>
+        <div class="flex flex-1 min-h-0 relative">
+          <div
+            id="europe-map"
+            class="flex-1 relative"
+          ></div>
+
+          <!-- Event tiles overlay (floating over the map) -->
+          <div
+            id="event-tiles-overlay"
+            class="pointer-events-none absolute inset-0 z-10"
+          >
+            <svg
+              id="event-tiles-lines"
+              class="absolute inset-0 w-full h-full pointer-events-none"
+            ></svg>
+            <div
+              id="event-tiles-left"
+              class="event-tiles-column event-tiles-column-left"
+            ></div>
+            <div
+              id="event-tiles-right"
+              class="event-tiles-column event-tiles-column-right"
+            ></div>
+          </div>
+
+          <div
+            id="country-detail"
+            class="country-detail pointer-events-none absolute inset-0 z-20 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
+          >
+            <div class="flex items-start justify-between">
+              <div class="country-detail-header pointer-events-auto">
+                <p class="detail-eyebrow">Pays sélectionné</p>
+                <h3
+                  data-country-name
+                  class="leading-none"
+                >
+                  Pays
+                </h3>
+              </div>
+              <button
+                data-country-close
+                class="btn-back pointer-events-auto"
+                aria-label="Fermer"
+              >
+                <span>←</span>
+                <span>Retour</span>
+              </button>
+            </div>
+            <div class="country-detail-card pointer-events-auto w-80">
+              <div class="flex items-baseline justify-between mb-3">
+                <p class="card-label">Répartition des partis</p>
+                <p data-country-snapshot>—</p>
+              </div>
+              <ul
+                data-country-parties
+                class="flex flex-col gap-2.5"
+              ></ul>
+            </div>
+          </div>
+
+          <!-- Vertical timeline -->
+          <nav
+            class="flex flex-col items-center justify-between py-12 px-6 w-16 shrink-0"
+          >
+            <div
+              class="relative flex flex-col items-center justify-between h-full"
+            >
+              <div
+                class="absolute top-0 bottom-0 w-px left-1/2 -translate-x-1/2"
+                style="background: var(--border-subtle)"
+              ></div>
+              <button
+                class="timeline-dot active w-4 h-4 rounded-full relative z-10"
+                data-year="1900"
+              ></button>
+              <button
+                class="timeline-dot w-4 h-4 rounded-full relative z-10"
+                data-year="1960"
+              ></button>
+              <button
+                class="timeline-dot w-4 h-4 rounded-full relative z-10"
+                data-year="1980"
+              ></button>
+              <button
+                class="timeline-dot w-4 h-4 rounded-full relative z-10"
+                data-year="2000"
+              ></button>
+              <button
+                class="timeline-dot w-4 h-4 rounded-full relative z-10"
+                data-year="2024"
+              ></button>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!-- Scroll steps generated by JS -->
+      <div class="europe-steps"></div>
+    </section>
+
+    <!-- Switzerland focus section -->
+    <section
+      id="switzerland"
+      class="relative"
+    >
+      <!-- Section intro (scrolls above the sticky panel) -->
+      <div class="section-intro">
+        <p class="section-eyebrow">Chapitre 2</p>
+        <h2 class="section-title">Et la Suisse, dans tout ça ?</h2>
+        <p class="section-deck">
+          Depuis les années 1990, l'UDC domine le paysage politique helvétique.
+          Incident par incident, canton par canton.
+        </p>
+      </div>
+
+      <!-- Sticky visual panel -->
+      <div class="sticky top-0 h-screen flex flex-col overflow-hidden">
+        <div class="flex flex-1 min-h-0 relative">
+          <!-- Big year watermark sits behind the map -->
+          <h3
+            id="switzerland-year"
+            class="absolute inset-0 flex items-center justify-center leading-none pointer-events-none select-none z-0"
+          >
+            2026
+          </h3>
+
+          <!-- Swiss cantons map -->
+          <div
+            id="switzerland-map"
+            class="absolute inset-0 z-10"
+          ></div>
+
+          <!-- Event tiles overlay (floating over the map) -->
+          <div
+            id="event-tiles-switzerland-overlay"
+            class="pointer-events-none absolute inset-0 z-20"
+          >
+            <svg
+              id="event-tiles-switzerland-lines"
+              class="absolute inset-0 w-full h-full pointer-events-none"
+            ></svg>
+            <div
+              id="event-tiles-switzerland-left"
+              class="event-tiles-column event-tiles-column-left"
+            ></div>
+            <div
+              id="event-tiles-switzerland-right"
+              class="event-tiles-column event-tiles-column-right"
+            ></div>
+          </div>
+
+          <!-- Canton detail overlay, shown when a canton is clicked -->
+          <div
+            id="canton-detail"
+            class="country-detail pointer-events-none absolute inset-0 z-30 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
+          >
+            <div class="flex items-start justify-between">
+              <div class="country-detail-header pointer-events-auto">
+                <p class="detail-eyebrow">Canton sélectionné</p>
+                <h3
+                  data-canton-name
+                  class="leading-none"
+                >
+                  Canton
+                </h3>
+              </div>
+              <button
+                data-canton-close
+                class="btn-back pointer-events-auto"
+                aria-label="Fermer"
+              >
+                <span>←</span>
+                <span>Retour</span>
+              </button>
+            </div>
+            <div class="country-detail-card pointer-events-auto w-80">
+              <div class="flex items-baseline justify-between mb-3">
+                <p class="card-label">Répartition des partis</p>
+                <p data-canton-snapshot>—</p>
+              </div>
+              <ul
+                data-canton-parties
+                class="flex flex-col gap-2.5"
+              ></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom controls: play + UDC scale (left), horizontal timeline (right) -->
+        <div
+          class="shrink-0 px-10 pb-10 pt-4 flex items-end gap-8 relative z-30"
+        >
+          <div class="flex flex-col gap-3 shrink-0">
+            <button
+              id="switzerland-play"
+              type="button"
+              class="switzerland-play"
+              aria-label="Lecture"
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="currentColor"
+              >
+                <path d="M2 1.5l9 4.5-9 4.5V1.5z" />
+              </svg>
             </button>
-        </header>
+            <p class="udc-scale-label">UDC Scale</p>
+          </div>
 
-        <!-- Hero: full-screen with PEGIDA image -->
-        <section id="hero" class="relative h-screen w-full overflow-hidden">
-            <img src="/hero.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
-            <div class="absolute inset-0 hero-overlay"></div>
-            <div class="relative h-full flex flex-col justify-end px-8 md:px-16 pb-20 md:pb-28 max-w-[1400px] mx-auto">
-                <p class="hero-eyebrow">VisualDon · 2026 · Étude longitudinale</p>
-                <h1 class="hero-title">La montée de<br/><em>l'extrême droite</em></h1>
-                <p class="hero-subtitle">Cartographie d'un basculement européen — 1900 à 2026.</p>
-                <p class="hero-lede">Depuis la fin de la Seconde Guerre mondiale, les partis d'extrême droite reconquièrent terrain et parlements. Ce projet retrace, élection après élection, leur progression à travers le continent — et ses échos en Suisse.</p>
+          <nav
+            class="switzerland-timeline flex-1"
+            aria-label="Chronologie suisse"
+          >
+            <div class="switzerland-timeline-track">
+              <button
+                class="switzerland-timeline-dot"
+                data-year="1999"
+              ></button>
+              <button
+                class="switzerland-timeline-dot"
+                data-year="2007"
+              ></button>
+              <button
+                class="switzerland-timeline-dot"
+                data-year="2015"
+              ></button>
+              <button
+                class="switzerland-timeline-dot"
+                data-year="2019"
+              ></button>
+              <button
+                class="switzerland-timeline-dot active"
+                data-year="2026"
+              ></button>
             </div>
-            <div class="hero-scroll-cue">
-                <span>Défiler pour explorer</span>
-                <span class="hero-scroll-arrow">↓</span>
-            </div>
-            <p class="hero-credit">Photo · PEGIDA, Dresde, 2015</p>
-        </section>
+            <ul class="switzerland-timeline-labels">
+              <li>Année</li>
+              <li>Année</li>
+              <li>Année</li>
+              <li>Année</li>
+              <li>Année</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- Scroll steps generated by JS -->
+      <div class="switzerland-steps"></div>
+    </section>
 
-        <section id="europe" class="relative">
-            <!-- Section intro (scrolls above the sticky panel) -->
-            <div class="section-intro">
-                <p class="section-eyebrow">Chapitre 1</p>
-                <h2 class="section-title">Le continent qui bascule</h2>
-                <p class="section-deck">De la marginalité de l'après-guerre aux portes du pouvoir : l'extrême droite européenne en cinq dates clés.</p>
-            </div>
+    <!-- About / context section: intentions, sources, biases, credits -->
+    <section
+      id="about"
+      class="about-context"
+    >
+      <div class="about-context-inner">
+        <div class="about-context-intro">
+          <p class="about-context-eyebrow">À propos</p>
+          <h2 class="about-context-title">Notre parti pris</h2>
+          <p class="about-context-lede">
+            L'extrême droite n'est pas une opinion comme une autre. Partout en
+            Europe, elle progresse en banalisant le racisme, en désignant des
+            boucs émissaires et en rongeant, scrutin après scrutin, les
+            garde-fous démocratiques. Ce projet n'est pas neutre : il documente
+            cette progression — en Suisse et chez ses voisins — pour rendre
+            visible ce qui se joue derrière les pourcentages.
+          </p>
+          <p class="about-context-body">
+            Notre démarche est à la fois <strong>exploratoire</strong> et
+            <strong>explicative</strong>. Explorer pour comparer les
+            trajectoires : y a-t-il une vague de fond, ou certains pays
+            résistent-ils ? Expliquer en reliant les courbes électorales aux
+            moments qui les nourrissent — crises migratoires instrumentalisées,
+            paniques sécuritaires, fragilités économiques.
+          </p>
+        </div>
 
-            <!-- Sticky visual panel -->
-            <div class="sticky top-0 h-screen flex flex-col overflow-hidden">
-                <h2 id="europe-year" class="text-center py-6 shrink-0">1900</h2>
-                <div class="flex flex-1 min-h-0 relative">
-                    <div id="europe-map" class="flex-1 relative"></div>
+        <div class="about-context-split">
+          <div>
+            <h3>Ce que disent les chiffres</h3>
+            <p>
+              Le vote d'extrême droite n'est plus un épiphénomène. En France, en
+              Allemagne, en Autriche, en Italie — et en Suisse avec l'UDC — il
+              pèse désormais entre 15 % et 30 % des suffrages. Replacer ces
+              scores dans le temps long montre qu'il ne s'agit pas d'un
+              accident, mais d'une tendance lourde, normalisée par la
+              répétition.
+            </p>
+          </div>
+          <div>
+            <h3>Ce que disent les actes</h3>
+            <p>
+              Derrière les pourcentages, il y a des actes : propos racistes
+              banalisés, affiches xénophobes, agressions, liens assumés avec les
+              milieux identitaires. Nous documentons ces dérapages — notamment
+              via le registre <em>Wall of Shame</em> — pour rappeler que ces
+              votes ont des conséquences concrètes sur la vie des personnes
+              visées.
+            </p>
+          </div>
+        </div>
 
-                    <!-- Event tiles overlay (floating over the map) -->
-                    <div id="event-tiles-overlay" class="pointer-events-none absolute inset-0 z-10">
-                        <svg id="event-tiles-lines" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
-                        <div id="event-tiles-left" class="event-tiles-column event-tiles-column-left"></div>
-                        <div id="event-tiles-right" class="event-tiles-column event-tiles-column-right"></div>
-                    </div>
+        <div class="about-context-block">
+          <p class="about-context-label">Sources de données</p>
+          <ul class="about-context-sources">
+            <li>
+              <p class="about-context-source-name">ParlGov</p>
+              <p>
+                Infrastructure de recherche sur les démocraties de l'UE et de
+                l'OCDE (1900–2023) : environ 1 700 partis, 1 000 élections et 30
+                pays. Utilisée en science politique comparative.
+              </p>
+              <a
+                href="https://parlgov.fly.dev/"
+                target="_blank"
+                rel="noopener"
+                >parlgov.fly.dev ↗</a
+              >
+            </li>
+            <li>
+              <p class="about-context-source-name">Manifesto Project</p>
+              <p>
+                Codage systématique des programmes électoraux pour mesurer le
+                positionnement idéologique des partis sur l'axe gauche-droite.
+                Projet de référence du WZB Berlin.
+              </p>
+              <a
+                href="https://manifesto-project.wzb.eu/datasets/MPDS2025a"
+                target="_blank"
+                rel="noopener"
+                >manifesto-project.wzb.eu ↗</a
+              >
+            </li>
+            <li>
+              <p class="about-context-source-name">Wall of Shame</p>
+              <p>
+                Registre citoyen maintenu par Rebel Suisse documentant les
+                dérapages de l'extrême droite en Suisse, avec un focus
+                particulier sur l'UDC.
+              </p>
+              <a
+                href="https://www.nopasaran.ch/fr-CH"
+                target="_blank"
+                rel="noopener"
+                >nopasaran.ch ↗</a
+              >
+            </li>
+          </ul>
+        </div>
 
-                    <div
-                        id="country-detail"
-                        class="country-detail pointer-events-none absolute inset-0 z-20 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
-                    >
-                        <div class="flex items-start justify-between">
-                            <div class="country-detail-header pointer-events-auto">
-                                <p class="detail-eyebrow">Pays sélectionné</p>
-                                <h3 data-country-name class="leading-none">Pays</h3>
-                            </div>
-                            <button
-                                data-country-close
-                                class="btn-back pointer-events-auto"
-                                aria-label="Fermer"
-                            >
-                                <span>←</span>
-                                <span>Retour</span>
-                            </button>
-                        </div>
-                        <div class="country-detail-card pointer-events-auto w-80">
-                            <div class="flex items-baseline justify-between mb-3">
-                                <p class="card-label">Répartition des partis</p>
-                                <p data-country-snapshot>—</p>
-                            </div>
-                            <ul data-country-parties class="flex flex-col gap-2.5"></ul>
-                        </div>
-                    </div>
+        <div class="about-context-block about-context-limits">
+          <p class="about-context-label">Biais et limites</p>
+          <ul>
+            <li>
+              <strong>Définition variable.</strong> La notion d'« extrême droite
+              » n'est pas universelle : elle varie selon les chercheurs, les
+              médias et les pays. Certains partis se situent à la frontière
+              entre droite conservatrice et extrême droite.
+            </li>
+            <li>
+              <strong>Comparabilité.</strong> Les systèmes électoraux diffèrent
+              d'un pays à l'autre (proportionnel, majoritaire, mixte), ce qui
+              rend les comparaisons directes délicates.
+            </li>
+            <li>
+              <strong>Couverture temporelle.</strong> Les données ne remontent
+              pas toujours aussi loin dans tous les pays ; les partis changent
+              de nom, fusionnent ou se scindent au fil du temps.
+            </li>
+            <li>
+              <strong>Abstention.</strong> Les résultats ne reflètent que les
+              votes exprimés et non l'opinion de l'ensemble de la population.
+            </li>
+          </ul>
+        </div>
 
-                    <!-- Vertical timeline -->
-                    <nav class="flex flex-col items-center justify-between py-12 px-6 w-16 shrink-0">
-                        <div class="relative flex flex-col items-center justify-between h-full">
-                            <div class="absolute top-0 bottom-0 w-px left-1/2 -translate-x-1/2" style="background: var(--border-subtle);"></div>
-                            <button class="timeline-dot active w-4 h-4 rounded-full relative z-10" data-year="1900"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="1960"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="1980"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="2000"></button>
-                            <button class="timeline-dot w-4 h-4 rounded-full relative z-10" data-year="2024"></button>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <!-- Scroll steps generated by JS -->
-            <div class="europe-steps"></div>
-        </section>
+        <footer class="about-context-footer">
+          <div>
+            <p class="about-context-label">Auteurs</p>
+            <p class="about-context-authors">
+              Dylan Eray &amp; Loic Peyramaure
+            </p>
+            <p class="about-context-meta">VisualDon 2026 — HEIG-VD</p>
+          </div>
+          <a
+            href="https://github.com/DYLANeay/visualdon-projet"
+            target="_blank"
+            rel="noopener"
+            >github.com/DYLANeay/visualdon-projet ↗</a
+          >
+        </footer>
+      </div>
+    </section>
 
-        <!-- Switzerland focus section -->
-        <section id="switzerland" class="relative">
-            <!-- Section intro (scrolls above the sticky panel) -->
-            <div class="section-intro">
-                <p class="section-eyebrow">Chapitre 2</p>
-                <h2 class="section-title">Et la Suisse, dans tout ça ?</h2>
-                <p class="section-deck">Depuis les années 1990, l'UDC domine le paysage politique helvétique. Incident par incident, canton par canton.</p>
-            </div>
+    <!-- Event detail modal -->
+    <dialog
+      id="event-modal"
+      class="event-modal"
+    >
+      <button
+        class="event-modal-close"
+        data-event-close
+        aria-label="Fermer"
+      >
+        ×
+      </button>
+      <div class="event-modal-inner">
+        <p
+          class="event-modal-year"
+          data-event-year
+        >
+          —
+        </p>
+        <h3
+          class="event-modal-title"
+          data-event-title
+        >
+          Title
+        </h3>
+        <div
+          class="event-modal-image"
+          data-event-image
+        >
+          <span>Image</span>
+        </div>
+        <div
+          class="event-modal-badges"
+          data-event-badges
+        ></div>
+        <div
+          class="event-modal-person-role hidden"
+          data-event-person-role
+        >
+          <p>
+            <strong data-event-person></strong>, <span data-event-role></span>
+          </p>
+        </div>
+        <div
+          class="event-modal-description"
+          data-event-description
+        >
+          <p>Description…</p>
+        </div>
+        <div
+          class="event-modal-consequences hidden"
+          data-event-consequences
+        >
+          <h4>Conséquences</h4>
+          <p data-event-consequences-text>...</p>
+        </div>
+        <div
+          class="event-modal-sources hidden"
+          data-event-sources
+        >
+          <h4>Sources</h4>
+          <ul data-event-sources-list></ul>
+        </div>
+        <a
+          class="event-modal-link"
+          data-event-link
+          href="#"
+          target="_blank"
+          rel="noopener"
+        >
+          <span data-event-link-text>Voir plus d'informations</span>
+          <span class="event-modal-link-arrow">↗</span>
+        </a>
+      </div>
+    </dialog>
 
-            <!-- Sticky visual panel -->
-            <div class="sticky top-0 h-screen flex flex-col overflow-hidden">
-                <div class="flex flex-1 min-h-0 relative">
-                    <!-- Big year watermark sits behind the map -->
-                    <h3
-                        id="switzerland-year"
-                        class="absolute inset-0 flex items-center justify-center leading-none pointer-events-none select-none z-0"
-                    >
-                        2026
-                    </h3>
-
-                    <!-- Swiss cantons map -->
-                    <div id="switzerland-map" class="absolute inset-0 z-10"></div>
-
-                    <!-- Event tiles overlay (floating over the map) -->
-                    <div id="event-tiles-switzerland-overlay" class="pointer-events-none absolute inset-0 z-20">
-                        <svg id="event-tiles-switzerland-lines" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
-                        <div id="event-tiles-switzerland-left" class="event-tiles-column event-tiles-column-left"></div>
-                        <div id="event-tiles-switzerland-right" class="event-tiles-column event-tiles-column-right"></div>
-                    </div>
-
-                    <!-- Canton detail overlay, shown when a canton is clicked -->
-                    <div
-                        id="canton-detail"
-                        class="country-detail pointer-events-none absolute inset-0 z-30 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
-                    >
-                        <div class="flex items-start justify-between">
-                            <div class="country-detail-header pointer-events-auto">
-                                <p class="detail-eyebrow">Canton sélectionné</p>
-                                <h3 data-canton-name class="leading-none">Canton</h3>
-                            </div>
-                            <button
-                                data-canton-close
-                                class="btn-back pointer-events-auto"
-                                aria-label="Fermer"
-                            >
-                                <span>←</span>
-                                <span>Retour</span>
-                            </button>
-                        </div>
-                        <div class="country-detail-card pointer-events-auto w-80">
-                            <div class="flex items-baseline justify-between mb-3">
-                                <p class="card-label">Répartition des partis</p>
-                                <p data-canton-snapshot>—</p>
-                            </div>
-                            <ul data-canton-parties class="flex flex-col gap-2.5"></ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom controls: play + UDC scale (left), horizontal timeline (right) -->
-                <div class="shrink-0 px-10 pb-10 pt-4 flex items-end gap-8 relative z-30">
-                    <div class="flex flex-col gap-3 shrink-0">
-                        <button
-                            id="switzerland-play"
-                            type="button"
-                            class="switzerland-play"
-                            aria-label="Lecture"
-                        >
-                            <svg viewBox="0 0 12 12" fill="currentColor">
-                                <path d="M2 1.5l9 4.5-9 4.5V1.5z"/>
-                            </svg>
-                        </button>
-                        <p class="udc-scale-label">
-                            UDC Scale
-                        </p>
-                    </div>
-
-                    <nav class="switzerland-timeline flex-1" aria-label="Chronologie suisse">
-                        <div class="switzerland-timeline-track">
-                            <button class="switzerland-timeline-dot" data-year="1999"></button>
-                            <button class="switzerland-timeline-dot" data-year="2007"></button>
-                            <button class="switzerland-timeline-dot" data-year="2015"></button>
-                            <button class="switzerland-timeline-dot" data-year="2019"></button>
-                            <button class="switzerland-timeline-dot active" data-year="2026"></button>
-                        </div>
-                        <ul class="switzerland-timeline-labels">
-                            <li>Année</li>
-                            <li>Année</li>
-                            <li>Année</li>
-                            <li>Année</li>
-                            <li>Année</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- Scroll steps generated by JS -->
-            <div class="switzerland-steps"></div>
-        </section>
-
-        <!-- About / context section: intentions, sources, biases, credits -->
-        <section id="about" class="about-context">
-            <div class="about-context-inner">
-                <div class="about-context-intro">
-                    <p class="about-context-eyebrow">À propos</p>
-                    <h2 class="about-context-title">Notre parti pris</h2>
-                    <p class="about-context-lede">
-                        L'extrême droite n'est pas une opinion comme une autre. Partout en Europe, elle progresse en
-                        banalisant le racisme, en désignant des boucs émissaires et en rongeant, scrutin après
-                        scrutin, les garde-fous démocratiques. Ce projet n'est pas neutre : il documente cette
-                        progression — en Suisse et chez ses voisins — pour rendre visible ce qui se joue derrière les
-                        pourcentages.
-                    </p>
-                    <p class="about-context-body">
-                        Notre démarche est à la fois <strong>exploratoire</strong> et
-                        <strong>explicative</strong>. Explorer pour comparer les trajectoires :
-                        y a-t-il une vague de fond, ou certains pays résistent-ils ? Expliquer en reliant les courbes
-                        électorales aux moments qui les nourrissent — crises migratoires instrumentalisées, paniques
-                        sécuritaires, fragilités économiques.
-                    </p>
-                </div>
-
-                <div class="about-context-split">
-                    <div>
-                        <h3>Ce que disent les chiffres</h3>
-                        <p>
-                            Le vote d'extrême droite n'est plus un épiphénomène. En France, en Allemagne, en Autriche,
-                            en Italie — et en Suisse avec l'UDC — il pèse désormais entre 15 % et 30 % des suffrages.
-                            Replacer ces scores dans le temps long montre qu'il ne s'agit pas d'un accident, mais
-                            d'une tendance lourde, normalisée par la répétition.
-                        </p>
-                    </div>
-                    <div>
-                        <h3>Ce que disent les actes</h3>
-                        <p>
-                            Derrière les pourcentages, il y a des actes : propos racistes banalisés, affiches
-                            xénophobes, agressions, liens assumés avec les milieux identitaires. Nous documentons ces
-                            dérapages — notamment via le registre <em>Wall of Shame</em> — pour rappeler que ces votes
-                            ont des conséquences concrètes sur la vie des personnes visées.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="about-context-block">
-                    <p class="about-context-label">Sources de données</p>
-                    <ul class="about-context-sources">
-                        <li>
-                            <p class="about-context-source-name">ParlGov</p>
-                            <p>
-                                Infrastructure de recherche sur les démocraties de l'UE et de l'OCDE (1900–2023) :
-                                environ 1 700 partis, 1 000 élections et 30 pays. Utilisée en science politique
-                                comparative.
-                            </p>
-                            <a href="https://parlgov.fly.dev/" target="_blank" rel="noopener">parlgov.fly.dev ↗</a>
-                        </li>
-                        <li>
-                            <p class="about-context-source-name">Manifesto Project</p>
-                            <p>
-                                Codage systématique des programmes électoraux pour mesurer le positionnement
-                                idéologique des partis sur l'axe gauche-droite. Projet de référence du WZB Berlin.
-                            </p>
-                            <a href="https://manifesto-project.wzb.eu/datasets/MPDS2025a" target="_blank" rel="noopener">manifesto-project.wzb.eu ↗</a>
-                        </li>
-                        <li>
-                            <p class="about-context-source-name">Wall of Shame</p>
-                            <p>
-                                Registre citoyen maintenu par Rebel Suisse documentant les dérapages de l'extrême
-                                droite en Suisse, avec un focus particulier sur l'UDC.
-                            </p>
-                            <a href="https://www.nopasaran.ch/fr-CH" target="_blank" rel="noopener">nopasaran.ch ↗</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="about-context-block about-context-limits">
-                    <p class="about-context-label">Biais et limites</p>
-                    <ul>
-                        <li>
-                            <strong>Définition variable.</strong> La notion d'« extrême droite »
-                            n'est pas universelle : elle varie selon les chercheurs, les médias et les pays. Certains
-                            partis se situent à la frontière entre droite conservatrice et extrême droite.
-                        </li>
-                        <li>
-                            <strong>Comparabilité.</strong> Les systèmes électoraux diffèrent
-                            d'un pays à l'autre (proportionnel, majoritaire, mixte), ce qui rend les comparaisons
-                            directes délicates.
-                        </li>
-                        <li>
-                            <strong>Couverture temporelle.</strong> Les données ne remontent pas
-                            toujours aussi loin dans tous les pays ; les partis changent de nom, fusionnent ou se
-                            scindent au fil du temps.
-                        </li>
-                        <li>
-                            <strong>Abstention.</strong> Les résultats ne reflètent que les
-                            votes exprimés et non l'opinion de l'ensemble de la population.
-                        </li>
-                    </ul>
-                </div>
-
-                <footer class="about-context-footer">
-                    <div>
-                        <p class="about-context-label">Auteurs</p>
-                        <p class="about-context-authors">Dylan Eray &amp; Loic Peyramaure</p>
-                        <p class="about-context-meta">VisualDon 2026 — HEIG-VD</p>
-                    </div>
-                    <a href="https://github.com/DYLANeay/visualdon-projet" target="_blank" rel="noopener">github.com/DYLANeay/visualdon-projet ↗</a>
-                </footer>
-            </div>
-        </section>
-
-        <!-- Event detail modal -->
-        <dialog id="event-modal" class="event-modal">
-            <button class="event-modal-close" data-event-close aria-label="Fermer">×</button>
-            <div class="event-modal-inner">
-                <p class="event-modal-year" data-event-year>—</p>
-                <h3 class="event-modal-title" data-event-title>Title</h3>
-                <div class="event-modal-image" data-event-image>
-                    <span>Image</span>
-                </div>
-                <div class="event-modal-badges" data-event-badges></div>
-                <div class="event-modal-person-role hidden" data-event-person-role>
-                    <p><strong data-event-person></strong>, <span data-event-role></span></p>
-                </div>
-                <div class="event-modal-description" data-event-description>
-                    <p>Description…</p>
-                </div>
-                <div class="event-modal-consequences hidden" data-event-consequences>
-                    <h4>Conséquences</h4>
-                    <p data-event-consequences-text>...</p>
-                </div>
-                <div class="event-modal-sources hidden" data-event-sources>
-                    <h4>Sources</h4>
-                    <ul data-event-sources-list></ul>
-                </div>
-                <a class="event-modal-link" data-event-link href="#" target="_blank" rel="noopener">
-                    <span data-event-link-text>Voir plus d'informations</span>
-                    <span class="event-modal-link-arrow">↗</span>
-                </a>
-            </div>
-        </dialog>
-
-        <script type="module" src="/src/main.js"></script>
-    </body>
+    <script
+      type="module"
+      src="/src/main.js"
+    ></script>
+  </body>
 </html>

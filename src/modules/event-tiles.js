@@ -127,7 +127,7 @@ const FALLBACK_EVENTS = [
     country: 'FR',
     type: 'far-right',
     side: 'left',
-    title: "Le Pen au second tour",
+    title: 'Le Pen au second tour',
     description:
       "En 2002, Jean-Marie Le Pen atteint le second tour de la présidentielle française, signalant une percée électorale majeure de l'extrême droite.",
   },
@@ -189,7 +189,8 @@ let _eventById = new Map(FALLBACK_EVENTS.map((event) => [event.id, event]));
 
 function _normalizeType(rawType) {
   if (TYPE_META[rawType]) return rawType;
-  if (rawType === 'extreme_droite' || rawType === 'far_right') return 'far-right';
+  if (rawType === 'extreme_droite' || rawType === 'far_right')
+    return 'far-right';
   if (rawType === 'global') return 'general';
   if (rawType === 'extreme_droite_suisse') return 'swiss-far-right';
   return 'general';
@@ -198,7 +199,10 @@ function _normalizeType(rawType) {
 function _normalizeSide(rawSide, event) {
   if (rawSide === 'left' || rawSide === 'right') return rawSide;
   if (event.type === 'swiss-abroad') return 'right';
-  const hash = Array.from(event.id).reduce((acc, ch) => acc + ch.charCodeAt(0), event.year || 0);
+  const hash = Array.from(event.id).reduce(
+    (acc, ch) => acc + ch.charCodeAt(0),
+    event.year || 0,
+  );
   return hash % 2 === 0 ? 'left' : 'right';
 }
 
@@ -206,58 +210,61 @@ function _normalizeSide(rawSide, event) {
 // tagged far-right with inflated scores), so we use a WHITELIST approach instead.
 // Only events whose title explicitly mentions far-right movements/parties/ideology
 // keep the 'far-right' type. Everything else demotes to 'general'.
-const FAR_RIGHT_WHITELIST_RE = new RegExp([
-  'extr[êe]me.?droite',
-  'fascis',
-  'n[ée]o.?nazi',
-  'nazi',
-  'n[ée]o.?fascis',
-  'national.?socialis',
-  'franquist',
-  'carlisme',
-  // Parties / movements
-  'front national',
-  'rassemblement national',
-  'aube dor[ée]e',
-  'casa.?pound',
-  'forza nuova',
-  'jobbik',
-  'afd|alternative f[uü]r',
-  'fp[öo]',
-  'freiheitliche',
-  'vlaams belang',
-  'vlaams blok',
-  'lega nord',
-  'fratelli d.italia',
-  'vox \\(',
-  'fidesz',
-  'ukip|ind[ée]pendance du royaume',
-  'd[ée]mocrates de su[eè]de',
-  'parti radical serbe',
-  'chez nous \\(belg',
-  'mouvement patriotique',
-  'bloc nationaliste',
-  'la droite \\(italie',
-  'mouvement national \\(pologne',
-  'parti populaire \\(belg',
-  'front populaire national',
-  'elam',
-  'elections? legislatives? chypriotes? de 20(16|21)',
-  // People
-  'mussolini|hitler|le pen|salvini|meloni|orbán|orban|haider|blocher|wilders',
-  // Strong signals
-  'milice|squadris|chemises noires|march.{1,5}sur rome',
-  'pleins pouvoirs.+1933',
-  'grand conseil du fascisme',
-  'licteur',
-  'anti.?migrant',
-  '[ée]meute.+royaume.?uni',
-  'contr.+extr[êe]me.?droite',
-  'manifesta.+anti.?ext',
-  'relations.+extr[êe]me.?droite',
-  'attentats? de hanau',
-  'attentat.+halle',
-].join('|'), 'i');
+const FAR_RIGHT_WHITELIST_RE = new RegExp(
+  [
+    'extr[êe]me.?droite',
+    'fascis',
+    'n[ée]o.?nazi',
+    'nazi',
+    'n[ée]o.?fascis',
+    'national.?socialis',
+    'franquist',
+    'carlisme',
+    // Parties / movements
+    'front national',
+    'rassemblement national',
+    'aube dor[ée]e',
+    'casa.?pound',
+    'forza nuova',
+    'jobbik',
+    'afd|alternative f[uü]r',
+    'fp[öo]',
+    'freiheitliche',
+    'vlaams belang',
+    'vlaams blok',
+    'lega nord',
+    'fratelli d.italia',
+    'vox \\(',
+    'fidesz',
+    'ukip|ind[ée]pendance du royaume',
+    'd[ée]mocrates de su[eè]de',
+    'parti radical serbe',
+    'chez nous \\(belg',
+    'mouvement patriotique',
+    'bloc nationaliste',
+    'la droite \\(italie',
+    'mouvement national \\(pologne',
+    'parti populaire \\(belg',
+    'front populaire national',
+    'elam',
+    'elections? legislatives? chypriotes? de 20(16|21)',
+    // People
+    'mussolini|hitler|le pen|salvini|meloni|orbán|orban|haider|blocher|wilders',
+    // Strong signals
+    'milice|squadris|chemises noires|march.{1,5}sur rome',
+    'pleins pouvoirs.+1933',
+    'grand conseil du fascisme',
+    'licteur',
+    'anti.?migrant',
+    '[ée]meute.+royaume.?uni',
+    'contr.+extr[êe]me.?droite',
+    'manifesta.+anti.?ext',
+    'relations.+extr[êe]me.?droite',
+    'attentats? de hanau',
+    'attentat.+halle',
+  ].join('|'),
+  'i',
+);
 
 function _isLikelyFarRight(raw, normalizedType) {
   if (normalizedType !== 'far-right') return true; // keep as-is for other types
@@ -280,8 +287,14 @@ function _buildEventFromRaw(raw, idx = 0) {
   // Bug 3: demote false-positive far-right events
   if (!_isLikelyFarRight(raw, type)) type = 'general';
 
-  const country = raw.country || raw.iso2 || (Array.isArray(raw.countries) ? raw.countries[0] : null) || null;
-  const id = raw.id || `wiki-${year}-${idx}-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const country =
+    raw.country ||
+    raw.iso2 ||
+    (Array.isArray(raw.countries) ? raw.countries[0] : null) ||
+    null;
+  const id =
+    raw.id ||
+    `wiki-${year}-${idx}-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   const event = {
     id,
     year,
@@ -339,7 +352,11 @@ function _normalizeCountryEventsArray(rawArray) {
 }
 
 function _getConnectorColor() {
-  return getComputedStyle(document.documentElement).getPropertyValue('--border-strong').trim() || '#1A1A1A';
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--border-strong')
+      .trim() || '#1A1A1A'
+  );
 }
 
 // Continuously redraw connector lines for `duration` ms.
@@ -353,7 +370,14 @@ function _scheduleLineRedraw(duration = 350) {
   requestAnimationFrame(tick);
 }
 
-export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines, wikipediaEvents, countryEvents }) {
+export function initEventTiles({
+  mapContainer,
+  overlayLeft,
+  overlayRight,
+  svgLines,
+  wikipediaEvents,
+  countryEvents,
+}) {
   _mapContainer = mapContainer;
   _overlayLeft = overlayLeft;
   _overlayRight = overlayRight;
@@ -379,7 +403,9 @@ export function setEventTilesFocus(iso2) {
 
   // Switch event source: country-specific events when zoomed, europe-wide otherwise.
   if (_focusIso2) {
-    const specific = _normalizeCountryEventsArray(_countryEvents[_focusIso2] || []);
+    const specific = _normalizeCountryEventsArray(
+      _countryEvents[_focusIso2] || [],
+    );
     _events =
       specific.length > 0
         ? specific
@@ -387,7 +413,8 @@ export function setEventTilesFocus(iso2) {
             (e) =>
               e.type !== 'general' &&
               (e.country === _focusIso2 ||
-                (Array.isArray(e.countries) && e.countries.includes(_focusIso2)))
+                (Array.isArray(e.countries) &&
+                  e.countries.includes(_focusIso2))),
           );
   } else {
     _events = _europeEvents;
@@ -451,7 +478,7 @@ function _openModal(event) {
   _modal.querySelector('[data-event-consequences]')?.classList.add('hidden');
   _modal.querySelector('[data-event-sources]')?.classList.add('hidden');
   const linkText = _modal.querySelector('[data-event-link-text]');
-  if (linkText) linkText.textContent = "Voir sur Wikipédia";
+  if (linkText) linkText.textContent = 'Voir sur Wikipédia';
 
   const link = _modal.querySelector('[data-event-link]');
   if (event.url) {
@@ -476,7 +503,10 @@ function _createTile(event) {
         <h4 class="event-tile-title">${event.title}</h4>
         <div class="event-tile-badges">
           ${meta.badges
-            .map((b) => `<span class="event-badge badge-${b.tone}">${b.text}</span>`)
+            .map(
+              (b) =>
+                `<span class="event-badge badge-${b.tone}">${b.text}</span>`,
+            )
             .join('')}
         </div>
       </header>
@@ -526,10 +556,12 @@ export function updateEventTiles(year) {
   for (const event of activeEvents) {
     if (_activeTiles.has(event.id)) continue;
     const tile = _createTile(event);
-    tile.querySelector('.event-tile').addEventListener('click', () => _openModal(event));
+    tile
+      .querySelector('.event-tile')
+      .addEventListener('click', () => _openModal(event));
     // Bug 2 — In focus mode, force all tiles to the right column (mirrors Switzerland behaviour).
     // In overview, honour the event's own side assignment.
-    const useRightColumn = _focusIso2 ? true : (event.side === 'right');
+    const useRightColumn = _focusIso2 ? true : event.side === 'right';
     const parent = useRightColumn ? _overlayRight : _overlayLeft;
     parent.appendChild(tile);
     _activeTiles.set(event.id, tile);
@@ -589,7 +621,10 @@ function _redrawLines() {
     _svgLines.appendChild(line);
 
     // Small diamond marker at the country end, like the mockup
-    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    const marker = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'rect',
+    );
     const size = 6;
     marker.setAttribute('x', x2 - hostRect.left - size / 2);
     marker.setAttribute('y', y2 - hostRect.top - size / 2);

@@ -104,7 +104,11 @@ function computeFarRightShare(iso2, year) {
   let hasValid = false;
   for (const party of farRightParties) {
     const election = party.elections.find((e) => e.year === nearestYear);
-    if (election && election.vote_pct !== null && election.vote_pct !== undefined) {
+    if (
+      election &&
+      election.vote_pct !== null &&
+      election.vote_pct !== undefined
+    ) {
       total += election.vote_pct;
       hasValid = true;
     }
@@ -113,11 +117,19 @@ function computeFarRightShare(iso2, year) {
 }
 
 function _getNoDataColor() {
-  return getComputedStyle(document.documentElement).getPropertyValue('--bg-elevated').trim() || '#e8e8e8';
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--bg-elevated')
+      .trim() || '#e8e8e8'
+  );
 }
 
 function _getStrokeColor() {
-  return getComputedStyle(document.documentElement).getPropertyValue('--border-subtle').trim() || '#ccc';
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--border-subtle')
+      .trim() || '#ccc'
+  );
 }
 
 function getFillColor(feature) {
@@ -159,7 +171,9 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
   const features = getFeaturesForYear(1900);
   const geojson = { type: 'FeatureCollection', features };
 
-  const projection = d3.geoEqualEarth().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
+  const projection = d3
+    .geoEqualEarth()
+    .fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
   _path = d3.geoPath().projection(projection);
 
   g.selectAll('path')
@@ -208,7 +222,9 @@ export function updateEuropeMap(year) {
   const features = getFeaturesForYear(year);
   const geojson = { type: 'FeatureCollection', features };
 
-  const projection = d3.geoEqualEarth().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
+  const projection = d3
+    .geoEqualEarth()
+    .fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
   _path = d3.geoPath().projection(projection);
 
   const g = _svg.select('.map-group');
@@ -312,7 +328,10 @@ function _addLegend(container) {
     .attr('width', legendWidth + 40)
     .attr('height', legendHeight + 36);
 
-  const textColor = () => getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#4A4A4A';
+  const textColor = () =>
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--text-secondary')
+      .trim() || '#4A4A4A';
 
   svg
     .append('text')
@@ -323,7 +342,15 @@ function _addLegend(container) {
     .text('Échelle (%)');
 
   const thresholds = [0, 5, 10, 15, 20, 30];
-  const colors = ['#e8e8e8', '#fee5d9', '#fcbba1', '#fc9272', '#fb6a4a', '#de2d26', '#a50f15'];
+  const colors = [
+    '#e8e8e8',
+    '#fee5d9',
+    '#fcbba1',
+    '#fc9272',
+    '#fb6a4a',
+    '#de2d26',
+    '#a50f15',
+  ];
   const stepWidth = legendWidth / colors.length;
 
   colors.forEach((color, i) => {

@@ -111,7 +111,8 @@ elements and data as parameters.
 Always use the `.join()` pattern (not the enter/update/exit boilerplate):
 
 ```js
-svg.selectAll('path')
+svg
+  .selectAll('path')
   .data(features, (d) => d.properties.id)
   .join('path')
   .attr('d', path)
@@ -127,7 +128,8 @@ const margin = { top: 20, right: 30, bottom: 40, left: 50 };
 const width = containerWidth - margin.left - margin.right;
 const height = containerHeight - margin.top - margin.bottom;
 
-const svg = d3.select(container)
+const svg = d3
+  .select(container)
   .append('svg')
   .attr('width', width + margin.left + margin.right)
   .attr('height', height + margin.top + margin.bottom)
@@ -146,7 +148,8 @@ const svg = d3.select(container)
 Use `d3.scaleThreshold()` for the choropleth (far-right vote share mapped to a sequential red palette):
 
 ```js
-const colorScale = d3.scaleThreshold()
+const colorScale = d3
+  .scaleThreshold()
   .domain([5, 10, 15, 20, 30])
   .range(['#fee5d9', '#fcbba1', '#fc9272', '#fb6a4a', '#de2d26', '#a50f15']);
 ```
@@ -205,8 +208,8 @@ Use the native `<dialog>` element (already in `index.html`):
 
 ```js
 const dialog = document.querySelector('dialog');
-dialog.showModal();  // open
-dialog.close();      // close
+dialog.showModal(); // open
+dialog.close(); // close
 ```
 
 ## Git workflow
