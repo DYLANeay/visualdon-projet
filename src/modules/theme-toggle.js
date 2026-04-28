@@ -17,5 +17,8 @@ export function initThemeToggle(button) {
     apply(!document.documentElement.classList.contains('dark'));
   });
 
-  button.setAttribute('aria-pressed', String(document.documentElement.classList.contains('dark')));
+  button.setAttribute(
+    'aria-pressed',
+    String(document.documentElement.classList.contains('dark')),
+  );
 }

@@ -1,12 +1,25 @@
 import scrollama from 'scrollama';
 
-const MONTHS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+const MONTHS = [
+  'Janvier',
+  'Février',
+  'Mars',
+  'Avril',
+  'Mai',
+  'Juin',
+  'Juillet',
+  'Août',
+  'Septembre',
+  'Octobre',
+  'Novembre',
+  'Décembre',
+];
 const PLAY_ICON_PATH = 'M2 1.5l9 4.5-9 4.5V1.5z';
 const PAUSE_ICON_PATH = 'M2 1.5h3v9H2zM7 1.5h3v9H7z';
 
 function formatDate(ms) {
-    const d = new Date(ms);
-    return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  const d = new Date(ms);
+  return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
@@ -15,8 +28,12 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
 
   const stepsContainer = section.querySelector('.switzerland-steps');
   const yearEl = document.querySelector('#switzerland-year');
-  const dots = Array.from(section.querySelectorAll('.switzerland-timeline-dot'));
-  const labels = Array.from(section.querySelectorAll('.switzerland-timeline-labels li'));
+  const dots = Array.from(
+    section.querySelectorAll('.switzerland-timeline-dot'),
+  );
+  const labels = Array.from(
+    section.querySelectorAll('.switzerland-timeline-labels li'),
+  );
 
   const milestoneYears = dots
     .map((dot) => Number(dot.dataset.year))
@@ -53,8 +70,8 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
   function setTime(time) {
     _currentTime = time;
     if (yearEl) {
-        yearEl.textContent = formatDate(time);
-        yearEl.classList.add('is-date');
+      yearEl.textContent = formatDate(time);
+      yearEl.classList.add('is-date');
     }
     setActiveDot(time);
     onTimeChange(time);
@@ -65,20 +82,22 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
       const targetYear = Number(dot.dataset.year);
       if (!Number.isNaN(targetYear)) {
         stopPlaying();
-        
+
         let targetTime = allDatesMs[0];
         for (const t of allDatesMs) {
-            if (new Date(t).getFullYear() >= targetYear) {
-                targetTime = t;
-                break;
-            }
+          if (new Date(t).getFullYear() >= targetYear) {
+            targetTime = t;
+            break;
+          }
         }
-        
-        const targetStep = stepsContainer.querySelector(`[data-time="${targetTime}"]`);
+
+        const targetStep = stepsContainer.querySelector(
+          `[data-time="${targetTime}"]`,
+        );
         if (targetStep) {
-            targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        
+
         setTime(targetTime);
       }
     });
@@ -122,7 +141,7 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
     _isPlaying = true;
     let currentIndex = allDatesMs.indexOf(_currentTime);
     if (currentIndex === -1 || currentIndex >= allDatesMs.length - 1) {
-        currentIndex = 0;
+      currentIndex = 0;
     }
 
     function playNextStep() {
@@ -135,10 +154,12 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
       const prevTime = allDatesMs[currentIndex];
       currentIndex++;
       const nextTime = allDatesMs[currentIndex];
-      
-      const targetStep = stepsContainer.querySelector(`[data-time="${nextTime}"]`);
+
+      const targetStep = stepsContainer.querySelector(
+        `[data-time="${nextTime}"]`,
+      );
       if (targetStep) {
-          targetStep.scrollIntoView({ behavior: 'auto', block: 'center' });
+        targetStep.scrollIntoView({ behavior: 'auto', block: 'center' });
       }
       setTime(nextTime);
 
@@ -147,14 +168,14 @@ export function initSwitzerlandScroll(onTimeChange, allDatesMs) {
       // If delta <= 1 day, it's a dense cluster of events => wait longer to read! (e.g. 500ms)
       let delay = 120;
       if (deltaMs <= 24 * 60 * 60 * 1000) {
-          delay = 550;
+        delay = 550;
       } else if (deltaMs <= 3 * 24 * 60 * 60 * 1000) {
-          delay = 300;
+        delay = 300;
       }
-      
+
       playInterval = setTimeout(playNextStep, delay);
     }
-    
+
     playInterval = setTimeout(playNextStep, 100);
     setPlayButtonState(true);
   }

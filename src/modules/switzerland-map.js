@@ -15,7 +15,12 @@ const MAP_HEIGHT = 560;
 // Semi-transparent so the big year watermark is visible through the cantons.
 const FILL_OPACITY = 0.82;
 
-export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCantonClick) {
+export function initSwitzerlandMap(
+  container,
+  geoCantons,
+  cantonsElections,
+  onCantonClick,
+) {
   _geo = geoCantons;
   _cantonsElections = cantonsElections;
   _onCantonClick = onCantonClick;
@@ -30,7 +35,9 @@ export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCa
 
   const g = _svg.append('g').attr('class', 'cantons-group');
 
-  const projection = d3.geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geoCantons);
+  const projection = d3
+    .geoMercator()
+    .fitSize([MAP_WIDTH, MAP_HEIGHT], geoCantons);
   _path = d3.geoPath().projection(projection);
 
   g.selectAll('path')
@@ -46,7 +53,9 @@ export function initSwitzerlandMap(container, geoCantons, cantonsElections, onCa
     .style('cursor', 'pointer')
     .on('mouseenter', function (event, d) {
       const base = _getCantonFill(d, _currentYear);
-      d3.select(this).attr('data-fill', base).attr('fill', d3.color(base).darker(0.4));
+      d3.select(this)
+        .attr('data-fill', base)
+        .attr('fill', d3.color(base).darker(0.4));
     })
     .on('mouseleave', function () {
       const saved = d3.select(this).attr('data-fill');
@@ -75,11 +84,19 @@ function _computeFarRightShare(kantonsnummer, year) {
 }
 
 function _getNoDataColor() {
-  return getComputedStyle(document.documentElement).getPropertyValue('--bg-elevated').trim() || '#e8e8e8';
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--bg-elevated')
+      .trim() || '#e8e8e8'
+  );
 }
 
 function _getStrokeColor() {
-  return getComputedStyle(document.documentElement).getPropertyValue('--border-subtle').trim() || '#ccc';
+  return (
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--border-subtle')
+      .trim() || '#ccc'
+  );
 }
 
 function _getCantonFill(feature, year) {
@@ -127,7 +144,9 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
     .duration(duration)
     .ease(d3.easeCubicInOut)
     .attr('opacity', (d) =>
-      d.properties.kantonsnummer === feature.properties.kantonsnummer ? 1 : 0.15,
+      d.properties.kantonsnummer === feature.properties.kantonsnummer
+        ? 1
+        : 0.15,
     );
 
   g.transition('t-zoom-group')
@@ -160,4 +179,3 @@ export function resetCantonZoom({ duration = 650 } = {}) {
       this.removeAttribute('transform');
     });
 }
-
