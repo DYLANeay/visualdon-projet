@@ -17,7 +17,7 @@ const MONTHS = [
 const PLAY_ICON_PATH = 'M2 1.5l9 4.5-9 4.5V1.5z';
 const PAUSE_ICON_PATH = 'M2 1.5h3v9H2zM7 1.5h3v9H7z';
 
-function formatDate(ms) {
+export function formatDate(ms) {
   const d = new Date(ms);
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }

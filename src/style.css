@@ -942,6 +942,7 @@ html.dark .tone-gray {
   width: 330px;
   gap: 14px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding-left: 6px;
   padding-bottom: 20px;
   pointer-events: auto;
@@ -960,6 +961,7 @@ html.dark .tone-gray {
   width: 330px;
   gap: 14px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding-left: 6px;
   padding-bottom: 20px;
   pointer-events: auto;
@@ -1154,6 +1156,7 @@ html.dark .badge-blue {
   box-shadow: var(--shadow-lg);
   max-height: 90vh;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* Accent band at top of modal */
@@ -1890,4 +1893,120 @@ html.dark .badge-blue {
   margin-top: 10px;
   font-size: 0.8125rem;
   color: var(--text-muted);
+}
+
+/* ─── Map Enhancements ────────────────────────────────────────────────────── */
+
+/* Fix event tiles column scrolling in focus mode */
+.event-tile-wrapper {
+  flex-shrink: 0;
+}
+
+.event-modal-inner {
+  box-sizing: border-box;
+}
+
+/* Timeline sliders styling */
+.timeline-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  z-index: 10;
+}
+
+.timeline-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  margin-top: -6px;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+}
+
+.timeline-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.timeline-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+}
+
+.timeline-slider::-moz-range-thumb:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* Vertical slider specific */
+.vertical-slider {
+  width: 400px;
+  height: 4px;
+  transform: rotate(90deg);
+  transform-origin: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -2px;
+}
+
+#europe nav.w-16 {
+  position: relative;
+  height: 400px; /* height that the vertical slider will occupy */
+}
+
+/* Tags Dropdown styling */
+.switzerland-tags-select {
+  appearance: none;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 8px 32px 8px 12px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234a4a4a' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html.dark .switzerland-tags-select {
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23f5f5f4' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.switzerland-tags-select:hover {
+  border-color: var(--text-muted);
+}
+
+.switzerland-tags-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
 }

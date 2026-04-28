@@ -64,8 +64,9 @@ let _overlayRoot = null;
 let _mapContainer = null;
 let _modal = null;
 let _activeTiles = new Map();
-let _currentTime = new Date('1999-01-01').getTime();
+let _currentTime = new Date('1997-01-01').getTime();
 let _focusKanton = null;
+let _currentCategoryFilter = '';
 
 function _getConnectorColor() {
   return (
@@ -98,26 +99,41 @@ export function initSwissEventTiles({
   _overlayRoot = svgLines?.parentElement || null;
 
   let idCounter = 0;
+  const categories = new Set();
   for (const yearStr in nopasaranData.eventsByYear) {
     for (const ev of nopasaranData.eventsByYear[yearStr]) {
+      if (ev.category) categories.add(ev.category);
       const kantonsnummer = extractKanton(ev.party);
       _events.push({
         ...ev,
         time: new Date(ev.date).getTime(),
         id: 'np-' + idCounter++,
         kantonsnummer,
-        side: kantonsnummer
-          ? kantonsnummer % 2 === 0
-            ? 'left'
-            : 'right'
-          : 'left',
         side: idCounter % 2 === 0 ? 'left' : 'right',
       });
     }
   }
 
+  const select = document.getElementById('switzerland-event-tags');
+  if (select) {
+    const optionsHTML = ['<option value="">Tous les événements</option>'];
+    Array.from(categories).sort().forEach(cat => {
+      optionsHTML.push(`<option value="${cat}">${cat}</option>`);
+    });
+    select.innerHTML = optionsHTML.join('');
+    
+    select.addEventListener('change', (e) => {
+      setSwissEventFilter(e.target.value);
+    });
+  }
+
   window.addEventListener('resize', () => _redrawLines());
   _setupModal();
+}
+
+export function setSwissEventFilter(category) {
+  _currentCategoryFilter = category;
+  updateSwissEventTiles(_currentTime);
 }
 
 export function setSwissEventTilesFocus(kantonsnummer) {
@@ -255,6 +271,7 @@ export function updateSwissEventTiles(time) {
   let activeEvents = _events.filter((ev) => {
     if (ev.time > time || ev.time + lifetime < time) return false;
     if (_focusKanton && ev.kantonsnummer !== _focusKanton) return false;
+    if (_currentCategoryFilter && ev.category !== _currentCategoryFilter) return false;
     return true;
   });
 

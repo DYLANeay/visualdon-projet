@@ -163,6 +163,7 @@
             <div
               id="event-tiles-right"
               class="event-tiles-column event-tiles-column-right"
+              data-lenis-prevent
             ></div>
           </div>
 
@@ -203,36 +204,16 @@
 
           <!-- Vertical timeline -->
           <nav
-            class="flex flex-col items-center justify-between py-12 px-6 w-16 shrink-0"
+            class="flex flex-col items-center justify-center py-12 px-6 w-16 shrink-0"
           >
-            <div
-              class="relative flex flex-col items-center justify-between h-full"
-            >
-              <div
-                class="absolute top-0 bottom-0 w-px left-1/2 -translate-x-1/2"
-                style="background: var(--border-subtle)"
-              ></div>
-              <button
-                class="timeline-dot active w-4 h-4 rounded-full relative z-10"
-                data-year="1900"
-              ></button>
-              <button
-                class="timeline-dot w-4 h-4 rounded-full relative z-10"
-                data-year="1960"
-              ></button>
-              <button
-                class="timeline-dot w-4 h-4 rounded-full relative z-10"
-                data-year="1980"
-              ></button>
-              <button
-                class="timeline-dot w-4 h-4 rounded-full relative z-10"
-                data-year="2000"
-              ></button>
-              <button
-                class="timeline-dot w-4 h-4 rounded-full relative z-10"
-                data-year="2024"
-              ></button>
-            </div>
+            <input 
+              type="range" 
+              id="europe-timeline-slider" 
+              class="vertical-slider timeline-slider" 
+              min="1900" max="2026" step="1" value="1900" 
+              orient="vertical"
+              aria-label="Sélectionner l'année"
+            />
           </nav>
         </div>
       </div>
@@ -295,6 +276,7 @@
             <div
               id="event-tiles-switzerland-right"
               class="event-tiles-column event-tiles-column-right"
+              data-lenis-prevent
             ></div>
           </div>
 
@@ -353,41 +335,26 @@
                 <path d="M2 1.5l9 4.5-9 4.5V1.5z" />
               </svg>
             </button>
+            <select id="switzerland-event-tags" class="switzerland-tags-select" aria-label="Filtrer les événements">
+              <option value="">Tous les événements</option>
+            </select>
           </div>
 
           <nav
-            class="switzerland-timeline flex-1"
+            class="switzerland-timeline flex-1 flex flex-col justify-center relative"
             aria-label="Chronologie suisse"
           >
-            <div class="switzerland-timeline-track">
-              <button
-                class="switzerland-timeline-dot"
-                data-year="1999"
-              ></button>
-              <button
-                class="switzerland-timeline-dot"
-                data-year="2007"
-              ></button>
-              <button
-                class="switzerland-timeline-dot"
-                data-year="2015"
-              ></button>
-              <button
-                class="switzerland-timeline-dot"
-                data-year="2019"
-              ></button>
-              <button
-                class="switzerland-timeline-dot active"
-                data-year="2026"
-              ></button>
+            <input 
+              type="range" 
+              id="switzerland-timeline-slider" 
+              class="horizontal-slider timeline-slider w-full" 
+              min="1997" max="2026" step="1" value="2026" 
+              aria-label="Sélectionner l'année"
+            />
+            <div class="flex justify-between mt-2 text-xs font-mono uppercase" style="color: var(--text-muted);">
+              <span>1997</span>
+              <span>2026</span>
             </div>
-            <ul class="switzerland-timeline-labels">
-              <li>Année</li>
-              <li>Année</li>
-              <li>Année</li>
-              <li>Année</li>
-              <li>Année</li>
-            </ul>
           </nav>
         </div>
       </div>
@@ -594,7 +561,7 @@
       >
         ×
       </button>
-      <div class="event-modal-inner">
+      <div class="event-modal-inner" data-lenis-prevent>
         <p
           class="event-modal-year"
           data-event-year

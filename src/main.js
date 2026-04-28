@@ -27,7 +27,7 @@ import {
   zoomToCanton,
   resetCantonZoom,
 } from './modules/switzerland-map.js';
-import { initSwitzerlandScroll } from './modules/switzerland-scroll.js';
+import { initSwitzerlandScroll, formatDate } from './modules/switzerland-scroll.js';
 import {
   initCantonDetail,
   showCantonDetail,
@@ -143,26 +143,10 @@ async function bootEurope() {
   }
 
   function _setActiveEuropeTimelineDot(year) {
-    const dots = Array.from(document.querySelectorAll('.timeline-dot'));
-    if (dots.length === 0) return;
-
-    let targetDot = null;
-    let targetYear = -Infinity;
-    for (const dot of dots) {
-      const dotYear = Number(dot.dataset.year);
-      if (!Number.isFinite(dotYear)) continue;
-      if (dotYear <= year && dotYear > targetYear) {
-        targetYear = dotYear;
-        targetDot = dot;
-      }
+    const slider = document.querySelector('#europe-timeline-slider');
+    if (slider && slider.value !== String(year)) {
+      slider.value = year;
     }
-
-    if (!targetDot) {
-      targetDot = dots[0];
-    }
-
-    dots.forEach((dot) => dot.classList.remove('active'));
-    targetDot?.classList.add('active');
   }
 
   function jumpEuropeToYear(targetYear) {
@@ -218,12 +202,49 @@ async function bootEurope() {
     countryEvents: wikipediaEvents?.country_events || {},
   });
 
+  let isEuropeSliding = false;
+
   initEuropeScroll(elections, (year) => {
+    if (isEuropeSliding) return;
     currentYear = year;
     updateEuropeMap(year);
     updateCountryDetail(year);
     updateEventTiles(year);
+    _setActiveEuropeTimelineDot(year);
   });
+
+  const europeSlider = document.querySelector('#europe-timeline-slider');
+  if (europeSlider) {
+    europeSlider.addEventListener('mousedown', () => isEuropeSliding = true);
+    europeSlider.addEventListener('touchstart', () => isEuropeSliding = true, {passive: true});
+    window.addEventListener('mouseup', () => isEuropeSliding = false);
+    window.addEventListener('touchend', () => isEuropeSliding = false, {passive: true});
+
+    europeSlider.addEventListener('input', (e) => {
+      const year = Number(e.target.value);
+      currentYear = year;
+      updateEuropeMap(year);
+      updateCountryDetail(year);
+      updateEventTiles(year);
+      
+      const yearLabel = document.querySelector('#europe-year');
+      if (yearLabel) yearLabel.textContent = String(year);
+
+      const steps = Array.from(document.querySelectorAll('.europe-step'));
+      let targetStep = steps[0];
+      let maxYear = -Infinity;
+      for (const step of steps) {
+        const stepYear = Number(step.dataset.year);
+        if (stepYear <= year && stepYear > maxYear) {
+          maxYear = stepYear;
+          targetStep = step;
+        }
+      }
+      if (targetStep) {
+        lenis.scrollTo(targetStep, { immediate: true });
+      }
+    });
+  }
 
   europeMapEl.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'svg') {
@@ -309,14 +330,61 @@ async function bootSwitzerland() {
       },
     );
 
+    let isSwissSliding = false;
+
     const swissScroll = initSwitzerlandScroll((time) => {
+      if (isSwissSliding) return;
       currentSwissYear = new Date(time).getFullYear();
       updateSwitzerlandMap(currentSwissYear);
       updateCantonDetail(currentSwissYear);
       updateSwissEventTiles(time);
+      const slider = document.querySelector('#switzerland-timeline-slider');
+      if (slider) {
+        const index = switzerlandAllDatesMs.indexOf(time);
+        if (index !== -1 && slider.value !== String(index)) {
+          slider.value = index;
+        }
+      }
     }, switzerlandAllDatesMs);
 
     if (swissScroll) _stopSwissPlay = swissScroll.stopPlaying;
+
+    const swissSlider = document.querySelector('#switzerland-timeline-slider');
+    if (swissSlider && switzerlandAllDatesMs.length > 0) {
+      swissSlider.min = 0;
+      swissSlider.max = switzerlandAllDatesMs.length - 1;
+      swissSlider.step = 1;
+      // Initialize position
+      swissSlider.value = switzerlandAllDatesMs.length - 1;
+
+      swissSlider.addEventListener('mousedown', () => isSwissSliding = true);
+      swissSlider.addEventListener('touchstart', () => isSwissSliding = true, {passive: true});
+      window.addEventListener('mouseup', () => isSwissSliding = false);
+      window.addEventListener('touchend', () => isSwissSliding = false, {passive: true});
+
+      swissSlider.addEventListener('input', (e) => {
+        if (_stopSwissPlay) _stopSwissPlay();
+        const index = Number(e.target.value);
+        const time = switzerlandAllDatesMs[index];
+        const year = new Date(time).getFullYear();
+        
+        currentSwissYear = year;
+        updateSwitzerlandMap(year);
+        updateCantonDetail(year);
+        updateSwissEventTiles(time);
+        
+        const yearLabel = document.querySelector('#switzerland-year');
+        if (yearLabel) {
+          yearLabel.textContent = formatDate(time);
+          yearLabel.classList.add('is-date');
+        }
+
+        const targetStep = document.querySelector(`.switzerland-step[data-time="${time}"]`);
+        if (targetStep) {
+          lenis.scrollTo(targetStep, { immediate: true });
+        }
+      });
+    }
 
     switzerlandMapEl.addEventListener('click', (e) => {
       if (e.target.tagName.toLowerCase() === 'svg') {
@@ -430,11 +498,7 @@ if (swissSticky) sectionResetObserver.observe(swissSticky);
 
 const eventModal = document.querySelector('#event-modal');
 if (eventModal) {
-  const obs = new MutationObserver(() => {
-    if (eventModal.open) lenis.stop();
-    else lenis.start();
-  });
-  obs.observe(eventModal, { attributes: true, attributeFilter: ['open'] });
+  // lenis.stop() is no longer called because data-lenis-prevent is used on the modal inner content
 }
 
 // ── Redraw maps on theme change (only if initialized) ───────────────────────
