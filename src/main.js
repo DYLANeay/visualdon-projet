@@ -1,6 +1,7 @@
 import 'normalize.css';
 import Lenis from 'lenis';
 import { loadAllData } from './modules/data-loader.js';
+import { initThemeToggle } from './modules/theme-toggle.js';
 import {
   initEuropeMap,
   updateEuropeMap,
@@ -12,6 +13,7 @@ import {
   initCountryDetail,
   showCountryDetail,
   updateCountryDetail,
+  hideCountryDetail,
 } from './modules/country-detail.js';
 import {
   initEventTiles,
@@ -21,8 +23,21 @@ import {
 import {
   initSwitzerlandMap,
   updateSwitzerlandMap,
+  zoomToCanton,
+  resetCantonZoom,
 } from './modules/switzerland-map.js';
 import { initSwitzerlandScroll } from './modules/switzerland-scroll.js';
+import {
+  initCantonDetail,
+  showCantonDetail,
+  updateCantonDetail,
+  hideCantonDetail,
+} from './modules/canton-detail.js';
+import {
+  initSwissEventTiles,
+  updateSwissEventTiles,
+  setSwissEventTilesFocus,
+} from './modules/switzerland-events.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -38,7 +53,30 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-const { geoEurope, geoEurope1900, geoSwissCantons, elections } = await loadAllData();
+// Theme toggle
+const themeToggleBtn = document.querySelector('#theme-toggle');
+initThemeToggle(themeToggleBtn);
+
+// Nav: add .is-scrolled class when past the hero
+const siteNav = document.querySelector('.site-nav');
+
+function syncSiteNavOffset() {
+  if (!siteNav) return;
+  const navHeight = Math.ceil(siteNav.getBoundingClientRect().height);
+  document.documentElement.style.setProperty('--site-nav-offset', `${navHeight + 12}px`);
+}
+
+syncSiteNavOffset();
+window.addEventListener('resize', syncSiteNavOffset);
+if (document.fonts?.ready) {
+  document.fonts.ready.then(syncSiteNavOffset).catch(() => {});
+}
+
+lenis.on('scroll', ({ scroll }) => {
+  siteNav?.classList.toggle('is-scrolled', scroll > 80);
+});
+
+const { geoEurope, geoEurope1900, geoSwissCantons, elections, nopasaran, cantonsElections } = await loadAllData();
 
 let currentYear = 1900;
 
@@ -53,7 +91,9 @@ initEuropeMap(europeMapEl, { geoEurope, geoEurope1900 }, elections, (iso2, featu
 initCountryDetail({
   panel: countryDetailEl,
   elections,
-  onShow: (feature) => zoomToFeature(feature),
+  onShow: (feature) => {
+    zoomToFeature(feature);
+  },
   onClose: () => {
     resetZoom();
     setEventTilesFocus(null);
@@ -74,14 +114,82 @@ initEuropeScroll(elections, (year) => {
   updateEventTiles(year);
 });
 
+europeMapEl.addEventListener('click', (e) => {
+  if (e.target.tagName.toLowerCase() === 'svg') {
+    import('./modules/europe-map.js').then((m) => m.resetCountryZoom());
+    hideCountryDetail();
+    setEventTilesFocus(null);
+  }
+});
+
+let currentSwissYear = 1999;
+let switzerlandAllDatesMs = [];
+if (nopasaran && nopasaran.eventsByYear) {
+  const allEvents = [];
+  for (const yearStr in nopasaran.eventsByYear) {
+    allEvents.push(...nopasaran.eventsByYear[yearStr]);
+  }
+  const eventDates = allEvents.map(e => new Date(e.date).getTime()).sort((a,b) => a - b);
+  if (eventDates.length > 0) {
+    // Start slightly before the first event to have some padding
+    const minTime = new Date(new Date(eventDates[0]).getFullYear(), 0, 1).getTime();
+    const maxTime = eventDates[eventDates.length - 1];
+    const allDatesSet = new Set(eventDates);
+    const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+    for (let t = minTime; t <= maxTime; t += WEEK_MS) {
+      allDatesSet.add(t);
+    }
+    switzerlandAllDatesMs = Array.from(allDatesSet).sort((a,b) => a - b);
+  }
+}
+
 const switzerlandMapEl = document.querySelector('#switzerland-map');
+const cantonDetailEl = document.querySelector('#canton-detail');
+
+let _stopSwissPlay = null;
+
 if (switzerlandMapEl && geoSwissCantons) {
-  initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, (feature) => {
-    // Future: open canton detail view (maquette 4-cantonClicked)
-    console.log('canton clicked:', feature.properties.name);
+  initSwitzerlandMap(switzerlandMapEl, geoSwissCantons, cantonsElections, (feature) => {
+    // Stop autoplay when user clicks a canton so the fill transition
+    // doesn't cancel the zoom transition.
+    if (_stopSwissPlay) _stopSwissPlay();
+    showCantonDetail(feature.properties.kantonsnummer, feature, currentSwissYear);
+    zoomToCanton(feature);
+    setSwissEventTilesFocus(feature.properties.kantonsnummer);
   });
-  initSwitzerlandScroll((year) => {
-    updateSwitzerlandMap(year);
+  const swissScroll = initSwitzerlandScroll((time) => {
+    currentSwissYear = new Date(time).getFullYear();
+    updateSwitzerlandMap(currentSwissYear);
+    updateCantonDetail(currentSwissYear);
+    updateSwissEventTiles(time);
+  }, switzerlandAllDatesMs);
+  if (swissScroll) _stopSwissPlay = swissScroll.stopPlaying;
+
+  switzerlandMapEl.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'svg') {
+      resetCantonZoom();
+      hideCantonDetail();
+      setSwissEventTilesFocus(null);
+    }
+  });
+}
+
+initSwissEventTiles({
+  mapContainer: switzerlandMapEl,
+  overlayLeft: document.querySelector('#event-tiles-switzerland-left'),
+  overlayRight: document.querySelector('#event-tiles-switzerland-right'),
+  svgLines: document.querySelector('#event-tiles-switzerland-lines'),
+  nopasaranData: nopasaran
+});
+
+if (cantonDetailEl && cantonsElections) {
+  initCantonDetail({
+    panel: cantonDetailEl,
+    cantonsElections,
+    onClose: () => {
+      resetCantonZoom();
+      setSwissEventTilesFocus(null);
+    },
   });
 }
 
@@ -106,3 +214,44 @@ const sectionObserver = new IntersectionObserver(
   { threshold: 0.12 },
 );
 fadeTargets.forEach((el) => sectionObserver.observe(el));
+// Reset focus / detail panel when the user scrolls out of a section.
+// We observe the inner sticky panels (100vh tall) rather than the outer
+// sections (thousands of vh), because with threshold 0.05 the tall sections
+// are almost always considered "intersecting".
+const europeSticky = document.querySelector('#europe > .sticky');
+const swissSticky = document.querySelector('#switzerland > .sticky');
+const sectionResetObserver = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) continue; // only act when leaving
+      const section = entry.target.closest('section');
+      if (section?.id === 'europe') {
+        hideCountryDetail();
+        setEventTilesFocus(null);
+      } else if (section?.id === 'switzerland') {
+        hideCantonDetail();
+        setSwissEventTilesFocus(null);
+      }
+    }
+  },
+  { threshold: 0.1 },
+);
+if (europeSticky) sectionResetObserver.observe(europeSticky);
+if (swissSticky) sectionResetObserver.observe(swissSticky);
+
+// Stop Lenis when the event modal is open so the background map doesn't scroll
+// while the user scrolls inside the overlay.
+const eventModal = document.querySelector('#event-modal');
+if (eventModal) {
+  const obs = new MutationObserver(() => {
+    if (eventModal.open) lenis.stop();
+    else lenis.start();
+  });
+  obs.observe(eventModal, { attributes: true, attributeFilter: ['open'] });
+}
+
+// Redraw maps on theme change so CSS-var colors are picked up.
+window.addEventListener('themechange', () => {
+  updateEuropeMap(currentYear);
+  updateSwitzerlandMap(currentSwissYear);
+});

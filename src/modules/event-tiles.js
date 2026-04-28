@@ -44,7 +44,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Marche sur Rome',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      'En octobre 1922, les fascistes de Mussolini convergent vers Rome et obtiennent la nomination du Duce à la tête du gouvernement italien.',
     url: 'https://fr.wikipedia.org/wiki/Marche_sur_Rome',
     image: null,
   },
@@ -56,7 +56,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Krach de Wall Street',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      'Le krach boursier de 1929 déclenche une crise économique mondiale qui fragilise les démocraties européennes et nourrit les mouvements autoritaires.',
   },
   {
     id: 'fr-1933-hitler',
@@ -66,7 +66,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Hitler chancelier',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "Le 30 janvier 1933, Adolf Hitler est nommé chancelier d'Allemagne, ouvrant la voie à la dictature nazie et à la répression politique.",
     url: 'https://fr.wikipedia.org/wiki/Adolf_Hitler',
     image: null,
   },
@@ -78,7 +78,7 @@ const FAKE_EVENTS = [
     side: 'right',
     title: 'Soutien financier helvétique',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "Des réseaux économiques suisses sont parfois cités dans les débats historiographiques sur les soutiens transfrontaliers aux mouvements d'extrême droite.",
   },
   {
     id: 'gen-1939-wwii',
@@ -88,7 +88,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Seconde Guerre mondiale',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "L'invasion de la Pologne en 1939 déclenche la Seconde Guerre mondiale, conflit majeur qui redessine l'Europe politique jusqu'en 1945.",
   },
   {
     id: 'sfr-1970-schwarzenbach',
@@ -98,7 +98,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Initiative Schwarzenbach',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "En Suisse, l'initiative Schwarzenbach de 1970 vise à limiter la présence étrangère et marque durablement le débat public sur l'immigration.",
   },
   {
     id: 'gen-1989-mur',
@@ -108,7 +108,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Chute du mur de Berlin',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      'La chute du mur en 1989 met fin à la division symbolique Est-Ouest, mais ouvre aussi une période de recomposition politique en Europe.',
   },
   {
     id: 'sfr-1995-blocher',
@@ -118,7 +118,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: "Montée de l'UDC sous Blocher",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "Dans les années 1990, l'UDC renforce son ancrage électoral avec un discours national-conservateur plus offensif sous Christoph Blocher.",
   },
   {
     id: 'fr-2002-le-pen',
@@ -128,7 +128,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: "Le Pen au second tour",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "En 2002, Jean-Marie Le Pen atteint le second tour de la présidentielle française, signalant une percée électorale majeure de l'extrême droite.",
   },
   {
     id: 'sfr-2007-moutons',
@@ -138,7 +138,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Affiches « moutons noirs »',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "La campagne des 'moutons noirs' de 2007 devient un symbole de la communication visuelle anti-immigration en Suisse.",
   },
   {
     id: 'fr-2017-afd',
@@ -148,7 +148,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: "L'AfD entre au Bundestag",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "En 2017, l'Alternative für Deutschland entre au Bundestag avec un score historique pour un parti d'extrême droite dans l'Allemagne d'après-guerre.",
   },
   {
     id: 'sa-2017-afd-financement',
@@ -158,7 +158,7 @@ const FAKE_EVENTS = [
     side: 'right',
     title: "Fonds suisses pour l'AfD",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "Plusieurs enquêtes de presse évoquent des circuits de financement transnationaux autour de l'AfD, avec des liens discutés vers la Suisse.",
   },
   {
     id: 'fr-2022-meloni',
@@ -168,7 +168,7 @@ const FAKE_EVENTS = [
     side: 'left',
     title: 'Meloni au pouvoir',
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin ultrices odio quis dignissim. Nunc dignissim pharetra scelerisque.",
+      "En 2022, Giorgia Meloni devient présidente du Conseil en Italie, marquant l'accès au pouvoir d'une droite radicale post-fasciste.",
   },
 ];
 
@@ -181,6 +181,21 @@ let _modal = null;
 let _activeTiles = new Map(); // id → DOM element
 let _currentYear = 1900;
 let _focusIso2 = null;
+
+function _getConnectorColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--border-strong').trim() || '#1A1A1A';
+}
+
+// Continuously redraw connector lines for `duration` ms.
+// Used both for tile enter transitions (Bug 1) and map un-zoom (Bug 2).
+function _scheduleLineRedraw(duration = 350) {
+  const start = performance.now();
+  function tick() {
+    _redrawLines();
+    if (performance.now() - start < duration) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
 
 export function initEventTiles({ mapContainer, overlayLeft, overlayRight, svgLines }) {
   _mapContainer = mapContainer;
@@ -209,6 +224,10 @@ export function setEventTilesFocus(iso2) {
   _activeTiles.clear();
 
   updateEventTiles(_currentYear);
+
+  // When leaving focus mode the map un-zooms over ~650ms — keep redrawing
+  // connector lines so they track the moving country paths (Bug 2).
+  if (!_focusIso2) _scheduleLineRedraw(700);
 }
 
 function _setupModal() {
@@ -233,10 +252,15 @@ function _openModal(event) {
   _modal.querySelector('[data-event-title]').textContent = event.title;
 
   const img = _modal.querySelector('[data-event-image]');
-  img.innerHTML = event.image
-    ? `<img src="${event.image}" alt="${event.title}" />`
-    : '<span>Image</span>';
-  img.classList.toggle('has-image', Boolean(event.image));
+  if (event.image) {
+    img.innerHTML = `<img src="${event.image}" alt="${event.title}" />`;
+    img.classList.remove('hidden');
+    img.classList.add('has-image');
+  } else {
+    img.innerHTML = '';
+    img.classList.add('hidden');
+    img.classList.remove('has-image');
+  }
 
   const badgesEl = _modal.querySelector('[data-event-badges]');
   badgesEl.innerHTML = meta.badges
@@ -246,6 +270,13 @@ function _openModal(event) {
   const descEl = _modal.querySelector('[data-event-description]');
   const longDesc = event.longDescription || event.description;
   descEl.innerHTML = `<p>${longDesc}</p>`;
+
+  // Hide Nopasaran specifics (in case the modal was previously used for Switzerland)
+  _modal.querySelector('[data-event-person-role]')?.classList.add('hidden');
+  _modal.querySelector('[data-event-consequences]')?.classList.add('hidden');
+  _modal.querySelector('[data-event-sources]')?.classList.add('hidden');
+  const linkText = _modal.querySelector('[data-event-link-text]');
+  if (linkText) linkText.textContent = "Voir sur Wikipédia";
 
   const link = _modal.querySelector('[data-event-link]');
   if (event.url) {
@@ -319,8 +350,9 @@ export function updateEventTiles(year) {
     requestAnimationFrame(() => tile.classList.add('is-visible'));
   }
 
-  // Lines depend on layout being settled. Wait a frame so new tiles have a size.
-  requestAnimationFrame(() => _redrawLines());
+  // Redraw lines continuously for the duration of the tile enter transition
+  // so connector lines track tile positions in real-time (Bug 1).
+  _scheduleLineRedraw(350);
 }
 
 function _redrawLines() {
@@ -331,6 +363,7 @@ function _redrawLines() {
   if (_focusIso2) return;
 
   const hostRect = _svgLines.getBoundingClientRect();
+  const connectorColor = _getConnectorColor();
 
   for (const [id, tile] of _activeTiles) {
     const event = FAKE_EVENTS.find((e) => e.id === id);
@@ -361,9 +394,10 @@ function _redrawLines() {
     line.setAttribute('y1', y1 - hostRect.top);
     line.setAttribute('x2', x2 - hostRect.left);
     line.setAttribute('y2', y2 - hostRect.top);
-    line.setAttribute('stroke', TYPE_META[event.type].lineColor);
-    line.setAttribute('stroke-width', 2);
-    line.setAttribute('stroke-dasharray', '6 4');
+    line.setAttribute('stroke', connectorColor);
+    line.setAttribute('stroke-width', 1.35);
+    line.setAttribute('stroke-dasharray', '4 3');
+    line.setAttribute('stroke-opacity', 0.72);
     line.setAttribute('stroke-linecap', 'round');
     _svgLines.appendChild(line);
 
@@ -374,7 +408,8 @@ function _redrawLines() {
     marker.setAttribute('y', y2 - hostRect.top - size / 2);
     marker.setAttribute('width', size);
     marker.setAttribute('height', size);
-    marker.setAttribute('fill', TYPE_META[event.type].lineColor);
+    marker.setAttribute('fill', connectorColor);
+    marker.setAttribute('fill-opacity', 0.86);
     marker.setAttribute(
       'transform',
       `rotate(45 ${x2 - hostRect.left} ${y2 - hostRect.top})`,

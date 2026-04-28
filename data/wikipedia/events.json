@@ -1,0 +1,587 @@
+{
+  "fetchedAt": "2026-04-17T13:58:54.887Z",
+  "source": "https://fr.wikipedia.org/api/rest_v1/page/summary/",
+  "note": "Événements pour la frise chronologique (colonne gauche). Relations = liens inter-articles Wikipedia.",
+  "global": [
+    {
+      "id": "Première_Guerre_mondiale",
+      "categorie": "global",
+      "annee": 1914,
+      "date": "1914-07-28",
+      "titre": "Première Guerre mondiale",
+      "description": "La Première Guerre mondiale, aussi appelée la « Grande Guerre », est un conflit militaire impliquant dans un premier temps les puissances européennes et s'étendant ensuite à plusieurs continents. Cette guerre s'est déroulée de 1914 à 1918. Par conséquent, elle est parfois désignée par le chrononyme « guerre de 14-18 ».",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Montage_photo_1914-1918.png/330px-Montage_photo_1914-1918.png",
+      "url": "https://fr.wikipedia.org/wiki/Premi%C3%A8re_Guerre_mondiale",
+      "source": "Wikipedia",
+      "relations": []
+    },
+    {
+      "id": "Grande_Dépression",
+      "categorie": "global",
+      "annee": 1929,
+      "date": "1929-10-24",
+      "titre": "Grande Dépression",
+      "description": "La Grande Dépression ou « crise économique des années 1930 », dite encore « crise de 29 », est une longue phase de crise économique et de récession qui frappe l'économie mondiale à partir du krach boursier américain de 1929 jusqu'à la Seconde Guerre mondiale.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Crowd_outside_nyse.jpg/330px-Crowd_outside_nyse.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Grande_D%C3%A9pression",
+      "source": "Wikipedia",
+      "relations": [
+        "Assaut_du_Capitole_des_États-Unis_par_des_partisans_de_Donald_Trump",
+        "Attentats_du_11_septembre_2001",
+        "Guerre_froide",
+        "Première_Guerre_mondiale",
+        "Seconde_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Seconde_Guerre_mondiale",
+      "categorie": "global",
+      "annee": 1939,
+      "date": "1939-09-01",
+      "titre": "Seconde Guerre mondiale",
+      "description": "La Seconde Guerre mondiale, ou Deuxième Guerre mondiale, est un conflit armé à l'échelle planétaire qui dure du 1er septembre 1939 au 2 septembre 1945. Ce conflit oppose schématiquement les Alliés et l'Axe.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/WW2Montage.PNG/330px-WW2Montage.PNG",
+      "url": "https://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale",
+      "source": "Wikipedia",
+      "relations": []
+    },
+    {
+      "id": "Guerre_froide",
+      "categorie": "global",
+      "annee": 1947,
+      "date": "1947-03-12",
+      "titre": "Guerre froide",
+      "description": "La guerre froide est la période de fortes tensions géopolitiques durant la seconde moitié du XXe siècle entre, d'une part, les États-Unis et leurs alliés constitutifs du bloc de l'Ouest et, d'autre part, l'Union des républiques socialistes soviétiques (URSS) et ses États satellites formant le bloc de l'Est. La guerre froide s'installe progressivement à partir de la fin de la Seconde Guerre mondiale, dans les années 1945 à 1947, et dure jusqu'à la chute des régimes communistes en Europe en 1989, rapidement suivie de la dislocation de l'URSS en décembre 1991.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cold_War_Map_1959.svg/langfr-330px-Cold_War_Map_1959.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Guerre_froide",
+      "source": "Wikipedia",
+      "relations": [
+        "Chute_du_mur_de_Berlin"
+      ]
+    },
+    {
+      "id": "Mai_68",
+      "categorie": "global",
+      "annee": 1968,
+      "date": "1968-05-03",
+      "titre": "Mai 68",
+      "description": "Les événements de mai-juin 1968, ou plus brièvement Mai 68, sont une période durant laquelle se déroulent, en France, des grandes manifestations ainsi qu'une grève générale et sauvage, accompagnée d'occupations d'usines et de bâtiments administratifs, de la généralisation de forums de discussions et propositions sociales et politiques, d'une paralysie presque complète du système économique et de l'administration, et d'une ébauche d'organisation de relations sociétales égalitaires dans toute la France.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Le_pouvoir_aux_conseils_de_travailleurs.jpg/330px-Le_pouvoir_aux_conseils_de_travailleurs.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Mai_68",
+      "source": "Wikipedia",
+      "relations": [
+        "Guerre_froide"
+      ]
+    },
+    {
+      "id": "Choc_pétrolier_de_1973",
+      "categorie": "global",
+      "annee": 1973,
+      "date": "1973-10-17",
+      "titre": "Premier choc pétrolier",
+      "description": "Le premier choc pétrolier est une crise mondiale des prix du pétrole qui débute après la guerre du Kippour d'octobre 1973, et les voit quadrupler en seulement six mois, à cause d'un embargo pétrolier, sur fond, en 1971, de pic de production de pétrole atteint aux États-Unis dont les réserves s'épuisaient, deux ans après les premières annonces signalant l'abandon des accords de Bretton Woods qui avaient causé une forte dévalorisation du dollar et donc des cours du pétrole libellés en dollars.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/No_gas_1974.gif/330px-No_gas_1974.gif",
+      "url": "https://fr.wikipedia.org/wiki/Premier_choc_p%C3%A9trolier",
+      "source": "Wikipedia",
+      "relations": []
+    },
+    {
+      "id": "Chute_du_mur_de_Berlin",
+      "categorie": "global",
+      "annee": 1989,
+      "date": "1989-11-09",
+      "titre": "Chute du mur de Berlin",
+      "description": "La chute du mur de Berlin ou simplement chute du Mur a lieu dans la nuit du 9 novembre 1989 lorsque des Berlinois de l'Est, avertis par les médias ouest-allemands (RFA) de la décision des autorités est-allemandes (RDA) de ne plus soumettre le passage en Allemagne de l'Ouest à une autorisation préalable donnée au compte-gouttes, forcent sans violence l'ouverture des points de passage aménagés entre Berlin-Est et Berlin-Ouest. Les premières destructions physiques du Mur commencent cette nuit même. Les Berlinois de l'Est se répandent par milliers dans Berlin-Ouest, dont l'accès leur a été interdit pendant près de trente ans, depuis l'édification du Mur dans la nuit du 12 au 13 août 1961, sauf à disposer d'autorisations très rares. Cela donne lieu à des scènes de fraternité avec leurs tout aussi nombreux homologues de la partie ouest, et à un fameux concert improvisé du violoncelliste Mstislav Rostropovitch devant un pan du mur.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/West_and_East_Germans_at_the_Brandenburg_Gate_in_1989.jpg/330px-West_and_East_Germans_at_the_Brandenburg_Gate_in_1989.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Chute_du_mur_de_Berlin",
+      "source": "Wikipedia",
+      "relations": [
+        "Guerre_froide",
+        "Invasion_de_l'Ukraine_par_la_Russie_en_2022",
+        "Nuit_de_Cristal"
+      ]
+    },
+    {
+      "id": "Attentats_du_11_septembre_2001",
+      "categorie": "global",
+      "annee": 2001,
+      "date": "2001-09-11",
+      "titre": "Attentats du 11 septembre 2001",
+      "description": "Les attentats du 11 septembre 2001 sont quatre attentats-suicides islamistes perpétrés le même jour aux États-Unis et provoquant la mort de 2 977 personnes, à Manhattan à New York, à Arlington en Virginie et à Shanksville en Pennsylvanie, en moins de deux heures, entre 8 h 14 et 10 h 3. Ils sont réalisés par des membres du réseau djihadiste Al-Qaïda, deux jours après l'attentat-suicide de l'organisation tuant le commandant anti-talibans et ancien ministre de la Défense Ahmed Chah Massoud en Afghanistan. Ils visent des bâtiments symboliques du nord-est des États-Unis, dont le World Trade Center déjà attaqué en 1993. L'opération Bojinka, découverte en janvier 1995, est considérée par les services de renseignement américains comme un plan précurseur de ces attentats.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/September_11_Photo_Montage.jpg/330px-September_11_Photo_Montage.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Attentats_du_11_septembre_2001",
+      "source": "Wikipedia",
+      "relations": [
+        "Assaut_du_Capitole_des_États-Unis_par_des_partisans_de_Donald_Trump",
+        "Grande_Dépression",
+        "Guerre_froide"
+      ]
+    },
+    {
+      "id": "Crise_financière_mondiale_de_2007-2008",
+      "categorie": "global",
+      "annee": 2008,
+      "date": "2008-09-15",
+      "titre": "Crise financière mondiale de 2007-2008",
+      "description": "La crise financière mondiale de 2007-2008 est une crise financière, marquée par une crise de liquidité et parfois par des crises de solvabilité tant au niveau des banques que des États, et une raréfaction du crédit aux entreprises. Amorcée en juillet 2007, elle trouve son origine dans le dégonflement de bulles de prix et les pertes importantes des établissements financiers provoquées par la crise des subprimes. Elle s'inscrit dans le cadre de la « Grande Récession » amorcée en 2008 et dont les effets se font sentir au-delà de 2010.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/TED_Spread.png/330px-TED_Spread.png",
+      "url": "https://fr.wikipedia.org/wiki/Crise_financi%C3%A8re_mondiale_de_2007-2008",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_du_11_septembre_2001",
+        "Grande_Dépression"
+      ]
+    },
+    {
+      "id": "Printemps_arabe",
+      "categorie": "global",
+      "annee": 2010,
+      "date": "2010-12-18",
+      "titre": "Printemps arabe",
+      "description": "Le « Printemps arabe » est un ensemble de contestations populaires, d'ampleur et d'intensité très variables, qui se sont produites dans de nombreux pays du monde arabe à partir de décembre 2010.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Arab_Spring_map.svg/langfr-330px-Arab_Spring_map.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Printemps_arabe",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_du_11_septembre_2001",
+        "Crise_migratoire_en_Europe"
+      ]
+    },
+    {
+      "id": "Crise_migratoire_en_Europe",
+      "categorie": "global",
+      "annee": 2015,
+      "date": null,
+      "titre": "Crise migratoire en Europe",
+      "description": "La crise migratoire en Europe, aussi appelée crise de l'asile en Europe, est l'augmentation, dans les années 2010 et singulièrement depuis 2015, du nombre de migrants arrivant dans l'Union européenne via la mer Méditerranée et les Balkans, depuis l'Afrique, le Moyen-Orient et l'Asie du Sud et qui en fait l'une des plus importantes crises migratoires de son \nhistoire contemporaine[Quand ?][source insuffisante].",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Refugee_crisis_in_Europe_Q1-Q4_2015.svg/langfr-330px-Refugee_crisis_in_Europe_Q1-Q4_2015.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Crise_migratoire_en_Europe",
+      "source": "Wikipedia",
+      "relations": [
+        "Front_national_(parti_français)",
+        "Seconde_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Brexit",
+      "categorie": "global",
+      "annee": 2016,
+      "date": "2016-06-23",
+      "titre": "Brexit",
+      "description": "Le Brexit est le retrait du Royaume-Uni de l'Union européenne (UE) et de la Communauté européenne de l'énergie atomique. Négocié à partir d'un référendum britannique le 23 juin 2016 par lequel 51,89 % des électeurs se sont prononcés pour ce processus, il prend effet le 31 janvier 2020. Il se déroule selon la procédure prévue par l'article 50 du traité sur l'Union européenne (TUE). Devant débuter le 29 mars 2017, lorsque le gouvernement britannique annonce formellement au Conseil européen son intention de quitter l'Union, la sortie effective est d'abord prévue pour le 29 mars 2019, mais elle est repoussée trois fois jusqu'au 31 janvier 2020.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/European_Union_UK_withdrawal.svg/langfr-330px-European_Union_UK_withdrawal.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Brexit",
+      "source": "Wikipedia",
+      "relations": [
+        "Crise_migratoire_en_Europe",
+        "Pandémie_de_Covid-19"
+      ]
+    },
+    {
+      "id": "Pandémie_de_Covid-19",
+      "categorie": "global",
+      "annee": 2020,
+      "date": "2020-03-11",
+      "titre": "Pandémie de Covid-19",
+      "description": "La pandémie de Covid-19 est une pandémie d'une maladie infectieuse émergente, appelée la maladie à coronavirus 2019 ou Covid-19, provoquée par le coronavirus SARS-CoV-2. Elle apparaît le 16 novembre 2019 à Wuhan, dans la province du Hubei, avant de se propager dans le monde.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Pandemic_photomontage_COVID-19.png/330px-Pandemic_photomontage_COVID-19.png",
+      "url": "https://fr.wikipedia.org/wiki/Pand%C3%A9mie_de_Covid-19",
+      "source": "Wikipedia",
+      "relations": [
+        "Crise_financière_mondiale_de_2007-2008"
+      ]
+    },
+    {
+      "id": "Invasion_de_l'Ukraine_par_la_Russie_en_2022",
+      "categorie": "global",
+      "annee": 2022,
+      "date": "2022-02-24",
+      "titre": "Invasion de l'Ukraine par la Russie",
+      "description": "L'invasion de l'Ukraine par la Russie est un conflit déclenché le 24 février 2022 par ordre du président russe Vladimir Poutine, à partir de la Russie, de la Biélorussie et des territoires ukrainiens occupés par les Russes depuis le début de la guerre russo-ukrainienne en 2014, à savoir la Crimée et les républiques populaires autoproclamées de Donetsk et de Lougansk.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2022_Russian_invasion_of_Ukraine.svg/langfr-330px-2022_Russian_invasion_of_Ukraine.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Invasion_de_l'Ukraine_par_la_Russie",
+      "source": "Wikipedia",
+      "relations": []
+    }
+  ],
+  "extreme_droite": [
+    {
+      "id": "Marche_sur_Rome",
+      "categorie": "extreme_droite",
+      "annee": 1922,
+      "date": "1922-10-28",
+      "titre": "Marche sur Rome",
+      "description": "La marche sur Rome est une marche paramilitaire menée par les faisceaux italiens de Mussolini vers la capitale de l'Italie le 27 octobre 1922, dont le but premier était d'impressionner le gouvernement libéral alors encore en place et de faire pression sur la classe politique.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Naples_Fascist_rally_on_24_October_1922_%282%29.jpg/330px-Naples_Fascist_rally_on_24_October_1922_%282%29.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Marche_sur_Rome",
+      "source": "Wikipedia",
+      "relations": [
+        "Giorgia_Meloni",
+        "Première_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Incendie_du_Reichstag",
+      "categorie": "extreme_droite",
+      "annee": 1933,
+      "date": "1933-02-27",
+      "titre": "Incendie du Reichstag",
+      "description": "L’incendie du Reichstag est un incendie criminel qui ravage le palais du Reichstag, siège du Parlement allemand à Berlin, dans la nuit du 27 au 28 février 1933.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Reichstagsbrand.jpg/330px-Reichstagsbrand.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Incendie_du_Reichstag",
+      "source": "Wikipedia",
+      "relations": [
+        "Procès_de_Nuremberg"
+      ]
+    },
+    {
+      "id": "Nuit_de_Cristal",
+      "categorie": "extreme_droite",
+      "annee": 1938,
+      "date": "1938-11-09",
+      "titre": "Nuit de Cristal",
+      "description": "\n\nLa nuit de Cristal est le pogrom contre les Juifs du Troisième Reich qui se déroula dans la nuit du 9 au 10 novembre 1938 et dans la journée qui suivit. Ce pogrom a été présenté par les responsables nazis comme une réaction spontanée de la population à la mort le 9 novembre 1938 d’Ernst vom Rath, un secrétaire de l'ambassade allemande à Paris, grièvement blessé deux jours plus tôt par Herschel Grynszpan, un jeune Juif polonais d'origine allemande.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/The_day_after_Kristallnacht.jpg/330px-The_day_after_Kristallnacht.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Nuit_de_Cristal",
+      "source": "Wikipedia",
+      "relations": [
+        "Seconde_Guerre_mondiale",
+        "Shoah"
+      ]
+    },
+    {
+      "id": "Shoah",
+      "categorie": "extreme_droite",
+      "annee": 1941,
+      "date": null,
+      "titre": "Shoah",
+      "description": "La Shoah est l'entreprise d'extermination systématique, menée par l'Allemagne nazie et ses collaborateurs contre le peuple juif pendant la Seconde Guerre mondiale, qui conduit à la disparition de six millions de Juifs, soit les deux tiers des Juifs d'Europe et environ 40 % des Juifs du monde. On utilise aussi les termes de « génocide juif », d'« Holocauste », de « judéocide » ou encore de « destruction des Juifs d'Europe » et de « hourban ». Des débats continuent de diviser historiens et linguistes sur le terme adéquat.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Selection_on_the_ramp_at_Auschwitz-Birkenau%2C_1944_%28Auschwitz_Album%29_1b.jpg/330px-Selection_on_the_ramp_at_Auschwitz-Birkenau%2C_1944_%28Auschwitz_Album%29_1b.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Shoah",
+      "source": "Wikipedia",
+      "relations": []
+    },
+    {
+      "id": "Procès_de_Nuremberg",
+      "categorie": "extreme_droite",
+      "annee": 1945,
+      "date": "1945-11-20",
+      "titre": "Procès de Nuremberg",
+      "description": "Le procès de Nuremberg intenté par les puissances alliées contre 24 des principaux responsables du Troisième Reich, accusés de complot, crimes contre la paix, crimes de guerre et crimes contre l'humanité, se tient du 20 novembre 1945 au 1er octobre 1946 dans le palais de justice de Nuremberg et constitue la première étape de la mise en œuvre d'une juridiction pénale internationale.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Defendants_in_the_dock_at_the_Nuremberg_Trials.jpg/330px-Defendants_in_the_dock_at_the_Nuremberg_Trials.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Proc%C3%A8s_de_Nuremberg",
+      "source": "Wikipedia",
+      "relations": [
+        "Guerre_froide"
+      ]
+    },
+    {
+      "id": "Front_national_(parti_français)",
+      "categorie": "extreme_droite",
+      "annee": 1972,
+      "date": "1972-10-05",
+      "titre": "Rassemblement national",
+      "description": "Le Rassemblement national (RN) — précédemment Front national (FN) jusqu'en 2018 — est un parti politique français d'extrême droite fondé en 1972 et successivement présidé par Jean-Marie Le Pen (1972-2011), Marine Le Pen (2011-2021) et Jordan Bardella.",
+      "image": null,
+      "url": "https://fr.wikipedia.org/wiki/Rassemblement_national",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_du_11_septembre_2001",
+        "Chute_du_mur_de_Berlin",
+        "Crise_migratoire_en_Europe"
+      ]
+    },
+    {
+      "id": "Jörg_Haider",
+      "categorie": "extreme_droite",
+      "annee": 1999,
+      "date": null,
+      "titre": "Jörg Haider",
+      "description": "Jörg Haider, né le 26 janvier 1950 à Bad Goisern et mort le 11 octobre 2008 à Köttmannsdorf, est un homme politique autrichien de l'Alliance pour l'avenir de l'Autriche (BZÖ).",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/J%C3%B6rg_Haider_04-09-2008_%28cropped%29.jpg/330px-J%C3%B6rg_Haider_04-09-2008_%28cropped%29.jpg",
+      "url": "https://fr.wikipedia.org/wiki/J%C3%B6rg_Haider",
+      "source": "Wikipedia",
+      "relations": [
+        "Seconde_Guerre_mondiale",
+        "Shoah"
+      ]
+    },
+    {
+      "id": "Élection_présidentielle_française_de_2002",
+      "categorie": "extreme_droite",
+      "annee": 2002,
+      "date": "2002-04-21",
+      "titre": "Élection présidentielle française de 2002",
+      "description": "L'élection présidentielle française de 2002 a pourvu à l'élection, au suffrage universel et au scrutin uninominal majoritaire à deux tours, du président de la République française pour le premier quinquennat de l'histoire. Elle est la huitième élection présidentielle de la Ve République et la septième au suffrage universel direct. Le scrutin se tient les 21 avril et 5 mai 2002.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002_T1_carte_d%C3%A9partements_%26_r%C3%A9gions.svg/langfr-330px-%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002_T1_carte_d%C3%A9partements_%26_r%C3%A9gions.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002",
+      "source": "Wikipedia",
+      "relations": [
+        "Front_national_(parti_français)"
+      ]
+    },
+    {
+      "id": "Attentats_de_2011_en_Norvège",
+      "categorie": "extreme_droite",
+      "annee": 2011,
+      "date": "2011-07-22",
+      "titre": "Attentats d'Oslo et d'Utøya",
+      "description": "Les attentats d'Oslo et d'Utøya sont deux tueries de masse terroristes d'extrême droite coordonnées contre le gouvernement, un rassemblement politique estival et la population civile en Norvège, commises le 22 juillet 2011.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Oslo_view_of_city_after_July_2011_bombing.jpg/330px-Oslo_view_of_city_after_July_2011_bombing.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Attentats_d'Oslo_et_d'Ut%C3%B8ya",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_de_Christchurch",
+        "Attentats_de_Hanau",
+        "Seconde_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Alternative_für_Deutschland",
+      "categorie": "extreme_droite",
+      "annee": 2013,
+      "date": "2013-02-06",
+      "titre": "Alternative pour l'Allemagne",
+      "description": "L'Alternative pour l'Allemagne est un parti politique allemand d'extrême droite. L'AfD est connu pour son opposition à l'Union européenne et à l'immigration en Allemagne. Il est créé le 6 février 2013 et lancé officiellement le 14 avril 2013 à Berlin avec une orientation eurosceptique et nationaliste.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/AfD_Logo_2021.svg/langfr-330px-AfD_Logo_2021.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Alternative_pour_l'Allemagne",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_de_Hanau",
+        "Brexit",
+        "Crise_migratoire_en_Europe",
+        "Pandémie_de_Covid-19",
+        "Front_national_(parti_français)",
+        "Seconde_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Attentats_de_Christchurch",
+      "categorie": "extreme_droite",
+      "annee": 2019,
+      "date": "2019-03-15",
+      "titre": "Attentats de Christchurch",
+      "description": "Les attentats de Christchurch sont une série d'attaques terroristes racistes d'extrême droite commise le 15 mars 2019 par Brenton Tarrant contre deux mosquées de la ville de Christchurch, en Nouvelle-Zélande, qui ont fait 51 morts et 49 blessés.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Christchurch_Mosque%2C_New_Zealand.jpg/330px-Christchurch_Mosque%2C_New_Zealand.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Attentats_de_Christchurch",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_de_2011_en_Norvège",
+        "Attentats_de_Hanau",
+        "Attentats_du_11_septembre_2001",
+        "Front_national_(parti_français)"
+      ]
+    },
+    {
+      "id": "Attentats_de_Hanau",
+      "categorie": "extreme_droite",
+      "annee": 2020,
+      "date": "2020-02-19",
+      "titre": "Attentats de Hanau",
+      "description": "Les attentats de Hanau ont lieu le 19 février 2020, quand neuf personnes sont tuées et cinq blessées par un terroriste qui attaque deux bars à chicha à Hanau en Allemagne. Après les attaques, le terroriste est retourné à son appartement où il a tué sa mère et s'est suicidé. Le massacre a été défini comme un acte terroriste par le ministère fédéral de l'Intérieur. Le terroriste n'a été lié à aucune organisation ou groupe extrémiste mais les attentats ont été liés à la montée de l'extrême droite en Allemagne.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/FusilladesDeHanau2020Objectifs.svg/langfr-330px-FusilladesDeHanau2020Objectifs.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Attentats_de_Hanau",
+      "source": "Wikipedia",
+      "relations": [
+        "Alternative_für_Deutschland",
+        "Attentats_de_2011_en_Norvège",
+        "Attentats_de_Christchurch",
+        "Crise_migratoire_en_Europe",
+        "Seconde_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Assaut_du_Capitole_des_États-Unis_par_des_partisans_de_Donald_Trump",
+      "categorie": "extreme_droite",
+      "annee": 2021,
+      "date": "2021-01-06",
+      "titre": "Assaut du Capitole par des partisans de Donald Trump",
+      "description": "L'assaut du Capitole des États-Unis a lieu à Washington D.C, le 6 janvier 2021 dans le contexte des contestations des résultats de l'élection présidentielle américaine de 2020 et a causé cinq morts dont celle d'un policier. Cette émeute est provoquée par Donald Trump, le président sortant récemment battu aux élections, qui rejette le résultat des suffrages. Elle est considérée comme une tentative de coup d'État.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2021_storming_of_the_United_States_Capitol_DSC09254-2_%2850820534063%29_%28retouched%29.jpg/330px-2021_storming_of_the_United_States_Capitol_DSC09254-2_%2850820534063%29_%28retouched%29.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Assaut_du_Capitole_par_des_partisans_de_Donald_Trump",
+      "source": "Wikipedia",
+      "relations": [
+        "Attentats_du_11_septembre_2001",
+        "Grande_Dépression",
+        "Guerre_froide",
+        "Nuit_de_Cristal",
+        "Pandémie_de_Covid-19"
+      ]
+    },
+    {
+      "id": "Giorgia_Meloni",
+      "categorie": "extreme_droite",
+      "annee": 2022,
+      "date": "2022-10-22",
+      "titre": "Giorgia Meloni",
+      "description": "Giorgia Meloni, née le 15 janvier 1977 à Rome, est une femme d'État italienne, présidente du Conseil des ministres depuis le 22 octobre 2022.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Giorgia_Meloni_Official_2024_%28cropped%29.jpg/330px-Giorgia_Meloni_Official_2024_%28cropped%29.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Giorgia_Meloni",
+      "source": "Wikipedia",
+      "relations": [
+        "Invasion_de_l'Ukraine_par_la_Russie_en_2022",
+        "Marche_sur_Rome"
+      ]
+    }
+  ],
+  "extreme_droite_suisse": [
+    {
+      "id": "Action_nationale_(Suisse)",
+      "categorie": "extreme_droite_suisse",
+      "annee": 1961,
+      "date": null,
+      "titre": "Démocrates suisses",
+      "description": "Démocrates suisses (DS) est un parti politique suisse conservateur, isolationniste. Idéologiquement, il est un parti de droite radicale, ayant comme préoccupation la prospérité de la patrie, son peuple et sa descendance. Il est très attaché aux traditions du pays, en défendant les droits populaires, la liberté d’expression et l'indépendance du pays, il s'oppose clairement à une adhésion à l'Union européenne.",
+      "image": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/bc/Schweizer_Demokraten_logo.png/330px-Schweizer_Demokraten_logo.png",
+      "url": "https://fr.wikipedia.org/wiki/D%C3%A9mocrates_suisses",
+      "source": "Wikipedia",
+      "relations": [
+        "James_Schwarzenbach",
+        "Parti_suisse_de_la_liberté",
+        "Parti_nationaliste_suisse",
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "James_Schwarzenbach",
+      "categorie": "extreme_droite_suisse",
+      "annee": 1970,
+      "date": null,
+      "titre": "James Schwarzenbach",
+      "description": "James Schwarzenbach, né le 5 août 1911 à Rüschlikon et décédé le 27 octobre 1994 à Saint-Moritz, est un homme politique suisse, membre de l'Action nationale, puis du Mouvement républicain.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/James_Schwarzenbach.jpg/330px-James_Schwarzenbach.jpg",
+      "url": "https://fr.wikipedia.org/wiki/James_Schwarzenbach",
+      "source": "Wikipedia",
+      "relations": [
+        "Action_nationale_(Suisse)"
+      ]
+    },
+    {
+      "id": "Union_démocratique_du_centre",
+      "categorie": "extreme_droite_suisse",
+      "annee": 1971,
+      "date": null,
+      "titre": "Union démocratique du centre",
+      "description": "L'Union démocratique du centre est un parti politique suisse conservateur, nationaliste et populiste, classé comme de droite radicale et parfois d'extrême droite.",
+      "image": "https://upload.wikimedia.org/wikipedia/fr/thumb/9/94/UDC_logo.svg/langfr-330px-UDC_logo.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Union_d%C3%A9mocratique_du_centre",
+      "source": "Wikipedia",
+      "relations": [
+        "Christoph_Blocher",
+        "Action_nationale_(Suisse)",
+        "Initiative_populaire_«_Contre_l'immigration_de_masse_»",
+        "Initiative_populaire_«_Contre_la_construction_de_minarets_»",
+        "Initiative_populaire_«_Pour_le_renvoi_des_étrangers_criminels_»",
+        "James_Schwarzenbach",
+        "Jeunes_UDC",
+        "Parti_nationaliste_suisse",
+        "Seconde_Guerre_mondiale"
+      ]
+    },
+    {
+      "id": "Christoph_Blocher",
+      "categorie": "extreme_droite_suisse",
+      "annee": 1977,
+      "date": null,
+      "titre": "Christoph Blocher",
+      "description": "Christoph Blocher, né le 11 octobre 1940 à Schaffhouse, est un homme d'affaires et homme politique suisse, membre de l'Union démocratique du centre (UDC).",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Christoph_Blocher.jpg/330px-Christoph_Blocher.jpg",
+      "url": "https://fr.wikipedia.org/wiki/Christoph_Blocher",
+      "source": "Wikipedia",
+      "relations": [
+        "Seconde_Guerre_mondiale",
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "Parti_suisse_de_la_liberté",
+      "categorie": "extreme_droite_suisse",
+      "annee": 1985,
+      "date": null,
+      "titre": "Parti des automobilistes",
+      "description": "Le Parti des automobilistes est un parti politique suisse fondé en 1985 à Zurich. Il porta successivement le nom de Parti des automobilistes (1985-1994) en réaction à la vague politique écologiste d'alors, puis de Parti suisse de la liberté (1994-2009) avant de reprendre son nom d'origine le 24 octobre 2009, lors de son assemblée générale.",
+      "image": null,
+      "url": "https://fr.wikipedia.org/wiki/Parti_des_automobilistes",
+      "source": "Wikipedia",
+      "relations": [
+        "Action_nationale_(Suisse)",
+        "Parti_nationaliste_suisse",
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "Parti_nationaliste_suisse",
+      "categorie": "extreme_droite_suisse",
+      "annee": 2000,
+      "date": null,
+      "titre": "Parti nationaliste suisse",
+      "description": "Le Parti nationaliste suisse est un parti politique suisse situé à l'extrême droite et ne disposant d'aucun représentant au sein des différentes composantes du système politique suisse. Son président est Philippe Brennenstuhl.",
+      "image": null,
+      "url": "https://fr.wikipedia.org/wiki/Parti_nationaliste_suisse",
+      "source": "Wikipedia",
+      "relations": [
+        "Action_nationale_(Suisse)",
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "Jeunes_UDC",
+      "categorie": "extreme_droite_suisse",
+      "annee": 2008,
+      "date": null,
+      "titre": "Jeunes UDC",
+      "description": "Les Jeunes UDC Suisse sont l'organisation de jeunesse de l'Union démocratique du centre.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Logo_Junge_SVP.svg/langfr-330px-Logo_Junge_SVP.svg.png",
+      "url": "https://fr.wikipedia.org/wiki/Jeunes_UDC",
+      "source": "Wikipedia",
+      "relations": [
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "Initiative_populaire_«_Contre_la_construction_de_minarets_»",
+      "categorie": "extreme_droite_suisse",
+      "annee": 2009,
+      "date": "2009-11-29",
+      "titre": "Initiative populaire « Contre la construction de minarets »",
+      "description": "L’initiative populaire « contre la construction de minarets » est une initiative populaire lancée au niveau de la Confédération suisse et approuvée par le peuple et les cantons le 29 novembre 2009.",
+      "image": null,
+      "url": "https://fr.wikipedia.org/wiki/Initiative_populaire_%C2%AB_Contre_la_construction_de_minarets_%C2%BB",
+      "source": "Wikipedia",
+      "relations": [
+        "Christoph_Blocher",
+        "Front_national_(parti_français)",
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "Initiative_populaire_«_Pour_le_renvoi_des_étrangers_criminels_»",
+      "categorie": "extreme_droite_suisse",
+      "annee": 2010,
+      "date": "2010-11-28",
+      "titre": "Initiative populaire « Pour le renvoi des étrangers criminels »",
+      "description": "L'initiative populaire fédérale « Pour le renvoi des étrangers criminels », également appelée « initiative pour le renvoi », est une initiative populaire suisse, approuvée par le peuple et les cantons le 28 novembre 2010.",
+      "image": null,
+      "url": "https://fr.wikipedia.org/wiki/Initiative_populaire_%C2%AB_Pour_le_renvoi_des_%C3%A9trangers_criminels_%C2%BB",
+      "source": "Wikipedia",
+      "relations": [
+        "Union_démocratique_du_centre"
+      ]
+    },
+    {
+      "id": "Initiative_populaire_«_Contre_l'immigration_de_masse_»",
+      "categorie": "extreme_droite_suisse",
+      "annee": 2014,
+      "date": "2014-02-09",
+      "titre": "Initiative populaire « contre l'immigration de masse »",
+      "description": "L'initiative populaire « contre l'immigration de masse » est une initiative populaire suisse, acceptée par le peuple et les cantons le 9 février 2014.",
+      "image": null,
+      "url": "https://fr.wikipedia.org/wiki/Initiative_populaire_%C2%AB_contre_l'immigration_de_masse_%C2%BB",
+      "source": "Wikipedia",
+      "relations": [
+        "Front_national_(parti_français)",
+        "Union_démocratique_du_centre"
+      ]
+    }
+  ]
+}
