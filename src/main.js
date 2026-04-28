@@ -39,6 +39,7 @@ import {
   updateSwissEventTiles,
   setSwissEventTilesFocus,
 } from './modules/switzerland-events.js';
+import { initCityRuralChart } from './modules/city-rural-chart.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -356,6 +357,26 @@ if (swissSection) {
     { rootMargin: '600px 0px' },
   );
   swissLoader.observe(swissSection);
+}
+
+// ── Chapter 3: city-vs-rural chart (lazy-init when approaching viewport) ────
+
+const cityRuralEl = document.querySelector('#city-rural-chart');
+if (cityRuralEl) {
+  let booted = false;
+  const obs = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting && !booted) {
+          booted = true;
+          initCityRuralChart(cityRuralEl);
+          obs.disconnect();
+        }
+      }
+    },
+    { rootMargin: '400px 0px' },
+  );
+  obs.observe(cityRuralEl);
 }
 
 // ── Gentle fade-in when each sticky visual enters view ──────────────────────
