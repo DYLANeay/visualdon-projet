@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { colorScale } from './scales.js';
+import { computeFamilyShares } from './swiss-families.js';
 
 let _svg = null;
 let _path = null;
@@ -8,12 +8,22 @@ let _cantonsElections = null;
 let _onCantonClick = null;
 let _currentYear = 1999;
 let _isCantonZoomed = false;
+let _barsG = null;
+let _cantonRows = [];
 
 const MAP_WIDTH = 900;
 const MAP_HEIGHT = 560;
 
-// Semi-transparent so the big year watermark is visible through the cantons.
 const FILL_OPACITY = 0.82;
+const BAR_WIDTH = 56;
+const BAR_HEIGHT = 12;
+const BAR_BORDER = 0.6;
+
+// Manual centroid offsets for cantons whose computed centroid overlaps badly.
+// kantonsnummer → { dx, dy } in SVG units
+const CENTROID_OVERRIDES = {
+  16: { dx: 6, dy: 6 }, // Appenzell Innerrhoden — shift away from AR
+};
 
 export function initSwitzerlandMap(
   container,
@@ -44,51 +54,67 @@ export function initSwitzerlandMap(
     .data(geoCantons.features, (d) => d.properties.kantonsnummer)
     .join('path')
     .attr('d', _path)
-    .attr('fill', (d) => _getCantonFill(d, _currentYear))
-    .attr('fill-opacity', FILL_OPACITY)
+    .style('fill', 'var(--bg-elevated)')
+    .style('fill-opacity', FILL_OPACITY)
     .attr('stroke', _getStrokeColor())
     .attr('stroke-width', 0.7)
     .attr('data-canton', (d) => d.properties.name)
     .attr('data-canton-id', (d) => d.properties.kantonsnummer)
     .style('cursor', 'pointer')
-    .on('mouseenter', function (event, d) {
-      const base = _getCantonFill(d, _currentYear);
-      d3.select(this)
-        .attr('data-fill', base)
-        .attr('fill', d3.color(base).darker(0.4));
+    .on('mouseenter', function () {
+      d3.select(this).style('fill', 'var(--bg-surface)');
     })
     .on('mouseleave', function () {
-      const saved = d3.select(this).attr('data-fill');
-      if (saved) d3.select(this).attr('fill', saved);
+      d3.select(this).style('fill', 'var(--bg-elevated)');
     })
     .on('click', _handleClick);
+
+  // Compute centroid rows once
+  _cantonRows = geoCantons.features
+    .map((f) => {
+      const [cx, cy] = _path.centroid(f);
+      if (!Number.isFinite(cx) || !Number.isFinite(cy)) return null;
+      const kn = f.properties.kantonsnummer;
+      const override = CENTROID_OVERRIDES[kn] || { dx: 0, dy: 0 };
+      return {
+        feature: f,
+        cx: cx + override.dx,
+        cy: cy + override.dy,
+        kantonsnummer: kn,
+      };
+    })
+    .filter(Boolean);
+
+  _barsG = _svg.append('g').attr('class', 'cantons-bars-group');
+
+  const bars = _barsG
+    .selectAll('g.canton-bar')
+    .data(_cantonRows, (d) => d.kantonsnummer)
+    .join('g')
+    .attr('class', 'canton-bar')
+    .attr('data-canton-id', (d) => d.kantonsnummer)
+    .attr(
+      'transform',
+      (d) => `translate(${d.cx - BAR_WIDTH / 2}, ${d.cy - BAR_HEIGHT / 2})`,
+    );
+
+  bars
+    .append('rect')
+    .attr('class', 'canton-bar-bg')
+    .attr('width', BAR_WIDTH)
+    .attr('height', BAR_HEIGHT)
+    .style('fill', 'var(--bg-surface)')
+    .style('stroke', 'var(--border-strong)')
+    .attr('stroke-width', BAR_BORDER);
+
+  bars.append('g').attr('class', 'canton-bar-segments');
+
+  _renderBars(_currentYear);
 }
 
 function _handleClick(_event, feature) {
   if (!_onCantonClick) return;
   _onCantonClick(feature);
-}
-
-// Returns the far-right seat share (%) for a canton at or before `year`.
-// Uses the most recent election <= year (same pattern as europe-map.js computeFarRightShare).
-function _computeFarRightShare(kantonsnummer, year) {
-  if (!_cantonsElections) return null;
-  const canton = _cantonsElections.cantons[String(kantonsnummer)];
-  if (!canton) return null;
-
-  const elections = canton.elections.filter((e) => e.year <= year);
-  if (elections.length === 0) return null;
-
-  const nearest = elections[elections.length - 1];
-  return nearest.far_right_pct;
-}
-
-function _getNoDataColor() {
-  return (
-    getComputedStyle(document.documentElement)
-      .getPropertyValue('--bg-elevated')
-      .trim() || '#e8e8e8'
-  );
 }
 
 function _getStrokeColor() {
@@ -99,22 +125,43 @@ function _getStrokeColor() {
   );
 }
 
-function _getCantonFill(feature, year) {
-  const share = _computeFarRightShare(feature.properties.kantonsnummer, year);
-  return share !== null ? colorScale(share) : _getNoDataColor();
+function _renderBars(year) {
+  if (!_barsG || !_cantonsElections) return;
+
+  _barsG.selectAll('g.canton-bar').each(function (d) {
+    const canton = _cantonsElections.cantons[String(d.kantonsnummer)];
+    const shares = computeFamilyShares(canton, year);
+
+    // Pre-compute x offsets before binding to d3
+    let xOffset = 0;
+    const segments = shares.map((f) => {
+      const w = (f.share / 100) * BAR_WIDTH;
+      const seg = { ...f, x: xOffset, w };
+      xOffset += w;
+      return seg;
+    });
+
+    d3.select(this)
+      .select('.canton-bar-segments')
+      .selectAll('rect.fam-seg')
+      .data(segments, (f) => f.id)
+      .join('rect')
+      .attr('class', (f) => `fam-seg fam-${f.id}`)
+      .attr('y', 0)
+      .attr('height', BAR_HEIGHT)
+      .attr('fill', (f) => f.color)
+      .transition('t-rect')
+      .duration(450)
+      .ease(d3.easeCubicInOut)
+      .attr('x', (f) => f.x)
+      .attr('width', (f) => f.w);
+  });
 }
 
 export function updateSwitzerlandMap(year) {
   _currentYear = year;
   if (!_svg) return;
-
-  // Named transition 't-fill' so it never cancels the zoom transition 't-zoom'.
-  _svg
-    .select('.cantons-group')
-    .selectAll('path')
-    .transition('t-fill')
-    .duration(80)
-    .attr('fill', (d) => _getCantonFill(d, year));
+  _renderBars(year);
 }
 
 export function zoomToCanton(feature, { duration = 650 } = {}) {
@@ -138,7 +185,6 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
   g.interrupt('t-zoom-group');
   g.selectAll('path').interrupt('t-zoom');
 
-  // Named transition 't-zoom' so fill updates don't cancel it.
   g.selectAll('path')
     .transition('t-zoom')
     .duration(duration)
@@ -148,6 +194,25 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
         ? 1
         : 0.15,
     );
+
+  if (_barsG) {
+    _barsG.interrupt('t-zoom-bars-group');
+    _barsG.selectAll('g.canton-bar').interrupt('t-zoom-bars');
+    _barsG
+      .selectAll('g.canton-bar')
+      .transition('t-zoom-bars')
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attr('opacity', (d) =>
+        d.kantonsnummer === feature.properties.kantonsnummer ? 1 : 0.15,
+      );
+
+    _barsG
+      .transition('t-zoom-bars-group')
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attr('transform', `translate(${tx},${ty}) scale(${scale})`);
+  }
 
   g.transition('t-zoom-group')
     .duration(duration)
@@ -178,4 +243,29 @@ export function resetCantonZoom({ duration = 650 } = {}) {
     .on('end', function () {
       this.removeAttribute('transform');
     });
+
+  if (_barsG) {
+    _barsG.interrupt('t-zoom-bars-group');
+    _barsG.selectAll('g.canton-bar').interrupt('t-zoom-bars');
+
+    _barsG
+      .selectAll('g.canton-bar')
+      .transition('t-zoom-bars')
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attr('opacity', 1);
+
+    _barsG
+      .transition('t-zoom-bars-group')
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attrTween('transform', function () {
+        const from =
+          this.getAttribute('transform') || 'translate(0,0) scale(1)';
+        return d3.interpolateTransformSvg(from, 'translate(0,0) scale(1)');
+      })
+      .on('end', function () {
+        this.removeAttribute('transform');
+      });
+  }
 }

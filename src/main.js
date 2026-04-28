@@ -40,6 +40,7 @@ import {
   setSwissEventTilesFocus,
 } from './modules/switzerland-events.js';
 import { initCityRuralChart } from './modules/city-rural-chart.js';
+import { renderSwissLegend } from './modules/swiss-families.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
 const lenis = new Lenis({
@@ -285,6 +286,9 @@ async function bootSwitzerland() {
 
   hideLoading('switzerland-map');
   switzerlandReady = true;
+
+  const legendEl = document.querySelector('#switzerland-legend');
+  if (legendEl) renderSwissLegend(legendEl);
 
   const switzerlandAllDatesMs = _buildSwissDateList(nopasaran);
 
