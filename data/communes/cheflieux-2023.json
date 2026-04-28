@@ -1,0 +1,5303 @@
+{
+  "year": 2023,
+  "source": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/28845352/master",
+  "wings": [
+    "ext_gauche",
+    "gauche",
+    "centre",
+    "droite",
+    "ext_droite"
+  ],
+  "cantons": {
+    "ZH": {
+      "canton": "ZH",
+      "canton_name": "Zürich",
+      "cheflieu": {
+        "bfs": 261,
+        "name": "Zürich",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 11.149134981,
+            "vote_pct_2019": 11.824193869,
+            "diff": -0.675058888
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 33.032921723,
+            "vote_pct_2019": 25.629304445,
+            "diff": 7.4036172785
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 14.270910482,
+            "vote_pct_2019": 13.671502107,
+            "diff": 0.5994083743
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.497251029,
+            "vote_pct_2019": 1.68473225,
+            "diff": -0.187481221
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.574139984,
+            "vote_pct_2019": 0.648618286,
+            "diff": -0.074478302
+          },
+          {
+            "partei_id": 12,
+            "abbrev": "AL",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 2.289710514,
+            "vote_pct_2019": 4.001096461,
+            "diff": -1.711385947
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 14.677985142,
+            "vote_pct_2019": 20.389502918,
+            "diff": -5.711517776
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.091418816,
+            "vote_pct_2019": 0.170200384,
+            "diff": -0.078781568
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.420517234,
+            "vote_pct_2019": 0.423880128,
+            "diff": -0.003362894
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 13.582450383,
+            "vote_pct_2019": 15.659913543,
+            "diff": -2.07746316
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 6.178807655,
+            "vote_pct_2019": 4.41615926,
+            "diff": 1.7626483958
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.234752057,
+            "vote_pct_2019": 1.480896349,
+            "diff": 0.7538557078
+          }
+        ],
+        "wings": {
+          "ext_gauche": 2.8638504979999997,
+          "gauche": 47.710906865,
+          "centre": 21.258509067,
+          "droite": 11.149134981,
+          "ext_droite": 14.782846531999999
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 12.454150984,
+            "vote_pct_2019": 13.660914879,
+            "diff": -1.206763895
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 21.141042154,
+            "vote_pct_2019": 17.309270298,
+            "diff": 3.8317718558
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 27.354618665,
+            "vote_pct_2019": 26.700010093,
+            "diff": 0.6546085714
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.8392252,
+            "vote_pct_2019": 3.301502195,
+            "diff": -0.462276995
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.304561768,
+            "vote_pct_2019": 0.310207478,
+            "diff": -0.00564571
+          },
+          {
+            "partei_id": 12,
+            "abbrev": "AL",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.97107004,
+            "vote_pct_2019": 1.607458684,
+            "diff": -0.636388644
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 9.931967387,
+            "vote_pct_2019": 14.07711271,
+            "diff": -4.145145322
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.099238455,
+            "vote_pct_2019": 0.186668554,
+            "diff": -0.087430099
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.488057872,
+            "vote_pct_2019": 1.610425701,
+            "diff": -0.122367829
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 12.367704986,
+            "vote_pct_2019": 13.994563849,
+            "diff": -1.626858863
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 8.145894034,
+            "vote_pct_2019": 6.048706637,
+            "diff": 2.0971873965
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.902468457,
+            "vote_pct_2019": 1.193158922,
+            "diff": 1.7093095349
+          }
+        ],
+        "wings": {
+          "ext_gauche": 1.275631808,
+          "gauche": 31.073009541,
+          "centre": 23.35282422,
+          "droite": 12.454150984,
+          "ext_droite": 28.941914991999997
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 1.5882186899999997,
+        "gauche": 16.637897323999997,
+        "centre": -2.094315153,
+        "droite": -1.3050160030000004,
+        "ext_droite": -14.159068459999999
+      }
+    },
+    "BE": {
+      "canton": "BE",
+      "canton_name": "Bern / Berne",
+      "cheflieu": {
+        "bfs": 351,
+        "name": "Bern",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 6.341519331,
+            "vote_pct_2019": 7.617384007,
+            "diff": -1.275864677
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 37.664665693,
+            "vote_pct_2019": 28.710927298,
+            "diff": 8.9537383949
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 9.109008608,
+            "vote_pct_2019": 9.477289561,
+            "diff": -0.368280953
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.188496896,
+            "vote_pct_2019": 2.46229198,
+            "diff": -0.273795084
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 1.217531286,
+            "diff": -1.217531286
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 21.747578183,
+            "vote_pct_2019": 25.24440106,
+            "diff": -3.496822877
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.125277627,
+            "vote_pct_2019": 0.156526281,
+            "diff": -0.031248654
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.898649506,
+            "vote_pct_2019": 0.619597467,
+            "diff": 0.2790520384
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 13.763304143,
+            "vote_pct_2019": 13.489517106,
+            "diff": 0.2737870364
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 5.960727374,
+            "vote_pct_2019": 6.246323388,
+            "diff": -0.285596013
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.20077264,
+            "vote_pct_2019": 4.758210566,
+            "diff": -2.557437925
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 59.412243876000005,
+          "centre": 21.912528413,
+          "droite": 6.341519331,
+          "ext_droite": 10.132935740999999
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 7.499191121,
+            "vote_pct_2019": 8.360142453,
+            "diff": -0.860951331
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 20.683503208,
+            "vote_pct_2019": 16.822887211,
+            "diff": 3.8606159977
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 30.864587477,
+            "vote_pct_2019": 30.030827962,
+            "diff": 0.8337595141
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 4.252455551,
+            "vote_pct_2019": 4.176610747,
+            "diff": 0.0758448036
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 0.617153166,
+            "diff": -0.617153166
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 10.754047063,
+            "vote_pct_2019": 13.585042099,
+            "diff": -2.830995036
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.339137465,
+            "vote_pct_2019": 0.366047207,
+            "diff": -0.026909742
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 3.929903397,
+            "vote_pct_2019": 2.451886004,
+            "diff": 1.4780173938
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 10.488498305,
+            "vote_pct_2019": 9.735170906,
+            "diff": 0.7533273981
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 8.137404024,
+            "vote_pct_2019": 9.914109811,
+            "diff": -1.776705786
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 3.051272389,
+            "vote_pct_2019": 3.940122434,
+            "diff": -0.888850046
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 31.437550271,
+          "centre": 22.878357880000003,
+          "droite": 7.499191121,
+          "ext_droite": 35.133628339
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 27.974693605000006,
+        "centre": -0.9658294670000025,
+        "droite": -1.1576717900000002,
+        "ext_droite": -25.000692598
+      }
+    },
+    "LU": {
+      "canton": "LU",
+      "canton_name": "Luzern",
+      "cheflieu": {
+        "bfs": 1061,
+        "name": "Luzern",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 12.74492579,
+            "vote_pct_2019": 12.94053937,
+            "diff": -0.195613579
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 28.672841056,
+            "vote_pct_2019": 25.023719268,
+            "diff": 3.6491217877
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 14.718554959,
+            "vote_pct_2019": 14.976280732,
+            "diff": -0.257725773
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.433796831,
+            "vote_pct_2019": 0.607386548,
+            "diff": -0.173589717
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 15.589913492,
+            "vote_pct_2019": 20.765948229,
+            "diff": -5.176034738
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.061911216,
+            "vote_pct_2019": 0.108307159,
+            "diff": -0.046395943
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 9.005572009,
+            "vote_pct_2019": 10.515758692,
+            "diff": -1.510186682
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 17.162374713,
+            "vote_pct_2019": 14.137116863,
+            "diff": 3.02525785
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.610109934,
+            "vote_pct_2019": 0.924943139,
+            "diff": 0.6851667955
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 44.262754548000004,
+          "centre": 26.601743553,
+          "droite": 12.74492579,
+          "ext_droite": 14.780466175
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 15.423625987,
+            "vote_pct_2019": 15.558173557,
+            "diff": -0.134547569
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 13.65040668,
+            "vote_pct_2019": 13.517649597,
+            "diff": 0.1327570831
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 25.778117579,
+            "vote_pct_2019": 24.746008953,
+            "diff": 1.0321086265
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.471154131,
+            "vote_pct_2019": 0.712169323,
+            "diff": -0.241015192
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 8.108034464,
+            "vote_pct_2019": 12.228227894,
+            "diff": -4.12019343
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.080302167,
+            "vote_pct_2019": 0.148821562,
+            "diff": -0.068519395
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.539337243,
+            "vote_pct_2019": 7.0978447,
+            "diff": -0.558507457
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 27.902278193,
+            "vote_pct_2019": 25.490116765,
+            "diff": 2.4121614282
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.046743555,
+            "vote_pct_2019": 0.500987649,
+            "diff": 1.5457559055
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 21.758441144,
+          "centre": 34.912769567,
+          "droite": 15.423625987,
+          "ext_droite": 25.858419746
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 22.504313404000005,
+        "centre": -8.311026014,
+        "droite": -2.6787001969999995,
+        "ext_droite": -11.077953570999998
+      }
+    },
+    "UR": {
+      "canton": "UR",
+      "canton_name": "Uri",
+      "cheflieu": {
+        "bfs": 1201,
+        "name": "Altdorf (UR)",
+        "parties": [
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 34.836561743,
+            "diff": -34.83656174
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 24.449400613,
+            "vote_pct_2019": 28.87409201,
+            "diff": -4.424691396
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 72.623362141,
+            "vote_pct_2019": 33.958837772,
+            "diff": 38.664524369
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.927237246,
+            "vote_pct_2019": 2.330508475,
+            "diff": 0.596728771
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 72.623362141,
+          "droite": 0,
+          "ext_droite": 24.449400613
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 22.251046025,
+            "diff": -22.25104603
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 35.341063093,
+            "vote_pct_2019": 36.326359833,
+            "diff": -0.98529674
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 62.362595995,
+            "vote_pct_2019": 39.205020921,
+            "diff": 23.157575074
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.296340913,
+            "vote_pct_2019": 2.217573222,
+            "diff": 0.0787676908
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 62.362595995,
+          "droite": 0,
+          "ext_droite": 35.341063093
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 0,
+        "centre": 10.260766146000002,
+        "droite": 0,
+        "ext_droite": -10.89166248
+      }
+    },
+    "SZ": {
+      "canton": "SZ",
+      "canton_name": "Schwyz",
+      "cheflieu": {
+        "bfs": 1372,
+        "name": "Schwyz",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.305438368,
+            "vote_pct_2019": 19.753865573,
+            "diff": -5.448427205
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 11.03398021,
+            "vote_pct_2019": 17.666681693,
+            "diff": -6.632701483
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 27.306895758,
+            "vote_pct_2019": 30.122165622,
+            "diff": -2.815269864
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.322160006,
+            "vote_pct_2019": 0.527430916,
+            "diff": -0.205270909
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 5.204418194,
+            "vote_pct_2019": 3.151061624,
+            "diff": 2.0533565706
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 3.202423871,
+            "vote_pct_2019": 3.367443538,
+            "diff": -0.165019667
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 27.93203958,
+            "vote_pct_2019": 25.411351035,
+            "diff": 2.5206885451
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 10.692644013,
+            "vote_pct_2019": null,
+            "diff": 10.692644013
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 16.238398403999998,
+          "centre": 31.456623457000003,
+          "droite": 14.305438368,
+          "ext_droite": 27.306895758
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 19.64331802,
+            "vote_pct_2019": 23.098084599,
+            "diff": -3.454766579
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 10.914244911,
+            "vote_pct_2019": 13.814815178,
+            "diff": -2.900570267
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 35.855314097,
+            "vote_pct_2019": 36.892794445,
+            "diff": -1.037480348
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.450799222,
+            "vote_pct_2019": 0.602669596,
+            "diff": -0.151870374
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 2.740497944,
+            "vote_pct_2019": 2.609770211,
+            "diff": 0.1307277331
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 3.308298491,
+            "vote_pct_2019": 4.58401577,
+            "diff": -1.275717279
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 17.569125415,
+            "vote_pct_2019": 18.397850201,
+            "diff": -0.828724785
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 9.5184019,
+            "vote_pct_2019": null,
+            "diff": 9.5184018996
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 13.654742855,
+          "centre": 21.328223127999998,
+          "droite": 19.64331802,
+          "ext_droite": 35.855314097
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 2.5836555489999977,
+        "centre": 10.128400329000005,
+        "droite": -5.337879651999998,
+        "ext_droite": -8.548418338999998
+      }
+    },
+    "OW": {
+      "canton": "OW",
+      "canton_name": "Obwalden",
+      "cheflieu": {
+        "bfs": 1407,
+        "name": "Sarnen",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 51.99245461,
+            "vote_pct_2019": 9.747204667,
+            "diff": 42.245249943
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 3.54885756,
+            "diff": -3.54885756
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 48.00754539,
+            "vote_pct_2019": 30.335439961,
+            "diff": 17.672105429
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": null,
+            "vote_pct_2019": 44.60379193,
+            "diff": -44.60379193
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": null,
+            "vote_pct_2019": 11.764705882,
+            "diff": -11.76470588
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 0,
+          "droite": 51.99245461,
+          "ext_droite": 48.00754539
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 47.654509579,
+            "vote_pct_2019": 11.591707418,
+            "diff": 36.062802161
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 2.920311316,
+            "diff": -2.920311316
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 52.345490421,
+            "vote_pct_2019": 37.275294442,
+            "diff": 15.070195979
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": null,
+            "vote_pct_2019": 36.67607962,
+            "diff": -36.67607962
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": null,
+            "vote_pct_2019": 11.536607204,
+            "diff": -11.5366072
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 0,
+          "droite": 47.654509579,
+          "ext_droite": 52.345490421
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 0,
+        "centre": 0,
+        "droite": 4.337945031000004,
+        "ext_droite": -4.337945031000004
+      }
+    },
+    "NW": {
+      "canton": "NW",
+      "canton_name": "Nidwalden",
+      "cheflieu": {
+        "bfs": 1509,
+        "name": "Stans",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 17.120622568,
+            "vote_pct_2019": null,
+            "diff": 17.120622568
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 29.422328644,
+            "vote_pct_2019": 54.799183118,
+            "diff": -25.37685447
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 53.457048788,
+            "vote_pct_2019": 45.200816882,
+            "diff": 8.2562319056
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 53.457048788,
+          "droite": 17.120622568,
+          "ext_droite": 29.422328644
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.790124852,
+            "vote_pct_2019": null,
+            "diff": 14.790124852
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 39.867804079,
+            "vote_pct_2019": 64.204016492,
+            "diff": -24.33621241
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 45.342071069,
+            "vote_pct_2019": 35.795983508,
+            "diff": 9.546087561
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 45.342071069,
+          "droite": 14.790124852,
+          "ext_droite": 39.867804079
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 0,
+        "centre": 8.114977719000002,
+        "droite": 2.3304977160000018,
+        "ext_droite": -10.445475435000002
+      }
+    },
+    "GL": {
+      "canton": "GL",
+      "canton_name": "Glarus",
+      "cheflieu": {
+        "bfs": 1630,
+        "name": "Glarus Nord",
+        "parties": [
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 25.729996208,
+            "vote_pct_2019": 27.693882775,
+            "diff": -1.963886567
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 42.889647327,
+            "vote_pct_2019": null,
+            "diff": 42.889647327
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 1.663680573,
+            "diff": -1.663680573
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 28.498293515,
+            "vote_pct_2019": 64.576401331,
+            "diff": -36.07810782
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.88206295,
+            "vote_pct_2019": 6.066035321,
+            "diff": -3.183972371
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 25.729996208,
+          "centre": 28.498293515,
+          "droite": 0,
+          "ext_droite": 42.889647327
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 23.399209486,
+            "vote_pct_2019": 28.192747339,
+            "diff": -4.793537853
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 42.592885375,
+            "vote_pct_2019": null,
+            "diff": 42.592885375
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 2.749310209,
+            "diff": -2.749310209
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 31.233201581,
+            "vote_pct_2019": 63.027197477,
+            "diff": -31.7939959
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.774703557,
+            "vote_pct_2019": 6.030744974,
+            "diff": -3.256041417
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 23.399209486,
+          "centre": 31.233201581,
+          "droite": 0,
+          "ext_droite": 42.592885375
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 2.330786721999999,
+        "centre": -2.734908065999999,
+        "droite": 0,
+        "ext_droite": 0.2967619519999971
+      }
+    },
+    "ZG": {
+      "canton": "ZG",
+      "canton_name": "Zug",
+      "cheflieu": {
+        "bfs": 1711,
+        "name": "Zug",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 15.238371671,
+            "vote_pct_2019": 18.361940705,
+            "diff": -3.123569034
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 7.191060155,
+            "vote_pct_2019": 12.72272018,
+            "diff": -5.531660025
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 24.958275887,
+            "vote_pct_2019": 20.640853504,
+            "diff": 4.3174223834
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.565996662,
+            "vote_pct_2019": 0.635047356,
+            "diff": -0.069050694
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 19.566794862,
+            "vote_pct_2019": 23.456834924,
+            "diff": -3.890040061
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 7.136637399,
+            "vote_pct_2019": 5.73719926,
+            "diff": 1.3994381396
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 20.477468979,
+            "vote_pct_2019": 18.445404072,
+            "diff": 2.0320649075
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 4.865394384,
+            "vote_pct_2019": null,
+            "diff": 4.8653943836
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 26.757855016999997,
+          "centre": 28.18010304,
+          "droite": 15.238371671,
+          "ext_droite": 24.958275887
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 12.962143922,
+            "vote_pct_2019": 14.676798965,
+            "diff": -1.714655043
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 5.155044474,
+            "vote_pct_2019": 9.345428552,
+            "diff": -4.190384078
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 30.237358101,
+            "vote_pct_2019": 26.610899312,
+            "diff": 3.6264587887
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.515176831,
+            "vote_pct_2019": 0.820341752,
+            "diff": -0.305164921
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 16.239946271,
+            "vote_pct_2019": 19.229525495,
+            "diff": -2.989579224
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.199321834,
+            "vote_pct_2019": 5.535604874,
+            "diff": 0.6637169596
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 24.938162399,
+            "vote_pct_2019": 23.781401048,
+            "diff": 1.1567613511
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 3.752846168,
+            "vote_pct_2019": null,
+            "diff": 3.7528461677
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 21.394990745,
+          "centre": 31.652661064,
+          "droite": 12.962143922,
+          "ext_droite": 30.237358101
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 5.362864271999996,
+        "centre": -3.4725580240000014,
+        "droite": 2.2762277490000002,
+        "ext_droite": -5.279082214000002
+      }
+    },
+    "FR": {
+      "canton": "FR",
+      "canton_name": "Fribourg / Freiburg",
+      "cheflieu": {
+        "bfs": 2196,
+        "name": "Fribourg",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 7.430266351,
+            "vote_pct_2019": 9.135927391,
+            "diff": -1.70566104
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 30.032657219,
+            "vote_pct_2019": 29.440713826,
+            "diff": 0.5919433933
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 13.314557929,
+            "vote_pct_2019": 9.655658786,
+            "diff": 3.6588991427
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.584234653,
+            "vote_pct_2019": 0.476803729,
+            "diff": 0.107430924
+          },
+          {
+            "partei_id": 8,
+            "abbrev": "CSP/PCS",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 3.418521737,
+            "vote_pct_2019": 5.606659921,
+            "diff": -2.188138184
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 23.701950445,
+            "vote_pct_2019": 20.853647319,
+            "diff": 2.8483031264
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.63516793,
+            "vote_pct_2019": 0.302026799,
+            "diff": 0.3331411309
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 3.837972256,
+            "vote_pct_2019": 5.548400944,
+            "diff": -1.710428688
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 16.252209605,
+            "vote_pct_2019": 15.852574127,
+            "diff": 0.3996354785
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 0.792461875,
+            "vote_pct_2019": 3.127587158,
+            "diff": -2.335125284
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 53.734607664,
+          "centre": 24.092938251,
+          "droite": 7.430266351,
+          "ext_droite": 13.949725858999999
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.295617614,
+            "vote_pct_2019": 15.420336853,
+            "diff": -2.124719239
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 20.579559883,
+            "vote_pct_2019": 21.225821533,
+            "diff": -0.64626165
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 25.804013494,
+            "vote_pct_2019": 20.181175819,
+            "diff": 5.6228376744
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.720655743,
+            "vote_pct_2019": 0.74307286,
+            "diff": -0.022417117
+          },
+          {
+            "partei_id": 8,
+            "abbrev": "CSP/PCS",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.483227023,
+            "vote_pct_2019": 3.251151,
+            "diff": -0.767923977
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 11.833720258,
+            "vote_pct_2019": 12.463795507,
+            "diff": -0.63007525
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.112087813,
+            "vote_pct_2019": 0.734451756,
+            "diff": 0.3776360572
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 3.703052569,
+            "vote_pct_2019": 5.380066349,
+            "diff": -1.67701378
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 19.889106769,
+            "vote_pct_2019": 18.453473393,
+            "diff": 1.4356333754
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 0.578958836,
+            "vote_pct_2019": 2.146654929,
+            "diff": -1.567696093
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 32.413280141,
+          "centre": 26.796042104,
+          "droite": 13.295617614,
+          "ext_droite": 26.916101306999998
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 21.321327523,
+        "centre": -2.7031038530000018,
+        "droite": -5.865351262999999,
+        "ext_droite": -12.966375447999999
+      }
+    },
+    "SO": {
+      "canton": "SO",
+      "canton_name": "Solothurn",
+      "cheflieu": {
+        "bfs": 2601,
+        "name": "Solothurn",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 19.838348271,
+            "vote_pct_2019": 19.743955246,
+            "diff": 0.0943930255
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 27.331412719,
+            "vote_pct_2019": 24.851402598,
+            "diff": 2.4800101206
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 12.39863423,
+            "vote_pct_2019": 12.277776284,
+            "diff": 0.120857946
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.36310286,
+            "vote_pct_2019": 0.944030553,
+            "diff": 0.4190723063
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 17.923068715,
+            "vote_pct_2019": 20.59923079,
+            "diff": -2.676162075
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.317366397,
+            "diff": -0.317366397
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 8.840162185,
+            "vote_pct_2019": 9.609746914,
+            "diff": -0.769584729
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 10.630068289,
+            "vote_pct_2019": 10.518813372,
+            "diff": 0.1112549161
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.675202732,
+            "vote_pct_2019": 1.137677846,
+            "diff": 0.5375248853
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 45.254481434,
+          "centre": 20.833333334000002,
+          "droite": 19.838348271,
+          "ext_droite": 12.39863423
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 17.392413509,
+            "vote_pct_2019": 18.520253856,
+            "diff": -1.127840348
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 17.2383681,
+            "vote_pct_2019": 18.440053101,
+            "diff": -1.201685001
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 28.722894876,
+            "vote_pct_2019": 25.909276062,
+            "diff": 2.8136188147
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.480013344,
+            "vote_pct_2019": 1.199423399,
+            "diff": 0.2805899453
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 9.250181518,
+            "vote_pct_2019": 11.41721066,
+            "diff": -2.167029141
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.602560937,
+            "diff": -0.602560937
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.027787044,
+            "vote_pct_2019": 6.807988839,
+            "diff": -0.780201795
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 17.855530917,
+            "vote_pct_2019": 16.187678209,
+            "diff": 1.6678527078
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.032810691,
+            "vote_pct_2019": 0.915554936,
+            "diff": 1.1172557545
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 26.488549618,
+          "centre": 25.363331305,
+          "droite": 17.392413509,
+          "ext_droite": 28.722894876
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 18.765931816,
+        "centre": -4.529997970999997,
+        "droite": 2.4459347620000003,
+        "ext_droite": -16.324260646
+      }
+    },
+    "BS": {
+      "canton": "BS",
+      "canton_name": "Basel-Stadt",
+      "cheflieu": {
+        "bfs": 2701,
+        "name": "Basel",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 6.158671827,
+            "vote_pct_2019": 5.772996766,
+            "diff": 0.3856750614
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 33.65171349,
+            "vote_pct_2019": 34.031620553,
+            "diff": -0.379907063
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 12.649495521,
+            "vote_pct_2019": 11.28458498,
+            "diff": 1.3649105403
+          },
+          {
+            "partei_id": 5,
+            "abbrev": "LDP/PLS",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 9.930307906,
+            "vote_pct_2019": 14.568810636,
+            "diff": -4.63850273
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.702618074,
+            "vote_pct_2019": 1.490298239,
+            "diff": 0.212319835
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 18.548860572,
+            "vote_pct_2019": 19.402623069,
+            "diff": -0.853762496
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.29138036,
+            "vote_pct_2019": 0.194933525,
+            "diff": 0.0964468351
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 8.964838654,
+            "vote_pct_2019": 5.563690262,
+            "diff": 3.4011483913
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 5.465556232,
+            "vote_pct_2019": 4.517606899,
+            "diff": 0.947949333
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.636557363,
+            "vote_pct_2019": 3.17283507,
+            "diff": -0.536277707
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 52.200574062,
+          "centre": 16.13301296,
+          "droite": 16.088979733,
+          "ext_droite": 12.940875881
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 6.906006035,
+            "vote_pct_2019": 6.044409276,
+            "diff": 0.8615967594
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 31.802077677,
+            "vote_pct_2019": 32.650037138,
+            "diff": -0.847959461
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 13.643768304,
+            "vote_pct_2019": 12.350466749,
+            "diff": 1.2933015553
+          },
+          {
+            "partei_id": 5,
+            "abbrev": "LDP/PLS",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 10.334084051,
+            "vote_pct_2019": 15.331987145,
+            "diff": -4.997903095
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.201411823,
+            "vote_pct_2019": 2.017789091,
+            "diff": 0.183622732
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 17.128372664,
+            "vote_pct_2019": 17.695032417,
+            "diff": -0.566659752
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.421054506,
+            "vote_pct_2019": 0.282176943,
+            "diff": 0.1388775628
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 9.143470094,
+            "vote_pct_2019": 5.698406596,
+            "diff": 3.4450634984
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 5.844467985,
+            "vote_pct_2019": 4.93772325,
+            "diff": 0.9067447346
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.57528686,
+            "vote_pct_2019": 2.991971394,
+            "diff": -0.416684534
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 48.930450341,
+          "centre": 17.189349901999996,
+          "droite": 17.240090086,
+          "ext_droite": 14.06482281
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 3.2701237210000045,
+        "centre": -1.056336941999998,
+        "droite": -1.151110353,
+        "ext_droite": -1.1239469290000006
+      }
+    },
+    "BL": {
+      "canton": "BL",
+      "canton_name": "Basel-Landschaft",
+      "cheflieu": {
+        "bfs": 2829,
+        "name": "Liestal",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.830585931,
+            "vote_pct_2019": 15.478454307,
+            "diff": -1.647868376
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 29.009303085,
+            "vote_pct_2019": 23.946037099,
+            "diff": 5.0632659852
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 22.49714379,
+            "vote_pct_2019": 20.397545836,
+            "diff": 2.0995979536
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.591806757,
+            "vote_pct_2019": 5.141544975,
+            "diff": -2.549738218
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 14.046025787,
+            "vote_pct_2019": 22.629256216,
+            "diff": -8.583230429
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.434143953,
+            "vote_pct_2019": null,
+            "diff": 0.434143953
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 9.07458789,
+            "vote_pct_2019": 6.052886513,
+            "diff": 3.0217013768
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 7.217235189,
+            "vote_pct_2019": 6.271752,
+            "diff": 0.9454831882
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.299167619,
+            "vote_pct_2019": 0.082523053,
+            "diff": 1.2166445661
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 43.055328872,
+          "centre": 18.883629836,
+          "droite": 13.830585931,
+          "ext_droite": 22.931287743
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.228091025,
+            "vote_pct_2019": 16.519484699,
+            "diff": -2.291393673
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 24.69320927,
+            "vote_pct_2019": 21.795546877,
+            "diff": 2.8976623932
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 28.898934453,
+            "vote_pct_2019": 25.14782189,
+            "diff": 3.751112563
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.550517559,
+            "vote_pct_2019": 3.49671446,
+            "diff": -0.946196901
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 10.000726932,
+            "vote_pct_2019": 17.995692413,
+            "diff": -7.994965481
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.521193454,
+            "vote_pct_2019": null,
+            "diff": 0.5211934536
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.970434148,
+            "vote_pct_2019": 5.257595869,
+            "diff": 1.7128382782
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 10.590894414,
+            "vote_pct_2019": 9.671226565,
+            "diff": 0.9196678488
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.545998746,
+            "vote_pct_2019": 0.115917227,
+            "diff": 1.4300815186
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 34.693936202,
+          "centre": 20.111846121,
+          "droite": 14.228091025,
+          "ext_droite": 29.420127906999998
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 8.361392669999994,
+        "centre": -1.2282162849999985,
+        "droite": -0.39750509399999956,
+        "ext_droite": -6.488840163999999
+      }
+    },
+    "SH": {
+      "canton": "SH",
+      "canton_name": "Schaffhausen",
+      "cheflieu": {
+        "bfs": 2939,
+        "name": "Schaffhausen",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 12.719298246,
+            "vote_pct_2019": 9.605864067,
+            "diff": 3.1134341784
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 35.8729485,
+            "vote_pct_2019": 32.102697931,
+            "diff": 3.7702505688
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 29.676004527,
+            "vote_pct_2019": 32.820355375,
+            "diff": -3.144350847
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.687181664,
+            "vote_pct_2019": 2.060866562,
+            "diff": -0.373684898
+          },
+          {
+            "partei_id": 12,
+            "abbrev": "AL",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 4.87776797,
+            "diff": -4.87776797
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 6.29598189,
+            "vote_pct_2019": 7.994013125,
+            "diff": -1.698031235
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.266270515,
+            "vote_pct_2019": 2.057028821,
+            "diff": -0.790758306
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 7.431380872,
+            "vote_pct_2019": 6.608588863,
+            "diff": 0.8227920087
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.507781551,
+            "vote_pct_2019": 1.872817285,
+            "diff": 0.6349642655
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.543152235,
+            "vote_pct_2019": null,
+            "diff": 2.5431522354
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 42.16893039,
+          "centre": 11.626344087,
+          "droite": 12.719298246,
+          "ext_droite": 30.942275042
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 12.203488909,
+            "vote_pct_2019": 11.034767528,
+            "diff": 1.1687213804
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 27.415930837,
+            "vote_pct_2019": 26.15575192,
+            "diff": 1.2601789171
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 39.07177799,
+            "vote_pct_2019": 39.451647535,
+            "diff": -0.379869545
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.469002861,
+            "vote_pct_2019": 1.879593691,
+            "diff": 0.5894091706
+          },
+          {
+            "partei_id": 12,
+            "abbrev": "AL",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 3.186059955,
+            "diff": -3.186059955
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 4.782635449,
+            "vote_pct_2019": 6.829630853,
+            "diff": -2.046995404
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.718302926,
+            "vote_pct_2019": 3.371046329,
+            "diff": -1.652743403
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.779374212,
+            "vote_pct_2019": 5.949293914,
+            "diff": 0.830080298
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.587453466,
+            "vote_pct_2019": 2.142208275,
+            "diff": 0.445245191
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.972033351,
+            "vote_pct_2019": null,
+            "diff": 2.9720333508
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 32.198566286,
+          "centre": 11.835830539,
+          "droite": 12.203488909,
+          "ext_droite": 40.790080916
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 9.970364103999998,
+        "centre": -0.20948645200000016,
+        "droite": 0.5158093369999985,
+        "ext_droite": -9.847805874000002
+      }
+    },
+    "AR": {
+      "canton": "AR",
+      "canton_name": "Appenzell Ausserrhoden",
+      "cheflieu": {
+        "bfs": 3001,
+        "name": "Herisau",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 24.088824523,
+            "vote_pct_2019": 33.546414675,
+            "diff": -9.457590152
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 52.763697804,
+            "vote_pct_2019": 64.702612563,
+            "diff": -11.93891476
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 22.471638909,
+            "vote_pct_2019": null,
+            "diff": 22.471638909
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 0.675838764,
+            "vote_pct_2019": 1.750972763,
+            "diff": -1.075133998
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 22.471638909,
+          "droite": 24.088824523,
+          "ext_droite": 52.763697804
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 35.721091867,
+            "vote_pct_2019": 48.436899423,
+            "diff": -12.71580756
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 47.654279469,
+            "vote_pct_2019": 49.455477258,
+            "diff": -1.80119779
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 15.895969957,
+            "vote_pct_2019": null,
+            "diff": 15.895969957
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 0.728658707,
+            "vote_pct_2019": 2.107623318,
+            "diff": -1.378964611
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 15.895969957,
+          "droite": 35.721091867,
+          "ext_droite": 47.654279469
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 0,
+        "centre": 6.575668951999999,
+        "droite": -11.632267343999999,
+        "ext_droite": 5.109418335000001
+      }
+    },
+    "AI": {
+      "canton": "AI",
+      "canton_name": "Appenzell Innerrhoden",
+      "cheflieu": {
+        "bfs": 3101,
+        "name": "Appenzell",
+        "parties": [
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 9.689507495,
+            "diff": -9.689507495
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 2.613065327,
+            "vote_pct_2019": 25.642398287,
+            "diff": -23.02933296
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 86.030150754,
+            "vote_pct_2019": 64.239828694,
+            "diff": 21.79032206
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 11.35678392,
+            "vote_pct_2019": 0.428265525,
+            "diff": 10.928518395
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 86.030150754,
+          "droite": 0,
+          "ext_droite": 2.613065327
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 8.730299274,
+            "diff": -8.730299274
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 2.43204578,
+            "vote_pct_2019": 29.077386223,
+            "diff": -26.64534044
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 86.659513591,
+            "vote_pct_2019": 61.271471578,
+            "diff": 25.388042013
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 10.908440629,
+            "vote_pct_2019": 0.920842925,
+            "diff": 9.987597704
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 0,
+          "centre": 86.659513591,
+          "droite": 0,
+          "ext_droite": 2.43204578
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 0,
+        "centre": -0.6293628370000022,
+        "droite": 0,
+        "ext_droite": 0.181019547
+      }
+    },
+    "SG": {
+      "canton": "SG",
+      "canton_name": "St. Gallen",
+      "cheflieu": {
+        "bfs": 3203,
+        "name": "St. Gallen",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.278696366,
+            "vote_pct_2019": 14.349114409,
+            "diff": -0.070418043
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 25.609866456,
+            "vote_pct_2019": 24.353628396,
+            "diff": 1.2562380603
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 18.357400489,
+            "vote_pct_2019": 16.540409119,
+            "diff": 1.8169913695
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.692672984,
+            "vote_pct_2019": 1.706823271,
+            "diff": -0.014150287
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 15.487009769,
+            "vote_pct_2019": 17.449910391,
+            "diff": -1.962900622
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.155132962,
+            "vote_pct_2019": 0.233744061,
+            "diff": -0.0786111
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.509353225,
+            "vote_pct_2019": 0.417432033,
+            "diff": 0.0919211916
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 9.245924528,
+            "vote_pct_2019": 10.929210857,
+            "diff": -1.683286329
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 12.67565576,
+            "vote_pct_2019": 13.086985864,
+            "diff": -0.411330104
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.988287461,
+            "vote_pct_2019": 0.932741599,
+            "diff": 1.0555458625
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 41.096876225,
+          "centre": 23.614253272,
+          "droite": 14.278696366,
+          "ext_droite": 19.021886676
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.449628224,
+            "vote_pct_2019": 14.994611338,
+            "diff": -0.544983114
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 12.729138594,
+            "vote_pct_2019": 12.690110486,
+            "diff": 0.0390281073
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 34.481732474,
+            "vote_pct_2019": 31.319242422,
+            "diff": 3.1624900519
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.444980157,
+            "vote_pct_2019": 1.56428209,
+            "diff": -0.119301932
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 8.661906886,
+            "vote_pct_2019": 10.535650584,
+            "diff": -1.873743697
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.156880918,
+            "vote_pct_2019": 0.251596501,
+            "diff": -0.094715583
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.148899927,
+            "vote_pct_2019": 0.927503027,
+            "diff": 0.2213968995
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 5.845388799,
+            "vote_pct_2019": 7.31853147,
+            "diff": -1.473142671
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 18.832586391,
+            "vote_pct_2019": 19.41689402,
+            "diff": -0.584307629
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.24885763,
+            "vote_pct_2019": 0.981578061,
+            "diff": 1.2672795681
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 21.391045480000002,
+          "centre": 26.122955347,
+          "droite": 14.449628224,
+          "ext_droite": 35.787513319
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 19.705830745,
+        "centre": -2.508702075000002,
+        "droite": -0.17093185799999944,
+        "ext_droite": -16.765626642999997
+      }
+    },
+    "GR": {
+      "canton": "GR",
+      "canton_name": "Graubünden / Grigioni / Grischun",
+      "cheflieu": {
+        "bfs": 3901,
+        "name": "Chur",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.888468523,
+            "vote_pct_2019": 13.175001373,
+            "diff": 0.7134671497
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 25.556144068,
+            "vote_pct_2019": 25.223856,
+            "diff": 0.3322880681
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 22.968371671,
+            "vote_pct_2019": 23.519071249,
+            "diff": -0.550699579
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.913665254,
+            "vote_pct_2019": null,
+            "diff": 0.9136652542
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 8.134079903,
+            "vote_pct_2019": 6.390653898,
+            "diff": 1.7434260056
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.682884383,
+            "vote_pct_2019": null,
+            "diff": 0.6828843826
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 8.398910412,
+            "vote_pct_2019": 11.078354178,
+            "diff": -2.679443766
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 19.116979419,
+            "vote_pct_2019": 20.613063302,
+            "diff": -1.496083883
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 0.340496368,
+            "vote_pct_2019": null,
+            "diff": 0.340496368
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 33.690223970999995,
+          "centre": 28.429555084999997,
+          "droite": 13.888468523,
+          "ext_droite": 23.651256054
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.743892114,
+            "vote_pct_2019": 13.630094131,
+            "diff": 0.113797983
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 17.768891518,
+            "vote_pct_2019": 17.118767695,
+            "diff": 0.6501238236
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 30.588907364,
+            "vote_pct_2019": 29.938917101,
+            "diff": 0.6499902634
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.01976626,
+            "vote_pct_2019": null,
+            "diff": 1.0197662596
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 5.244706498,
+            "vote_pct_2019": 5.516473716,
+            "diff": -0.271767217
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.180603019,
+            "vote_pct_2019": null,
+            "diff": 1.1806030188
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.25019127,
+            "vote_pct_2019": 8.347304851,
+            "diff": -2.097113581
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 23.864026632,
+            "vote_pct_2019": 25.448442507,
+            "diff": -1.584415875
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 0.339015325,
+            "vote_pct_2019": null,
+            "diff": 0.3390153254
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 23.013598016,
+          "centre": 31.133984162,
+          "droite": 13.743892114,
+          "ext_droite": 31.769510383
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 10.676625954999995,
+        "centre": -2.704429077000004,
+        "droite": 0.1445764090000008,
+        "ext_droite": -8.118254328999999
+      }
+    },
+    "AG": {
+      "canton": "AG",
+      "canton_name": "Aargau",
+      "cheflieu": {
+        "bfs": 4001,
+        "name": "Aarau",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.844228666,
+            "vote_pct_2019": 16.680703761,
+            "diff": -1.836475094
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 28.429722582,
+            "vote_pct_2019": 26.428113337,
+            "diff": 2.0016092447
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 18.224121484,
+            "vote_pct_2019": 16.347676925,
+            "diff": 1.8764445585
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 3.57145627,
+            "vote_pct_2019": 3.623115617,
+            "diff": -0.051659347
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.257486098,
+            "vote_pct_2019": null,
+            "diff": 0.2574860981
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 12.793646608,
+            "vote_pct_2019": 14.680224697,
+            "diff": -1.886578088
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.530483407,
+            "vote_pct_2019": 0.629737519,
+            "diff": -0.099254112
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 11.065697733,
+            "vote_pct_2019": 10.853120485,
+            "diff": 0.2125772484
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 7.464770163,
+            "vote_pct_2019": 8.199723379,
+            "diff": -0.734953216
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.818386989,
+            "vote_pct_2019": 2.557584281,
+            "diff": 0.2608027087
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0.257486098,
+          "gauche": 41.22336919,
+          "centre": 22.101924166,
+          "droite": 14.844228666,
+          "ext_droite": 18.754604891
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.053887717,
+            "vote_pct_2019": 13.554601603,
+            "diff": -0.500713886
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 16.422010881,
+            "vote_pct_2019": 16.466316447,
+            "diff": -0.044305566
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 35.492327246,
+            "vote_pct_2019": 31.528317065,
+            "diff": 3.9640101808
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 3.461348226,
+            "vote_pct_2019": 3.643545177,
+            "diff": -0.182196951
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.110223452,
+            "vote_pct_2019": null,
+            "diff": 0.1102234521
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 7.119038824,
+            "vote_pct_2019": 9.781515892,
+            "diff": -2.662477068
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.990571058,
+            "vote_pct_2019": 0.996939655,
+            "diff": -0.006368597
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 8.493967606,
+            "vote_pct_2019": 8.505534944,
+            "diff": -0.011567338
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 12.000081392,
+            "vote_pct_2019": 12.96266031,
+            "diff": -0.962578918
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.856543598,
+            "vote_pct_2019": 2.560568907,
+            "diff": 0.2959746912
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0.110223452,
+          "gauche": 23.541049705,
+          "centre": 23.955397224000002,
+          "droite": 13.053887717,
+          "ext_droite": 36.482898304
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0.147262646,
+        "gauche": 17.682319485,
+        "centre": -1.8534730580000023,
+        "droite": 1.790340948999999,
+        "ext_droite": -17.728293413000003
+      }
+    },
+    "TG": {
+      "canton": "TG",
+      "canton_name": "Thurgau",
+      "cheflieu": {
+        "bfs": 4566,
+        "name": "Frauenfeld",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.631113678,
+            "vote_pct_2019": 14.337078652,
+            "diff": -0.705964974
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 16.256496824,
+            "vote_pct_2019": 18.093435837,
+            "diff": -1.836939013
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 28.534938475,
+            "vote_pct_2019": 26.578356002,
+            "diff": 1.9565824722
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 3.544933588,
+            "vote_pct_2019": 3.264340627,
+            "diff": 0.2805929612
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 11.472169162,
+            "vote_pct_2019": 13.031342401,
+            "diff": -1.559173239
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 1.748034294,
+            "vote_pct_2019": 1.819041987,
+            "diff": -0.071007693
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 9.213273511,
+            "vote_pct_2019": 10.613837966,
+            "diff": -1.400564455
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 13.699968904,
+            "vote_pct_2019": 12.262566529,
+            "diff": 1.4374023754
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.899071565,
+            "vote_pct_2019": null,
+            "diff": 1.899071565
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 27.728665986,
+          "centre": 26.458176003,
+          "droite": 13.631113678,
+          "ext_droite": 30.282972769
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 10.745608184,
+            "vote_pct_2019": 11.453251962,
+            "diff": -0.707643778
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 10.247263517,
+            "vote_pct_2019": 12.642046443,
+            "diff": -2.394782926
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 40.293670325,
+            "vote_pct_2019": 36.674715675,
+            "diff": 3.6189546497
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.448005287,
+            "vote_pct_2019": 2.667306876,
+            "diff": -0.219301589
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 8.518040364,
+            "vote_pct_2019": 10.599175615,
+            "diff": -2.08113525
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 2.804522868,
+            "vote_pct_2019": 2.849163437,
+            "diff": -0.044640569
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.644732386,
+            "vote_pct_2019": 8.147823404,
+            "diff": -1.503091018
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 15.340928916,
+            "vote_pct_2019": 14.966516589,
+            "diff": 0.3744123275
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 2.957228153,
+            "vote_pct_2019": null,
+            "diff": 2.9572281528
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 18.765303881,
+          "centre": 24.433666588999998,
+          "droite": 10.745608184,
+          "ext_droite": 43.098193193
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 8.963362104999998,
+        "centre": 2.0245094140000006,
+        "droite": 2.8855054940000002,
+        "ext_droite": -12.815220424
+      }
+    },
+    "TI": {
+      "canton": "TI",
+      "canton_name": "Ticino",
+      "cheflieu": {
+        "bfs": 5002,
+        "name": "Bellinzona",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 25.548237678,
+            "vote_pct_2019": 24.286687588,
+            "diff": 1.2615500905
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 15.063224392,
+            "vote_pct_2019": 18.057849533,
+            "diff": -2.994625141
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 12.000744425,
+            "vote_pct_2019": 9.881080188,
+            "diff": 2.1196642363
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 0.792798745,
+            "diff": -0.792798745
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 9.513125653,
+            "vote_pct_2019": 12.441159468,
+            "diff": -2.928033816
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.573953258,
+            "diff": -0.573953258
+          },
+          {
+            "partei_id": 18,
+            "abbrev": "Lega",
+            "family_code": 90,
+            "family": "Régionaliste/Ethnique",
+            "wing": "ext_droite",
+            "vote_pct": 10.715578118,
+            "vote_pct_2019": 13.021306466,
+            "diff": -2.305728348
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 1.161095545,
+            "vote_pct_2019": 0.707118672,
+            "diff": 0.4539768728
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 16.476597153,
+            "vote_pct_2019": 16.98117103,
+            "diff": -0.504573877
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 9.521397037,
+            "vote_pct_2019": 3.256875052,
+            "diff": 6.2645219852
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 24.576350044999998,
+          "centre": 17.637692698,
+          "droite": 25.548237678,
+          "ext_droite": 22.716322543
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 21.149960752,
+            "vote_pct_2019": 20.526678178,
+            "diff": 0.6232825735
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 12.495284695,
+            "vote_pct_2019": 14.065992289,
+            "diff": -1.570707594
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 15.062730348,
+            "vote_pct_2019": 11.658733161,
+            "diff": 3.4039971871
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": null,
+            "vote_pct_2019": 0.830422658,
+            "diff": -0.830422658
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 9.076825601,
+            "vote_pct_2019": 12.113741293,
+            "diff": -3.036915692
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 1.056196428,
+            "diff": -1.056196428
+          },
+          {
+            "partei_id": 18,
+            "abbrev": "Lega",
+            "family_code": 90,
+            "family": "Régionaliste/Ethnique",
+            "wing": "ext_droite",
+            "vote_pct": 13.483392969,
+            "vote_pct_2019": 16.927424234,
+            "diff": -3.444031265
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 1.51231595,
+            "vote_pct_2019": 0.988893888,
+            "diff": 0.523422063
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 17.679740118,
+            "vote_pct_2019": 18.198773996,
+            "diff": -0.519033878
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 9.539749567,
+            "vote_pct_2019": 3.633143876,
+            "diff": 5.906605691
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 21.572110295999998,
+          "centre": 19.192056068000003,
+          "droite": 21.149960752,
+          "ext_droite": 28.546123317000003
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 3.004239749,
+        "centre": -1.5543633700000044,
+        "droite": 4.398276926000001,
+        "ext_droite": -5.829800774000002
+      }
+    },
+    "VD": {
+      "canton": "VD",
+      "canton_name": "Vaud",
+      "cheflieu": {
+        "bfs": 5586,
+        "name": "Lausanne",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.212964111,
+            "vote_pct_2019": 15.096920794,
+            "diff": -0.883956683
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 32.81313269,
+            "vote_pct_2019": 26.658066474,
+            "diff": 6.155066216
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 10.990529787,
+            "vote_pct_2019": 9.302119694,
+            "diff": 1.6884100921
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.463181033,
+            "vote_pct_2019": 0.738183167,
+            "diff": -0.275002134
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 9.735065407,
+            "vote_pct_2019": 8.956214904,
+            "diff": 0.7788505036
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 20.008511623,
+            "vote_pct_2019": 27.257761252,
+            "diff": -7.249249629
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.081575353,
+            "diff": -0.081575353
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.415251506,
+            "vote_pct_2019": 0.192661169,
+            "diff": 0.2225903368
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.328143722,
+            "vote_pct_2019": 6.934326571,
+            "diff": -0.606182849
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 3.270363851,
+            "vote_pct_2019": 2.294227753,
+            "diff": 0.9761360979
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.762856269,
+            "vote_pct_2019": 2.487942868,
+            "diff": -0.725086598
+          }
+        ],
+        "wings": {
+          "ext_gauche": 9.735065407,
+          "gauche": 52.82164431300001,
+          "centre": 10.061688606,
+          "droite": 14.212964111,
+          "ext_droite": 11.405781293
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 22.365194918,
+            "vote_pct_2019": 23.339751958,
+            "diff": -0.97455704
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 25.275677918,
+            "vote_pct_2019": 20.387705362,
+            "diff": 4.887972556
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 19.162917894,
+            "vote_pct_2019": 17.378684016,
+            "diff": 1.7842338777
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.735791682,
+            "vote_pct_2019": 1.300073599,
+            "diff": -0.564281917
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 4.344197517,
+            "vote_pct_2019": 4.068433365,
+            "diff": 0.2757641516
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 13.51282778,
+            "vote_pct_2019": 19.677598961,
+            "diff": -6.16477118
+          },
+          {
+            "partei_id": 14,
+            "abbrev": "SD/DS",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.071771089,
+            "diff": -0.071771089
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.614494854,
+            "vote_pct_2019": 0.332121822,
+            "diff": 0.2823730327
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 7.536686901,
+            "vote_pct_2019": 8.372753395,
+            "diff": -0.836066494
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 4.455735834,
+            "vote_pct_2019": 2.801135722,
+            "diff": 1.6546001117
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.996474702,
+            "vote_pct_2019": 2.269970711,
+            "diff": -0.273496009
+          }
+        ],
+        "wings": {
+          "ext_gauche": 4.344197517,
+          "gauche": 38.788505698,
+          "centre": 12.728214417,
+          "droite": 22.365194918,
+          "ext_droite": 19.777412748
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 5.390867890000001,
+        "gauche": 14.033138615000006,
+        "centre": -2.6665258109999996,
+        "droite": -8.152230807,
+        "ext_droite": -8.371631455
+      }
+    },
+    "VS": {
+      "canton": "VS",
+      "canton_name": "Valais / Wallis",
+      "cheflieu": {
+        "bfs": 6266,
+        "name": "Sion",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.564842785,
+            "vote_pct_2019": 15.867559255,
+            "diff": -2.302716469
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 20.645407024,
+            "vote_pct_2019": 21.469151438,
+            "diff": -0.823744414
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 20.881819853,
+            "vote_pct_2019": 13.985887462,
+            "diff": 6.8959323919
+          },
+          {
+            "partei_id": 8,
+            "abbrev": "CSP/PCS",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": null,
+            "vote_pct_2019": 1.621132622,
+            "diff": -1.621132622
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.770968505,
+            "vote_pct_2019": null,
+            "diff": 0.7709685046
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 15.277522394,
+            "vote_pct_2019": 18.500693565,
+            "diff": -3.223171171
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 3.22966193,
+            "vote_pct_2019": 0.825040709,
+            "diff": 2.4046212204
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 25.629777509,
+            "vote_pct_2019": 24.800675472,
+            "diff": 0.8291020373
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": null,
+            "vote_pct_2019": 2.929859478,
+            "diff": -2.929859478
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0.770968505,
+          "gauche": 35.922929418,
+          "centre": 28.859439439,
+          "droite": 13.564842785,
+          "ext_droite": 20.881819853
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 14.661696482,
+            "vote_pct_2019": 16.481001968,
+            "diff": -1.819305486
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 14.303216104,
+            "vote_pct_2019": 15.066706393,
+            "diff": -0.763490289
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 24.470843712,
+            "vote_pct_2019": 19.775916248,
+            "diff": 4.6949274638
+          },
+          {
+            "partei_id": 8,
+            "abbrev": "CSP/PCS",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": null,
+            "vote_pct_2019": 1.030498026,
+            "diff": -1.030498026
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 0.73763115,
+            "vote_pct_2019": null,
+            "diff": 0.7376311496
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 8.408437701,
+            "vote_pct_2019": 10.588353818,
+            "diff": -2.179916117
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 2.031969436,
+            "vote_pct_2019": 0.796211111,
+            "diff": 1.2357583245
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 35.386205415,
+            "vote_pct_2019": 34.784426029,
+            "diff": 0.6017793857
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": null,
+            "vote_pct_2019": 1.476886406,
+            "diff": -1.476886406
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0.73763115,
+          "gauche": 22.711653805,
+          "centre": 37.418174850999996,
+          "droite": 14.661696482,
+          "ext_droite": 24.470843712
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0.03333735500000001,
+        "gauche": 13.211275613000002,
+        "centre": -8.558735411999997,
+        "droite": -1.0968536970000002,
+        "ext_droite": -3.589023859000001
+      }
+    },
+    "NE": {
+      "canton": "NE",
+      "canton_name": "Neuchâtel",
+      "cheflieu": {
+        "bfs": 6458,
+        "name": "Neuchâtel",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 18.411162372,
+            "vote_pct_2019": 19.546555657,
+            "diff": -1.135393285
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 27.037245415,
+            "vote_pct_2019": 20.240363132,
+            "diff": 6.7968822829
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 11.963542253,
+            "vote_pct_2019": 8.760789294,
+            "diff": 3.2027529585
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.974457072,
+            "vote_pct_2019": null,
+            "diff": 0.9744570721
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 10.903567008,
+            "vote_pct_2019": 11.844116748,
+            "diff": -0.94054974
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 20.155282998,
+            "vote_pct_2019": 24.525506244,
+            "diff": -4.370223247
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.441093732,
+            "vote_pct_2019": null,
+            "diff": 0.4410937324
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 7.973444357,
+            "vote_pct_2019": 11.909969661,
+            "diff": -3.936525304
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.140204794,
+            "vote_pct_2019": 3.033937769,
+            "diff": -0.893732975
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": null,
+            "vote_pct_2019": 0.138761495,
+            "diff": -0.138761495
+          }
+        ],
+        "wings": {
+          "ext_gauche": 10.903567008,
+          "gauche": 47.192528413000005,
+          "centre": 11.088106223,
+          "droite": 18.411162372,
+          "ext_droite": 12.404635985
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 20.959824058,
+            "vote_pct_2019": 22.348833882,
+            "diff": -1.389009823
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 22.506606224,
+            "vote_pct_2019": 16.634139362,
+            "diff": 5.8724668623
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 17.301294315,
+            "vote_pct_2019": 12.658749463,
+            "diff": 4.6425448516
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.056434827,
+            "vote_pct_2019": null,
+            "diff": 1.056434827
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 11.672959645,
+            "vote_pct_2019": 14.123909,
+            "diff": -2.450949355
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 16.493399386,
+            "vote_pct_2019": 20.808127057,
+            "diff": -4.314727671
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 0.658658782,
+            "vote_pct_2019": null,
+            "diff": 0.6586587822
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.763875876,
+            "vote_pct_2019": 9.067391615,
+            "diff": -2.303515739
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 2.586946887,
+            "vote_pct_2019": 4.172843039,
+            "diff": -1.585896153
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": null,
+            "vote_pct_2019": 0.186006582,
+            "diff": -0.186006582
+          }
+        ],
+        "wings": {
+          "ext_gauche": 11.672959645,
+          "gauche": 39.00000561,
+          "centre": 10.40725759,
+          "droite": 20.959824058,
+          "ext_droite": 17.959953097
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": -0.769392637000001,
+        "gauche": 8.192522803000003,
+        "centre": 0.6808486330000001,
+        "droite": -2.548661685999999,
+        "ext_droite": -5.555317111999999
+      }
+    },
+    "GE": {
+      "canton": "GE",
+      "canton_name": "Genève",
+      "cheflieu": {
+        "bfs": 6621,
+        "name": "Genève",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 13.168347232,
+            "vote_pct_2019": 15.125433139,
+            "diff": -1.957085907
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 22.93585193,
+            "vote_pct_2019": 17.868143225,
+            "diff": 5.0677087053
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 13.454514192,
+            "vote_pct_2019": 12.616010456,
+            "diff": 0.8385037355
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.404318296,
+            "vote_pct_2019": 0.655788365,
+            "diff": -0.251470068
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 3.586789649,
+            "vote_pct_2019": 10.043516586,
+            "diff": -6.456726937
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 16.867884207,
+            "vote_pct_2019": 25.996980689,
+            "diff": -9.129096482
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.098532898,
+            "diff": -0.098532898
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.28756709,
+            "vote_pct_2019": 5.011499726,
+            "diff": 1.2760673631
+          },
+          {
+            "partei_id": 33,
+            "abbrev": "MCG",
+            "family_code": 90,
+            "family": "Régionaliste/Ethnique",
+            "wing": "droite",
+            "vote_pct": 11.404920107,
+            "vote_pct_2019": 4.939056516,
+            "diff": 6.4658635908
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 5.960378772,
+            "vote_pct_2019": 5.629799996,
+            "diff": 0.3305787761
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 5.929428526,
+            "vote_pct_2019": 2.015238404,
+            "diff": 3.9141901218
+          }
+        ],
+        "wings": {
+          "ext_gauche": 3.586789649,
+          "gauche": 39.803736137,
+          "centre": 12.652264158,
+          "droite": 24.573267339,
+          "ext_droite": 13.454514192
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 15.665822039,
+            "vote_pct_2019": 17.927960388,
+            "diff": -2.262138349
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 18.353720934,
+            "vote_pct_2019": 14.730241151,
+            "diff": 3.6234797824
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 15.264577421,
+            "vote_pct_2019": 13.650933183,
+            "diff": 1.6136442383
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.400204503,
+            "vote_pct_2019": 0.702389197,
+            "diff": -0.302184694
+          },
+          {
+            "partei_id": 9,
+            "abbrev": "PdA/EàG/POP",
+            "family_code": 20,
+            "family": "Communiste/Extrême gauche",
+            "wing": "ext_gauche",
+            "vote_pct": 2.527641074,
+            "vote_pct_2019": 7.42261666,
+            "diff": -4.894975586
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 15.367868907,
+            "vote_pct_2019": 24.611560716,
+            "diff": -9.243691809
+          },
+          {
+            "partei_id": 16,
+            "abbrev": "EDU/UDF",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": null,
+            "vote_pct_2019": 0.111755351,
+            "diff": -0.111755351
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 6.738749349,
+            "vote_pct_2019": 5.444836554,
+            "diff": 1.2939127954
+          },
+          {
+            "partei_id": 33,
+            "abbrev": "MCG",
+            "family_code": 90,
+            "family": "Régionaliste/Ethnique",
+            "wing": "droite",
+            "vote_pct": 12.30008777,
+            "vote_pct_2019": 5.3748191,
+            "diff": 6.9252686695
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 8.161627573,
+            "vote_pct_2019": 8.035482324,
+            "diff": 0.126145249
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 5.219700431,
+            "vote_pct_2019": 1.987405376,
+            "diff": 3.2322950543
+          }
+        ],
+        "wings": {
+          "ext_gauche": 2.527641074,
+          "gauche": 33.721589841,
+          "centre": 15.300581425,
+          "droite": 27.965909809,
+          "ext_droite": 15.264577421
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 1.059148575,
+        "gauche": 6.082146296000005,
+        "centre": -2.6483172670000013,
+        "droite": -3.3926424699999984,
+        "ext_droite": -1.8100632290000007
+      }
+    },
+    "JU": {
+      "canton": "JU",
+      "canton_name": "Jura",
+      "cheflieu": {
+        "bfs": 6711,
+        "name": "Delémont",
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 7.960038672,
+            "vote_pct_2019": 6.39590662,
+            "diff": 1.5641320525
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 36.351917499,
+            "vote_pct_2019": 33.738407419,
+            "diff": 2.6135100799
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 12.455688044,
+            "vote_pct_2019": 8.938279501,
+            "diff": 3.5174085427
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 1.369642282,
+            "vote_pct_2019": 1.742884554,
+            "diff": -0.373242272
+          },
+          {
+            "partei_id": 8,
+            "abbrev": "CSP/PCS",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": null,
+            "vote_pct_2019": 10.84106172,
+            "diff": -10.84106172
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 17.644215276,
+            "vote_pct_2019": 21.698113208,
+            "diff": -4.053897932
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 2.948759265,
+            "vote_pct_2019": null,
+            "diff": 2.9487592652
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 19.78730261,
+            "vote_pct_2019": 16.645346978,
+            "diff": 3.1419556324
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.482436352,
+            "vote_pct_2019": null,
+            "diff": 1.4824363519
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 53.99613277500001,
+          "centre": 24.105704157,
+          "droite": 7.960038672,
+          "ext_droite": 12.455688044
+        }
+      },
+      "canton_level": {
+        "parties": [
+          {
+            "partei_id": 1,
+            "abbrev": "FDP/PLR",
+            "family_code": 40,
+            "family": "Libéral",
+            "wing": "droite",
+            "vote_pct": 8.672051972,
+            "vote_pct_2019": 9.073686087,
+            "diff": -0.401634115
+          },
+          {
+            "partei_id": 3,
+            "abbrev": "SP/PS",
+            "family_code": 30,
+            "family": "Socialiste/Social-démocrate",
+            "wing": "gauche",
+            "vote_pct": 29.625593025,
+            "vote_pct_2019": 27.009316632,
+            "diff": 2.616276393
+          },
+          {
+            "partei_id": 4,
+            "abbrev": "SVP/UDC",
+            "family_code": 70,
+            "family": "Nationaliste/Extrême droite",
+            "wing": "ext_droite",
+            "vote_pct": 19.100739411,
+            "vote_pct_2019": 14.471983239,
+            "diff": 4.6287561721
+          },
+          {
+            "partei_id": 7,
+            "abbrev": "EVP/PEV",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 0.889002864,
+            "vote_pct_2019": 1.43315651,
+            "diff": -0.544153647
+          },
+          {
+            "partei_id": 8,
+            "abbrev": "CSP/PCS",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": null,
+            "vote_pct_2019": 9.628672046,
+            "diff": -9.628672046
+          },
+          {
+            "partei_id": 13,
+            "abbrev": "Verts/Grüne",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "gauche",
+            "vote_pct": 11.084754456,
+            "vote_pct_2019": 15.624303481,
+            "diff": -4.539549026
+          },
+          {
+            "partei_id": 31,
+            "abbrev": "GLP/pvL",
+            "family_code": 10,
+            "family": "Ecologiste",
+            "wing": "centre",
+            "vote_pct": 2.399880327,
+            "vote_pct_2019": null,
+            "diff": 2.3998803265
+          },
+          {
+            "partei_id": 34,
+            "abbrev": "Le Centre",
+            "family_code": 50,
+            "family": "Chrétien-démocrate",
+            "wing": "centre",
+            "vote_pct": 26.454246271,
+            "vote_pct_2019": 22.758882004,
+            "diff": 3.6953642667
+          },
+          {
+            "partei_id": 35,
+            "abbrev": "Autres",
+            "family_code": 98,
+            "family": "Divers/Non classifié",
+            "wing": null,
+            "vote_pct": 1.773731675,
+            "vote_pct_2019": null,
+            "diff": 1.773731675
+          }
+        ],
+        "wings": {
+          "ext_gauche": 0,
+          "gauche": 40.710347481,
+          "centre": 29.743129462,
+          "droite": 8.672051972,
+          "ext_droite": 19.100739411
+        }
+      },
+      "diff_wings": {
+        "ext_gauche": 0,
+        "gauche": 13.285785294000007,
+        "centre": -5.637425304999997,
+        "droite": -0.7120133000000006,
+        "ext_droite": -6.645051366999999
+      }
+    }
+  }
+}
