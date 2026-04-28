@@ -5,6 +5,7 @@ import { initThemeToggle } from './modules/theme-toggle.js';
 import {
   initEuropeMap,
   updateEuropeMap,
+  refreshEuropeMapTheme,
   zoomToFeature,
   resetZoom,
 } from './modules/europe-map.js';
@@ -24,6 +25,7 @@ import {
 import {
   initSwitzerlandMap,
   updateSwitzerlandMap,
+  refreshSwitzerlandMapTheme,
   zoomToCanton,
   resetCantonZoom,
 } from './modules/switzerland-map.js';
@@ -504,6 +506,6 @@ if (eventModal) {
 // ── Redraw maps on theme change (only if initialized) ───────────────────────
 
 window.addEventListener('themechange', () => {
-  if (europeReady) updateEuropeMap(currentYear);
-  if (switzerlandReady) updateSwitzerlandMap(currentSwissYear);
+  if (europeReady) refreshEuropeMapTheme();
+  if (switzerlandReady) refreshSwitzerlandMapTheme();
 });

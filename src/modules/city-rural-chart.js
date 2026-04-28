@@ -151,9 +151,9 @@ function render(container, rows) {
     .data(rows)
     .join('text')
     .attr('class', 'ratio-label')
-    .attr('x', (d) => x(d.canton) + x.bandwidth() / 2 + 12)
-    .attr('y', (d) => y((d.city + d.rural) / 2))
-    .attr('dy', '0.35em')
+    .attr('x', (d) => x(d.canton) + x.bandwidth() / 2)
+    .attr('y', (d) => Math.max(10, Math.min(y(d.city), y(d.rural)) - 15))
+    .attr('text-anchor', 'middle')
     .attr('fill', (d) => {
       if (d.rural > d.city) return COLOR_RURAL;
       if (d.city > d.rural) return COLOR_CITY;
