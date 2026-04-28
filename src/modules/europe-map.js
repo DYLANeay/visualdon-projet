@@ -325,7 +325,7 @@ function _addLegend(container) {
     .style('bottom', `${margin.bottom}px`)
     .style('left', `${margin.left}px`)
     .style('pointer-events', 'none')
-    .attr('width', legendWidth + 40)
+    .attr('width', legendWidth + 60)
     .attr('height', legendHeight + 36);
 
   const textColor = () =>
@@ -337,37 +337,38 @@ function _addLegend(container) {
     .append('text')
     .attr('x', 0)
     .attr('y', 12)
-    .attr('font-size', '12px')
+    .attr('font-size', '11px')
     .attr('fill', textColor())
-    .text('Échelle (%)');
+    .text('% d\'extrême droite des votes');
 
-  const thresholds = [0, 5, 10, 15, 20, 30];
-  const colors = [
-    '#e8e8e8',
-    '#fee5d9',
-    '#fcbba1',
-    '#fc9272',
-    '#fb6a4a',
-    '#de2d26',
-    '#a50f15',
-  ];
-  const stepWidth = legendWidth / colors.length;
-
-  colors.forEach((color, i) => {
-    svg
-      .append('rect')
-      .attr('x', i * stepWidth)
-      .attr('y', 18)
-      .attr('width', stepWidth)
-      .attr('height', legendHeight)
-      .attr('fill', color);
+  const defs = svg.append('defs');
+  const linearGradient = defs.append('linearGradient')
+    .attr('id', 'europe-legend-gradient')
+    .attr('x1', '0%')
+    .attr('y1', '0%')
+    .attr('x2', '100%')
+    .attr('y2', '0%');
+    
+  d3.range(0, 1.01, 0.1).forEach(t => {
+    linearGradient.append('stop')
+      .attr('offset', `${t * 100}%`)
+      .attr('stop-color', d3.interpolateReds(t));
   });
 
-  const labelPositions = [0, 5, 10, 15, 20, 30];
-  labelPositions.forEach((val, i) => {
+  svg
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 18)
+    .attr('width', legendWidth)
+    .attr('height', legendHeight)
+    .attr('fill', 'url(#europe-legend-gradient)')
+    .attr('rx', 2);
+
+  const labelPositions = [0, 20, 40, 60, 80, 100];
+  labelPositions.forEach((val) => {
     svg
       .append('text')
-      .attr('x', (i / colors.length) * legendWidth + stepWidth)
+      .attr('x', (val / 100) * legendWidth)
       .attr('y', 44)
       .attr('text-anchor', 'middle')
       .attr('font-size', '9px')
@@ -375,3 +376,4 @@ function _addLegend(container) {
       .text(val);
   });
 }
+
