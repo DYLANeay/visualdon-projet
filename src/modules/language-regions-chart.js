@@ -87,9 +87,9 @@ export async function initLanguageRegionsChart(container) {
 function render(container, byRegion, regionMeans) {
   container.innerHTML = '';
 
-  const margin = { top: 30, right: 60, bottom: 40, left: 200 };
+  const margin = { top: 50, right: 40, bottom: 40, left: 260 };
   const width = container.clientWidth - margin.left - margin.right;
-  const height = 300;
+  const height = 320;
 
   // Row band scale — one band per linguistic region.
   const rowHeight = height / REGION_ORDER.length;
@@ -135,6 +135,18 @@ function render(container, byRegion, regionMeans) {
         .style('font-size', '12px'),
     );
 
+  // Shared hover label — shown below the hovered canton dot.
+  const hoverLabel = svg
+    .append('text')
+    .attr('class', 'canton-hover-label')
+    .attr('text-anchor', 'middle')
+    .attr('fill', 'var(--text-primary)')
+    .style('font-family', 'var(--font-ui)')
+    .style('font-size', '12px')
+    .style('font-weight', '600')
+    .style('pointer-events', 'none')
+    .attr('opacity', 0);
+
   // Draw each linguistic region row.
   REGION_ORDER.forEach((lang, i) => {
     const cantons = byRegion[lang];
@@ -145,7 +157,7 @@ function render(container, byRegion, regionMeans) {
     // Row label on the left.
     svg
       .append('text')
-      .attr('x', -16)
+      .attr('x', -24)
       .attr('y', cy)
       .attr('dy', '0.35em')
       .attr('text-anchor', 'end')
@@ -178,8 +190,19 @@ function render(container, byRegion, regionMeans) {
       .attr('r', 6)
       .attr('fill', COLOR_DOT)
       .attr('opacity', 0.75)
-      .append('title')
-      .text((d) => `${d.canton} : ${d.value.toFixed(1)}% extrême droite`);
+      .style('cursor', 'pointer')
+      .on('mouseenter', function (event, d) {
+        d3.select(this).attr('r', 8).attr('opacity', 1);
+        hoverLabel
+          .attr('x', x(d.value))
+          .attr('y', cy + 32)
+          .text(`${d.name} (${d.canton}) — ${d.value.toFixed(1)}%`)
+          .attr('opacity', 1);
+      })
+      .on('mouseleave', function () {
+        d3.select(this).attr('r', 6).attr('opacity', 0.75);
+        hoverLabel.attr('opacity', 0);
+      });
 
     // Region mean marker — larger, red, with a vertical thick line style.
     svg
@@ -202,15 +225,15 @@ function render(container, byRegion, regionMeans) {
       .append('title')
       .text(`Moyenne ${label} : ${mean.toFixed(1)}% extrême droite`);
 
-    // Mean value label, to the right of the marker.
+    // Mean value label, above the marker.
     svg
       .append('text')
-      .attr('x', x(mean) + 16)
-      .attr('y', cy)
-      .attr('dy', '0.35em')
+      .attr('x', x(mean))
+      .attr('y', cy - 24)
+      .attr('text-anchor', 'middle')
       .attr('fill', COLOR_MEAN)
       .style('font-family', 'var(--font-mono)')
-      .style('font-size', '13px')
+      .style('font-size', '14px')
       .style('font-weight', '700')
       .text(`${mean.toFixed(1)}%`);
   });
