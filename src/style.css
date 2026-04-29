@@ -1834,6 +1834,14 @@ html.dark .badge-blue {
   margin: 0 auto;
 }
 
+#city-rural {
+  padding-bottom: 40px; /* narrowed from 120px */
+}
+
+#language-regions {
+  padding-top: 20px; /* narrowed from 80px */
+}
+
 .city-rural-chart-wrap {
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
