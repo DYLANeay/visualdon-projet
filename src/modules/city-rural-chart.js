@@ -40,7 +40,8 @@ function render(container, rows) {
 
   const margin = { top: 60, right: 30, bottom: 70, left: 55 };
   const width = container.clientWidth - margin.left - margin.right;
-  const height = 480; // compact height, wide layout
+  const height =
+    Math.max(420, Math.min(560, container.clientHeight - margin.top - margin.bottom)) || 480;
 
   const svg = d3
     .select(container)
