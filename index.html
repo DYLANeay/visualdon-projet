@@ -51,6 +51,7 @@
         <a href="#europe">Europe</a>
         <a href="#switzerland">Suisse</a>
         <a href="#city-rural">Villes/campagnes</a>
+        <a href="#language-regions">Langues</a>
         <a href="#about">À propos</a>
       </nav>
       <button
@@ -206,11 +207,14 @@
           <nav
             class="flex flex-col items-center justify-center py-12 px-6 w-16 shrink-0"
           >
-            <input 
-              type="range" 
-              id="europe-timeline-slider" 
-              class="vertical-slider timeline-slider" 
-              min="1900" max="2026" step="1" value="1900" 
+            <input
+              type="range"
+              id="europe-timeline-slider"
+              class="vertical-slider timeline-slider"
+              min="1900"
+              max="2026"
+              step="1"
+              value="1900"
               orient="vertical"
               aria-label="Sélectionner l'année"
             />
@@ -231,8 +235,8 @@
         <p class="section-eyebrow">Chapitre 2</p>
         <h2 class="section-title">Et la Suisse, dans tout ça ?</h2>
         <p class="section-deck">
-          Depuis les années 1990, l'UDC augmente globalement dans le paysage politique helvétique.
-          Incident par incident, canton par canton.
+          Depuis les années 1990, l'UDC augmente globalement dans le paysage
+          politique helvétique. Incident par incident, canton par canton.
         </p>
       </div>
 
@@ -335,7 +339,11 @@
                 <path d="M2 1.5l9 4.5-9 4.5V1.5z" />
               </svg>
             </button>
-            <select id="switzerland-event-tags" class="switzerland-tags-select" aria-label="Filtrer les événements">
+            <select
+              id="switzerland-event-tags"
+              class="switzerland-tags-select"
+              aria-label="Filtrer les événements"
+            >
               <option value="">Tous les événements</option>
             </select>
           </div>
@@ -344,14 +352,20 @@
             class="switzerland-timeline flex-1 flex flex-col justify-center relative"
             aria-label="Chronologie suisse"
           >
-            <input 
-              type="range" 
-              id="switzerland-timeline-slider" 
-              class="horizontal-slider timeline-slider w-full" 
-              min="1997" max="2026" step="1" value="2026" 
+            <input
+              type="range"
+              id="switzerland-timeline-slider"
+              class="horizontal-slider timeline-slider w-full"
+              min="1997"
+              max="2026"
+              step="1"
+              value="2026"
               aria-label="Sélectionner l'année"
             />
-            <div class="flex justify-between mt-2 text-xs font-mono uppercase" style="color: var(--text-muted);">
+            <div
+              class="flex justify-between mt-2 text-xs font-mono uppercase"
+              style="color: var(--text-muted)"
+            >
               <span>1997</span>
               <span>2026</span>
             </div>
@@ -401,6 +415,87 @@
           par commune. Les fédérales sont utilisées car elles constituent la
           seule élection standardisée à l'échelle nationale ; ce clivage
           ville/campagne se confirme aux élections cantonales.
+        </p>
+      </div>
+    </section>
+
+    <!-- Chapter 3 (suite): far-right vote share by Swiss linguistic region (2023) -->
+    <section
+      id="language-regions"
+      class="city-rural-section"
+    >
+      <div class="section-intro">
+        <p class="section-eyebrow">Chapitre 3 · suite</p>
+        <h2 class="section-title">
+          Et selon la langue, le vote change-t-il&nbsp;?
+        </h2>
+        <p class="section-deck">
+          Score moyen de l'extrême droite par région linguistique, fédérales
+          2023. Suisse alémanique, Suisse romande, Suisse italienne — comparées
+          sur le même indicateur.
+        </p>
+      </div>
+      <div class="city-rural-chart-wrap">
+        <div
+          id="language-regions-chart"
+          class="city-rural-chart"
+        ></div>
+      </div>
+      <div class="city-rural-caption">
+        <p>
+          <strong>Lecture&nbsp;:</strong> chaque point est un canton, la marque
+          épaisse indique la moyenne simple de la région.
+        </p>
+        <p>
+          <strong>Biais&nbsp;:</strong> les cantons plurilingues (BE, FR, VS,
+          GR) sont entièrement attribués à leur langue majoritaire officielle.
+          Or, environ un quart des bernois·es est francophone, et la moitié des
+          fribourgeois·es ou des valaisan·nes peut basculer dans la catégorie
+          opposée. Cette simplification gonfle légèrement le score
+          alémanique et, à l'inverse, lisse le score romand.
+        </p>
+        <p class="city-rural-source">
+          Source&nbsp;: OFS, élections fédérales 2023 — moyenne simple par
+          canton (non pondérée par la population).
+        </p>
+      </div>
+
+      <!-- Second chart: same data, but weighted by population -->
+      <div class="section-intro" style="margin-top: 80px;">
+        <h3 class="section-title" style="font-size: 1.6rem;">
+          Et si l'on pondère par la population&nbsp;?
+        </h3>
+        <p class="section-deck">
+          Même indicateur, mais chaque canton compte proportionnellement à son
+          nombre d'habitants. La taille des points reflète la population. Cette
+          pondération donne le poids électoral réel de chaque région — Zurich
+          pèse autant qu'Uri ne le fait dans une moyenne simple.
+        </p>
+      </div>
+      <div class="city-rural-chart-wrap">
+        <div
+          id="language-regions-chart-weighted"
+          class="city-rural-chart"
+        ></div>
+      </div>
+      <div class="city-rural-caption">
+        <p>
+          <strong>Lecture&nbsp;:</strong> la moyenne pondérée donne plus de
+          poids aux cantons peuplés (ZH, BE, AG…). L'écart entre les deux
+          moyennes (simple vs pondérée) révèle si la valeur d'extrême droite est
+          tirée par les cantons les plus peuplés ou par une diaspora rurale.
+        </p>
+        <p>
+          <strong>Biais&nbsp;:</strong> comme dans le graphique précédent, les
+          cantons plurilingues (BE, FR, VS, GR) sont entièrement attribués à
+          leur langue majoritaire officielle. La pondération par population
+          amplifie ce biais&nbsp;: BE (1&nbsp;M d'habitants) bascule en
+          totalité du côté alémanique, alors qu'un quart de sa population est
+          francophone.
+        </p>
+        <p class="city-rural-source">
+          Source&nbsp;: OFS, élections fédérales 2023 ; population résidente par
+          canton (OFS).
         </p>
       </div>
     </section>
@@ -561,7 +656,10 @@
       >
         ×
       </button>
-      <div class="event-modal-inner" data-lenis-prevent>
+      <div
+        class="event-modal-inner"
+        data-lenis-prevent
+      >
         <p
           class="event-modal-year"
           data-event-year
