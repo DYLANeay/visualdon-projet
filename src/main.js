@@ -29,7 +29,10 @@ import {
   zoomToCanton,
   resetCantonZoom,
 } from './modules/switzerland-map.js';
-import { initSwitzerlandScroll, formatDate } from './modules/switzerland-scroll.js';
+import {
+  initSwitzerlandScroll,
+  formatDate,
+} from './modules/switzerland-scroll.js';
 import {
   initCantonDetail,
   showCantonDetail,
@@ -42,6 +45,7 @@ import {
   setSwissEventTilesFocus,
 } from './modules/switzerland-events.js';
 import { initCityRuralChart } from './modules/city-rural-chart.js';
+import { initLanguageRegionsChart } from './modules/language-regions-chart.js';
 import { renderSwissLegend } from './modules/swiss-families.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
@@ -217,10 +221,16 @@ async function bootEurope() {
 
   const europeSlider = document.querySelector('#europe-timeline-slider');
   if (europeSlider) {
-    europeSlider.addEventListener('mousedown', () => isEuropeSliding = true);
-    europeSlider.addEventListener('touchstart', () => isEuropeSliding = true, {passive: true});
-    window.addEventListener('mouseup', () => isEuropeSliding = false);
-    window.addEventListener('touchend', () => isEuropeSliding = false, {passive: true});
+    europeSlider.addEventListener('mousedown', () => (isEuropeSliding = true));
+    europeSlider.addEventListener(
+      'touchstart',
+      () => (isEuropeSliding = true),
+      { passive: true },
+    );
+    window.addEventListener('mouseup', () => (isEuropeSliding = false));
+    window.addEventListener('touchend', () => (isEuropeSliding = false), {
+      passive: true,
+    });
 
     europeSlider.addEventListener('input', (e) => {
       const year = Number(e.target.value);
@@ -228,7 +238,7 @@ async function bootEurope() {
       updateEuropeMap(year);
       updateCountryDetail(year);
       updateEventTiles(year);
-      
+
       const yearLabel = document.querySelector('#europe-year');
       if (yearLabel) yearLabel.textContent = String(year);
 
@@ -359,29 +369,37 @@ async function bootSwitzerland() {
       // Initialize position
       swissSlider.value = switzerlandAllDatesMs.length - 1;
 
-      swissSlider.addEventListener('mousedown', () => isSwissSliding = true);
-      swissSlider.addEventListener('touchstart', () => isSwissSliding = true, {passive: true});
-      window.addEventListener('mouseup', () => isSwissSliding = false);
-      window.addEventListener('touchend', () => isSwissSliding = false, {passive: true});
+      swissSlider.addEventListener('mousedown', () => (isSwissSliding = true));
+      swissSlider.addEventListener(
+        'touchstart',
+        () => (isSwissSliding = true),
+        { passive: true },
+      );
+      window.addEventListener('mouseup', () => (isSwissSliding = false));
+      window.addEventListener('touchend', () => (isSwissSliding = false), {
+        passive: true,
+      });
 
       swissSlider.addEventListener('input', (e) => {
         if (_stopSwissPlay) _stopSwissPlay();
         const index = Number(e.target.value);
         const time = switzerlandAllDatesMs[index];
         const year = new Date(time).getFullYear();
-        
+
         currentSwissYear = year;
         updateSwitzerlandMap(year);
         updateCantonDetail(year);
         updateSwissEventTiles(time);
-        
+
         const yearLabel = document.querySelector('#switzerland-year');
         if (yearLabel) {
           yearLabel.textContent = formatDate(time);
           yearLabel.classList.add('is-date');
         }
 
-        const targetStep = document.querySelector(`.switzerland-step[data-time="${time}"]`);
+        const targetStep = document.querySelector(
+          `.switzerland-step[data-time="${time}"]`,
+        );
         if (targetStep) {
           lenis.scrollTo(targetStep, { immediate: true });
         }
@@ -451,6 +469,26 @@ if (cityRuralEl) {
     { rootMargin: '400px 0px' },
   );
   obs.observe(cityRuralEl);
+}
+
+// ── Chapter 3 (suite): language regions chart (lazy-init when approaching viewport) ──
+
+const languageRegionsEl = document.querySelector('#language-regions-chart');
+if (languageRegionsEl) {
+  let booted = false;
+  const obs = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting && !booted) {
+          booted = true;
+          initLanguageRegionsChart(languageRegionsEl);
+          obs.disconnect();
+        }
+      }
+    },
+    { rootMargin: '400px 0px' },
+  );
+  obs.observe(languageRegionsEl);
 }
 
 // ── Gentle fade-in when each sticky visual enters view ──────────────────────
