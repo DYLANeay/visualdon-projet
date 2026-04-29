@@ -60,6 +60,40 @@ function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
+
+// Handle the inertia system (Lenis) ONLY for #europe and #switzerland
+function updateLenisState() {
+  const sections = document.querySelectorAll('#europe, #switzerland');
+  let inSmoothSection = false;
+  
+  // Use scrollY instead of getBoundingClientRect when possible, but getBoundingClientRect is fine
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      inSmoothSection = true;
+      break;
+    }
+  }
+  
+  if (inSmoothSection) {
+    if (!lenis.options.smoothWheel) {
+      lenis.options.smoothWheel = true;
+      lenis.options.syncTouch = true;
+    }
+  } else {
+    if (lenis.options.smoothWheel) {
+      lenis.options.smoothWheel = false;
+      lenis.options.syncTouch = false;
+    }
+  }
+}
+
+window.addEventListener('scroll', updateLenisState, { passive: true });
+lenis.on('scroll', updateLenisState);
+updateLenisState();
+
+
+
 requestAnimationFrame(raf);
 
 // Theme toggle
