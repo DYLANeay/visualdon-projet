@@ -1895,6 +1895,34 @@ html.dark .badge-blue {
   color: var(--text-muted);
 }
 
+/* ─── Chapter 3: sticky chart panels ─────────────────────────────────────── */
+
+.chart-sticky {
+  position: sticky;
+  top: var(--site-nav-offset, 80px);
+  height: calc(100vh - var(--site-nav-offset, 80px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.chart-sticky .city-rural-chart-wrap {
+  width: 100%;
+  margin-top: 0;
+}
+
+.chart-sticky-spacer {
+  height: 60vh;
+}
+
+@media (max-width: 768px) {
+  .chart-sticky {
+    position: static;
+    height: auto;
+  }
+}
+
 /* ─── Map Enhancements ────────────────────────────────────────────────────── */
 
 /* Fix event tiles column scrolling in focus mode */
@@ -1931,7 +1959,9 @@ html.dark .badge-blue {
   background: var(--accent);
   cursor: pointer;
   margin-top: -6px;
-  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+  transition:
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s;
 }
 
 .timeline-slider::-webkit-slider-thumb:hover {
@@ -1953,7 +1983,9 @@ html.dark .badge-blue {
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
-  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+  transition:
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s;
 }
 
 .timeline-slider::-moz-range-thumb:hover {
@@ -1994,7 +2026,9 @@ html.dark .badge-blue {
   background-repeat: no-repeat;
   background-position: right 12px center;
   box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 html.dark .switzerland-tags-select {

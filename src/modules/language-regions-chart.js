@@ -108,7 +108,8 @@ function render(container, byRegion, regionMeans, weighted = false) {
 
   const margin = { top: 50, right: 40, bottom: 40, left: 260 };
   const width = container.clientWidth - margin.left - margin.right;
-  const height = 320;
+  const height =
+    Math.max(280, Math.min(420, container.clientHeight - margin.top - margin.bottom)) || 320;
 
   // In weighted mode, scale dot size by population so big cantons "weigh visually" more.
   const allPops = Object.values(byRegion)
