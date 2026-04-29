@@ -6,8 +6,8 @@ import * as d3 from 'd3';
 // line. The label in the middle shows the ratio (e.g. "1.5x").
 // Source: BFS Nationalratswahlen 2023 (asset 28845352).
 
-const COLOR_CITY = '#1c7ed6';
-const COLOR_RURAL = '#c8102e';
+const COLOR_CITY = '#000000';
+const COLOR_RURAL = '#2b8a3e'; // green
 const COLOR_NEUTRAL = '#4a4a4a';
 
 export async function initCityRuralChart(container) {
