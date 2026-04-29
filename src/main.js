@@ -491,6 +491,28 @@ if (languageRegionsEl) {
   obs.observe(languageRegionsEl);
 }
 
+const languageRegionsWeightedEl = document.querySelector(
+  '#language-regions-chart-weighted',
+);
+if (languageRegionsWeightedEl) {
+  let booted = false;
+  const obs = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting && !booted) {
+          booted = true;
+          initLanguageRegionsChart(languageRegionsWeightedEl, {
+            weighted: true,
+          });
+          obs.disconnect();
+        }
+      }
+    },
+    { rootMargin: '400px 0px' },
+  );
+  obs.observe(languageRegionsWeightedEl);
+}
+
 // ── Gentle fade-in when each sticky visual enters view ──────────────────────
 
 const fadeTargets = [

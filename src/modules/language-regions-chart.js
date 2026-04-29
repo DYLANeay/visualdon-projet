@@ -2,11 +2,22 @@ import * as d3 from 'd3';
 
 // Horizontal dot plot: average far-right vote share per Swiss linguistic region.
 // Three rows (DE / FR / IT). Each canton = a small muted circle.
-// The unweighted regional mean = a large red tick circle, labeled with XX.X%.
+// Region mean = a large red tick circle, labeled with XX.X%.
+// Two modes: simple (unweighted average per canton) or weighted (by population).
 // Source: OFS, Nationalratswahlen 2023 (same dataset as city-rural-chart).
 
 const COLOR_MEAN = '#c8102e'; // same red as COLOR_RURAL in city-rural-chart
 const COLOR_DOT = '#9b9b9b'; // muted neutral for individual canton points
+
+// Population per canton (residents, OFS data via cantons.geojson).
+const CANTON_POPULATION = {
+  ZH: 1553423, BE: 1043081, LU: 416347, UR: 36819, SZ: 162157,
+  OW: 38108, NW: 43520, GL: 40851, ZG: 128794, FR: 325547,
+  SO: 277462, BS: 196735, BL: 290969, SH: 83107, AR: 55309,
+  AI: 16293, SG: 514504, GR: 200096, AG: 694072, TG: 282909,
+  TI: 350986, VD: 814762, VS: 348503, NE: 175894, GE: 506343,
+  JU: 73709,
+};
 
 // Bilingual cantons (BE, FR, VS, GR) are assigned to their official majority language.
 const CANTON_LANGUAGE = {
@@ -49,8 +60,9 @@ const REGION_LABELS = {
 
 const REGION_ORDER = ['de', 'fr', 'it'];
 
-export async function initLanguageRegionsChart(container) {
+export async function initLanguageRegionsChart(container, options = {}) {
   if (!container) return;
+  const { weighted = false } = options;
   const data = await d3.json('/data/communes/cheflieux-2023.json');
 
   // Group cantons by linguistic region.
@@ -62,34 +74,49 @@ export async function initLanguageRegionsChart(container) {
       canton: c.canton,
       name: c.canton_name,
       value: c.canton_level.wings.ext_droite,
+      population: CANTON_POPULATION[c.canton] ?? 0,
     });
   }
 
-  // Compute unweighted mean per region.
+  // Compute region means (simple or population-weighted).
   const regionMeans = {};
   for (const lang of REGION_ORDER) {
     const vals = byRegion[lang];
-    regionMeans[lang] = vals.reduce((s, d) => s + d.value, 0) / vals.length;
+    if (weighted) {
+      const totalPop = vals.reduce((s, d) => s + d.population, 0);
+      regionMeans[lang] =
+        vals.reduce((s, d) => s + d.value * d.population, 0) / totalPop;
+    } else {
+      regionMeans[lang] = vals.reduce((s, d) => s + d.value, 0) / vals.length;
+    }
   }
 
-  render(container, byRegion, regionMeans);
+  render(container, byRegion, regionMeans, weighted);
 
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(
-      () => render(container, byRegion, regionMeans),
+      () => render(container, byRegion, regionMeans, weighted),
       150,
     );
   });
 }
 
-function render(container, byRegion, regionMeans) {
+function render(container, byRegion, regionMeans, weighted = false) {
   container.innerHTML = '';
 
   const margin = { top: 50, right: 40, bottom: 40, left: 260 };
   const width = container.clientWidth - margin.left - margin.right;
   const height = 320;
+
+  // In weighted mode, scale dot size by population so big cantons "weigh visually" more.
+  const allPops = Object.values(byRegion)
+    .flat()
+    .map((d) => d.population);
+  const dotRadius = weighted
+    ? d3.scaleSqrt().domain([0, d3.max(allPops)]).range([3, 14])
+    : () => 6;
 
   // Row band scale — one band per linguistic region.
   const rowHeight = height / REGION_ORDER.length;
@@ -187,20 +214,28 @@ function render(container, byRegion, regionMeans) {
       .attr('class', 'canton-dot')
       .attr('cx', (d) => x(d.value))
       .attr('cy', cy)
-      .attr('r', 6)
+      .attr('r', (d) => dotRadius(d.population))
       .attr('fill', COLOR_DOT)
       .attr('opacity', 0.75)
       .style('cursor', 'pointer')
       .on('mouseenter', function (event, d) {
-        d3.select(this).attr('r', 8).attr('opacity', 1);
+        const baseR = dotRadius(d.population);
+        d3.select(this)
+          .attr('r', baseR + 2)
+          .attr('opacity', 1);
+        const popText = weighted
+          ? ` · ${(d.population / 1000).toFixed(0)}k hab.`
+          : '';
         hoverLabel
           .attr('x', x(d.value))
           .attr('y', cy + 32)
-          .text(`${d.name} (${d.canton}) — ${d.value.toFixed(1)}%`)
+          .text(`${d.name} (${d.canton}) — ${d.value.toFixed(1)}%${popText}`)
           .attr('opacity', 1);
       })
-      .on('mouseleave', function () {
-        d3.select(this).attr('r', 6).attr('opacity', 0.75);
+      .on('mouseleave', function (event, d) {
+        d3.select(this)
+          .attr('r', dotRadius(d.population))
+          .attr('opacity', 0.75);
         hoverLabel.attr('opacity', 0);
       });
 
@@ -223,7 +258,9 @@ function render(container, byRegion, regionMeans) {
       .attr('fill', COLOR_MEAN)
       .attr('opacity', 0.95)
       .append('title')
-      .text(`Moyenne ${label} : ${mean.toFixed(1)}% extrême droite`);
+      .text(
+        `Moyenne ${weighted ? 'pondérée' : 'simple'} ${label} : ${mean.toFixed(1)}% extrême droite`,
+      );
 
     // Mean value label, above the marker.
     svg
@@ -258,7 +295,7 @@ function render(container, byRegion, regionMeans) {
     .attr('fill', 'var(--text-secondary)')
     .style('font-family', 'var(--font-ui)')
     .style('font-size', '12px')
-    .text('Valeur par canton');
+    .text(weighted ? 'Canton (taille = population)' : 'Valeur par canton');
 
   legend
     .append('circle')
@@ -275,5 +312,9 @@ function render(container, byRegion, regionMeans) {
     .attr('fill', 'var(--text-secondary)')
     .style('font-family', 'var(--font-ui)')
     .style('font-size', '12px')
-    .text('Moyenne de la région');
+    .text(
+      weighted
+        ? 'Moyenne pondérée par population'
+        : 'Moyenne simple de la région',
+    );
 }

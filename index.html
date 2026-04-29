@@ -444,13 +444,58 @@
       <div class="city-rural-caption">
         <p>
           <strong>Lecture&nbsp;:</strong> chaque point est un canton, la marque
-          épaisse indique la moyenne simple de la région. Les cantons
-          plurilingues (BE, FR, VS, GR) sont classés selon leur langue
-          majoritaire officielle.
+          épaisse indique la moyenne simple de la région.
+        </p>
+        <p>
+          <strong>Biais&nbsp;:</strong> les cantons plurilingues (BE, FR, VS,
+          GR) sont entièrement attribués à leur langue majoritaire officielle.
+          Or, environ un quart des bernois·es est francophone, et la moitié des
+          fribourgeois·es ou des valaisan·nes peut basculer dans la catégorie
+          opposée. Cette simplification gonfle légèrement le score
+          alémanique et, à l'inverse, lisse le score romand.
         </p>
         <p class="city-rural-source">
           Source&nbsp;: OFS, élections fédérales 2023 — moyenne simple par
           canton (non pondérée par la population).
+        </p>
+      </div>
+
+      <!-- Second chart: same data, but weighted by population -->
+      <div class="section-intro" style="margin-top: 80px;">
+        <h3 class="section-title" style="font-size: 1.6rem;">
+          Et si l'on pondère par la population&nbsp;?
+        </h3>
+        <p class="section-deck">
+          Même indicateur, mais chaque canton compte proportionnellement à son
+          nombre d'habitants. La taille des points reflète la population. Cette
+          pondération donne le poids électoral réel de chaque région — Zurich
+          pèse autant qu'Uri ne le fait dans une moyenne simple.
+        </p>
+      </div>
+      <div class="city-rural-chart-wrap">
+        <div
+          id="language-regions-chart-weighted"
+          class="city-rural-chart"
+        ></div>
+      </div>
+      <div class="city-rural-caption">
+        <p>
+          <strong>Lecture&nbsp;:</strong> la moyenne pondérée donne plus de
+          poids aux cantons peuplés (ZH, BE, AG…). L'écart entre les deux
+          moyennes (simple vs pondérée) révèle si la valeur d'extrême droite est
+          tirée par les cantons les plus peuplés ou par une diaspora rurale.
+        </p>
+        <p>
+          <strong>Biais&nbsp;:</strong> comme dans le graphique précédent, les
+          cantons plurilingues (BE, FR, VS, GR) sont entièrement attribués à
+          leur langue majoritaire officielle. La pondération par population
+          amplifie ce biais&nbsp;: BE (1&nbsp;M d'habitants) bascule en
+          totalité du côté alémanique, alors qu'un quart de sa population est
+          francophone.
+        </p>
+        <p class="city-rural-source">
+          Source&nbsp;: OFS, élections fédérales 2023 ; population résidente par
+          canton (OFS).
         </p>
       </div>
     </section>
