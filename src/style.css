@@ -1929,6 +1929,41 @@ html.dark .badge-blue {
   color: var(--text-muted);
 }
 
+/* ─── Chapter 3: horizontal scroll wrapper (city-rural + language-regions) ─ */
+
+.horizontal-scroll {
+  position: relative;
+  /* height set dynamically by JS (horizontal-scroll.js) */
+}
+
+.horizontal-scroll__pin {
+  position: sticky;
+  top: var(--site-nav-offset, 80px);
+  height: calc(100vh - var(--site-nav-offset, 80px));
+  overflow: hidden;
+}
+
+.horizontal-scroll__track {
+  display: flex;
+  will-change: transform;
+}
+
+.horizontal-scroll__panel {
+  flex: 0 0 100vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  will-change: transform;
+}
+
+/* In the horizontal-scroll context the panel is the full viewport,
+   so let the section use more horizontal room than the default
+   1280px cap — otherwise charts read very small on wide screens. */
+.horizontal-scroll__panel .city-rural-section {
+  width: 100%;
+  max-width: 1700px;
+}
+
 /* ─── Chapter 3: sticky chart panels ─────────────────────────────────────── */
 
 .chart-sticky {
