@@ -406,89 +406,99 @@
       <div class="switzerland-steps"></div>
     </section>
 
-    <!-- Chapter 3: city vs rural — chef-lieu vs canton voting (2023) -->
-    <section
-      id="city-rural"
-      class="city-rural-section"
-    >
-      <div class="section-intro">
-        <p class="section-eyebrow">Chapitre 3</p>
-        <h2 class="section-title">
-          Aux fédérales 2023, l'extrême droite surperforme en campagne
-        </h2>
-        <p class="section-deck">
-          Pour chaque canton, le score de l'extrême droite (UDC, EDU, Lega, SD)
-          dans son chef-lieu comparé au score dans l'ensemble du canton. Les
-          élections fédérales offrent la seule comparaison standardisée à
-          l'échelle nationale ; le phénomène ville/campagne se vérifie également
-          aux cantonales.
-        </p>
-      </div>
+    <!-- Chapters 3 + 3 suite: horizontal scroll wrapper -->
+    <section id="horizontal-scroll" class="horizontal-scroll">
+      <div class="horizontal-scroll__pin">
+        <div class="horizontal-scroll__track">
+          <div class="horizontal-scroll__panel">
+            <!-- Chapter 3: city vs rural — chef-lieu vs canton voting (2023) -->
+            <section
+              id="city-rural"
+              class="city-rural-section"
+            >
+              <div class="section-intro">
+                <p class="section-eyebrow">Chapitre 3</p>
+                <h2 class="section-title">
+                  Aux fédérales 2023, l'extrême droite surperforme en campagne
+                </h2>
+                <p class="section-deck">
+                  Pour chaque canton, le score de l'extrême droite (UDC, EDU, Lega, SD)
+                  dans son chef-lieu comparé au score dans l'ensemble du canton. Les
+                  élections fédérales offrent la seule comparaison standardisée à
+                  l'échelle nationale ; le phénomène ville/campagne se vérifie également
+                  aux cantonales.
+                </p>
+              </div>
 
-      <div class="city-rural-chart-wrap">
-          <div
-            id="city-rural-chart"
-            class="city-rural-chart"
-          ></div>
+              <div class="city-rural-chart-wrap">
+                  <div
+                    id="city-rural-chart"
+                    class="city-rural-chart"
+                  ></div>
+                </div>
+              <div class="city-rural-caption">
+                <p>
+                  <strong>Lecture :</strong> chaque colonne est un canton, classé par
+                  score d'extrême droite. Le point noir marque le chef-lieu (ville), le
+                  vert le canton entier (incl. campagne). Plus le vert est au-dessus
+                  du noir, plus la campagne vote à l'extrême droite. Le ratio au milieu
+                  indique combien de fois la campagne vote plus à droite (ex : 1.5x).
+                </p>
+                <p class="city-rural-source">
+                  Source : OFS, Élections au Conseil national 2023 — force des partis
+                  par commune. Les fédérales sont utilisées car elles constituent la
+                  seule élection standardisée à l'échelle nationale ; ce clivage
+                  ville/campagne se confirme aux élections cantonales.
+                </p>
+              </div>
+            </section>
+          </div>
+
+          <div class="horizontal-scroll__panel">
+            <!-- Chapter 3 (suite): far-right vote share by Swiss linguistic region (2023) -->
+            <section
+              id="language-regions"
+              class="city-rural-section"
+            >
+              <div class="section-intro">
+                <p class="section-eyebrow">Chapitre 3 · suite</p>
+                <h2 class="section-title">
+                  Et selon la langue, le vote change-t-il&nbsp;?
+                </h2>
+                <p class="section-deck">
+                  Score moyen de l'extrême droite par région linguistique, fédérales
+                  2023. Suisse alémanique, Suisse romande, Suisse italienne — comparées
+                  sur le même indicateur.
+                </p>
+              </div>
+              <div class="city-rural-chart-wrap">
+                  <div
+                    id="language-regions-chart"
+                    class="city-rural-chart"
+                  ></div>
+                </div>
+              <div class="city-rural-caption">
+                <p>
+                  <strong>Lecture&nbsp;:</strong> chaque point est un canton, la marque
+                  épaisse indique la moyenne simple de la région.
+                </p>
+                <p>
+                  <strong>Biais&nbsp;:</strong> les cantons plurilingues (BE, FR, VS,
+                  GR) sont entièrement attribués à leur langue majoritaire officielle.
+                  Or, environ un quart des bernois·es est francophone, et la moitié des
+                  fribourgeois·es ou des valaisan·nes peut basculer dans la catégorie
+                  opposée. Cette simplification gonfle légèrement le score
+                  alémanique et, à l'inverse, lisse le score romand.
+                </p>
+                <p class="city-rural-source">
+                  Source&nbsp;: OFS, élections fédérales 2023 — moyenne simple par
+                  canton (non pondérée par la population).
+                </p>
+              </div>
+            </section>
+          </div>
         </div>
-      <div class="city-rural-caption">
-        <p>
-          <strong>Lecture :</strong> chaque colonne est un canton, classé par
-          score d'extrême droite. Le point noir marque le chef-lieu (ville), le
-          vert le canton entier (incl. campagne). Plus le vert est au-dessus
-          du noir, plus la campagne vote à l'extrême droite. Le ratio au milieu
-          indique combien de fois la campagne vote plus à droite (ex : 1.5x).
-        </p>
-        <p class="city-rural-source">
-          Source : OFS, Élections au Conseil national 2023 — force des partis
-          par commune. Les fédérales sont utilisées car elles constituent la
-          seule élection standardisée à l'échelle nationale ; ce clivage
-          ville/campagne se confirme aux élections cantonales.
-        </p>
       </div>
-    </section>
-
-    <!-- Chapter 3 (suite): far-right vote share by Swiss linguistic region (2023) -->
-    <section
-      id="language-regions"
-      class="city-rural-section"
-    >
-      <div class="section-intro">
-        <p class="section-eyebrow">Chapitre 3 · suite</p>
-        <h2 class="section-title">
-          Et selon la langue, le vote change-t-il&nbsp;?
-        </h2>
-        <p class="section-deck">
-          Score moyen de l'extrême droite par région linguistique, fédérales
-          2023. Suisse alémanique, Suisse romande, Suisse italienne — comparées
-          sur le même indicateur.
-        </p>
-      </div>
-      <div class="city-rural-chart-wrap">
-          <div
-            id="language-regions-chart"
-            class="city-rural-chart"
-          ></div>
-        </div>
-      <div class="city-rural-caption">
-        <p>
-          <strong>Lecture&nbsp;:</strong> chaque point est un canton, la marque
-          épaisse indique la moyenne simple de la région.
-        </p>
-        <p>
-          <strong>Biais&nbsp;:</strong> les cantons plurilingues (BE, FR, VS,
-          GR) sont entièrement attribués à leur langue majoritaire officielle.
-          Or, environ un quart des bernois·es est francophone, et la moitié des
-          fribourgeois·es ou des valaisan·nes peut basculer dans la catégorie
-          opposée. Cette simplification gonfle légèrement le score
-          alémanique et, à l'inverse, lisse le score romand.
-        </p>
-        <p class="city-rural-source">
-          Source&nbsp;: OFS, élections fédérales 2023 — moyenne simple par
-          canton (non pondérée par la population).
-        </p>
-      </div>
-
     </section>
 
     <!-- About / context section: intentions, sources, biases, credits -->

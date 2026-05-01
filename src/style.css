@@ -1929,6 +1929,35 @@ html.dark .badge-blue {
   color: var(--text-muted);
 }
 
+/* ─── Chapter 3: horizontal scroll wrapper (city-rural + language-regions) ─ */
+
+.horizontal-scroll {
+  position: relative;
+  height: 200vh;
+}
+
+.horizontal-scroll__pin {
+  position: sticky;
+  top: var(--site-nav-offset, 80px);
+  height: calc(100vh - var(--site-nav-offset, 80px));
+  overflow: hidden;
+}
+
+.horizontal-scroll__track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.horizontal-scroll__panel {
+  flex: 0 0 100vw;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 /* ─── Chapter 3: sticky chart panels ─────────────────────────────────────── */
 
 .chart-sticky {
