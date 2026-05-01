@@ -118,6 +118,15 @@ if (document.fonts?.ready) {
   document.fonts.ready.then(syncSiteNavOffset).catch(() => {});
 }
 
+// Smooth-scroll header anchor links via Lenis to avoid native/Lenis conflict
+for (const link of document.querySelectorAll('.site-nav-links a[href^="#"]')) {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) lenis.scrollTo(target);
+  });
+}
+
 lenis.on('scroll', ({ scroll }) => {
   siteNav?.classList.toggle('is-scrolled', scroll > 80);
 });
@@ -288,6 +297,25 @@ async function bootEurope() {
       }
       if (targetStep) {
         lenis.scrollTo(targetStep, { immediate: true });
+      }
+    });
+
+    // Invert ArrowUp/ArrowDown for the rotated vertical slider
+    europeSlider.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const step = Number(europeSlider.step) || 1;
+        const current = Number(europeSlider.value);
+        let next;
+        if (e.key === 'ArrowUp') {
+          next = Math.max(Number(europeSlider.min), current - step);
+        } else {
+          next = Math.min(Number(europeSlider.max), current + step);
+        }
+        if (next !== current) {
+          europeSlider.value = next;
+          europeSlider.dispatchEvent(new Event('input', { bubbles: true }));
+        }
       }
     });
   }

@@ -214,10 +214,17 @@ html.dark .theme-icon-moon {
 .hero-overlay {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.45) 40%,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.55) 40%,
     rgba(0, 0, 0, 0.92) 100%
   );
+}
+
+.hero-eyebrow,
+.hero-title,
+.hero-subtitle,
+.hero-lede {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .hero-eyebrow {
@@ -945,7 +952,15 @@ html.dark .tone-gray {
   flex-direction: column;
   gap: 14px;
   pointer-events: none;
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+#event-tiles-switzerland-overlay {
+  z-index: 40;
+}
+
+#switzerland #event-tiles-switzerland-overlay .event-tiles-column-left {
+  bottom: 24px;
 }
 
 .event-tiles-column-left {
@@ -2038,6 +2053,23 @@ html.dark .badge-blue {
   left: 50%;
   margin-left: -200px;
   margin-top: -2px;
+}
+
+@supports (-moz-appearance: none) {
+  .vertical-slider {
+    transform: none;
+    width: 4px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    margin-left: -2px;
+    margin-top: 0;
+  }
+
+  .vertical-slider::-moz-range-track {
+    width: 4px;
+    height: 100%;
+  }
 }
 
 #europe nav.w-16 {
