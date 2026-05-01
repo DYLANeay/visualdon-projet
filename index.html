@@ -38,14 +38,44 @@
     />
   </head>
   <body>
+    <!-- Mobile / small-screen warning: shown below 768px, hides the app -->
+    <div
+      id="mobile-warning"
+      class="mobile-warning"
+      role="alert"
+    >
+      <div class="mobile-warning-inner">
+        <span
+          class="mobile-warning-mark"
+          aria-hidden="true"
+        ></span>
+        <p class="mobile-warning-eyebrow">Écran trop petit</p>
+        <h1 class="mobile-warning-title">
+          Cette expérience<br /><em>n'est pas disponible</em><br />sur mobile.
+        </h1>
+        <p class="mobile-warning-text">
+          Notre enquête sur la montée de l'extrême droite repose sur des cartes
+          et des chronologies pensées pour les grands écrans. Pour la consulter
+          dans de bonnes conditions, ouvrez ce site sur un ordinateur ou une
+          tablette en mode paysage.
+        </p>
+      </div>
+    </div>
+
     <!-- Floating site navigation -->
     <header class="site-nav">
       <a
         href="#hero"
         class="site-nav-brand"
       >
-        <span class="site-nav-brand-mark">▮</span>
-        <span class="site-nav-brand-text">Extrême Droite · 1900–2026</span>
+        <span
+          class="site-nav-brand-mark"
+          aria-hidden="true"
+        ></span>
+        <span class="site-nav-brand-text">
+          <span class="site-nav-brand-title">L&rsquo;extrême droite</span>
+          <span class="site-nav-brand-meta">une enquête, 1900&ndash;2026</span>
+        </span>
       </a>
       <nav class="site-nav-links">
         <a href="#europe">Europe</a>
