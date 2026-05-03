@@ -281,11 +281,9 @@ function _buildEventFromRaw(raw, idx = 0) {
 
   const title = raw.title || raw.titre;
   const description = (raw.description || '').trim();
-  if (!title || description.length < 20) return null;
+  if (!title) return null;
 
-  let type = _normalizeType(raw.type || raw.categorie || 'general');
-  // Bug 3: demote false-positive far-right events
-  if (!_isLikelyFarRight(raw, type)) type = 'general';
+  const type = _normalizeType(raw.type || raw.categorie || 'general');
 
   const country =
     raw.country ||
@@ -346,7 +344,6 @@ function _normalizeCountryEventsArray(rawArray) {
   if (!Array.isArray(rawArray) || rawArray.length === 0) return [];
   return rawArray
     .map((raw, idx) => _buildEventFromRaw(raw, idx))
-    .filter((event) => event && event.type !== 'general')
     .filter(Boolean)
     .sort((a, b) => a.year - b.year);
 }
@@ -411,10 +408,9 @@ export function setEventTilesFocus(iso2) {
         ? specific
         : _europeEvents.filter(
             (e) =>
-              e.type !== 'general' &&
-              (e.country === _focusIso2 ||
+              e.country === _focusIso2 ||
                 (Array.isArray(e.countries) &&
-                  e.countries.includes(_focusIso2))),
+                  e.countries.includes(_focusIso2)),
           );
   } else {
     _events = _europeEvents;
@@ -497,6 +493,16 @@ function _createTile(event) {
   const wrapper = document.createElement('div');
   wrapper.className = 'event-tile-wrapper';
   wrapper.dataset.id = event.id;
+
+  const description = (event.description || '').trim();
+  const descHtml =
+    description && description.toLowerCase() !== event.title.toLowerCase()
+      ? `
+      <div class="event-tile-body">
+        <p>${description}</p>
+      </div>`
+      : '';
+
   wrapper.innerHTML = `
     <article class="event-tile">
       <header class="event-tile-header">
@@ -510,9 +516,7 @@ function _createTile(event) {
             .join('')}
         </div>
       </header>
-      <div class="event-tile-body">
-        <p>${event.description}</p>
-      </div>
+      ${descHtml}
     </article>
   `;
   return wrapper;
@@ -552,16 +556,30 @@ export function updateEventTiles(year) {
     }
   }
 
-  // Add new tiles
+  // Add new tiles with load-balancing: if one column gets too full, put extras on the other side.
+  // This prevents left-column overflow which hides content.
+  const leftCount = _overlayLeft.children.length;
+  const rightCount = _overlayRight.children.length;
+  
   for (const event of activeEvents) {
     if (_activeTiles.has(event.id)) continue;
     const tile = _createTile(event);
     tile
       .querySelector('.event-tile')
       .addEventListener('click', () => _openModal(event));
-    // Bug 2 — In focus mode, force all tiles to the right column (mirrors Switzerland behaviour).
-    // In overview, honour the event's own side assignment.
-    const useRightColumn = _focusIso2 ? true : event.side === 'right';
+    
+    // Bug 2 fix — Load-balance events between columns to prevent left overflow.
+    // In focus mode, force all tiles to the right column (mirrors Switzerland behaviour).
+    // In overview, honour the event's own side but swap if one side gets too full.
+    let useRightColumn = _focusIso2 ? true : event.side === 'right';
+    const currentLeftCount = _overlayLeft.children.length;
+    const currentRightCount = _overlayRight.children.length;
+    
+    // If left column has significantly more tiles than right, put new events on right to balance.
+    if (!_focusIso2 && currentLeftCount > currentRightCount + 1) {
+      useRightColumn = true;
+    }
+    
     const parent = useRightColumn ? _overlayRight : _overlayLeft;
     parent.appendChild(tile);
     _activeTiles.set(event.id, tile);
