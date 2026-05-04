@@ -1,6 +1,6 @@
 # Montée de l'extrême droite
 
-Projet de visualisation de données — VisualDon 2026 - Dylan Eray & Loic Peyramaure
+Projet de visualisation de données, VisualDon 2026, Dylan Eray & Loic Peyramaure
 
 ---
 
@@ -8,15 +8,15 @@ Projet de visualisation de données — VisualDon 2026 - Dylan Eray & Loic Peyra
 
 Les données utilisées dans ce projet proviennent de cinq sources principales :
 
-- **[ParlGov](https://parlgov.fly.dev/)** — Infrastructure de données sur les démocraties de l'UE et de l'OCDE (1900–2023), créée par les chercheurs Holger Döring et Philip Manow. Elle contient environ 1 700 partis, 1 000 élections (9 800 résultats) et 1 600 cabinets dans plus de 30 pays. Les données sont accessibles en CSV et via une API. Elles ont été collectées dans un cadre académique pour permettre la recherche comparative en science politique.
+- **[ParlGov](https://parlgov.fly.dev/)**, Infrastructure de données sur les démocraties de l'UE et de l'OCDE (1900 à 2023), créée par les chercheurs Holger Döring et Philip Manow. Elle contient environ 1 700 partis, 1 000 élections (9 800 résultats) et 1 600 cabinets dans plus de 30 pays. Les données sont accessibles en CSV et via une API. Elles ont été collectées dans un cadre académique pour permettre la recherche comparative en science politique.
 
-- **[Manifesto Project (MPDS2025a)](https://manifesto-project.wzb.eu/datasets/MPDS2025a)** — Jeu de données produit par le Wissenschaftszentrum Berlin für Sozialforschung (WZB) et l'Université de Göttingen, financé par la Deutsche Forschungsgemeinschaft (DFG). Il contient 5 285 programmes électoraux codés de 1 412 partis à travers 877 élections, permettant d'analyser le positionnement idéologique des partis sur un axe gauche-droite. Disponible en CSV, XLSX, Stata et SPSS.
+- **[Manifesto Project (MPDS2025a)](https://manifesto-project.wzb.eu/datasets/MPDS2025a)**, Jeu de données produit par le Wissenschaftszentrum Berlin für Sozialforschung (WZB) et l'Université de Göttingen, financé par la Deutsche Forschungsgemeinschaft (DFG). Il contient 5 285 programmes électoraux codés de 1 412 partis à travers 877 élections, permettant d'analyser le positionnement idéologique des partis sur un axe gauche-droite. Disponible en CSV, XLSX, Stata et SPSS.
 
-- **[Wall of Shame](https://www.nopasaran.ch/fr-CH)** — Registre des dérapages de l'extrême droite en Suisse, maintenu par Rebel Suisse (licence Creative Commons BY-NC-SA 4.0). Ce site documente les incidents impliquant des politiciens et activistes d'extrême droite suisses (racisme, néonazisme, climatoscepticisme, sexisme, etc.), avec un focus particulier sur l'UDC/SVP.
+- **[Wall of Shame](https://www.nopasaran.ch/fr-CH)**, Registre des dérapages de l'extrême droite en Suisse, maintenu par Rebel Suisse (licence Creative Commons BY-NC-SA 4.0). Ce site documente les incidents impliquant des politiciens et activistes d'extrême droite suisses (racisme, néonazisme, climatoscepticisme, sexisme, etc.), avec un focus particulier sur l'UDC/SVP.
 
-- **[admin.ch — Résultats des élections au Conseil national](https://www.admin.ch/gov/fr/accueil/documentations/lois-et-decisions/resultats-des-elections-au-conseil-national.html)** — Résultats officiels des élections fédérales suisses par canton, publiés par la Chancellerie fédérale. Ces données fournissent la répartition des sièges par parti et par canton pour chaque scrutin, utilisées pour la carte interactive de la Suisse.
+- **[admin.ch, Résultats des élections au Conseil national](https://www.admin.ch/gov/fr/accueil/documentations/lois-et-decisions/resultats-des-elections-au-conseil-national.html)**, Résultats officiels des élections fédérales suisses par canton, publiés par la Chancellerie fédérale. Ces données fournissent la répartition des sièges par parti et par canton pour chaque scrutin, utilisées pour la carte interactive de la Suisse.
 
-- **[swisstopo — Limites cantonales (GeoJSON)](https://www.swisstopo.admin.ch/fr/geodata/geometry/admin-territory-boundaries.html)** — Géométries officielles des frontières cantonales suisses au format GeoJSON, publiées par l'Office fédéral de topographie (swisstopo). Utilisées comme fond de carte pour la visualisation interactive des cantons.
+- **[swisstopo, Limites cantonales (GeoJSON)](https://www.swisstopo.admin.ch/fr/geodata/geometry/admin-territory-boundaries.html)**, Géométries officielles des frontières cantonales suisses au format GeoJSON, publiées par l'Office fédéral de topographie (swisstopo). Utilisées comme fond de carte pour la visualisation interactive des cantons.
 
 Ces données ont été collectées dans des contextes différents : les deux premières sources relèvent de la recherche académique et visent à fournir des données électorales objectives et comparatives. La troisième est un projet militant qui documente des incidents concrets liés à l'extrême droite suisse.
 
@@ -69,22 +69,22 @@ Au-delà de la stricte évolution des courbes électorales, ce projet intègre u
   "eventsByYear": {
     "<année>": [
       {
-        "title": "String — Titre de l'événement",
-        "date": "String — Date (YYYY-MM-DD)",
-        "year": "Integer — Année de l'événement",
-        "category": "String — Catégorie (ex: Antisémitisme, Racisme, ...)",
-        "description": "String — Description détaillée de l'événement",
-        "consequences": "String — Conséquences (peut être vide)",
-        "person": "String — Personne impliquée",
-        "role": "String — Rôle de la personne",
-        "party": "String — Parti politique (ex: UDC - ZH)",
+        "title": "String, Titre de l'événement",
+        "date": "String, Date (YYYY-MM-DD)",
+        "year": "Integer, Année de l'événement",
+        "category": "String, Catégorie (ex: Antisémitisme, Racisme, ...)",
+        "description": "String, Description détaillée de l'événement",
+        "consequences": "String, Conséquences (peut être vide)",
+        "person": "String, Personne impliquée",
+        "role": "String, Rôle de la personne",
+        "party": "String, Parti politique (ex: UDC - ZH)",
         "sources": [
           {
-            "name": "String — Nom de la source",
-            "url": "String — URL de la source"
+            "name": "String, Nom de la source",
+            "url": "String, URL de la source"
           }
         ],
-        "url": "String — URL de l'événement sur nopasaran.ch"
+        "url": "String, URL de l'événement sur nopasaran.ch"
       }
     ]
   }
@@ -100,18 +100,18 @@ Au-delà de la stricte évolution des courbes électorales, ce projet intègre u
     {
       "type": "Feature",
       "properties": {
-        "uuid": "String — Identifiant unique",
-        "name": "String — Nom du canton (ex: Zürich)",
-        "kantonsnummer": "Integer — Numéro OFS du canton (1–26)",
-        "icc": "String — Code pays (CH)",
-        "einwohnerzahl": "Integer — Population",
-        "kantonsflaeche": "Float — Superficie en km²",
-        "see_flaeche": "Float — Surface lacustre en km²",
-        "objektart": "String — Type d'objet (Kanton)",
-        "herkunft": "String — Origine des données (AV)",
-        "herkunft_jahr": "Integer — Année d'origine",
-        "revision_jahr": "Integer — Année de révision",
-        "revision_qualitaet": "String — Qualité de la révision"
+        "uuid": "String, Identifiant unique",
+        "name": "String, Nom du canton (ex: Zürich)",
+        "kantonsnummer": "Integer, Numéro OFS du canton (1 à 26)",
+        "icc": "String, Code pays (CH)",
+        "einwohnerzahl": "Integer, Population",
+        "kantonsflaeche": "Float, Superficie en km²",
+        "see_flaeche": "Float, Surface lacustre en km²",
+        "objektart": "String, Type d'objet (Kanton)",
+        "herkunft": "String, Origine des données (AV)",
+        "herkunft_jahr": "Integer, Année d'origine",
+        "revision_jahr": "Integer, Année de révision",
+        "revision_qualitaet": "String, Qualité de la révision"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -131,16 +131,16 @@ Au-delà de la stricte évolution des courbes électorales, ce projet intègre u
   "far_right_parties": ["UDC", "UDF", "Lega", "MCG", "DS", "Dém.", "Rép."],
   "cantons": {
     "<kantonsnummer>": {
-      "name": "String — Nom du canton (ex: Zürich)",
+      "name": "String, Nom du canton (ex: Zürich)",
       "elections": [
         {
-          "year": "Integer — Année de l'élection",
-          "total_seats": "Integer — Nombre total de sièges",
+          "year": "Integer, Année de l'élection",
+          "total_seats": "Integer, Nombre total de sièges",
           "parties": {
-            "<abbr>": "Integer | null — Sièges remportés par le parti (null si absent)"
+            "<abbr>": "Integer | null, Sièges remportés par le parti (null si absent)"
           },
-          "far_right_seats": "Integer — Sièges totaux de l'extrême droite",
-          "far_right_pct": "Float — Pourcentage de sièges d'extrême droite"
+          "far_right_seats": "Integer, Sièges totaux de l'extrême droite",
+          "far_right_pct": "Float, Pourcentage de sièges d'extrême droite"
         }
       ]
     }
@@ -234,9 +234,9 @@ Les wireframes de ce projet sont disponibles à l'adresse suivante (lien public)
 
 ### Sources de données du projet
 
-- **[ParlGov](https://parlgov.fly.dev/)** — Base de données sur les partis, élections et gouvernements dans les démocraties de l'UE/OCDE. Utilisée largement dans la recherche en science politique comparative.
-- **[Manifesto Project](https://manifesto-project.wzb.eu/datasets/MPDS2025a)** — Analyse systématique des programmes électoraux pour mesurer le positionnement idéologique des partis. Projet de référence du WZB Berlin.
-- **[Wall of Shame](https://www.nopasaran.ch/fr-CH)** — Registre citoyen documentant les dérapages de l'extrême droite en Suisse.
+- **[ParlGov](https://parlgov.fly.dev/)**, Base de données sur les partis, élections et gouvernements dans les démocraties de l'UE/OCDE. Utilisée largement dans la recherche en science politique comparative.
+- **[Manifesto Project](https://manifesto-project.wzb.eu/datasets/MPDS2025a)**, Analyse systématique des programmes électoraux pour mesurer le positionnement idéologique des partis. Projet de référence du WZB Berlin.
+- **[Wall of Shame](https://www.nopasaran.ch/fr-CH)**, Registre citoyen documentant les dérapages de l'extrême droite en Suisse.
 
 ### Projets et travaux similaires
 
