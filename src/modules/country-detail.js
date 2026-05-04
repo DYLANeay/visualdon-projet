@@ -315,8 +315,6 @@ function _normalizeCountryEvent(raw, index) {
   if (!Number.isFinite(year)) return null;
 
   const type = raw?.type || raw?.categorie || 'general';
-  if (type === 'general') return null;
-
   const title = raw?.title || raw?.titre;
   if (!title) return null;
 
@@ -490,9 +488,46 @@ function _renderTrendChart(country) {
     yValue: _estimateShareAtYear(series, event.year),
   }));
 
+  // Compute vertical stacking offsets to avoid overlapping dots.
+  // Group events by year, stack same-year events above the curve.
+  const byYear = new Map();
+  for (const evt of eventsWithY) {
+    const bucket = byYear.get(evt.year) || [];
+    bucket.push(evt);
+    byYear.set(evt.year, bucket);
+  }
+  const DOT_RADIUS = 3.8;
+  const STACK_GAP = DOT_RADIUS * 2.5;
+
+  const eventsWithStack = eventsWithY.map((evt) => {
+    const bucket = byYear.get(evt.year) || [];
+    if (bucket.length <= 1) return evt;
+    const idx = bucket.indexOf(evt);
+    // Stack above the curve: index 0 stays on the curve, others go up
+    const yPx = y(evt.yValue);
+    const stackedY = yPx - idx * STACK_GAP;
+    return { ...evt, yStacked: stackedY, stackIndex: idx, stackTotal: bucket.length };
+  });
+
+  // Draw tiny connector lines for stacked dots
+  const stackedGroup = svg.append('g').attr('class', 'country-trend-stack-lines');
+  for (const evt of eventsWithStack) {
+    if (!evt.stackTotal || evt.stackTotal <= 1) continue;
+    if (evt.stackIndex === 0) continue;
+    stackedGroup
+      .append('line')
+      .attr('x1', x(evt.year))
+      .attr('y1', y(evt.yValue))
+      .attr('x2', x(evt.year))
+      .attr('y2', evt.yStacked)
+      .attr('stroke', 'var(--border-strong, #888)')
+      .attr('stroke-width', 0.6)
+      .attr('stroke-dasharray', '2 2');
+  }
+
   // Show a mini tile when the scroll cursor is within TREND_TILE_WINDOW years of an event point.
   const activeEvent =
-    eventsWithY
+    eventsWithStack
       .filter(
         (e) =>
           e.year <= _currentYear && e.year > _currentYear - TREND_TILE_WINDOW,
@@ -507,7 +542,7 @@ function _renderTrendChart(country) {
 
   svg
     .selectAll('.country-trend-event-point')
-    .data(eventsWithY, (event) => event.id)
+    .data(eventsWithStack, (event) => event.id)
     .join('circle')
     .attr(
       'class',
@@ -515,8 +550,8 @@ function _renderTrendChart(country) {
         `country-trend-event-point${event.year <= _currentYear ? ' is-past' : ''}`,
     )
     .attr('cx', (event) => x(event.year))
-    .attr('cy', (event) => y(event.yValue))
-    .attr('r', 3.8)
+    .attr('cy', (event) => (event.yStacked != null ? event.yStacked : y(event.yValue)))
+    .attr('r', DOT_RADIUS)
     .attr('tabindex', 0)
     .on('click', (_evt, event) => {
       if (_onJumpToYear) _onJumpToYear(event.year);

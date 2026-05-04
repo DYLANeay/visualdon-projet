@@ -368,7 +368,7 @@ html.dark .theme-icon-moon {
   font-size: clamp(2rem, 4vw, 3.5rem);
   color: var(--text-primary);
   transform-origin: 50% 50%;
-  will-change: transform, opacity;
+  will-change: transform, opacity, filter;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
