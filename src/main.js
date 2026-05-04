@@ -46,6 +46,7 @@ import {
 } from './modules/switzerland-events.js';
 import { initCityRuralChart } from './modules/city-rural-chart.js';
 import { initLanguageRegionsChart } from './modules/language-regions-chart.js';
+import { initHorizontalScroll } from './modules/horizontal-scroll.js';
 import { renderSwissLegend } from './modules/swiss-families.js';
 
 // Inertie : défilement lissé + un peu plus rapide que le scroll natif
@@ -524,6 +525,10 @@ if (languageRegionsEl) {
   );
   obs.observe(languageRegionsEl);
 }
+
+// ── Horizontal scroll for city-rural + language-regions panels ──────────────
+
+initHorizontalScroll();
 
 
 

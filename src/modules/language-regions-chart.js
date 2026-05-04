@@ -11,11 +11,31 @@ const COLOR_DOT = '#9b9b9b'; // muted neutral for individual canton points
 
 // Population per canton (residents, OFS data via cantons.geojson).
 const CANTON_POPULATION = {
-  ZH: 1553423, BE: 1043081, LU: 416347, UR: 36819, SZ: 162157,
-  OW: 38108, NW: 43520, GL: 40851, ZG: 128794, FR: 325547,
-  SO: 277462, BS: 196735, BL: 290969, SH: 83107, AR: 55309,
-  AI: 16293, SG: 514504, GR: 200096, AG: 694072, TG: 282909,
-  TI: 350986, VD: 814762, VS: 348503, NE: 175894, GE: 506343,
+  ZH: 1553423,
+  BE: 1043081,
+  LU: 416347,
+  UR: 36819,
+  SZ: 162157,
+  OW: 38108,
+  NW: 43520,
+  GL: 40851,
+  ZG: 128794,
+  FR: 325547,
+  SO: 277462,
+  BS: 196735,
+  BL: 290969,
+  SH: 83107,
+  AR: 55309,
+  AI: 16293,
+  SG: 514504,
+  GR: 200096,
+  AG: 694072,
+  TG: 282909,
+  TI: 350986,
+  VD: 814762,
+  VS: 348503,
+  NE: 175894,
+  GE: 506343,
   JU: 73709,
 };
 
@@ -116,7 +136,10 @@ function render(container, byRegion, regionMeans, weighted = false) {
     .flat()
     .map((d) => d.population);
   const dotRadius = weighted
-    ? d3.scaleSqrt().domain([0, d3.max(allPops)]).range([3, 14])
+    ? d3
+        .scaleSqrt()
+        .domain([0, d3.max(allPops)])
+        .range([3, 14])
     : () => 6;
 
   // Row band scale — one band per linguistic region.
