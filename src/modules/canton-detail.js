@@ -80,11 +80,13 @@ export function showCantonDetail(kantonsnummer, feature, year) {
   _renderParties();
 
   _panel.classList.add('is-visible');
+  document.querySelector('#switzerland-legend')?.classList.add('is-pushed');
 }
 
 export function hideCantonDetail() {
   _currentKantonsnummer = null;
   _panel.classList.remove('is-visible');
+  document.querySelector('#switzerland-legend')?.classList.remove('is-pushed');
   if (_onClose) _onClose();
 }
 

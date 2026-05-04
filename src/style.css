@@ -368,7 +368,7 @@ html.dark .theme-icon-moon {
   font-size: clamp(3rem, 5.5vw, 5rem);
   color: var(--text-primary);
   transform-origin: 50% 50%;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 #switzerland-year {
@@ -379,7 +379,7 @@ html.dark .theme-icon-moon {
   letter-spacing: -0.04em;
   font-size: clamp(10rem, 22vw, 18rem);
   transform-origin: 50% 50%;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   z-index: 15;
 }
 
@@ -1494,8 +1494,10 @@ html.dark .badge-blue {
   transition: top 400ms var(--ease-out);
 }
 
-/* In focus mode (canton selected), push legend below the canton name header */
-#switzerland:has(#canton-detail.is-visible) .switzerland-legend {
+/* In focus mode (canton selected), push legend below the canton name header.
+   Class toggled by canton-detail show/hide — avoids :has() invalidating
+   styles across the whole section every time a canton is selected. */
+.switzerland-legend.is-pushed {
   top: 145px;
   left: 40px;
 }
@@ -2085,12 +2087,12 @@ html.dark .badge-blue {
 /* Vertical slider — use writing-mode for true cross-browser vertical input
    (Chrome 116+, Firefox 124+, Safari TP). Replaces the older
    transform: rotate(90deg) + orient="vertical" hack which broke pointer
-   events on Firefox. */
+   events on Firefox. With direction: ltr the min sits at the top and max
+   at the bottom, mirroring the page's 1900 → 2026 scroll order. */
 .vertical-slider {
   width: 4px;
   height: 400px;
   writing-mode: vertical-lr;
-  direction: rtl;
 }
 
 #europe nav.w-16 {

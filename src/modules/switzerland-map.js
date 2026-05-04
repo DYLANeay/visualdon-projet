@@ -155,7 +155,12 @@ function _getFocusStrokeColor() {
   );
 }
 
-function _styleCantonPaths(pathSelection) {
+// Stroke color and width must be applied INSTANTLY, not tweened. SVG stroke
+// color is CPU-rendered (no GPU acceleration), so animating it across all 26
+// canton paths over 650ms forced a per-frame repaint chain that made the
+// canton-click feel laggy. Opacity is the only thing that tweens — and it
+// composites on the GPU.
+function _applyStaticPathStyle(pathSelection) {
   pathSelection
     .attr('stroke', (d) =>
       _focusedKantonsnummer !== null &&
@@ -168,11 +173,12 @@ function _styleCantonPaths(pathSelection) {
       d.properties.kantonsnummer === _focusedKantonsnummer
         ? FOCUS_STROKE_WIDTH
         : BASE_STROKE_WIDTH,
-    )
-    .attr('opacity', (d) => {
-      if (_focusedKantonsnummer === null) return 1;
-      return d.properties.kantonsnummer === _focusedKantonsnummer ? 1 : 0.15;
-    });
+    );
+}
+
+function _pathOpacity(d) {
+  if (_focusedKantonsnummer === null) return 1;
+  return d.properties.kantonsnummer === _focusedKantonsnummer ? 1 : 0.15;
 }
 
 function _renderBars(year) {
@@ -214,7 +220,9 @@ export function updateSwitzerlandMap(year) {
   _renderBars(year);
 
   const g = _svg.select('.cantons-group');
-  _styleCantonPaths(g.selectAll('path'));
+  const paths = g.selectAll('path');
+  _applyStaticPathStyle(paths);
+  paths.attr('opacity', _pathOpacity);
 }
 
 export function zoomToCanton(feature, { duration = 650 } = {}) {
@@ -240,12 +248,13 @@ export function zoomToCanton(feature, { duration = 650 } = {}) {
   g.interrupt('t-zoom-group');
   g.selectAll('path').interrupt('t-zoom');
 
-  const paths = g
-    .selectAll('path')
+  // Snap stroke + width immediately; only tween opacity (GPU-cheap).
+  _applyStaticPathStyle(g.selectAll('path'));
+  g.selectAll('path')
     .transition('t-zoom')
     .duration(duration)
-    .ease(d3.easeCubicInOut);
-  _styleCantonPaths(paths);
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', _pathOpacity);
 
   if (_barsG) {
     _barsG.interrupt('t-zoom-bars-group');
@@ -281,12 +290,13 @@ export function resetCantonZoom({ duration = 650 } = {}) {
   g.interrupt('t-zoom-group');
   g.selectAll('path').interrupt('t-zoom');
 
-  const paths = g
-    .selectAll('path')
+  // Snap stroke + width immediately; only tween opacity back to 1.
+  _applyStaticPathStyle(g.selectAll('path'));
+  g.selectAll('path')
     .transition('t-zoom')
     .duration(duration)
-    .ease(d3.easeCubicInOut);
-  _styleCantonPaths(paths);
+    .ease(d3.easeCubicInOut)
+    .attr('opacity', _pathOpacity);
 
   g.transition('t-zoom-group')
     .duration(duration)
@@ -328,5 +338,7 @@ export function resetCantonZoom({ duration = 650 } = {}) {
 export function refreshSwitzerlandMapTheme() {
   if (!_svg) return;
   const g = _svg.select('.cantons-group');
-  _styleCantonPaths(g.selectAll('path'));
+  const paths = g.selectAll('path');
+  _applyStaticPathStyle(paths);
+  paths.attr('opacity', _pathOpacity);
 }
