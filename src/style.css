@@ -958,22 +958,6 @@ html.dark .tone-gray {
   gap: 14px;
   pointer-events: none;
   overflow: hidden;
-  /* Soft fade at top/bottom instead of a hard clip — keeps tiles legible
-     when the column hits its bounds (notably under the parties card). */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 28px,
-    #000 calc(100% - 28px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 28px,
-    #000 calc(100% - 28px),
-    transparent 100%
-  );
 }
 
 .event-tiles-column-left {
@@ -2111,6 +2095,17 @@ html.dark .badge-blue {
   width: 4px;
   height: 400px;
   writing-mode: vertical-lr;
+}
+
+/* Center the thumb on the track for vertical sliders */
+.vertical-slider::-webkit-slider-thumb {
+  margin-top: 0;
+  margin-left: -6px;
+}
+
+.vertical-slider::-moz-range-thumb {
+  margin-top: 0;
+  margin-left: -6px;
 }
 
 #europe nav.w-16 {
