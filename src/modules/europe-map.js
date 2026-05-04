@@ -158,7 +158,11 @@ function _getFocusStrokeColor() {
   );
 }
 
-function _stylePathForFocus(pathSelection) {
+// Stroke color and width must be applied INSTANTLY, not tweened. SVG stroke
+// is CPU-rendered (no GPU acceleration), so animating it across ~50 country
+// paths over 650ms forced a per-frame repaint chain that made country-click
+// feel laggy. Opacity composites on the GPU, so it's safe to set fast.
+function _applyStaticPathStyle(pathSelection) {
   pathSelection
     .attr('stroke', (d) =>
       _focusedCountryId !== null && d.properties.Id === _focusedCountryId
@@ -169,11 +173,17 @@ function _stylePathForFocus(pathSelection) {
       _focusedCountryId !== null && d.properties.Id === _focusedCountryId
         ? 2
         : 0.78,
-    )
-    .attr('opacity', (d) => {
-      if (_focusedCountryId === null) return 1;
-      return d.properties.Id === _focusedCountryId ? 1 : 0.15;
-    });
+    );
+}
+
+function _pathOpacity(d) {
+  if (_focusedCountryId === null) return 1;
+  return d.properties.Id === _focusedCountryId ? 1 : 0.15;
+}
+
+function _stylePathForFocus(pathSelection) {
+  _applyStaticPathStyle(pathSelection);
+  pathSelection.attr('opacity', _pathOpacity);
 }
 
 function getFillColor(feature) {
@@ -233,16 +243,16 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
 
   _addLegend(container);
 
-  // Pre-warm every hot path the first zoom will hit. In dev mode, Vite
-  // compiles d3 submodules lazily on first use; without this, the first
-  // click pays a 300-500ms cold-start cost (transform tween, opacity tween,
-  // ease function, path.bounds). We run the same code paths now, with
-  // duration=1 + ease=linear so nothing is visually perceptible.
+  // Pre-warm every hot path the first zoom will hit. Without this the
+  // initial click pays a 300-500ms cold-start cost (transform tween,
+  // opacity tween, path.bounds). Duration=1 + ease=linear so nothing
+  // is visually perceptible.
   for (const f of features) _path.bounds(f);
+  g.style('will-change', 'transform');
   g.attr('transform', 'translate(0,0) scale(1)');
-  g.transition()
+  g.transition('t-warm')
     .duration(1)
-    .ease(d3.easeCubicInOut)
+    .ease(d3.easeLinear)
     .attrTween('transform', function () {
       return d3.interpolateTransformSvg(
         'translate(0,0) scale(1)',
@@ -253,9 +263,9 @@ export function initEuropeMap(container, geoData, elections, onCountryClick) {
       d3.select(this).attr('transform', null);
     });
   g.selectAll('path')
-    .transition()
+    .transition('t-warm-path')
     .duration(1)
-    .ease(d3.easeCubicInOut)
+    .ease(d3.easeLinear)
     .attr('opacity', 1);
 }
 
@@ -319,14 +329,19 @@ export function zoomToFeature(feature, { duration = 650 } = {}) {
   const g = _svg.select('.map-group');
   _focusedCountryId = feature.properties.Id;
 
-  const paths = g.selectAll('path')
-    .transition()
-    .duration(duration)
-    .ease(d3.easeCubicInOut);
-  _stylePathForFocus(paths);
+  // Interrupt any running transitions before starting new ones.
+  g.interrupt('t-zoom-group');
+  g.selectAll('path').interrupt('t-zoom');
+
+  // Snap all visual properties instantly — no per-path transitions. Tweening
+  // stroke/opacity across ~50 paths on top of the group transform forced
+  // dozens of concurrent CPU-bound paints and made the click feel laggy.
+  // Setting instantly is imperceptible once the group scale/translate kicks in.
+  _applyStaticPathStyle(g.selectAll('path'));
+  g.selectAll('path').attr('opacity', _pathOpacity);
 
   return new Promise((resolve) => {
-    g.transition()
+    g.transition('t-zoom-group')
       .duration(duration)
       .ease(d3.easeCubicInOut)
       .attr('transform', `translate(${tx},${ty}) scale(${scale})`)
@@ -338,12 +353,16 @@ export function resetZoom({ duration = 650 } = {}) {
   if (!_svg) return;
   _focusedCountryId = null;
   const g = _svg.select('.map-group');
-  const paths = g.selectAll('path')
-    .transition()
-    .duration(duration)
-    .ease(d3.easeCubicInOut);
-  _stylePathForFocus(paths);
-  g.transition()
+
+  // Interrupt any running transitions.
+  g.interrupt('t-zoom-group');
+  g.selectAll('path').interrupt('t-zoom');
+
+  // Snap visual properties instantly; only animate the group transform.
+  _applyStaticPathStyle(g.selectAll('path'));
+  g.selectAll('path').attr('opacity', 1);
+
+  g.transition('t-zoom-group')
     .duration(duration)
     .ease(d3.easeCubicInOut)
     .attrTween('transform', function () {
@@ -351,7 +370,7 @@ export function resetZoom({ duration = 650 } = {}) {
       return d3.interpolateTransformSvg(from, 'translate(0,0) scale(1)');
     })
     .on('end', function () {
-      d3.select(this).attr('transform', null);
+      this.removeAttribute('transform');
     });
 }
 
