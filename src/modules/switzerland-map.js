@@ -88,7 +88,14 @@ export function initSwitzerlandMap(
     })
     .filter(Boolean);
 
-  _barsG = _svg.append('g').attr('class', 'cantons-bars-group');
+  // Bars sit above the canton paths in DOM order. They are decorative —
+  // clicks should fall through to the canton beneath, especially when
+  // zoomed in (the focused canton's bar grows ~5× and would otherwise
+  // block clicks on neighbouring cantons).
+  _barsG = _svg
+    .append('g')
+    .attr('class', 'cantons-bars-group')
+    .style('pointer-events', 'none');
 
   const bars = _barsG
     .selectAll('g.canton-bar')
