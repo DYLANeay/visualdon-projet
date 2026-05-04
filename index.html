@@ -134,12 +134,12 @@
         <p class="hero-eyebrow">VisualDon · 2026 · Étude longitudinale</p>
         <h1 class="hero-title">La montée de<br /><em>l'extrême droite</em></h1>
         <p class="hero-subtitle">
-          Cartographie d'un basculement européen — 1900 à 2026.
+          Cartographie d'un basculement européen, 1900 à 2026.
         </p>
         <p class="hero-lede">
           Depuis la fin de la Seconde Guerre mondiale, les partis d'extrême
           droite reconquièrent terrain et parlements. Ce projet retrace,
-          élection après élection, leur progression à travers le continent — et
+          élection après élection, leur progression à travers le continent et
           ses échos en Suisse.
         </p>
       </div>
@@ -203,7 +203,7 @@
             class="country-detail pointer-events-none absolute inset-0 z-20 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
           >
             <div class="flex items-start justify-between">
-              <div class="country-detail-header pointer-events-auto">
+              <div class="country-detail-header">
                 <p class="detail-eyebrow">Pays sélectionné</p>
                 <h3
                   data-country-name
@@ -245,7 +245,6 @@
               max="2026"
               step="1"
               value="1900"
-              orient="vertical"
               aria-label="Sélectionner l'année"
             />
           </nav>
@@ -320,7 +319,7 @@
             class="country-detail pointer-events-none absolute inset-0 z-30 flex flex-col justify-between px-10 py-8 opacity-0 transition-opacity duration-500"
           >
             <div class="flex items-start justify-between">
-              <div class="country-detail-header pointer-events-auto">
+              <div class="country-detail-header">
                 <p class="detail-eyebrow">Canton sélectionné</p>
                 <h3
                   data-canton-name
@@ -407,11 +406,14 @@
     </section>
 
     <!-- Chapters 3 + 3 suite: horizontal scroll wrapper -->
-    <section id="horizontal-scroll" class="horizontal-scroll">
+    <section
+      id="horizontal-scroll"
+      class="horizontal-scroll"
+    >
       <div class="horizontal-scroll__pin">
         <div class="horizontal-scroll__track">
           <div class="horizontal-scroll__panel">
-            <!-- Chapter 3: city vs rural — chef-lieu vs canton voting (2023) -->
+            <!-- Chapter 3: city vs rural, chef-lieu vs canton voting (2023) -->
             <section
               id="city-rural"
               class="city-rural-section"
@@ -422,33 +424,35 @@
                   Aux fédérales 2023, l'extrême droite surperforme en campagne
                 </h2>
                 <p class="section-deck">
-                  Pour chaque canton, le score de l'extrême droite (UDC, EDU, Lega, SD)
-                  dans son chef-lieu comparé au score dans l'ensemble du canton. Les
-                  élections fédérales offrent la seule comparaison standardisée à
-                  l'échelle nationale ; le phénomène ville/campagne se vérifie également
-                  aux cantonales.
+                  Pour chaque canton, le score de l'extrême droite (UDC, EDU,
+                  Lega, SD) dans son chef-lieu comparé au score dans l'ensemble
+                  du canton. Les élections fédérales offrent la seule
+                  comparaison standardisée à l'échelle nationale ; le phénomène
+                  ville/campagne se vérifie également aux cantonales.
                 </p>
               </div>
 
               <div class="city-rural-chart-wrap">
-                  <div
-                    id="city-rural-chart"
-                    class="city-rural-chart"
-                  ></div>
-                </div>
+                <div
+                  id="city-rural-chart"
+                  class="city-rural-chart"
+                ></div>
+              </div>
               <div class="city-rural-caption">
                 <p>
-                  <strong>Lecture :</strong> chaque colonne est un canton, classé par
-                  score d'extrême droite. Le point noir marque le chef-lieu (ville), le
-                  vert le canton entier (incl. campagne). Plus le vert est au-dessus
-                  du noir, plus la campagne vote à l'extrême droite. Le ratio au milieu
-                  indique combien de fois la campagne vote plus à droite (ex : 1.5x).
+                  <strong>Lecture :</strong> chaque colonne est un canton,
+                  classé par score d'extrême droite. Le point noir marque le
+                  chef-lieu (ville), le vert le canton entier (incl. campagne).
+                  Plus le vert est au-dessus du noir, plus la campagne vote à
+                  l'extrême droite. Le ratio au milieu indique combien de fois
+                  la campagne vote plus à droite (ex : 1.5x).
                 </p>
                 <p class="city-rural-source">
-                  Source : OFS, Élections au Conseil national 2023 — force des partis
-                  par commune. Les fédérales sont utilisées car elles constituent la
-                  seule élection standardisée à l'échelle nationale ; ce clivage
-                  ville/campagne se confirme aux élections cantonales.
+                  Source : OFS, Élections au Conseil national 2023, force des
+                  partis par commune. Les fédérales sont utilisées car elles
+                  constituent la seule élection standardisée à l'échelle
+                  nationale ; ce clivage ville/campagne se confirme aux
+                  élections cantonales.
                 </p>
               </div>
             </section>
@@ -466,33 +470,34 @@
                   Et selon la langue, le vote change-t-il&nbsp;?
                 </h2>
                 <p class="section-deck">
-                  Score moyen de l'extrême droite par région linguistique, fédérales
-                  2023. Suisse alémanique, Suisse romande, Suisse italienne — comparées
-                  sur le même indicateur.
+                  Score moyen de l'extrême droite par région linguistique,
+                  fédérales 2023. Suisse alémanique, Suisse romande, Suisse
+                  italienne, comparées sur le même indicateur.
                 </p>
               </div>
               <div class="city-rural-chart-wrap">
-                  <div
-                    id="language-regions-chart"
-                    class="city-rural-chart"
-                  ></div>
-                </div>
+                <div
+                  id="language-regions-chart"
+                  class="city-rural-chart"
+                ></div>
+              </div>
               <div class="city-rural-caption">
                 <p>
-                  <strong>Lecture&nbsp;:</strong> chaque point est un canton, la marque
-                  épaisse indique la moyenne simple de la région.
+                  <strong>Lecture&nbsp;:</strong> chaque point est un canton, la
+                  marque épaisse indique la moyenne simple de la région.
                 </p>
                 <p>
-                  <strong>Biais&nbsp;:</strong> les cantons plurilingues (BE, FR, VS,
-                  GR) sont entièrement attribués à leur langue majoritaire officielle.
-                  Or, environ un quart des bernois·es est francophone, et la moitié des
-                  fribourgeois·es ou des valaisan·nes peut basculer dans la catégorie
-                  opposée. Cette simplification gonfle légèrement le score
-                  alémanique et, à l'inverse, lisse le score romand.
+                  <strong>Biais&nbsp;:</strong> les cantons plurilingues (BE,
+                  FR, VS, GR) sont entièrement attribués à leur langue
+                  majoritaire officielle. Or, environ un quart des bernois·es
+                  est francophone, et la moitié des fribourgeois·es ou des
+                  valaisan·nes peut basculer dans la catégorie opposée. Cette
+                  simplification gonfle légèrement le score alémanique et, à
+                  l'inverse, lisse le score romand.
                 </p>
                 <p class="city-rural-source">
-                  Source&nbsp;: OFS, élections fédérales 2023 — moyenne simple par
-                  canton (non pondérée par la population).
+                  Source&nbsp;: OFS, élections fédérales 2023, moyenne simple
+                  par canton (non pondérée par la population).
                 </p>
               </div>
             </section>
@@ -515,7 +520,7 @@
             Europe, elle progresse en banalisant le racisme, en désignant des
             boucs émissaires et en rongeant, scrutin après scrutin, les
             garde-fous démocratiques. Ce projet n'est pas neutre : il documente
-            cette progression — en Suisse et chez ses voisins — pour rendre
+            cette progression, en Suisse et chez ses voisins, pour rendre
             visible ce qui se joue derrière les pourcentages.
           </p>
           <p class="about-context-body">
@@ -523,7 +528,7 @@
             <strong>explicative</strong>. Explorer pour comparer les
             trajectoires : y a-t-il une vague de fond, ou certains pays
             résistent-ils ? Expliquer en reliant les courbes électorales aux
-            moments qui les nourrissent — crises migratoires instrumentalisées,
+            moments qui les nourrissent : crises migratoires instrumentalisées,
             paniques sécuritaires, fragilités économiques.
           </p>
         </div>
@@ -533,7 +538,7 @@
             <h3>Ce que disent les chiffres</h3>
             <p>
               Le vote d'extrême droite n'est plus un épiphénomène. En France, en
-              Allemagne, en Autriche, en Italie — et en Suisse avec l'UDC — il
+              Allemagne, en Autriche, en Italie, et en Suisse avec l'UDC, il
               pèse désormais entre 15 % et 30 % des suffrages. Replacer ces
               scores dans le temps long montre qu'il ne s'agit pas d'un
               accident, mais d'une tendance lourde, normalisée par la
@@ -545,8 +550,8 @@
             <p>
               Derrière les pourcentages, il y a des actes : propos racistes
               banalisés, affiches xénophobes, agressions, liens assumés avec les
-              milieux identitaires. Nous documentons ces dérapages — notamment
-              via le registre <em>Wall of Shame</em> — pour rappeler que ces
+              milieux identitaires. Nous documentons ces dérapages, notamment
+              via le registre <em>Wall of Shame</em>, pour rappeler que ces
               votes ont des conséquences concrètes sur la vie des personnes
               visées.
             </p>
@@ -560,8 +565,8 @@
               <p class="about-context-source-name">ParlGov</p>
               <p>
                 Infrastructure de recherche sur les démocraties de l'UE et de
-                l'OCDE (1900–2023) : environ 1 700 partis, 1 000 élections et 30
-                pays. Utilisée en science politique comparative.
+                l'OCDE (1900 à 2023) : environ 1 700 partis, 1 000 élections et
+                30 pays. Utilisée en science politique comparative.
               </p>
               <a
                 href="https://parlgov.fly.dev/"
@@ -599,9 +604,10 @@
               >
             </li>
             <li>
-              <p class="about-context-source-name">OFS — Statistique suisse</p>
+              <p class="about-context-source-name">OFS, Statistique suisse</p>
               <p>
-                Données sur les cantons et les résultats des élections fédérales pour l'analyse ville/campagne et par région linguistique.
+                Données sur les cantons et les résultats des élections fédérales
+                pour l'analyse ville/campagne et par région linguistique.
               </p>
               <a
                 href="https://www.bfs.admin.ch/bfs/fr/home.html"
@@ -645,7 +651,7 @@
             <p class="about-context-authors">
               Dylan Eray &amp; Loic Peyramaure
             </p>
-            <p class="about-context-meta">VisualDon 2026 — HEIG-VD</p>
+            <p class="about-context-meta">VisualDon 2026, HEIG-VD</p>
           </div>
           <a
             href="https://github.com/DYLANeay/visualdon-projet"

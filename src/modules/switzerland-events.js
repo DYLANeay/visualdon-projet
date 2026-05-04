@@ -142,12 +142,17 @@ export function setSwissEventTilesFocus(kantonsnummer) {
     _overlayRoot.classList.toggle('is-focus-mode', Boolean(_focusKanton));
   }
 
-  for (const tile of _activeTiles.values()) tile.remove();
-  _activeTiles.clear();
+  // Defer the DOM teardown + rebuild a frame so the canton zoom transform
+  // commits first. Up to 8 innerHTML parses + listener attaches were
+  // running in the same tick as the zoom and were a primary source of jank.
+  requestAnimationFrame(() => {
+    for (const tile of _activeTiles.values()) tile.remove();
+    _activeTiles.clear();
 
-  updateSwissEventTiles(_currentTime);
+    updateSwissEventTiles(_currentTime);
 
-  if (!_focusKanton) _scheduleLineRedraw(700);
+    if (!_focusKanton) _scheduleLineRedraw(700);
+  });
 }
 
 function _setupModal() {

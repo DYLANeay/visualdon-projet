@@ -417,15 +417,18 @@ export function setEventTilesFocus(iso2) {
   }
   _eventById = new Map(_events.map((e) => [e.id, e]));
 
-  // Reset the tiles so the new filtered set enters cleanly.
-  for (const tile of _activeTiles.values()) tile.remove();
-  _activeTiles.clear();
+  // Defer DOM teardown + rebuild one frame so the country-zoom transform
+  // commits before tile innerHTML parsing runs (mirrors the swiss path).
+  requestAnimationFrame(() => {
+    for (const tile of _activeTiles.values()) tile.remove();
+    _activeTiles.clear();
 
-  updateEventTiles(_currentYear);
+    updateEventTiles(_currentYear);
 
-  // When leaving focus mode the map un-zooms over ~650ms — keep redrawing
-  // connector lines so they track the moving country paths (Bug 2).
-  if (!_focusIso2) _scheduleLineRedraw(700);
+    // When leaving focus mode the map un-zooms over ~650ms — keep redrawing
+    // connector lines so they track the moving country paths (Bug 2).
+    if (!_focusIso2) _scheduleLineRedraw(700);
+  });
 }
 
 function _setupModal() {

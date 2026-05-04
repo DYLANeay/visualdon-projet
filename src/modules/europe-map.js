@@ -71,7 +71,12 @@ let _path = null;
 let _geoData = null;
 let _elections = null;
 let _container = null;
-let _focusedIso2 = null;
+// Track focus by stable country Id only. The data-binding key uses the
+// Id_From composite (see line ~220) so enter/update/exit handles boundary
+// changes correctly, but focus must survive year scrolls where the same
+// country appears with a different "From" — comparing the composite would
+// silently lose focus mid-interaction.
+let _focusedCountryId = null;
 
 // Le CShapes GeoJSON s'arrête en 2023 ; au-delà, on clampe pour garder les dernières frontières.
 const GEO_MAX_YEAR = 2023;
@@ -155,20 +160,19 @@ function _getFocusStrokeColor() {
 
 function _stylePathForFocus(pathSelection) {
   pathSelection
-    .attr('stroke', (d) => {
-      const iso2 = NAME_TO_ISO2[d.properties.Name];
-      return _focusedIso2 && iso2 === _focusedIso2
+    .attr('stroke', (d) =>
+      _focusedCountryId !== null && d.properties.Id === _focusedCountryId
         ? _getFocusStrokeColor()
-        : _getStrokeColor();
-    })
-    .attr('stroke-width', (d) => {
-      const iso2 = NAME_TO_ISO2[d.properties.Name];
-      return _focusedIso2 && iso2 === _focusedIso2 ? 2 : 0.78;
-    })
+        : _getStrokeColor(),
+    )
+    .attr('stroke-width', (d) =>
+      _focusedCountryId !== null && d.properties.Id === _focusedCountryId
+        ? 2
+        : 0.78,
+    )
     .attr('opacity', (d) => {
-      const iso2 = NAME_TO_ISO2[d.properties.Name];
-      if (!_focusedIso2) return 1;
-      return iso2 === _focusedIso2 ? 1 : 0.15;
+      if (_focusedCountryId === null) return 1;
+      return d.properties.Id === _focusedCountryId ? 1 : 0.15;
     });
 }
 
@@ -315,8 +319,7 @@ export function zoomToFeature(feature, { duration = 650 } = {}) {
   const ty = targetY - scale * cy;
 
   const g = _svg.select('.map-group');
-  const targetIso2 = NAME_TO_ISO2[feature.properties.Name] || null;
-  _focusedIso2 = targetIso2;
+  _focusedCountryId = feature.properties.Id;
 
   const paths = g.selectAll('path')
     .transition()
@@ -335,7 +338,7 @@ export function zoomToFeature(feature, { duration = 650 } = {}) {
 
 export function resetZoom({ duration = 650 } = {}) {
   if (!_svg) return;
-  _focusedIso2 = null;
+  _focusedCountryId = null;
   const g = _svg.select('.map-group');
   const paths = g.selectAll('path')
     .transition()

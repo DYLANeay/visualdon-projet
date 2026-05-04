@@ -214,9 +214,9 @@ html.dark .theme-icon-moon {
 .hero-overlay {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.45) 40%,
-    rgba(0, 0, 0, 0.92) 100%
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.65) 45%,
+    rgba(0, 0, 0, 0.95) 100%
   );
 }
 
@@ -238,6 +238,7 @@ html.dark .theme-icon-moon {
   letter-spacing: -0.025em;
   color: #ffffff;
   margin: 0 0 32px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 .hero-title em {
@@ -251,18 +252,20 @@ html.dark .theme-icon-moon {
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.25rem, 2vw, 1.6rem);
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.92);
   margin: 0 0 28px;
   max-width: 600px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
 }
 
 .hero-lede {
   font-family: var(--font-ui);
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 540px;
   margin: 0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
 }
 
 .hero-scroll-cue {
@@ -378,7 +381,7 @@ html.dark .theme-icon-moon {
   letter-spacing: -0.04em;
   font-size: clamp(10rem, 22vw, 18rem);
   transform-origin: 50% 50%;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   z-index: 15;
 }
 
@@ -955,6 +958,22 @@ html.dark .tone-gray {
   gap: 14px;
   pointer-events: none;
   overflow: hidden;
+  /* Soft fade at top/bottom instead of a hard clip — keeps tiles legible
+     when the column hits its bounds (notably under the parties card). */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 28px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 28px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
 }
 
 .event-tiles-column-left {
@@ -994,7 +1013,8 @@ html.dark .tone-gray {
 
 #event-tiles-switzerland-overlay.is-focus-mode .event-tiles-column-right {
   top: 100px;
-  bottom: 60px;
+  /* Lifted above the parties card area so tiles never sit visually behind it. */
+  bottom: 120px;
   right: 40px;
   width: 330px;
   gap: 14px;
@@ -1492,8 +1512,10 @@ html.dark .badge-blue {
   transition: top 400ms var(--ease-out);
 }
 
-/* In focus mode (canton selected), push legend below the canton name header */
-#switzerland:has(#canton-detail.is-visible) .switzerland-legend {
+/* In focus mode (canton selected), push legend below the canton name header.
+   Class toggled by canton-detail show/hide — avoids :has() invalidating
+   styles across the whole section every time a canton is selected. */
+.switzerland-legend.is-pushed {
   top: 145px;
   left: 40px;
 }
@@ -2080,22 +2102,22 @@ html.dark .badge-blue {
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
-/* Vertical slider specific */
+/* Vertical slider — use writing-mode for true cross-browser vertical input
+   (Chrome 116+, Firefox 124+, Safari TP). Replaces the older
+   transform: rotate(90deg) + orient="vertical" hack which broke pointer
+   events on Firefox. With direction: ltr the min sits at the top and max
+   at the bottom, mirroring the page's 1900 → 2026 scroll order. */
 .vertical-slider {
-  width: 400px;
-  height: 4px;
-  transform: rotate(90deg);
-  transform-origin: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -200px;
-  margin-top: -2px;
+  width: 4px;
+  height: 400px;
+  writing-mode: vertical-lr;
 }
 
 #europe nav.w-16 {
   position: relative;
-  height: 400px; /* height that the vertical slider will occupy */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Tags Dropdown styling */

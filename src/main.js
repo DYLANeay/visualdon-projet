@@ -291,6 +291,34 @@ async function bootEurope() {
         lenis.scrollTo(targetStep, { immediate: true });
       }
     });
+
+    // Map arrow keys to intuitive timeline direction: ArrowUp = earlier year
+    // (page scrolls UP toward 1900), ArrowDown = later year. Without this
+    // override the native rotated/vertical slider increments value on
+    // ArrowUp, which feels reversed to users expecting scroll semantics.
+    const KEY_DELTA = {
+      ArrowUp: -1,
+      ArrowDown: +1,
+      ArrowLeft: -1,
+      ArrowRight: +1,
+      PageUp: -5,
+      PageDown: +5,
+    };
+    europeSlider.addEventListener('keydown', (e) => {
+      if (!(e.key in KEY_DELTA)) return;
+      e.preventDefault();
+      const min = Number(europeSlider.min);
+      const max = Number(europeSlider.max);
+      const step = Number(europeSlider.step) || 1;
+      const current = Number(europeSlider.value);
+      const next = Math.min(
+        max,
+        Math.max(min, current + KEY_DELTA[e.key] * step),
+      );
+      if (next === current) return;
+      europeSlider.value = String(next);
+      europeSlider.dispatchEvent(new Event('input', { bubbles: true }));
+    });
   }
 
   europeMapEl.addEventListener('click', (e) => {
@@ -528,7 +556,25 @@ if (languageRegionsEl) {
 
 // ── Horizontal scroll for city-rural + language-regions panels ──────────────
 
-initHorizontalScroll();
+const horizontalApi = initHorizontalScroll();
+
+// Single-click nav: hash anchors targeting sections inside the horizontal
+// track need an explicit scrollY (native anchor scroll lands on the wrapper).
+// Other anchors fall through to lenis.scrollTo(element).
+for (const link of document.querySelectorAll('.site-nav-links a[href^="#"]')) {
+  link.addEventListener('click', (e) => {
+    const hash = link.getAttribute('href').slice(1);
+    if (!hash) return;
+    e.preventDefault();
+    const targetY = horizontalApi?.scrollToSection?.(hash);
+    if (typeof targetY === 'number') {
+      lenis.scrollTo(targetY, { duration: 1.2 });
+      return;
+    }
+    const el = document.getElementById(hash);
+    if (el) lenis.scrollTo(el, { duration: 1.0 });
+  });
+}
 
 
 
