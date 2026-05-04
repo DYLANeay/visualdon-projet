@@ -1,0 +1,2091 @@
+{
+  "common_events": [
+    {
+      "label": "Première Guerre mondiale (déclenchement de la guerre de 14-18 et effondrement de plusieurs empires européens)",
+      "year": 1914,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Premi%C3%A8re_Guerre_mondiale"
+    },
+    {
+      "label": "Révolutions russes de 1917 et installation d'un régime communiste (renforce durablement l'anticommunisme de l'extrême droite européenne)",
+      "year": 1917,
+      "type": "general",
+      "pays": "RU",
+      "link": "https://fr.wikipedia.org/wiki/R%C3%A9volution_russe"
+    },
+    {
+      "label": "Traité de Versailles (fin officielle de la Première Guerre mondiale et ressentiment en Allemagne)",
+      "year": 1919,
+      "type": "general",
+      "pays": "DE",
+      "link": "https://fr.wikipedia.org/wiki/Trait%C3%A9_de_Versailles"
+    },
+    {
+      "label": "Marche sur Rome : prise du pouvoir par Mussolini et début du régime fasciste italien",
+      "year": 1922,
+      "type": "extreme_droite",
+      "pays": "IT",
+      "link": "https://fr.wikipedia.org/wiki/Marche_sur_Rome"
+    },
+    {
+      "label": "Hyperinflation de la République de Weimar (crise économique et sociale favorisant les partis extrémistes en Allemagne)",
+      "year": 1923,
+      "type": "general",
+      "pays": "DE",
+      "link": "https://fr.wikipedia.org/wiki/Hyperinflation_de_la_R%C3%A9publique_de_Weimar"
+    },
+    {
+      "label": "Krach boursier de 1929 à Wall Street (début de la Grande Dépression qui frappe fortement l'Europe)",
+      "year": 1929,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Krach_de_1929"
+    },
+    {
+      "label": "Grande Dépression des années 1930 en Europe (chômage de masse, déstabilisation des démocraties, ouverture pour les partis fascistes et nazis)",
+      "year": 1930,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Grande_D%C3%A9pression"
+    },
+    {
+      "label": "Arrivée d'Hitler au poste de chancelier du Reich et début de la mise en place du régime nazi",
+      "year": 1933,
+      "type": "extreme_droite",
+      "pays": "DE",
+      "link": "https://fr.wikipedia.org/wiki/Adolf_Hitler"
+    },
+    {
+      "label": "Printemps des Fronts en Suisse : multiplication des mouvements fascisants et nazis suisses dans l'entre-deux-guerres",
+      "year": 1933,
+      "type": "extreme_droite",
+      "pays": "CH",
+      "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Suisse"
+    },
+    {
+      "label": "Lois de Nuremberg (institutionnalisation de l'antisémitisme d'État dans l'Allemagne nazie)",
+      "year": 1935,
+      "type": "extreme_droite",
+      "pays": "DE",
+      "link": "https://fr.wikipedia.org/wiki/Lois_de_Nuremberg"
+    },
+    {
+      "label": "Guerre civile espagnole et victoire de Franco (installe une dictature national-catholique jusqu'en 1975)",
+      "year": 1936,
+      "type": "extreme_droite",
+      "pays": "ES",
+      "link": "https://fr.wikipedia.org/wiki/Guerre_civile_espagnole"
+    },
+    {
+      "label": "Dictature de Metaxás en Grèce (régime autoritaire nationaliste)",
+      "year": 1936,
+      "type": "extreme_droite",
+      "pays": "GR",
+      "link": "https://fr.wikipedia.org/wiki/Ioannis_Metaxas"
+    },
+    {
+      "label": "Seconde Guerre mondiale (guerre totale en Europe, crimes de masse nazis et fascistes, discrédit durable des régimes d'extrême droite classiques)",
+      "year": 1939,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale"
+    },
+    {
+      "label": "Régime de Vichy en France (collaboration d'État avec l'Allemagne nazie et politiques antisémites)",
+      "year": 1940,
+      "type": "extreme_droite",
+      "pays": "FR",
+      "link": "https://fr.wikipedia.org/wiki/R%C3%A9gime_de_Vichy"
+    },
+    {
+      "label": "Libération de l'Europe et capitulation de l'Allemagne nazie (effondrement militaire des régimes fascistes)",
+      "year": 1945,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Fin_de_la_Seconde_Guerre_mondiale_en_Europe"
+    },
+    {
+      "label": "Début de la guerre froide et division de l'Europe en blocs Est/Ouest (structurant pour le discours anticommuniste de l'extrême droite)",
+      "year": 1947,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Guerre_froide"
+    },
+    {
+      "label": "Création du Conseil de l'Europe (premier jalon de la construction européenne, horizon critiqué par les extrêmes droites)",
+      "year": 1949,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Conseil_de_l%27Europe"
+    },
+    {
+      "label": "Vagues de décolonisation et guerres coloniales (dont guerre d'Algérie), qui alimentent des milieux activistes d'extrême droite en Europe de l'Ouest",
+      "year": 1954,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/D%C3%A9colonisation"
+    },
+    {
+      "label": "Traité de Rome et création de la Communauté économique européenne (CEE), début du marché commun européen",
+      "year": 1957,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Trait%C3%A9_de_Rome"
+    },
+    {
+      "label": "Mai 1968 et mouvements contestataires (point de fixation symbolique pour les discours anti-« 68 » de l'extrême droite)",
+      "year": 1968,
+      "type": "general",
+      "pays": "FR",
+      "link": "https://fr.wikipedia.org/wiki/Mai_68"
+    },
+    {
+      "label": "Premier choc pétrolier (crise économique, chômage, remise en cause de l'État-providence en Europe)",
+      "year": 1973,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Premier_choc_p%C3%A9trolier"
+    },
+    {
+      "label": "Chute de la junte des colonels et retour de la démocratie en Grèce",
+      "year": 1974,
+      "type": "extreme_droite",
+      "pays": "GR",
+      "link": "https://fr.wikipedia.org/wiki/Junte_des_colonels"
+    },
+    {
+      "label": "Révolution des Œillets et chute de la dictature salazariste (fin d'un régime autoritaire de droite au Portugal)",
+      "year": 1974,
+      "type": "extreme_droite",
+      "pays": "PT",
+      "link": "https://fr.wikipedia.org/wiki/R%C3%A9volution_des_%C5%92illets"
+    },
+    {
+      "label": "Transition démocratique en Espagne (fin du franquisme et recomposition de la droite et de l'extrême droite)",
+      "year": 1975,
+      "type": "extreme_droite",
+      "pays": "ES",
+      "link": "https://fr.wikipedia.org/wiki/Transition_d%C3%A9mocratique_espagnole"
+    },
+    {
+      "label": "Chute du mur de Berlin et fin de la division Est/Ouest (recomposition politique massive en Europe, montée de nouveaux nationalismes)",
+      "year": 1989,
+      "type": "general",
+      "pays": "DE",
+      "link": "https://fr.wikipedia.org/wiki/Chute_du_mur_de_Berlin"
+    },
+    {
+      "label": "Guerres de Yougoslavie (explosion de nationalismes ethniques aux portes de l'UE, Balkans)",
+      "year": 1991,
+      "type": "general",
+      "pays": "BA/HR/RS/SI/MK",
+      "link": "https://fr.wikipedia.org/wiki/Guerres_de_Yougoslavie"
+    },
+    {
+      "label": "Dissolution de l'Union soviétique (fin du bloc de l'Est et émergence de nouveaux États en Europe)",
+      "year": 1991,
+      "type": "general",
+      "pays": "RU",
+      "link": "https://fr.wikipedia.org/wiki/Dissolution_de_l%27Union_sovi%C3%A9tique"
+    },
+    {
+      "label": "Traité de Maastricht : fondation de l'Union européenne, cible privilégiée de l'euro-scepticisme d'extrême droite",
+      "year": 1992,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Trait%C3%A9_de_Maastricht"
+    },
+    {
+      "label": "Attentats du 11 septembre 2001 et lancement de la « guerre contre le terrorisme », qui alimente les discours islamophobes d'extrême droite en Europe",
+      "year": 2001,
+      "type": "general",
+      "pays": "US",
+      "link": "https://fr.wikipedia.org/wiki/Attentats_du_11_septembre_2001"
+    },
+    {
+      "label": "Élargissements de l'Union européenne à l'Est (2004–2007) et nouvelles mobilités intra-européennes",
+      "year": 2004,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/%C3%89largissement_de_l%27Union_europ%C3%A9enne"
+    },
+    {
+      "label": "Vague d'attentats djihadistes en Europe (Madrid 2004, Londres 2005, puis 2015–2017) utilisée par les extrêmes droites pour articuler sécurité et rejet de l'islam",
+      "year": 2004,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Terrorisme_islamiste_en_Europe"
+    },
+    {
+      "label": "Initiative populaire « Contre la construction de minarets » acceptée en Suisse (symbole européen de la vague islamophobe)",
+      "year": 2009,
+      "type": "extreme_droite",
+      "pays": "CH",
+      "link": "https://fr.wikipedia.org/wiki/Initiative_populaire_%C2%AB_Contre_la_construction_de_minarets_%C2%BB"
+    },
+    {
+      "label": "Ascension durable de l'Union démocratique du centre (UDC/SVP), parti de droite radicale souvent rapproché de l'extrême droite",
+      "year": 2010,
+      "type": "extreme_droite",
+      "pays": "CH",
+      "link": "https://fr.wikipedia.org/wiki/Union_d%C3%A9mocratique_du_centre"
+    },
+    {
+      "label": "Montée continue des partis d'extrême droite en Europe depuis les années 1980 (synthèse comparative)",
+      "year": 2000,
+      "type": "extreme_droite",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Europe_depuis_1945"
+    },
+    {
+      "label": "Crise financière mondiale de 2007-2008",
+      "year": 2007,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Crise_financi%C3%A8re_mondiale_de_2007-2008"
+    },
+    {
+      "label": "Crise de la dette dans la zone euro",
+      "year": 2010,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Crise_de_la_dette_dans_la_zone_euro"
+    },
+    {
+      "label": "Crise migratoire en Europe",
+      "year": 2015,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Crise_migratoire_en_Europe"
+    },
+    {
+      "label": "Référendum sur le Brexit : sortie du Royaume-Uni de l'Union européenne (victoire d'une coalition souverainiste où l'extrême droite est influente)",
+      "year": 2016,
+      "type": "general",
+      "pays": "GB",
+      "link": "https://fr.wikipedia.org/wiki/R%C3%A9f%C3%A9rendum_sur_l%27appartenance_du_Royaume-Uni_%C3%A0_l%27Union_europ%C3%A9enne"
+    },
+    {
+      "label": "Pandémie de Covid-19 (2020–2022) et mobilisation de réseaux complotistes / anti-mesures où s'investissent de nombreux groupes d'extrême droite européens",
+      "year": 2020,
+      "type": "general",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Pand%C3%A9mie_de_Covid-19"
+    },
+    {
+      "label": "Structuration récente de petites organisations d'extrême droite suisses (PNOS, Parti des Suisses nationalistes, Junge Tat) dans un environnement européen radicalisé",
+      "year": 2020,
+      "type": "extreme_droite",
+      "pays": "CH",
+      "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Suisse"
+    },
+    {
+      "label": "Invasion à grande échelle de l'Ukraine par la Russie (repositionnements des extrêmes droites européennes sur la Russie, l'OTAN et l'UE)",
+      "year": 2022,
+      "type": "general",
+      "pays": "UA",
+      "link": "https://fr.wikipedia.org/wiki/Invasion_de_l%27Ukraine_par_la_Russie_en_2022"
+    },
+    {
+      "label": "Patriotes pour l'Europe : projet de grand groupe parlementaire européen réunissant plusieurs partis d'extrême droite au Parlement européen",
+      "year": 2024,
+      "type": "extreme_droite",
+      "pays": null,
+      "link": "https://fr.wikipedia.org/wiki/Patriotes_pour_l%27Europe"
+    }
+  ],
+  "country_events": {
+    "AL": [
+      {
+        "label": "Conquête italienne de l'Albanie et mise en place d'un régime fasciste",
+        "date": "1939-04-07",
+        "link": "https://fr.wikipedia.org/wiki/Parti_fasciste_albanais"
+      },
+      {
+        "label": "Création du Parti fasciste albanais, organisation fasciste au pouvoir nominal en Albanie",
+        "date": "1939-04-23",
+        "link": "https://fr.wikipedia.org/wiki/Parti_fasciste_albanais"
+      },
+      {
+        "label": "Des mouvements de résistance nationalistes se créent, dont le Balli Kombëtar",
+        "date": "1942-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mit%27hat_Frash%C3%ABri"
+      },
+      {
+        "label": "Balli Kombëtar, mouvement nationaliste conservateur, coopère ponctuellement avec les forces de l'Axe",
+        "date": "1943-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Balli_Komb%C3%ABtar"
+      },
+      {
+        "label": "Parti fasciste albanais dissous à la fin de la Seconde Guerre mondiale",
+        "date": "1943-09-08",
+        "link": "https://fr.wikipedia.org/wiki/Parti_fasciste_albanais"
+      },
+      {
+        "label": "Fondation du Parti du front national albanais (PBK), héritier du Balli Kombëtar",
+        "date": "1989-12-23",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_front_national_albanais"
+      },
+      {
+        "label": "PBK légalisé après la chute du régime communiste et positionné comme droite radicale nationaliste",
+        "date": "1991-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_front_national_albanais"
+      },
+      {
+        "label": "Montée des groupes d'extrême droite albanais en ligne diffusant propagande fasciste et ultranationaliste",
+        "date": "2020-01-01",
+        "link": "https://acqj.al/fr/ekstremistet-e-djathte-ne-shqiperi-sfida-per-demokracine-dhe-diversitetin/"
+      }
+    ],
+    "AT": [
+      {
+        "label": "Formation des milices nationalistes Heimwehren",
+        "date": "1927-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Guerre_civile_autrichienne"
+      },
+      {
+        "label": "Guerre civile autrichienne, victoire des conservateurs-nationalistes",
+        "date": "1934-02-12",
+        "link": "https://fr.wikipedia.org/wiki/Guerre_civile_autrichienne"
+      },
+      {
+        "label": "Fondation du Front patriotique (Vaterländische Front), parti unique austrofasciste",
+        "date": "1933-05-20",
+        "link": "https://fr.wikipedia.org/wiki/Front_patriotique_(Autriche)"
+      },
+      {
+        "label": "Mise en place du régime austrofasciste à parti unique",
+        "date": "1934-05-01",
+        "link": "https://fr.wikipedia.org/wiki/Austrofascisme"
+      },
+      {
+        "label": "Interdiction des partis socialiste, communiste et nazi en Autriche",
+        "date": "1934-02-15",
+        "link": "https://fr.wikipedia.org/wiki/Premi%C3%A8re_R%C3%A9publique_(Autriche)"
+      },
+      {
+        "label": "Anschluss : annexion de l'Autriche par l'Allemagne nazie",
+        "date": "1938-03-12",
+        "link": "https://fr.wikipedia.org/wiki/Autriche_sous_le_nazisme"
+      },
+      {
+        "label": "Fondation du Parti de la liberté d'Autriche (FPÖ), héritier de l'extrême droite pangermaniste",
+        "date": "1956-04-07",
+        "link": "https://fr.wikipedia.org/wiki/Parti_de_la_libert%C3%A9_d%27Autriche"
+      },
+      {
+        "label": "Entrée du FPÖ dans une coalition gouvernementale fédérale (gouvernement Schüssel I)",
+        "date": "2000-02-04",
+        "link": "https://fr.wikipedia.org/wiki/Parti_de_la_libert%C3%A9_d%27Autriche"
+      },
+      {
+        "label": "Triomphe du FPÖ aux législatives autrichiennes de 2024",
+        "date": "2024-09-29",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_autrichiennes_de_2024"
+      }
+    ],
+    "BA": [
+      {
+        "label": "Parti croate du droit de BiH fondé, parti ultra-nationaliste",
+        "date": "1991-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_de_BiH"
+      },
+      {
+        "label": "Parti croate du droit de BiH pendant la guerre de Bosnie",
+        "date": "1992-04-06",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_de_BiH"
+      },
+      {
+        "label": "Parti croate du droit de BiH après les accords de Dayton",
+        "date": "1995-11-21",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_de_BiH"
+      },
+      {
+        "label": "Parti croate du droit de BiH reste actif comme petit parti d'extrême droite",
+        "date": "2000-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_de_BiH"
+      },
+      {
+        "label": "Extrêmes droites dans les Balkans : réseaux nationalistes transfrontaliers",
+        "date": "2018-12-31",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAmes-droites_dans_les_Balkans"
+      }
+    ],
+    "BE": [
+      {
+        "label": "Création de Rex (parti politique catholique autoritaire)",
+        "date": "1935-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Rex_(parti_politique)"
+      },
+      {
+        "label": "Rex collabore avec l'occupant nazi pendant la Seconde Guerre mondiale",
+        "date": "1940-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Rex_(parti_politique)"
+      },
+      {
+        "label": "Vlaams Blok devient principal parti flamand d'extrême droite",
+        "date": "1978-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Vlaams_Belang"
+      },
+      {
+        "label": "Nouvel Europe Magazine (journal d'ultra-droite) comme foyer de réseaux",
+        "date": "1969-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Nouvel_Europe_Magazine"
+      },
+      {
+        "label": "L'Assaut (organisation néonazie) active en Belgique",
+        "date": "1988-01-01",
+        "link": "https://fr.wikipedia.org/wiki/L%27Assaut_(organisation)"
+      },
+      {
+        "label": "Mouvement Nation (parti/mouvement néofasciste et identitaire)",
+        "date": "1999-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_Nation"
+      },
+      {
+        "label": "Condamnation pour racisme et transformation de Vlaams Blok en Vlaams Belang",
+        "date": "2004-11-09",
+        "link": "https://fr.wikipedia.org/wiki/Vlaams_Belang"
+      },
+      {
+        "label": "Chez Nous (nouveau parti d'extrême droite wallon) fondé",
+        "date": "2021-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Chez_Nous_(Belgique)"
+      }
+    ],
+    "BG": [
+      {
+        "label": "Création du mouvement nationaliste d'extrême droite Ratniks par Petar Gabrovski",
+        "date": "1936-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Petar_Gabrovski"
+      },
+      {
+        "label": "Loi de protection de la Nation en Bulgarie (législation antisémite inspirée des lois de Nuremberg)",
+        "date": "1941-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Religion_en_Bulgarie"
+      },
+      {
+        "label": "Ratniks participe à la mise en œuvre de politiques antisémites et nationalistes en Bulgarie",
+        "date": "1941-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Petar_Gabrovski"
+      },
+      {
+        "label": "Ratniks et autres organisations nationalistes dissous après l'arrivée des communistes au pouvoir",
+        "date": "1944-09-09",
+        "link": "https://fr.wikipedia.org/wiki/Petar_Gabrovski"
+      },
+      {
+        "label": "Fondation du parti nationaliste d'extrême droite Ataka par Volen Siderov",
+        "date": "2005-04-17",
+        "link": "https://fr.wikipedia.org/wiki/Union_nationale_Attaque"
+      },
+      {
+        "label": "Ataka entre au Parlement bulgare avec 8,1 % des voix aux législatives de 2005",
+        "date": "2005-06-25",
+        "link": "https://fr.wikipedia.org/wiki/Union_nationale_Attaque"
+      },
+      {
+        "label": "Scission nationaliste qui mène au Front national pour le salut de la Bulgarie (FNFSB)",
+        "date": "2011-05-01",
+        "link": "https://fr.wikipedia.org/wiki/Front_national_pour_le_salut_de_la_Bulgarie"
+      },
+      {
+        "label": "FNFSB fondé comme parti nationaliste et ultraconservateur, classé à l'extrême droite",
+        "date": "2011-05-01",
+        "link": "https://fr.wikipedia.org/wiki/Front_national_pour_le_salut_de_la_Bulgarie"
+      },
+      {
+        "label": "Fondation de Renaissance (Vazrazhdane), parti ultranationaliste et d'extrême droite",
+        "date": "2014-07-14",
+        "link": "https://fr.wikipedia.org/wiki/Renaissance_(parti_politique_bulgare)"
+      },
+      {
+        "label": "Renaissance (Vazrazhdane) entre au Parlement bulgare et progresse sur une ligne pro-russe et anti-UE",
+        "date": "2021-04-04",
+        "link": "https://fr.wikipedia.org/wiki/Renaissance_(parti_politique_bulgare)"
+      }
+    ],
+    "CH": [
+      {
+        "label": "Union nationale (parti genevois nationaliste, puis extrême droite)",
+        "date": "1932-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Union_nationale_(Suisse)"
+      },
+      {
+        "label": "Ligue vaudoise (mouvement nationaliste vaudois)",
+        "date": "1933-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ligue_vaudoise"
+      },
+      {
+        "label": "Fronts fascisants et nazis suisses (entre-deux-guerres)",
+        "date": "1935-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Suisse"
+      },
+      {
+        "label": "Vigilance (parti nationaliste genevois)",
+        "date": "1965-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Vigilance_(Gen%C3%A8ve)"
+      },
+      {
+        "label": "Nouvelle montée des fronts anti-immigration (années 1980)",
+        "date": "1980-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Suisse"
+      },
+      {
+        "label": "Groupes skinheads néonazis et violences xénophobes (années 1990)",
+        "date": "1990-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Suisse"
+      },
+      {
+        "label": "Parti nationaliste suisse (PNS) fondé",
+        "date": "2011-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_nationaliste_suisse"
+      }
+    ],
+    "CY": [
+      {
+        "label": "EOKA fondée, organisation nationaliste radicale",
+        "date": "1955-04-01",
+        "link": "https://fr.wikipedia.org/wiki/Ethniki_Organosis_Kyprion_Agoniston"
+      },
+      {
+        "label": "EOKA B créée, organisation paramilitaire d'extrême droite",
+        "date": "1971-01-01",
+        "link": "https://fr.wikipedia.org/wiki/EOKA_B"
+      },
+      {
+        "label": "Coup d'État de 1974 mené par EOKA B",
+        "date": "1974-07-15",
+        "link": "https://fr.wikipedia.org/wiki/EOKA_B"
+      },
+      {
+        "label": "ELAM fondé en tant que parti d'extrême droite chypriote",
+        "date": "2008-06-30",
+        "link": "https://fr.wikipedia.org/wiki/Chypre"
+      },
+      {
+        "label": "ELAM entre au Parlement chypriote",
+        "date": "2021-05-30",
+        "link": "https://fr.wikipedia.org/wiki/Chypre"
+      }
+    ],
+    "CZ": [
+      {
+        "label": "Médias fascistes tchèques Vlajka et Arijský boj actifs dans le Protectorat",
+        "date": "1939-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Shoah_en_Boh%C3%AAme-Moravie"
+      },
+      {
+        "label": "Collaboration de certains groupes tchèques avec l'occupant nazi (Vlajka)",
+        "date": "1941-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Shoah_en_Boh%C3%AAme-Moravie"
+      },
+      {
+        "label": "Révolution de Velours et chute du régime communiste, début de la recomposition politique",
+        "date": "1989-11-17",
+        "link": "https://fr.wikipedia.org/wiki/R%C3%A9volution_de_Velours"
+      },
+      {
+        "label": "Création du Parti ouvrier (Dělnická strana), parti ultranationaliste d'extrême droite",
+        "date": "2003-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_ouvrier_(Tch%C3%A9quie)"
+      },
+      {
+        "label": "Attaque de Vítkov par des néonazis liés au Parti ouvrier (tentative d'incendie contre une famille rom)",
+        "date": "2009-04-19",
+        "link": "https://fr.wikipedia.org/wiki/Parti_ouvrier_(Tch%C3%A9quie)"
+      },
+      {
+        "label": "Interdiction du Parti ouvrier par la Cour suprême tchèque",
+        "date": "2010-02-17",
+        "link": "https://fr.wikipedia.org/wiki/Parti_ouvrier_(Tch%C3%A9quie)"
+      },
+      {
+        "label": "Fondation de Liberté et démocratie directe (SPD), parti nationaliste eurosceptique",
+        "date": "2015-05-01",
+        "link": "https://fr.wikipedia.org/wiki/Libert%C3%A9_et_d%C3%A9mocratie_directe"
+      },
+      {
+        "label": "SPD décrit comme parti d'extrême droite nationaliste et anti-immigration",
+        "date": "2020-01-01",
+        "link": "https://francais.radio.cz/spd-svoboda-a-prima-demokracie-liberte-et-democratie-directe-8861629"
+      },
+      {
+        "label": "Tomio Okamura (SPD) élu président de la Chambre des députés",
+        "date": "2025-11-04",
+        "link": "https://francais.radio.cz/leader-de-lextreme-droite-tcheque-tomio-okamura-elu-president-de-la-chambre-des-8868002"
+      }
+    ],
+    "DE": [
+      {
+        "label": "Politischer Arbeiter-Zirkel (groupe nationaliste, précurseur du DAP)",
+        "date": "1918-03-01",
+        "link": "https://fr.wikipedia.org/wiki/Politischer_Arbeiter-Zirkel"
+      },
+      {
+        "label": "Fondation du Parti ouvrier allemand (DAP)",
+        "date": "1919-01-05",
+        "link": "https://fr.wikipedia.org/wiki/Parti_ouvrier_allemand"
+      },
+      {
+        "label": "Programme en 25 points (DAP/NSDAP)",
+        "date": "1920-02-24",
+        "link": "https://fr.wikipedia.org/wiki/Programme_en_25_points"
+      },
+      {
+        "label": "Transformation du DAP en NSDAP (parti nazi)",
+        "date": "1920-02-24",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_allemands"
+      },
+      {
+        "label": "Hitler nommé chancelier du Reich",
+        "date": "1933-01-30",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_allemands"
+      },
+      {
+        "label": "NSDAP parti unique dans le Troisième Reich",
+        "date": "1933-07-14",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_allemands"
+      },
+      {
+        "label": "Défaite de 1945 et interdiction du NSDAP",
+        "date": "1945-05-08",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_allemands"
+      },
+      {
+        "label": "Création du Parti socialiste du Reich (SRP), parti néonazi revendiqué",
+        "date": "1949-10-02",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Allemagne_depuis_1945"
+      },
+      {
+        "label": "Interdiction du SRP par la Cour constitutionnelle",
+        "date": "1952-10-23",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Allemagne_depuis_1945"
+      },
+      {
+        "label": "Fondation du Parti national-démocrate d'Allemagne (NPD/Die Heimat)",
+        "date": "1964-11-28",
+        "link": "https://fr.wikipedia.org/wiki/La_Patrie_(parti_allemand)"
+      },
+      {
+        "label": "Montée du NPD et percées locales (années 1960)",
+        "date": "1969-01-01",
+        "link": "https://fr.wikipedia.org/wiki/La_Patrie_(parti_allemand)"
+      },
+      {
+        "label": "Fondation du Mouvement identitaire allemand",
+        "date": "2012-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_identitaire_allemand"
+      },
+      {
+        "label": "Fondation d'Alternative pour l'Allemagne (AfD)",
+        "date": "2013-02-06",
+        "link": "https://fr.wikipedia.org/wiki/Alternative_pour_l%27Allemagne"
+      },
+      {
+        "label": "Création du mouvement PEGIDA à Dresde",
+        "date": "2014-10-01",
+        "link": "https://fr.wikipedia.org/wiki/PEGIDA"
+      },
+      {
+        "label": "Lutz Bachmann devient figure de PEGIDA",
+        "date": "2014-12-01",
+        "link": "https://fr.wikipedia.org/wiki/Lutz_Bachmann"
+      },
+      {
+        "label": "Émeute de Clausnitz autour de l'accueil de réfugiés",
+        "date": "2016-02-18",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89meute_de_2016_%C3%A0_Clausnitz"
+      },
+      {
+        "label": "Élections fédérales de 2017 : AfD entre massivement au Bundestag (94 députés)",
+        "date": "2017-09-24",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Allemagne_depuis_1945"
+      },
+      {
+        "label": "Élections fédérales de 2021 : AfD consolide sa force, surtout dans l'Est",
+        "date": "2021-09-26",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Allemagne_depuis_1945"
+      },
+      {
+        "label": "Élections fédérales de 2025 : AfD classée « extrême droite » dans les résultats officiels",
+        "date": "2025-02-23",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_allemandes_de_2025"
+      }
+    ],
+    "DK": [
+      {
+        "label": "Fondation du Parti national-socialiste des travailleurs danois (DNSAP), parti nazi",
+        "date": "1930-11-16",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_danois"
+      },
+      {
+        "label": "Frits Clausen prend la tête du DNSAP et le radicalise",
+        "date": "1933-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Frits_Clausen"
+      },
+      {
+        "label": "DNSAP obtient des élus au Folketing (3 sièges) aux élections de 1939",
+        "date": "1939-03-03",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_danois"
+      },
+      {
+        "label": "Collaborations du DNSAP avec l'Allemagne nazie pendant l'occupation",
+        "date": "1940-04-09",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_danois"
+      },
+      {
+        "label": "Déclin puis disparition du DNSAP après la Seconde Guerre mondiale",
+        "date": "1945-05-05",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national-socialiste_des_travailleurs_danois"
+      },
+      {
+        "label": "Fondation du Parti populaire danois (Dansk Folkeparti), droite nationaliste",
+        "date": "1995-10-06",
+        "link": "https://fr.wikipedia.org/wiki/Parti_populaire_danois"
+      },
+      {
+        "label": "Élections de 2001 : DF devient 3e parti et soutien du gouvernement",
+        "date": "2001-11-20",
+        "link": "https://fr.wikipedia.org/wiki/Parti_populaire_danois"
+      },
+      {
+        "label": "Élections européennes 2014 : DF arrive en tête au Danemark",
+        "date": "2014-05-25",
+        "link": "https://www.lemonde.fr/a-la-une/article/2014/05/26/l-extreme-droite-remporte-l-election-au-danemark-a-la-surprise-generale_4425817_3208.html"
+      },
+      {
+        "label": "Élections législatives de 2015 : DF devient 2e parti",
+        "date": "2015-06-18",
+        "link": "https://www.solidaire.org/articles/danemark-l-extreme-droite-grande-gagnante-des-legislatives"
+      },
+      {
+        "label": "Fondation de La Nouvelle Droite (Nye Borgerlige), parti classé droite / extrême droite",
+        "date": "2015-10-01",
+        "link": "https://fr.wikipedia.org/wiki/La_Nouvelle_Droite_(Danemark)"
+      }
+    ],
+    "EE": [
+      {
+        "label": "Occupation allemande de l'Estonie pendant la Seconde Guerre mondiale",
+        "date": "1941-07-01",
+        "link": "https://fr.wikipedia.org/wiki/Occupation_allemande_de_l%27Estonie_pendant_la_Seconde_Guerre_mondiale"
+      },
+      {
+        "label": "Légion estonienne intégrée à la Waffen-SS",
+        "date": "1942-08-28",
+        "link": "https://fr.wikipedia.org/wiki/Occupation_allemande_de_l%27Estonie_pendant_la_Seconde_Guerre_mondiale"
+      },
+      {
+        "label": "20e division de grenadiers SS (1re estonienne)",
+        "date": "1944-01-24",
+        "link": "https://fr.wikipedia.org/wiki/Occupation_allemande_de_l%27Estonie_pendant_la_Seconde_Guerre_mondiale"
+      },
+      {
+        "label": "Après 1991 : réhabilitation partielle de symboles liés aux unités SS par certains milieux nationalistes",
+        "date": "1995-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Occupation_allemande_de_l%27Estonie_pendant_la_Seconde_Guerre_mondiale"
+      },
+      {
+        "label": "Catégorie liée à la politique d'extrême droite en Estonie",
+        "date": "2024-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_par_pays"
+      }
+    ],
+    "ES": [
+      {
+        "label": "Fondation de la Phalange espagnole, mouvement fasciste",
+        "date": "1933-10-29",
+        "link": "https://fr.wikipedia.org/wiki/Falange_espagnole"
+      },
+      {
+        "label": "Guerre civile espagnole et rôle de la Phalange aux côtés des franquistes",
+        "date": "1936-07-17",
+        "link": "https://fr.wikipedia.org/wiki/Falange_espagnole"
+      },
+      {
+        "label": "Fin de la guerre civile espagnole et début du régime franquiste",
+        "date": "1939-04-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Espagne"
+      },
+      {
+        "label": "Mort de Franco et début de la transition démocratique",
+        "date": "1975-11-20",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Espagne"
+      },
+      {
+        "label": "FE-La Falange fondée, nouveau parti se réclamant de la tradition phalangiste",
+        "date": "1999-01-01",
+        "link": "https://fr.wikipedia.org/wiki/FE-La_Falange"
+      },
+      {
+        "label": "Création de Vox",
+        "date": "2013-12-17",
+        "link": "https://fr.wikipedia.org/wiki/Vox_(parti_politique)"
+      },
+      {
+        "label": "Élections andalouses de 2018 : première percée électorale majeure de Vox",
+        "date": "2018-12-02",
+        "link": "https://fr.wikipedia.org/wiki/Vox_(parti_politique)"
+      },
+      {
+        "label": "Entrée de Vox au Congrès des députés",
+        "date": "2019-04-28",
+        "link": "https://fr.wikipedia.org/wiki/Vox_(parti_politique)"
+      },
+      {
+        "label": "Élections de novembre 2019 : Vox devient le troisième parti national (33 sièges)",
+        "date": "2019-11-10",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_en_Espagne"
+      },
+      {
+        "label": "Années 2020 : Vox s'installe comme principale force d'extrême droite espagnole",
+        "date": "2023-07-23",
+        "link": "https://fr.wikipedia.org/wiki/Vox_(parti_politique)"
+      }
+    ],
+    "FI": [
+      {
+        "label": "Création du mouvement de Lapua, nationaliste et anticommuniste",
+        "date": "1929-11-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_de_Lapua"
+      },
+      {
+        "label": "Radicalisation du mouvement de Lapua vers l'extrême droite",
+        "date": "1930-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_de_Lapua"
+      },
+      {
+        "label": "Coup d'État manqué du mouvement de Lapua (affaire Mäntsälä)",
+        "date": "1932-03-02",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_de_Lapua"
+      },
+      {
+        "label": "Interdiction du mouvement de Lapua",
+        "date": "1932-11-21",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_de_Lapua"
+      },
+      {
+        "label": "Création du Mouvement populaire patriotique (IKL), héritier d'extrême droite du mouvement de Lapua",
+        "date": "1932-12-05",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_de_Lapua"
+      },
+      {
+        "label": "Fondation de l'organisation néonazie Isänmaallinen Kansanrintama (IKR)",
+        "date": "1976-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Is%C3%A4nmaallinen_Kansanrintama"
+      },
+      {
+        "label": "Attentats et incendie criminel anticommuniste revendiqués par l'IKR",
+        "date": "1977-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Is%C3%A4nmaallinen_Kansanrintama"
+      },
+      {
+        "label": "Dissolution de l'IKR par le ministère de l'Intérieur pour activités fascistes",
+        "date": "1977-11-30",
+        "link": "https://fr.wikipedia.org/wiki/Is%C3%A4nmaallinen_Kansanrintama"
+      },
+      {
+        "label": "Fondation du Parti des Finlandais (Vrais Finlandais), parti de droite populiste national-conservateur",
+        "date": "1995-05-06",
+        "link": "https://fr.wikipedia.org/wiki/Parti_des_Finlandais"
+      },
+      {
+        "label": "Entrée des Vrais Finlandais au Parlement (élections de 1999)",
+        "date": "1999-03-21",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_par_pays"
+      },
+      {
+        "label": "Élections de 2011 : percée des Vrais Finlandais (19,1 %)",
+        "date": "2011-04-17",
+        "link": "https://fr.wikipedia.org/wiki/Parti_des_Finlandais"
+      },
+      {
+        "label": "Participation du Parti des Finlandais au gouvernement Sipilä (2015–2017)",
+        "date": "2015-05-29",
+        "link": "https://fr.wikipedia.org/wiki/Parti_des_Finlandais"
+      },
+      {
+        "label": "Gouvernement Orpo formé avec le Parti des Finlandais (coalition droite + extrême droite)",
+        "date": "2023-06-20",
+        "link": "https://fr.wikipedia.org/wiki/Gouvernement_Orpo"
+      }
+    ],
+    "FR": [
+      {
+        "label": "Crise du 6 février 1934 (émeute antiparlementaire)",
+        "date": "1934-02-06",
+        "link": "https://fr.wikipedia.org/wiki/Crise_du_6_f%C3%A9vrier_1934"
+      },
+      {
+        "label": "Création du mouvement Occident",
+        "date": "1964-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Occident_(mouvement_politique)"
+      },
+      {
+        "label": "Création d'Ordre nouveau",
+        "date": "1969-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ordre_nouveau_(mouvement)"
+      },
+      {
+        "label": "Fondation du Front national pour l'unité française",
+        "date": "1972-10-05",
+        "link": "https://fr.wikipedia.org/wiki/Rassemblement_national"
+      },
+      {
+        "label": "Émeutes du meeting Ordre nouveau (21 juin 1973)",
+        "date": "1973-06-21",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89meutes_du_21_juin_1973_%C3%A0_Paris"
+      },
+      {
+        "label": "Front national devient principal parti d'extrême droite français autour de Jean-Marie Le Pen",
+        "date": "1984-06-17",
+        "link": "https://fr.wikipedia.org/wiki/Rassemblement_national"
+      },
+      {
+        "label": "Victoire FN aux municipales partielles de Dreux",
+        "date": "1983-09-04",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_municipales_partielles_fran%C3%A7aises_de_1983"
+      },
+      {
+        "label": "Législatives de 1986 : groupe parlementaire Front national – Rassemblement national à l'Assemblée",
+        "date": "1986-03-16",
+        "link": "https://fr.wikipedia.org/wiki/Groupe_Front_national_%E2%80%93_Rassemblement_national"
+      },
+      {
+        "label": "Scission et création du Mouvement national républicain (MNR)",
+        "date": "1999-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_r%C3%A9publicain"
+      },
+      {
+        "label": "Qualification de Jean-Marie Le Pen au second tour",
+        "date": "2002-04-21",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002"
+      },
+      {
+        "label": "Marine Le Pen succède à Jean-Marie Le Pen à la tête du FN",
+        "date": "2011-01-16",
+        "link": "https://fr.wikipedia.org/wiki/Rassemblement_national"
+      },
+      {
+        "label": "Présidentielles 2012 et 2017 : Marine Le Pen au second tour",
+        "date": "2017-05-07",
+        "link": "https://fr.wikipedia.org/wiki/Rassemblement_national"
+      },
+      {
+        "label": "Concept de « front républicain » mis en place pour faire barrage au FN/RN",
+        "date": "2015-12-13",
+        "link": "https://fr.wikipedia.org/wiki/Front_r%C3%A9publicain_(Ve_R%C3%A9publique)"
+      },
+      {
+        "label": "Changement de nom Front national → Rassemblement national",
+        "date": "2018-06-01",
+        "link": "https://fr.wikipedia.org/wiki/Rassemblement_national"
+      },
+      {
+        "label": "Chronologie du Rassemblement national (points de repère)",
+        "date": "2018-12-27",
+        "link": "https://fr.wikipedia.org/wiki/Chronologie_du_Rassemblement_national"
+      },
+      {
+        "label": "Législatives de 2022 : constitution d'un grand groupe Rassemblement national à l'Assemblée",
+        "date": "2022-06-19",
+        "link": "https://fr.wikipedia.org/wiki/Rassemblement_national"
+      }
+    ],
+    "GB": [
+      {
+        "label": "Développement des mouvements fascistes britanniques (années 1930)",
+        "date": "1935-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_au_Royaume-Uni"
+      },
+      {
+        "label": "Public Order Act 1936 (loi visant les chemises noires et les milices fascistes)",
+        "date": "1936-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Public_Order_Act_1936"
+      },
+      {
+        "label": "Création du Mouvement national-socialiste (National Socialist Movement)",
+        "date": "1962-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national-socialiste_(Royaume-Uni)"
+      },
+      {
+        "label": "Fondation du Front national britannique",
+        "date": "1967-02-07",
+        "link": "https://fr.wikipedia.org/wiki/Front_national_britannique"
+      },
+      {
+        "label": "Fondation du Parti national britannique (BNP)",
+        "date": "1982-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_britannique"
+      },
+      {
+        "label": "Création de l'English Defence League (EDL)",
+        "date": "2009-06-27",
+        "link": "https://fr.wikipedia.org/wiki/English_Defence_League"
+      },
+      {
+        "label": "Création de l'European Defence League",
+        "date": "2010-10-10",
+        "link": "https://fr.wikipedia.org/wiki/European_Defence_League"
+      },
+      {
+        "label": "Tommy Robinson devient figure centrale de l'EDL et de l'islamophobie militante",
+        "date": "2010-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Tommy_Robinson"
+      },
+      {
+        "label": "Fondation de Britain First",
+        "date": "2011-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Britain_First"
+      },
+      {
+        "label": "Création de National Action, organisation néonazie proscrite",
+        "date": "2013-01-01",
+        "link": "https://fr.wikipedia.org/wiki/National_Action"
+      }
+    ],
+    "GR": [
+      {
+        "label": "Dictature de Metaxás, régime autoritaire nationaliste",
+        "date": "1936-08-04",
+        "link": "https://fr.wikipedia.org/wiki/Histoire_de_la_Gr%C3%A8ce_moderne"
+      },
+      {
+        "label": "Junte des colonels, dictature militaire d'extrême droite",
+        "date": "1967-04-21",
+        "link": "https://fr.wikipedia.org/wiki/Junte_des_colonels"
+      },
+      {
+        "label": "Fondation d'Aube dorée",
+        "date": "1980-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Aube_dor%C3%A9e_(Gr%C3%A8ce)"
+      },
+      {
+        "label": "Aube dorée devient un parti politique structuré",
+        "date": "1993-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Aube_dor%C3%A9e_(Gr%C3%A8ce)"
+      },
+      {
+        "label": "Percée d'Aube dorée pendant la crise de la dette grecque",
+        "date": "2012-06-17",
+        "link": "https://fr.wikipedia.org/wiki/Aube_dor%C3%A9e_(Gr%C3%A8ce)"
+      },
+      {
+        "label": "Procès d'Aube dorée",
+        "date": "2020-10-07",
+        "link": "https://fr.wikipedia.org/wiki/Aube_dor%C3%A9e_(Gr%C3%A8ce)"
+      }
+    ],
+    "HR": [
+      {
+        "label": "Parti croate du droit (HSP) de la fin du XIXe siècle, matrice de l'ultranationalisme croate",
+        "date": "1903-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_1861"
+      },
+      {
+        "label": "Fondation du mouvement oustachi par Ante Pavelić, mouvement fasciste croate",
+        "date": "1929-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Oustachis"
+      },
+      {
+        "label": "Ante Pavelić prend la tête des oustachis",
+        "date": "1929-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ante_Paveli%C4%87"
+      },
+      {
+        "label": "État indépendant de Croatie (NDH) créé, régime oustachi allié de l'Axe",
+        "date": "1941-04-10",
+        "link": "https://fr.wikipedia.org/wiki/Oustachis"
+      },
+      {
+        "label": "Camps de concentration oustachis (Jasenovac, etc.) pour Serbes, Juifs, Roms",
+        "date": "1941-08-01",
+        "link": "https://fr.wikipedia.org/wiki/Camps_de_concentration_oustachis"
+      },
+      {
+        "label": "Légion noire oustachie active pendant la Seconde Guerre mondiale",
+        "date": "1942-01-01",
+        "link": "https://fr.wikipedia.org/wiki/L%C3%A9gion_Noire_(Oustachis)"
+      },
+      {
+        "label": "Mouvement de libération croate (HOP) fondé en exil par Ante Pavelić",
+        "date": "1956-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_de_lib%C3%A9ration_croate"
+      },
+      {
+        "label": "Parti croate du droit de BiH, branche bosnienne ultra-nationaliste du HSP",
+        "date": "1992-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_de_BiH"
+      },
+      {
+        "label": "Parti pur croate du droit (HČSP) reconstitué, parti d'extrême droite ouvertement pro-oustachi",
+        "date": "1992-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_pur_croate_du_Droit"
+      },
+      {
+        "label": "HČSP obtient un siège au Parlement croate aux élections de 1995",
+        "date": "1995-10-29",
+        "link": "https://fr.wikipedia.org/wiki/Parti_pur_croate_du_Droit"
+      },
+      {
+        "label": "Parti croate du droit 1861 (HSP 1861) créé, ultra-nationaliste",
+        "date": "1995-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_1861"
+      },
+      {
+        "label": "Parti croate du droit – Ante Starčević (HSP AS) fondé et participe à des alliances d'extrême droite",
+        "date": "2009-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_%E2%80%93_Ante_Star%C4%8Devi%C4%87"
+      },
+      {
+        "label": "Parti croate du droit – Ante Starčević obtient un siège au Sabor (2011)",
+        "date": "2011-12-04",
+        "link": "https://fr.wikipedia.org/wiki/Parti_croate_du_droit_%E2%80%93_Ante_Star%C4%8Devi%C4%87"
+      }
+    ],
+    "HU": [
+      {
+        "label": "Montée des mouvements d'extrême droite hongrois dans les années 1930",
+        "date": "1930-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Parti des Croix fléchées (Nyilaskeresztes Párt) devient principale organisation d'extrême droite",
+        "date": "1935-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Élections de 1939 : les Croix fléchées obtiennent 16 % et 29 sièges au Parlement",
+        "date": "1939-05-28",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Arrivée au pouvoir des Croix fléchées avec Ferenc Szálasi (régime fasciste)",
+        "date": "1944-10-15",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Procès d'après-guerre et délégitimation de l'extrême droite hongroise",
+        "date": "1945-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Réapparition de l'extrême droite à la fin des années 1980",
+        "date": "1988-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Création du MIÉP (Parti de la justice et de la vie), formation d'extrême droite",
+        "date": "1993-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Élections de 1998 : MIÉP obtient 14 sièges au Parlement",
+        "date": "1998-05-24",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Fondation de Jobbik (Mouvement pour une meilleure Hongrie), parti d'extrême droite",
+        "date": "2003-10-24",
+        "link": "https://fr.wikipedia.org/wiki/Jobbik"
+      },
+      {
+        "label": "Fidesz, fondé en 1988, glisse vers l'extrême droite assumée au pouvoir",
+        "date": "2010-04-25",
+        "link": "https://fr.wikipedia.org/wiki/Fidesz"
+      },
+      {
+        "label": "Percée de Jobbik aux élections européennes et nationales (années 2000–2010)",
+        "date": "2009-06-07",
+        "link": "https://fr.wikipedia.org/wiki/Jobbik"
+      },
+      {
+        "label": "Élections législatives de 2018 : Jobbik obtient 19,1 % et devient deuxième force",
+        "date": "2018-04-08",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_en_Hongrie"
+      },
+      {
+        "label": "Analyses sur la « dérive vers l'extrême droite » en Hongrie (Jobbik + Fidesz)",
+        "date": "2015-04-15",
+        "link": "https://www.ouest-france.fr/leditiondusoir/2015-04-15/pourquoi-la-hongrie-glisse-vers-lextreme-droite-09b50ee5-6f1c-411c-9a15-3d7f2b0ad449"
+      },
+      {
+        "label": "Viktor Orbán décrit comme dirigeant d'extrême droite, Fidesz classé extrême droite",
+        "date": "2024-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Viktor_Orb%C3%A1n"
+      }
+    ],
+    "IE": [
+      {
+        "label": "Création du parti fasciste Ailtirí na hAiséirghe",
+        "date": "1942-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ailtir%C3%AD_na_hAis%C3%A9irghe"
+      },
+      {
+        "label": "Ailtirí na hAiséirghe actif comme parti fasciste catholique",
+        "date": "1945-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ailtir%C3%AD_na_hAis%C3%A9irghe"
+      },
+      {
+        "label": "Dissolution progressive d'Ailtirí na hAiséirghe",
+        "date": "1958-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ailtir%C3%AD_na_hAis%C3%A9irghe"
+      },
+      {
+        "label": "Lancement du Parti de la liberté irlandaise (Irish Freedom Party / Irexit)",
+        "date": "2018-09-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_de_la_libert%C3%A9_irlandaise"
+      },
+      {
+        "label": "Positionnement du Parti de la liberté irlandaise comme parti d'extrême droite eurosceptique",
+        "date": "2020-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_de_la_libert%C3%A9_irlandaise"
+      },
+      {
+        "label": "Montée de petites formations anti-immigration et manifestations locales (années 2020)",
+        "date": "2023-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_de_la_libert%C3%A9_irlandaise"
+      }
+    ],
+    "IS": [
+      {
+        "label": "Mouvement nationaliste islandais (précurseur fascisant)",
+        "date": "1933-01-01",
+        "link": "https://en.wikipedia.org/wiki/Party_of_Nationalists_(Iceland)"
+      },
+      {
+        "label": "Fondation du Parti des nationalistes (Flokkur Þjóðernissinna), parti fascisant",
+        "date": "1934-03-01",
+        "link": "https://en.wikipedia.org/wiki/Party_of_Nationalists_(Iceland)"
+      },
+      {
+        "label": "Participation du Parti des nationalistes aux élections (0,7 % des voix)",
+        "date": "1934-06-01",
+        "link": "https://en.wikipedia.org/wiki/Party_of_Nationalists_(Iceland)"
+      },
+      {
+        "label": "Défilés du Parti des nationalistes avec drapeaux islandais et croix gammée",
+        "date": "1935-05-01",
+        "link": "https://en.wikipedia.org/wiki/Party_of_Nationalists_(Iceland)"
+      },
+      {
+        "label": "Nouveaux échecs électoraux du Parti des nationalistes (0,2 % des voix)",
+        "date": "1937-06-01",
+        "link": "https://en.wikipedia.org/wiki/Party_of_Nationalists_(Iceland)"
+      },
+      {
+        "label": "Dissolution de facto du Parti des nationalistes après l'occupation alliée",
+        "date": "1944-01-01",
+        "link": "https://en.wikipedia.org/wiki/Party_of_Nationalists_(Iceland)"
+      },
+      {
+        "label": "Parti du centre (Miðflokkurinn) fondé, classé centre-droit à droite",
+        "date": "2017-09-24",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_centre_(Islande)"
+      },
+      {
+        "label": "Parti du peuple (Flokkur fólksins) entre au Parlement avec un discours populiste et anti-élite",
+        "date": "2017-10-28",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_peuple_(Islande)"
+      }
+    ],
+    "IT": [
+      {
+        "label": "Mussolini fonde les Faisceaux italiens de combat, matrice du fascisme",
+        "date": "1919-03-23",
+        "link": "https://fr.wikipedia.org/wiki/Benito_Mussolini"
+      },
+      {
+        "label": "Marche sur Rome : Mussolini nommé président du Conseil",
+        "date": "1922-10-28",
+        "link": "https://fr.wikipedia.org/wiki/Fascisme_italien"
+      },
+      {
+        "label": "Lois fascistissimes : installation de la dictature fasciste",
+        "date": "1925-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Fascisme_italien"
+      },
+      {
+        "label": "Fin du régime fasciste et chute de Mussolini",
+        "date": "1943-07-25",
+        "link": "https://fr.wikipedia.org/wiki/Fascisme_italien"
+      },
+      {
+        "label": "Fondation du Mouvement social italien (MSI)",
+        "date": "1946-12-26",
+        "link": "https://fr.wikipedia.org/wiki/Fr%C3%A8res_d%27Italie_(parti_politique)"
+      },
+      {
+        "label": "Crise de Tangentopoli / Mani pulite (effondrement des anciens partis)",
+        "date": "1992-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Forza_Italia_(parti_politique)"
+      },
+      {
+        "label": "Affirmation de la Ligue du Nord comme force nationale",
+        "date": "1994-03-27",
+        "link": "https://fr.wikipedia.org/wiki/Ligue_du_Nord"
+      },
+      {
+        "label": "Transformation du MSI en Alliance nationale (AN), droite post-fasciste",
+        "date": "1995-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Fr%C3%A8res_d%27Italie_(parti_politique)"
+      },
+      {
+        "label": "Création de Fratelli d'Italia",
+        "date": "2012-12-21",
+        "link": "https://fr.wikipedia.org/wiki/Fr%C3%A8res_d%27Italie_(parti_politique)"
+      },
+      {
+        "label": "Giorgia Meloni devient présidente de Frères d'Italie",
+        "date": "2014-03-08",
+        "link": "https://fr.wikipedia.org/wiki/Giorgia_Meloni"
+      },
+      {
+        "label": "Crise migratoire en Méditerranée (impact sur l'Italie)",
+        "date": "2015-06-01",
+        "link": "https://fr.wikipedia.org/wiki/Crise_migratoire_en_Europe"
+      },
+      {
+        "label": "Élections de 2018 : percée de la Ligue et de Fratelli d'Italia",
+        "date": "2018-03-04",
+        "link": "https://fr.wikipedia.org/wiki/Ligue_du_Nord"
+      },
+      {
+        "label": "Victoire de Fratelli d'Italia aux législatives de 2022",
+        "date": "2022-09-25",
+        "link": "https://fr.wikipedia.org/wiki/Fr%C3%A8res_d%27Italie_(parti_politique)"
+      },
+      {
+        "label": "Giorgia Meloni devient présidente du Conseil",
+        "date": "2022-10-22",
+        "link": "https://fr.wikipedia.org/wiki/Giorgia_Meloni"
+      }
+    ],
+    "LT": [
+      {
+        "label": "Front des activistes lituaniens fondé",
+        "date": "1940-11-17",
+        "link": "https://fr.wikipedia.org/wiki/Front_des_activistes_lituaniens"
+      },
+      {
+        "label": "Insurrection de juin en Lituanie conduite par le Front des activistes lituaniens",
+        "date": "1941-06-22",
+        "link": "https://fr.wikipedia.org/wiki/Front_des_activistes_lituaniens"
+      },
+      {
+        "label": "Gouvernement provisoire lituanien formé à Kaunas",
+        "date": "1941-06-23",
+        "link": "https://fr.wikipedia.org/wiki/Front_des_activistes_lituaniens"
+      },
+      {
+        "label": "Après 1991 : retour de groupes nationalistes lituaniens dans l'espace public",
+        "date": "1991-08-20",
+        "link": "https://fr.wikipedia.org/wiki/Lituanie"
+      },
+      {
+        "label": "Partis et groupes nationalistes post-1991 classés dans l'extrême droite lituanienne",
+        "date": "2000-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_par_pays"
+      },
+      {
+        "label": "Alliance nationale fondée en 2020, parti d'extrême droite lituanien",
+        "date": "2020-03-07",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_nationale_(Lituanie)"
+      },
+      {
+        "label": "Alliance nationale décrite comme parti d'extrême droite en 2024",
+        "date": "2024-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_nationale_(Lituanie)"
+      },
+      {
+        "label": "Aube du Niémen fondée en 2023, parti populiste avec éléments d'extrême droite",
+        "date": "2023-11-01",
+        "link": "https://fr.wikipedia.org/wiki/Aube_du_Ni%C3%A9men"
+      }
+    ],
+    "LU": [
+      {
+        "label": "Création de la Fédération « Notre pays – notre langue » (FELES), association nationaliste linguistique",
+        "date": "1971-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_(Luxembourg)"
+      },
+      {
+        "label": "Naissance du Mouvement national (National Bewegung, NB), parti politique d'extrême droite",
+        "date": "1987-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_(Luxembourg)"
+      },
+      {
+        "label": "Le Mouvement national adopte la devise « Le Luxembourg aux Luxembourgeois »",
+        "date": "1987-01-02",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_(Luxembourg)"
+      },
+      {
+        "label": "Mouvement national (NB) participe aux élections et incarne l'extrême droite luxembourgeoise",
+        "date": "1989-06-18",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_(Luxembourg)"
+      },
+      {
+        "label": "La liste officielle des partis luxembourgeois classe le Mouvement national comme « extrême droite »",
+        "date": "1990-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_au_Luxembourg"
+      },
+      {
+        "label": "Fondation du Parti libre du Luxembourg (FPL), parti de droite nationaliste",
+        "date": "2004-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_au_Luxembourg"
+      },
+      {
+        "label": "Création du Parti populaire social-démocrate (SdV), classé « extrême droite » et inspiré du Front national français",
+        "date": "2015-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_au_Luxembourg"
+      }
+    ],
+    "LV": [
+      {
+        "label": "Création de l'Ugunskrusts (Croix de feu), parti nationaliste d'extrême droite",
+        "date": "1932-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ugunskrusts"
+      },
+      {
+        "label": "Interdiction de l'Ugunskrusts",
+        "date": "1933-05-01",
+        "link": "https://fr.wikipedia.org/wiki/Ugunskrusts"
+      },
+      {
+        "label": "Mouvement national pour l'indépendance – précurseurs nationalistes",
+        "date": "1988-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Pour_la_patrie_et_la_libert%C3%A9/LNNK"
+      },
+      {
+        "label": "Création de Pour la patrie et la liberté/LNNK (TB/LNNK), parti nationaliste",
+        "date": "1990-02-02",
+        "link": "https://fr.wikipedia.org/wiki/Pour_la_patrie_et_la_libert%C3%A9/LNNK"
+      },
+      {
+        "label": "Fusion de TB/LNNK avec le Mouvement pour l'indépendance nationale de Lettonie",
+        "date": "1997-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Pour_la_patrie_et_la_libert%C3%A9/LNNK"
+      },
+      {
+        "label": "Création de l'Alliance nationale (NA) en fusionnant TB/LNNK et Tout pour la Lettonie !",
+        "date": "2011-07-23",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_nationale_(Lettonie)"
+      },
+      {
+        "label": "Alliance nationale décrite comme national-conservatrice, populiste de droite et parfois droite radicale",
+        "date": "2015-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_nationale_(Lettonie)"
+      },
+      {
+        "label": "NA s'oppose aux quotas de réfugiés de l'UE et à l'immigration",
+        "date": "2015-06-01",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_nationale_(Lettonie)"
+      },
+      {
+        "label": "Participation active de NA au défilé du 16 mars en hommage à la Légion lettonne (anciens Waffen-SS)",
+        "date": "2010-03-16",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_nationale_(Lettonie)"
+      }
+    ],
+    "MD": [
+      {
+        "label": "Montée de courants nationalistes roumano-moldaves après l'indépendance",
+        "date": "1991-08-27",
+        "link": "https://fr.wikipedia.org/wiki/Histoire_de_la_R%C3%A9publique_de_Moldavie"
+      },
+      {
+        "label": "Ancien mouvement pro-russe Ravnopravie devient le noyau du futur Parti Șor",
+        "date": "1998-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_%C8%98or"
+      },
+      {
+        "label": "Fondation en Roumanie de Noua Dreaptă, mouvement d'extrême droite ultranationaliste actif aussi en Moldavie",
+        "date": "2000-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Noua_Dreapt%C4%83"
+      },
+      {
+        "label": "Noua Dreaptă diffuse en Moldavie un discours xénophobe et ultranationaliste (branche moldave)",
+        "date": "2005-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Noua_Dreapt%C4%83"
+      },
+      {
+        "label": "Ilan Șor prend la tête du mouvement Ravnopravie, transformé en Parti Șor",
+        "date": "2016-04-13",
+        "link": "https://fr.wikipedia.org/wiki/Parti_%C8%98or"
+      },
+      {
+        "label": "Parti Șor décrit comme parti de droite, nationaliste et russophile",
+        "date": "2019-02-24",
+        "link": "https://fr.wikipedia.org/wiki/Parti_%C8%98or"
+      },
+      {
+        "label": "Élections législatives de 2019 : Parti Șor obtient 7 sièges au Parlement moldave",
+        "date": "2019-02-24",
+        "link": "https://fr.wikipedia.org/wiki/Parti_%C8%98or"
+      },
+      {
+        "label": "Noua Dreaptă devient officiellement parti politique en Roumanie et Moldavie",
+        "date": "2015-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Noua_Dreapt%C4%83"
+      },
+      {
+        "label": "Élections législatives moldaves de 2025 : paysage incluant des partis nationalistes et unionistes",
+        "date": "2025-03-21",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_moldaves_de_2025"
+      }
+    ],
+    "ME": [
+      {
+        "label": "Monténégro intégré aux structures nationalistes yougoslaves ; participation de combattants monténégrins aux Chetniks",
+        "date": "1941-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Chetniks"
+      },
+      {
+        "label": "Milo Đukanović s'engage dans le DPS et participe au siège de Dubrovnik, dans un contexte nationaliste serbo-monténégrin",
+        "date": "1991-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Milo_%C4%90ukanovi%C4%87"
+      },
+      {
+        "label": "Après 1991 : émergence de partis nationalistes monténégrins dans le système multipartite",
+        "date": "1991-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_au_Mont%C3%A9n%C3%A9gro"
+      },
+      {
+        "label": "Constitution de la coalition « Pour le futur du Monténégro » (DF, SNP, NP), droite nationaliste et pro-serbe",
+        "date": "2020-08-30",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_mont%C3%A9n%C3%A9grines_de_2020"
+      },
+      {
+        "label": "Coalition « Pour le futur du Monténégro » devient l'un des blocs majeurs",
+        "date": "2023-06-11",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_mont%C3%A9n%C3%A9grines_de_2023"
+      }
+    ],
+    "MK": [
+      {
+        "label": "Fondation de l'Organisation révolutionnaire intérieure macédonienne (VMRO), matrice de l'ultranationalisme macédonien",
+        "date": "1893-10-23",
+        "link": "https://fr.wikipedia.org/wiki/Organisation_r%C3%A9volutionnaire_int%C3%A9rieure_de_Mac%C3%A9doine"
+      },
+      {
+        "label": "Actions violentes et campagne terroriste de la VMRO dans l'entre-deux-guerres",
+        "date": "1920-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Organisation_r%C3%A9volutionnaire_int%C3%A9rieure_de_Mac%C3%A9doine"
+      },
+      {
+        "label": "Activités de la VMRO en lien avec l'Axe pendant la Seconde Guerre mondiale",
+        "date": "1941-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Organisation_r%C3%A9volutionnaire_int%C3%A9rieure_de_Mac%C3%A9doine"
+      },
+      {
+        "label": "Création du parti VMRO-DPMNE (droite national-conservatrice) lors du passage au multipartisme",
+        "date": "1990-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_en_Mac%C3%A9doine_du_Nord"
+      },
+      {
+        "label": "VMRO-DPMNE domine la vie politique macédonienne lors des premières années du multipartisme",
+        "date": "1994-10-16",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_en_Mac%C3%A9doine_du_Nord"
+      },
+      {
+        "label": "VMRO-DPMNE gouverne la Macédoine à plusieurs reprises (1998–2002, 2006–2017)",
+        "date": "1998-11-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_en_Mac%C3%A9doine_du_Nord"
+      },
+      {
+        "label": "VMRO-DPMNE organise des manifestations contre l'accord sur le nom de la Macédoine (Prespa)",
+        "date": "2018-06-17",
+        "link": "https://fr.wikipedia.org/wiki/D%C3%A9bat_autour_du_nom_de_la_Mac%C3%A9doine"
+      }
+    ],
+    "MT": [
+      {
+        "label": "Fondation d'Imperium Europa, parti politique d'extrême droite à Malte par Norman Lowell",
+        "date": "2000-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Imperium_Europa"
+      },
+      {
+        "label": "Norman Lowell (Imperium Europa) se présente aux élections européennes de 2004 à Malte",
+        "date": "2004-06-12",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_europ%C3%A9ennes_de_2004_%C3%A0_Malte"
+      },
+      {
+        "label": "Résultat 2004 : Norman Lowell obtient 1 603 voix (éliminé au 3e décompte)",
+        "date": "2004-06-12",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_europ%C3%A9ennes_de_2004_%C3%A0_Malte"
+      },
+      {
+        "label": "Aux européennes de 2014, Imperium Europa recueille 6 761 voix (2,68 %), sans siège",
+        "date": "2014-05-24",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_europ%C3%A9ennes_de_2014_%C3%A0_Malte"
+      },
+      {
+        "label": "Imperium Europa reste la principale formation ouvertement d'extrême droite à Malte au début des années 2020",
+        "date": "2022-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Imperium_Europa"
+      }
+    ],
+    "NL": [
+      {
+        "label": "Fondation du Parti du centre (Centrumpartij), premier parti moderne d'extrême droite néerlandais",
+        "date": "1980-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_centre_(Pays-Bas)"
+      },
+      {
+        "label": "Création du Parti du centre '86 (scission radicalisée)",
+        "date": "1986-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_centre_(Pays-Bas)"
+      },
+      {
+        "label": "Geert Wilders quitte le VVD pour lancer sa propre formation",
+        "date": "2004-09-01",
+        "link": "https://fr.wikipedia.org/wiki/Geert_Wilders"
+      },
+      {
+        "label": "Fondation du Parti pour la liberté (PVV), parti d'extrême droite",
+        "date": "2006-08-22",
+        "link": "https://fr.wikipedia.org/wiki/Parti_pour_la_libert%C3%A9"
+      },
+      {
+        "label": "Élections législatives de 2010 : le PVV devient 3e parti",
+        "date": "2010-06-09",
+        "link": "https://fr.wikipedia.org/wiki/Geert_Wilders"
+      },
+      {
+        "label": "Soutien du PVV au gouvernement Rutte I (accord de tolérance)",
+        "date": "2010-10-14",
+        "link": "https://fr.wikipedia.org/wiki/Parti_pour_la_libert%C3%A9"
+      },
+      {
+        "label": "Création de l'European Defence League autour de l'EDL et de Geert Wilders",
+        "date": "2010-10-10",
+        "link": "https://fr.wikipedia.org/wiki/European_Defence_League"
+      },
+      {
+        "label": "Élections législatives néerlandaises de 2023 : victoire du PVV",
+        "date": "2023-11-22",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_n%C3%A9erlandaises_de_2023"
+      }
+    ],
+    "NO": [
+      {
+        "label": "Fondation de Nasjonal Samling par Vidkun Quisling, parti fasciste norvégien",
+        "date": "1933-05-13",
+        "link": "https://fr.wikipedia.org/wiki/Nasjonal_Samling"
+      },
+      {
+        "label": "Nasjonal Samling reste marginal électoralement (moins de 2,5 % des voix)",
+        "date": "1936-10-19",
+        "link": "https://fr.wikipedia.org/wiki/Nasjonal_Samling"
+      },
+      {
+        "label": "Invasion de la Norvège par l'Allemagne nazie et collaboration du gouvernement Quisling",
+        "date": "1940-04-09",
+        "link": "https://fr.wikipedia.org/wiki/Nasjonal_Samling"
+      },
+      {
+        "label": "Nasjonal Samling interdit et dissous à la fin de la Seconde Guerre mondiale",
+        "date": "1945-05-08",
+        "link": "https://fr.wikipedia.org/wiki/Nasjonal_Samling"
+      },
+      {
+        "label": "Fondation du Parti du progrès (FrP), parti populiste de droite avec composante national-conservatrice",
+        "date": "1973-04-08",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_progr%C3%A8s_(Norv%C3%A8ge)"
+      },
+      {
+        "label": "Fondation du Fedrelandspartiet (Parti de la patrie), parti ultra-conservateur et nationaliste",
+        "date": "1990-05-17",
+        "link": "https://fr.wikipedia.org/wiki/Fedrelandspartiet"
+      },
+      {
+        "label": "Années 1990 : FrP classé par certains politologues parmi les mouvements d'extrême droite ou de droite radicale",
+        "date": "1995-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_progr%C3%A8s_(Norv%C3%A8ge)"
+      },
+      {
+        "label": "Élections de 2005 : FrP devient deuxième parti du pays",
+        "date": "2005-09-12",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_progr%C3%A8s_(Norv%C3%A8ge)"
+      },
+      {
+        "label": "Dissolution du Fedrelandspartiet",
+        "date": "2008-03-25",
+        "link": "https://fr.wikipedia.org/wiki/Fedrelandspartiet"
+      },
+      {
+        "label": "Élections de 2013 : FrP obtient 16,3 % et entre au gouvernement avec les conservateurs",
+        "date": "2013-09-09",
+        "link": "https://fr.wikipedia.org/wiki/Parti_du_progr%C3%A8s_(Norv%C3%A8ge)"
+      }
+    ],
+    "PL": [
+      {
+        "label": "Camp national-radical (ONR), mouvement d'extrême droite de l'entre-deux-guerres",
+        "date": "1934-04-14",
+        "link": "https://fr.wikipedia.org/wiki/Extr%C3%AAme_droite_par_pays"
+      },
+      {
+        "label": "Konfederacja Narodu issue d'une fraction du camp national-radical",
+        "date": "1940-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Konfederacja_Narodu"
+      },
+      {
+        "label": "Renaissance nationale de la Pologne (NOP) fondée, parti d'extrême droite tercériste",
+        "date": "1981-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Renaissance_nationale_de_la_Pologne"
+      },
+      {
+        "label": "NOP participe à des réseaux néofascistes européens (Front national européen, International Third Position)",
+        "date": "1990-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Renaissance_nationale_de_la_Pologne"
+      },
+      {
+        "label": "Création du Mouvement national (Ruch Narodowy), regroupement d'organisations nationalistes",
+        "date": "2012-11-11",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_(Pologne)"
+      },
+      {
+        "label": "Manif de l'Indépendance à Varsovie (11 novembre) devient vitrine de l'extrême droite",
+        "date": "2012-11-11",
+        "link": "https://fr.wikipedia.org/wiki/Mouvement_national_(Pologne)"
+      },
+      {
+        "label": "Nouvel Espoir (Nowa Nadzieja) – parti extrême droite libéral-conservateur et eurosceptique",
+        "date": "2018-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_en_Pologne"
+      },
+      {
+        "label": "Confédération de la couronne polonaise (KKP) – parti extrême droite, monarchiste et national-catholique",
+        "date": "2019-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Liste_des_partis_politiques_en_Pologne"
+      },
+      {
+        "label": "En 2025–2026 : percée d'une droite prorusse, antisémite et anti-UE autour de Grzegorz Braun",
+        "date": "2026-02-02",
+        "link": "https://www.lemonde.fr/international/article/2026/02/03/en-pologne-une-droite-prorusse-anti-europeenne-et-ouvertement-antisemite-sort-de-la-marginalite_6212249_3210.html"
+      },
+      {
+        "label": "Victoire d'un candidat d'extrême droite à la présidentielle de 2025",
+        "date": "2025-06-01",
+        "link": "https://www.la-croix.com/a-vif/la-victoire-de-l-extreme-droite-en-pologne-va-delegitimer-son-statut-en-europe-20250603"
+      }
+    ],
+    "PT": [
+      {
+        "label": "État Nouveau de Salazar : régime autoritaire national-catholique, matrice de la droite radicale",
+        "date": "1933-03-19",
+        "link": "https://fr.wikipedia.org/wiki/Histoire_du_Portugal"
+      },
+      {
+        "label": "Révolution des Œillets mettant fin à la dictature",
+        "date": "1974-04-25",
+        "link": "https://fr.wikipedia.org/wiki/R%C3%A9volution_des_%C5%92illets"
+      },
+      {
+        "label": "Fondation du Parti national rénovateur (PNR), parti nationaliste d'extrême droite",
+        "date": "2000-04-15",
+        "link": "https://fr.wikipedia.org/wiki/Ergue-te"
+      },
+      {
+        "label": "PNR rejoint l'Alliance européenne des mouvements nationaux",
+        "date": "2009-12-01",
+        "link": "https://fr.wikipedia.org/wiki/Ergue-te"
+      },
+      {
+        "label": "André Ventura fonde le parti Chega, d'extrême droite",
+        "date": "2019-04-09",
+        "link": "https://fr.wikipedia.org/wiki/Andr%C3%A9_Ventura"
+      },
+      {
+        "label": "Chega obtient son premier siège au Parlement (législatives d'octobre 2019)",
+        "date": "2019-10-06",
+        "link": "https://fr.wikipedia.org/wiki/Andr%C3%A9_Ventura"
+      },
+      {
+        "label": "Changement de nom du PNR en Ergue-te (« Soulève-toi »)",
+        "date": "2019-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Ergue-te"
+      },
+      {
+        "label": "Présidentielle de 2021 : André Ventura (Chega) recueille 12 % des voix",
+        "date": "2021-01-24",
+        "link": "https://fr.wikipedia.org/wiki/Andr%C3%A9_Ventura"
+      },
+      {
+        "label": "Législatives de 2024 : Chega réalise une percée historique (18 % des voix)",
+        "date": "2024-03-10",
+        "link": "https://fr.wikipedia.org/wiki/Chega"
+      },
+      {
+        "label": "Législatives de 2025 : Chega devient la principale force d'opposition (22,76 % des voix)",
+        "date": "2025-05-18",
+        "link": "https://www.lemonde.fr/international/article/2025/05/29/au-portugal-l-extreme-droite-devient-la-principale-force-d-opposition-apres-les-legislatives_6174979_3210.html"
+      }
+    ],
+    "RO": [
+      {
+        "label": "Fondation de la Garde de fer (Légion de l'Archange Michel), mouvement fasciste roumain",
+        "date": "1927-06-24",
+        "link": "https://fr.wikipedia.org/wiki/Garde_de_fer"
+      },
+      {
+        "label": "Corneliu Zelea Codreanu devient chef de la Garde de fer",
+        "date": "1927-06-24",
+        "link": "https://fr.wikipedia.org/wiki/Corneliu_Codreanu"
+      },
+      {
+        "label": "Assassinat du Premier ministre Ion Duca par des légionnaires",
+        "date": "1933-12-29",
+        "link": "https://fr.wikipedia.org/wiki/Garde_de_fer"
+      },
+      {
+        "label": "Élections de 1937 : le parti légionnaire obtient 15,58 % des voix",
+        "date": "1937-12-20",
+        "link": "https://fr.wikipedia.org/wiki/R%C3%A9sistance_anticommuniste_roumaine"
+      },
+      {
+        "label": "Fondation de l'État national-légionnaire, régime fasciste clérical (Antonescu + Garde de fer)",
+        "date": "1940-09-14",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89tat_national-l%C3%A9gionnaire"
+      },
+      {
+        "label": "Coup d'État de la Légion et pogrom de Bucarest (125 Juifs assassinés)",
+        "date": "1941-01-21",
+        "link": "https://fr.wikipedia.org/wiki/Coup_d%27%C3%89tat_de_la_L%C3%A9gion_et_pogrom_de_Bucarest"
+      },
+      {
+        "label": "Écrasement de la Garde de fer par Ion Antonescu et fin de l'État national-légionnaire",
+        "date": "1941-01-23",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89tat_national-l%C3%A9gionnaire"
+      },
+      {
+        "label": "Résistance armée anticommuniste avec participation d'anciens légionnaires",
+        "date": "1944-01-01",
+        "link": "https://fr.wikipedia.org/wiki/R%C3%A9sistance_anticommuniste_roumaine"
+      },
+      {
+        "label": "Tribunaux populaires pour juger les criminels de guerre (anciens légionnaires et collaborateurs)",
+        "date": "1944-09-01",
+        "link": "https://fr.wikipedia.org/wiki/Tribunaux_populaires_(Roumanie)"
+      },
+      {
+        "label": "Montée d'un nationalisme roumain post-communiste (années 1990)",
+        "date": "1990-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Nationalisme_roumain"
+      },
+      {
+        "label": "Fondation de l'Alliance pour l'unité des Roumains (AUR), parti populiste de droite classé extrême droite",
+        "date": "2019-09-01",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_pour_l%27unit%C3%A9_des_Roumains"
+      },
+      {
+        "label": "Législatives de 2020 : AUR entre au Parlement",
+        "date": "2020-12-06",
+        "link": "https://fr.wikipedia.org/wiki/Alliance_pour_l%27unit%C3%A9_des_Roumains"
+      }
+    ],
+    "RS": [
+      {
+        "label": "Oustachis croates au pouvoir dans l'État indépendant de Croatie, hostilité croissante aux Serbes",
+        "date": "1941-04-10",
+        "link": "https://fr.wikipedia.org/wiki/Oustachis"
+      },
+      {
+        "label": "Parti radical serbe (SRS) fondé, parti ultranationaliste d'extrême droite",
+        "date": "1991-02-23",
+        "link": "https://fr.wikipedia.org/wiki/Parti_radical_serbe"
+      },
+      {
+        "label": "Rôle du SRS et de Vojislav Šešelj pendant les guerres yougoslaves",
+        "date": "1992-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_radical_serbe"
+      },
+      {
+        "label": "SRS soutient la création d'une Grande Serbie et est qualifié de néofasciste dans les années 1990",
+        "date": "1995-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_radical_serbe"
+      },
+      {
+        "label": "Élections législatives de 2003 : SRS première force politique avec 27,7 % des suffrages",
+        "date": "2003-12-28",
+        "link": "http://www1.rfi.fr/actufr/articles/049/article_26373.asp"
+      },
+      {
+        "label": "SNS (Parti progressiste serbe) fondé par une scission du SRS, conserve un profil nationaliste",
+        "date": "2008-10-10",
+        "link": "https://fr.wikipedia.org/wiki/Parti_radical_serbe"
+      }
+    ],
+    "SE": [
+      {
+        "label": "Origines néofascistes et néonazies du futur parti Démocrates de Suède",
+        "date": "1980-01-01",
+        "link": "https://fr.wikipedia.org/wiki/D%C3%A9mocrates_de_Su%C3%A8de"
+      },
+      {
+        "label": "Fondation des Démocrates de Suède (parti nationaliste souvent classé extrême droite)",
+        "date": "1988-02-06",
+        "link": "https://fr.wikipedia.org/wiki/D%C3%A9mocrates_de_Su%C3%A8de"
+      },
+      {
+        "label": "Première participation des Démocrates de Suède aux élections législatives (0,02 % des voix)",
+        "date": "1988-09-18",
+        "link": "https://fr.wikipedia.org/wiki/D%C3%A9mocrates_de_Su%C3%A8de"
+      },
+      {
+        "label": "Création des Nationaux-démocrates (Nationaldemokraterna), scission encore plus radicale",
+        "date": "2001-04-12",
+        "link": "https://fr.wikipedia.org/wiki/Nationaux-d%C3%A9mocrates"
+      },
+      {
+        "label": "Élections législatives suédoises de 2010 : entrée des Démocrates de Suède au Riksdag",
+        "date": "2010-09-19",
+        "link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_su%C3%A9doises_de_2010"
+      },
+      {
+        "label": "Années 2010 : Démocrates de Suède deviennent la principale force d'extrême droite suédoise",
+        "date": "2014-09-14",
+        "link": "https://fr.wikipedia.org/wiki/D%C3%A9mocrates_de_Su%C3%A8de"
+      },
+      {
+        "label": "Dissolution des Nationaux-démocrates",
+        "date": "2014-04-23",
+        "link": "https://fr.wikipedia.org/wiki/Nationaux-d%C3%A9mocrates"
+      },
+      {
+        "label": "Élections de 2018 et 2022 : Démocrates de Suède s'ancrent comme troisième puis deuxième parti",
+        "date": "2022-09-11",
+        "link": "https://fr.wikipedia.org/wiki/D%C3%A9mocrates_de_Su%C3%A8de"
+      }
+    ],
+    "SI": [
+      {
+        "label": "Naissance d'un nationalisme slovène moderne (fin de l'époque austro-hongroise et entre-deux-guerres)",
+        "date": "1918-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Croate"
+      },
+      {
+        "label": "Fondation du Parti national slovène (SNS), parti nationaliste et xénophobe",
+        "date": "1991-03-17",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slov%C3%A8ne"
+      },
+      {
+        "label": "Le SNS se caractérise par son hostilité aux migrants et son programme de « Grande Slovénie »",
+        "date": "1992-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slov%C3%A8ne"
+      },
+      {
+        "label": "Élections législatives de 1992 : le SNS obtient près de 10 % et devient une force importante",
+        "date": "1992-12-06",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slov%C3%A8ne"
+      },
+      {
+        "label": "Radicalisation du SDS de Janez Janša, qui reprend une partie du discours nationaliste du SNS",
+        "date": "2004-10-03",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slov%C3%A8ne"
+      },
+      {
+        "label": "Déclin électoral du SNS dans les années 2000–2010 mais maintien d'un espace d'extrême droite slovène",
+        "date": "2011-12-04",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slov%C3%A8ne"
+      }
+    ],
+    "SK": [
+      {
+        "label": "Parti populaire slovaque Hlinka devient principale force nationaliste slovaque",
+        "date": "1925-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_populaire_slovaque"
+      },
+      {
+        "label": "Création de la milice paramilitaire Rodobrana, liée au Parti populaire slovaque",
+        "date": "1923-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_populaire_slovaque"
+      },
+      {
+        "label": "Création de la Garde Hlinka, milice du Parti populaire slovaque",
+        "date": "1938-10-08",
+        "link": "https://fr.wikipedia.org/wiki/Garde_Hlinka"
+      },
+      {
+        "label": "La Garde Hlinka participe à la persécution des Juifs et des opposants en Slovaquie",
+        "date": "1941-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Massacres_de_Kremni%C4%8Dka_et_Nemeck%C3%A1"
+      },
+      {
+        "label": "Massacres de Kremnička et Nemecká par la Garde Hlinka et l'Einsatzkommando 14",
+        "date": "1944-11-05",
+        "link": "https://fr.wikipedia.org/wiki/Massacres_de_Kremni%C4%8Dka_et_Nemeck%C3%A1"
+      },
+      {
+        "label": "Fondation du Parti national slovaque (SNS), parti nationaliste",
+        "date": "1990-03-07",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slovaque"
+      },
+      {
+        "label": "SNS participe à plusieurs coalitions gouvernementales (1992–1998, 2006–2010, 2016–2020, 2023–)",
+        "date": "1992-06-05",
+        "link": "https://fr.wikipedia.org/wiki/Parti_national_slovaque"
+      },
+      {
+        "label": "Fondation du Parti populaire « Notre Slovaquie » (ĽSNS), parti néonazi d'extrême droite",
+        "date": "2010-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Parti_populaire_Notre_Slovaquie"
+      },
+      {
+        "label": "ĽSNS entre au Parlement slovaque (élections de 2016)",
+        "date": "2016-03-05",
+        "link": "https://fr.wikipedia.org/wiki/Parti_populaire_Notre_Slovaquie"
+      }
+    ],
+    "UA": [
+      {
+        "label": "Fondation du Parti social-national d'Ukraine (SNPU), ancêtre de Svoboda",
+        "date": "1991-10-13",
+        "link": "https://fr.wikipedia.org/wiki/Svoboda_(parti)"
+      },
+      {
+        "label": "Transformation du SNPU en Svoboda et changement de nom officiel en 2004",
+        "date": "2004-02-14",
+        "link": "https://fr.wikipedia.org/wiki/Svoboda_(parti)"
+      },
+      {
+        "label": "Svoboda qualifié de parti ultranationaliste, de droite voire d'extrême droite",
+        "date": "2010-01-01",
+        "link": "https://fr.wikipedia.org/wiki/Svoboda_(parti)"
+      },
+      {
+        "label": "Secteur droit se forme comme confédération de groupes d'extrême droite pendant Euromaïdan",
+        "date": "2013-11-21",
+        "link": "https://fr.wikipedia.org/wiki/Secteur_droit"
+      },
+      {
+        "label": "Secteur droit devient parti politique ultranationaliste après les événements d'Euromaïdan",
+        "date": "2014-03-22",
+        "link": "https://fr.wikipedia.org/wiki/Secteur_droit"
+      },
+      {
+        "label": "Création du Corps national, parti d'extrême droite lié au régiment Azov",
+        "date": "2016-10-14",
+        "link": "https://fr.wikipedia.org/wiki/Corps_national"
+      },
+      {
+        "label": "Le Corps national est fondé par des vétérans d'Azov et dirigé par Andriy Biletsky",
+        "date": "2016-10-14",
+        "link": "https://fr.wikipedia.org/wiki/Corps_national"
+      },
+      {
+        "label": "Coalition électorale de 2019 entre Svoboda, Corps national et Secteur droit",
+        "date": "2019-07-21",
+        "link": "https://fr.wikipedia.org/wiki/Corps_national"
+      },
+      {
+        "label": "Analyses sur les deux visages de l'extrême droite ukrainienne : Svoboda/Secteur droit et mouvement Azov",
+        "date": "2021-06-08",
+        "link": "https://theconversation.com/les-deux-visages-de-lextreme-droite-ukrainienne-160632"
+      }
+    ]
+  }
+}
