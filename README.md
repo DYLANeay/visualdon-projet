@@ -6,13 +6,17 @@ Projet de visualisation de données — VisualDon 2026 - Dylan Eray & Loic Peyra
 
 ## Contexte
 
-Les données utilisées dans ce projet proviennent de trois sources principales :
+Les données utilisées dans ce projet proviennent de cinq sources principales :
 
 - **[ParlGov](https://parlgov.fly.dev/)** — Infrastructure de données sur les démocraties de l'UE et de l'OCDE (1900–2023), créée par les chercheurs Holger Döring et Philip Manow. Elle contient environ 1 700 partis, 1 000 élections (9 800 résultats) et 1 600 cabinets dans plus de 30 pays. Les données sont accessibles en CSV et via une API. Elles ont été collectées dans un cadre académique pour permettre la recherche comparative en science politique.
 
 - **[Manifesto Project (MPDS2025a)](https://manifesto-project.wzb.eu/datasets/MPDS2025a)** — Jeu de données produit par le Wissenschaftszentrum Berlin für Sozialforschung (WZB) et l'Université de Göttingen, financé par la Deutsche Forschungsgemeinschaft (DFG). Il contient 5 285 programmes électoraux codés de 1 412 partis à travers 877 élections, permettant d'analyser le positionnement idéologique des partis sur un axe gauche-droite. Disponible en CSV, XLSX, Stata et SPSS.
 
 - **[Wall of Shame](https://www.nopasaran.ch/fr-CH)** — Registre des dérapages de l'extrême droite en Suisse, maintenu par Rebel Suisse (licence Creative Commons BY-NC-SA 4.0). Ce site documente les incidents impliquant des politiciens et activistes d'extrême droite suisses (racisme, néonazisme, climatoscepticisme, sexisme, etc.), avec un focus particulier sur l'UDC/SVP.
+
+- **[admin.ch — Résultats des élections au Conseil national](https://www.admin.ch/gov/fr/accueil/documentations/lois-et-decisions/resultats-des-elections-au-conseil-national.html)** — Résultats officiels des élections fédérales suisses par canton, publiés par la Chancellerie fédérale. Ces données fournissent la répartition des sièges par parti et par canton pour chaque scrutin, utilisées pour la carte interactive de la Suisse.
+
+- **[swisstopo — Limites cantonales (GeoJSON)](https://www.swisstopo.admin.ch/fr/geodata/geometry/admin-territory-boundaries.html)** — Géométries officielles des frontières cantonales suisses au format GeoJSON, publiées par l'Office fédéral de topographie (swisstopo). Utilisées comme fond de carte pour la visualisation interactive des cantons.
 
 Ces données ont été collectées dans des contextes différents : les deux premières sources relèvent de la recherche académique et visent à fournir des données électorales objectives et comparatives. La troisième est un projet militant qui documente des incidents concrets liés à l'extrême droite suisse.
 
@@ -83,6 +87,63 @@ Au-delà de la stricte évolution des courbes électorales, ce projet intègre u
         "url": "String — URL de l'événement sur nopasaran.ch"
       }
     ]
+  }
+}
+```
+
+**Structure du fichier `data/geo-map/switzerland/cantons.geojson` :**
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "uuid": "String — Identifiant unique",
+        "name": "String — Nom du canton (ex: Zürich)",
+        "kantonsnummer": "Integer — Numéro OFS du canton (1–26)",
+        "icc": "String — Code pays (CH)",
+        "einwohnerzahl": "Integer — Population",
+        "kantonsflaeche": "Float — Superficie en km²",
+        "see_flaeche": "Float — Surface lacustre en km²",
+        "objektart": "String — Type d'objet (Kanton)",
+        "herkunft": "String — Origine des données (AV)",
+        "herkunft_jahr": "Integer — Année d'origine",
+        "revision_jahr": "Integer — Année de révision",
+        "revision_qualitaet": "String — Qualité de la révision"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": "[[[[lng, lat, alt], ...]]]"
+      }
+    }
+  ]
+}
+```
+
+> **Note :** Les géométries ont été simplifiées (algorithme de Douglas-Peucker, tolérance 0.002°) pour réduire le nombre de sommets d'environ 193 000 à ~6 100, ce qui améliore considérablement les performances de rendu sans perte visuelle notable à l'échelle d'affichage (900×560 px).
+
+**Structure du fichier `data/cantons-elections/cantons-elections.json` :**
+
+```json
+{
+  "far_right_parties": ["UDC", "UDF", "Lega", "MCG", "DS", "Dém.", "Rép."],
+  "cantons": {
+    "<kantonsnummer>": {
+      "name": "String — Nom du canton (ex: Zürich)",
+      "elections": [
+        {
+          "year": "Integer — Année de l'élection",
+          "total_seats": "Integer — Nombre total de sièges",
+          "parties": {
+            "<abbr>": "Integer | null — Sièges remportés par le parti (null si absent)"
+          },
+          "far_right_seats": "Integer — Sièges totaux de l'extrême droite",
+          "far_right_pct": "Float — Pourcentage de sièges d'extrême droite"
+        }
+      ]
+    }
   }
 }
 ```
