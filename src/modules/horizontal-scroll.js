@@ -138,4 +138,22 @@ export function initHorizontalScroll() {
   });
   if (panel1.firstElementChild) panelObserver.observe(panel1.firstElementChild);
   if (panel2.firstElementChild) panelObserver.observe(panel2.firstElementChild);
+
+  // Hash anchors like #city-rural / #language-regions point to sections
+  // inside the transformed track, so native scrollIntoView lands on the
+  // wrapper not the panel — the user has to click twice. This resolver
+  // returns the absolute scrollY needed to surface a given panel on the
+  // first click.
+  function scrollToSection(id) {
+    const PANEL_INDEX = { 'city-rural': 0, 'language-regions': 1 };
+    const idx = PANEL_INDEX[id];
+    if (idx === undefined) return null;
+    measure();
+    const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+    if (idx === 0) return wrapperTop;
+    const slideDistance = Math.round(window.innerHeight / 3);
+    return wrapperTop + panel1Overflow + slideDistance;
+  }
+
+  return { scrollToSection };
 }
