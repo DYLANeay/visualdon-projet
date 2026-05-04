@@ -365,10 +365,12 @@ html.dark .theme-icon-moon {
 #europe-year {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   color: var(--text-primary);
   transform-origin: 50% 50%;
   will-change: transform, opacity;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 #switzerland-year {
@@ -475,10 +477,17 @@ html.dark #switzerland-year.is-date {
 .country-detail {
   transition: opacity 350ms var(--ease-out);
   will-change: opacity;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .country-detail.is-visible {
   opacity: 1;
+}
+
+/* Prevent hidden detail panel children from blocking clicks on event tiles */
+.country-detail:not(.is-visible) .pointer-events-auto {
+  pointer-events: none;
 }
 
 .country-detail.is-priming {
@@ -941,34 +950,21 @@ html.dark .tone-gray {
 
 .event-tiles-column {
   position: absolute;
-  top: 48px;
-  bottom: 140px;
+  top: 16px;
+  bottom: 100px;
   width: 300px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   pointer-events: none;
   overflow: hidden;
-  /* Soft fade at top/bottom instead of a hard clip — keeps tiles legible
-     when the column hits its bounds (notably under the parties card). */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 28px,
-    #000 calc(100% - 28px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 28px,
-    #000 calc(100% - 28px),
-    transparent 100%
-  );
 }
 
 .event-tiles-column-left {
   left: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  pointer-events: auto;
 }
 
 .event-tiles-column-right {
@@ -1016,6 +1012,12 @@ html.dark .tone-gray {
 
 #event-tiles-overlay.is-focus-mode .event-tile {
   box-shadow: var(--shadow-md);
+}
+
+/* Reduce year banner height in focus mode to save vertical space */
+#europe:has(.country-detail.is-visible) #europe-year {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 /* Hide left event tiles when a country detail panel is open so they never
@@ -2093,6 +2095,17 @@ html.dark .badge-blue {
   width: 4px;
   height: 400px;
   writing-mode: vertical-lr;
+}
+
+/* Center the thumb on the track for vertical sliders */
+.vertical-slider::-webkit-slider-thumb {
+  margin-top: 0;
+  margin-left: -6px;
+}
+
+.vertical-slider::-moz-range-thumb {
+  margin-top: 0;
+  margin-left: -6px;
 }
 
 #europe nav.w-16 {
