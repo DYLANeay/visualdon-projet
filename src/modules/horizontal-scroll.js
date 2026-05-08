@@ -67,7 +67,13 @@ export function initHorizontalScroll() {
 
     maxX = track.scrollWidth - viewportWidth;
 
-    wrapper.style.height = totalScrollable + pinHeight + 'px';
+    // Floor the wrapper height so it can't collapse before charts measure.
+    // Without this, an F5 + fast scroll lands the user past a too-short
+    // wrapper; charts then render and ResizeObserver grows the wrapper
+    // beneath them, leaving them at the bottom of the page.
+    const minReserved = viewportHeight * 3;
+    wrapper.style.height =
+      Math.max(totalScrollable + pinHeight, minReserved) + 'px';
   }
 
   function update() {
