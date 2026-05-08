@@ -54,9 +54,9 @@ export function initHorizontalScroll() {
     panel2Overflow = Math.max(0, panel2Height - pinHeight);
 
     // Phase 1: vertical scroll through panel 1
-    // Phase 2: 1/3 vh for horizontal slide (short transition)
+    // Phase 2: ~1.25 vh for horizontal slide (slow, deliberate transition)
     // Phase 3: vertical scroll through panel 2
-    const slideDistance = Math.round(viewportHeight / 3);
+    const slideDistance = Math.round(viewportHeight * 1.25);
     totalScrollable = panel1Overflow + slideDistance + panel2Overflow;
 
     phase1End = totalScrollable > 0 ? panel1Overflow / totalScrollable : 0;
@@ -151,7 +151,9 @@ export function initHorizontalScroll() {
     measure();
     const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
     if (idx === 0) return wrapperTop;
-    const slideDistance = Math.round(window.innerHeight / 3);
+    // Must match the slideDistance used in measure() so clicking "Langues"
+    // lands at the start of phase 3 (panel 2 fully visible), not mid-slide.
+    const slideDistance = Math.round(window.innerHeight * 1.25);
     return wrapperTop + panel1Overflow + slideDistance;
   }
 
