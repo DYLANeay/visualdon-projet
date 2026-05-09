@@ -218,7 +218,7 @@ style: |
   }
 
   section.demo h1 {
-    color: #ffffff;
+    color: #0a0a0a;
     font-size: 88px;
   }
 
@@ -280,12 +280,15 @@ style: |
 
 - **ParlGov** : 1 700 partis, 9 800 résultats, 30+ pays
 - **Manifesto Project (MPDS2025a)** : 5 285 programmes, positionnement gauche-droite via le code `parfam`
+- **CShapes · ETHZ** : map de l'europe
+- **Wikipedia** : événements 
 
 ### Suisse
 
 - **admin.ch** : élections fédérales par canton
 - **swisstopo** : frontières cantonales (GeoJSON)
 - **Wall of Shame · nopasaran.ch** : registre citoyen des dérapages d'extrême droite
+
 
 </div>
 <div class="col">
@@ -331,7 +334,7 @@ Identifier les **tendances communes** ou divergentes entre la Suisse et ses vois
 
 - Y a-t-il une vague de fond européenne ?
 - Certains pays résistent-ils ?
-- Comment se manifeste le clivage ville / campagne ?
+- Comment se manifeste le clivage ville / campagne et linguistique ?
 
 </div>
 <div class="col">
