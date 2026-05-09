@@ -156,6 +156,39 @@ style: |
     box-shadow: 0 1px 3px rgba(10,10,10,0.04);
   }
 
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin-top: 64px;
+  }
+
+  .stack-item {
+    background: #ffffff;
+    border: 1px solid #e5e0d5;
+    border-radius: 14px;
+    padding: 36px 16px 28px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(10,10,10,0.04);
+  }
+
+  .stack-item img {
+    height: 72px;
+    margin: 0 auto 24px;
+    display: block;
+  }
+
+  .stack-item strong {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stack-item span {
+    font-size: 13px;
+    color: #8a8a8a;
+  }
+
   /* Title slide */
   section.title {
     padding: 96px 110px;
@@ -232,7 +265,7 @@ style: |
 
 <p class="authors">Dylan Eray &amp; Loic Peyramaure</p>
 
-<p class="meta">HEIG-VD · Une enquête, 1900–2026</p>
+<p class="meta">HEIG-VD · Une enquête, 1900-2026</p>
 
 ---
 
@@ -243,16 +276,16 @@ style: |
 <div class="columns">
 <div class="col">
 
-### Europe (1900–2023)
+### Europe (1900-2023)
 
-- **ParlGov** — 1 700 partis, 9 800 résultats, 30+ pays
-- **Manifesto Project (MPDS2025a)** — 5 285 programmes, positionnement gauche–droite via le code `parfam`
+- **ParlGov** : 1 700 partis, 9 800 résultats, 30+ pays
+- **Manifesto Project (MPDS2025a)** : 5 285 programmes, positionnement gauche-droite via le code `parfam`
 
 ### Suisse
 
-- **admin.ch** — élections fédérales par canton
-- **swisstopo** — frontières cantonales (GeoJSON)
-- **Wall of Shame · nopasaran.ch** — registre citoyen des dérapages d'extrême droite
+- **admin.ch** : élections fédérales par canton
+- **swisstopo** : frontières cantonales (GeoJSON)
+- **Wall of Shame · nopasaran.ch** : registre citoyen des dérapages d'extrême droite
 
 </div>
 <div class="col">
@@ -276,12 +309,12 @@ La notion d'**« extrême droite »** n'est pas universelle. Nous avons intervie
 
 ## Du CSV brut à la visualisation
 
-1. **Filtrage** — extraction des partis d'extrême droite via `parfam = 70` _(Manifesto)_
-2. **Croisement** — fusion **ParlGov × Manifesto** par pays, année et parti
-3. **Agrégation** — somme des `vote_pct` de tous les partis d'extrême droite par scrutin pour obtenir le **poids électoral national**
-4. **Scraping** — 482 événements extraits de _nopasaran.ch_, regroupés par année et canton _(parsing du champ `party` : ex. « UDC - ZH »)_
-5. **Simplification GeoJSON** — Douglas-Peucker à 0.002° sur les cantons : **~193 000 → ~6 100 sommets**, sans perte visuelle, +rendu fluide
-6. **Export** — un seul `elections.json` consolidé alimente toutes les vues du site
+1. **Filtrage** : extraction des partis d'extrême droite via `parfam = 70` _(Manifesto)_
+2. **Croisement** : fusion **ParlGov × Manifesto** par pays, année et parti
+3. **Agrégation** : somme des `vote_pct` de tous les partis d'extrême droite par scrutin pour obtenir le **poids électoral national**
+4. **Scraping** : 482 événements extraits de _nopasaran.ch_, regroupés par année et canton _(parsing du champ `party` : ex. « UDC - ZH »)_
+5. **Simplification GeoJSON** : optimisation des maps qui étaient très lourdes au départ pour rendre l'application la plus fluide possible
+6. **Export** : plusieurs fichiers consolidés alimentent les vues : `elections.json` (Europe), `cantons-elections.json` (Suisse), `cheflieux-2023.json` (clivage ville/campagne), `nopasaran/data.json` (Wall of Shame, Suisse), `wikipedia/events.json` (contexte historique) + les GeoJSON Europe & cantons
 
 ---
 
@@ -319,96 +352,44 @@ Raconter **visuellement l'évolution** du poids électoral et ses moments charni
 
 ---
 
-<span class="eyebrow">Chapitre 1 · Europe</span>
+<span class="eyebrow">Stack technique</span>
 
-## Le continent qui bascule
+## Notre stack
 
-<p class="deck">Carte choroplèthe d'Europe + timeline verticale 1900–2026.</p>
+<div class="stack-grid">
 
-<div class="columns">
-<div class="col">
-
-### Carte (`d3.geoEqualEarth`)
-
-Choroplèthe rouge sur le **% cumulé** des partis d'extrême droite.
-
-### Timeline verticale
-
-Slider 1900 → 2026. Chaque année redessine la carte avec une transition de 400 ms.
-
-</div>
-<div class="col">
-
-### Tuiles d'événements
-
-Tuiles d'événements historiques _(crises, lois, votations)_ par pays, provenant de l'API Wikipedia, qui ont eu un impact sur la politique mondiale/locale.
-
-### Détail pays
-
-Clic sur un pays → **zoom + barres de partis** colorées par famille politique, mini-courbe historique, événements à droite.
-
-</div>
+<div class="stack-item">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" />
+  <strong>JavaScript</strong>
+  <span>ES modules</span>
 </div>
 
----
-
-<span class="eyebrow">Chapitre 2 · Suisse</span>
-
-## Et la Suisse, dans tout ça ?
-
-<p class="deck">Carte des 26 cantons + timeline horizontale, à partir des années 1990.</p>
-
-<div class="columns">
-<div class="col">
-
-### Carte des cantons (`d3.geoMercator`)
-
-Choroplèthe par **part de sièges UDC + EDU + Lega + SD** au Conseil national. La couleur dominante reflète la famille politique majoritaire.
-
-### Timeline horizontale
-
-Une élection fédérale = un point. Auto-play disponible, navigation au clic.
-
-</div>
-<div class="col">
-
-### Détail canton
-
-**Courbe UDC sur 30 ans** + tuiles d'événements _Wall of Shame_ filtrés par canton.
-
-### Modal d'événement
-
-Élément `<dialog>` natif : titre, description, personne, parti, sources externes, lien vers nopasaran.ch.
-
-</div>
+<div class="stack-item">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/d3dotjs.svg" />
+  <strong>D3.js</strong>
+  <span>Cartes & charts</span>
 </div>
 
----
+<div class="stack-item">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vite.svg" />
+  <strong>Vite</strong>
+  <span>Build & dev</span>
+</div>
 
-<span class="eyebrow">Chapitre 3 · Suisse · clivages</span>
+<div class="stack-item">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg" />
+  <strong>Tailwind</strong>
+  <span>Styling</span>
+</div>
 
-## Deux clivages
-
-<div class="columns">
-<div class="col">
-
-### Ville vs campagne _(2023)_
-
-Pour chaque canton, le score de l'extrême droite **dans le chef-lieu** comparé au **canton entier**. La distance entre les deux points révèle l'écart ville / campagne.
-
-_Lecture : plus la marque verte (canton) est au-dessus de la noire (ville), plus la campagne vote à droite._
+<div class="stack-item">
+  <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f999.svg" />
+  <strong>Scrollama</strong>
+  <span>Scrollytelling</span>
+</div>
 
 </div>
-<div class="col">
 
-### Régions linguistiques _(2023)_
-
-Score d'extrême droite par canton, regroupé en **alémanique / romand / italophone** — la marque épaisse indique la moyenne régionale.
-
-_Biais assumé : les cantons plurilingues (BE, FR, VS, GR) sont attribués à leur langue majoritaire => gonfle légèrement le score alémanique._
-
-</div>
-</div>
 
 ---
 
@@ -432,6 +413,6 @@ _Biais assumé : les cantons plurilingues (BE, FR, VS, GR) sont attribués à le
 
 # Questions ?
 
-<p class="authors">Dylan Eray &amp; Loic Peyramaure — M53-2</p>
+<p class="authors">Dylan Eray &amp; Loic Peyramaure · M53-2</p>
 
 <p class="meta">github.com/DYLANeay/visualdon-projet</p>
