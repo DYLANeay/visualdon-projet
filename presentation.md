@@ -269,6 +269,41 @@ style: |
 
 ---
 
+<span class="eyebrow">But du projet</span>
+
+## Explorer _et_ expliquer
+
+<div class="columns">
+<div class="col">
+
+### Explorer
+
+Identifier les **tendances communes** ou divergentes entre la Suisse et ses voisins.
+
+- Y a-t-il une vague de fond européenne ?
+- Certains pays résistent-ils ?
+- Comment se manifeste le clivage ville / campagne et linguistique ?
+
+</div>
+<div class="col">
+
+### Expliquer
+
+Raconter **visuellement l'évolution** du poids électoral et ses moments charnières.
+
+- Crises migratoires
+- Crises économiques
+- Contexte sécuritaire
+- Dérapages documentés
+
+</div>
+</div>
+
+<p style="margin-top:22px;font-size:19px"><strong>Notre parti pris :</strong> l'extrême droite n'est pas une opinion comme une autre. Le projet documente sa progression pour rendre visible ce qui se joue derrière les pourcentages.</p>
+
+---
+
+
 <span class="eyebrow">Données · Sources</span>
 
 ## D'où viennent les chiffres ?
@@ -321,39 +356,6 @@ La notion d'**« extrême droite »** n'est pas universelle. Nous avons intervie
 
 ---
 
-<span class="eyebrow">But du projet</span>
-
-## Explorer _et_ expliquer
-
-<div class="columns">
-<div class="col">
-
-### Explorer
-
-Identifier les **tendances communes** ou divergentes entre la Suisse et ses voisins.
-
-- Y a-t-il une vague de fond européenne ?
-- Certains pays résistent-ils ?
-- Comment se manifeste le clivage ville / campagne et linguistique ?
-
-</div>
-<div class="col">
-
-### Expliquer
-
-Raconter **visuellement l'évolution** du poids électoral et ses moments charnières.
-
-- Crises migratoires
-- Crises économiques
-- Contexte sécuritaire
-- Dérapages documentés
-
-</div>
-</div>
-
-<p style="margin-top:22px;font-size:19px"><strong>Notre parti pris :</strong> l'extrême droite n'est pas une opinion comme une autre. Le projet documente sa progression pour rendre visible ce qui se joue derrière les pourcentages.</p>
-
----
 
 <span class="eyebrow">Stack technique</span>
 
